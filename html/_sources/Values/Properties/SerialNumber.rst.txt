@@ -1,0 +1,16 @@
+_`SerialNumber`
+^^^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **SerialNumber**
+typ                      STRING
+prednastavená hodnota    \-
+prístup                  read-only
+======================== =======================================
+
+**Popis**:
+
+  Obsahuje výrobné (sériové) číslo fiškálnej tlačiarne.
+
+.. toctree::
+    :maxdepth: 3

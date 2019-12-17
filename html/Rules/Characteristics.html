@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Vstavané charakteristiky fiškálnej tlačiarne &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Hľadať" href="../search.html" />
+    <link rel="next" title="Servisné oznamy [_new_]" href="ServiceMessages.html" />
+    <link rel="prev" title="Princíp registračnej transakcie vo fiškálnej tlačiarni" href="RegistrationTransaction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Pravidlá</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Rounding.html">Pravidlá pre zaokrúhlenie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VAT.html">Pravidlá pre výpočet DPH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ValueCalculations.html">Všeobecne o výpočte hodnôt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RegistrationTransaction.html">Princíp registračnej transakcie vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vstavané charakteristiky fiškálnej tlačiarne</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ServiceMessages.html">Servisné oznamy <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Pravidlá</a> &raquo;</li>
+        
+      <li>Vstavané charakteristiky fiškálnej tlačiarne</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="vstavane-charakteristiky-fiskalnej-tlaciarne">
+<h1>Vstavané charakteristiky fiškálnej tlačiarne<a class="headerlink" href="#vstavane-charakteristiky-fiskalnej-tlaciarne" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p>Fiškálna tlačiareň sa riadi týmito pravidlami:</p>
+<ul class="simple">
+<li><p>výsledná hodnota transakcie predaja/vrátenia, platba za nákup, medzisúčet transakcie
+a hodnota vkladu/výberu (sú typu <strong>CURRENCY</strong>) sa posielajú ako násobok <code class="docutils literal notranslate"><span class="pre">0,01</span><span class="pre">€</span></code>,
+resp. 1 euro-cent (sú to parametre <em>total</em> a <em>payment</em>/<em>change</em> príkazov
+<a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>/<a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>
+a parameter <em>amount</em> v príkazoch <a class="reference internal" href="../Commands/printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a>
+a <a class="reference internal" href="../Commands/printRecCash.html#printreccash"><span class="std std-ref">printRecCash</span></a>),</p></li>
+<li><p>výsledné ceny položiek v nákupe (sú typu <strong>CURRENCY</strong>) sa posielajú ako násobky <code class="docutils literal notranslate"><span class="pre">0,01</span><span class="pre">€</span></code>,
+resp. <code class="docutils literal notranslate"><span class="pre">1</span></code> euro-cent (parametre price a amount príkazov <strong>printRecItem…</strong> a <strong>printRecPackage…</strong>),</p></li>
+<li><p>jednotkové ceny položiek v nákupe (sú typu <strong>CURRENCY</strong>) sa posielajú ako násobky <code class="docutils literal notranslate"><span class="pre">0,0001</span><span class="pre">€</span></code>
+resp. <code class="docutils literal notranslate"><span class="pre">1</span></code> euro-cent (parametre <em>unitPrice</em> alebo <em>unitAmount</em> príkazov <strong>printRecItem…</strong>),</p></li>
+<li><p>všetky finančné hodnoty okrem jednotkových cien položiek sa vypisujú na dve desatinné miesta,</p></li>
+<li><p>jednotkové ceny položiek sa posielajú na dve, tri, alebo štyri desatinné miesta, v závislosti
+na počte významových miest v desatinnej časti, najmenej však na dve desatinné miesta,</p></li>
+<li><p>limit na jeden nákup je <code class="docutils literal notranslate"><span class="pre">1</span><span class="pre">000</span><span class="pre">000,00</span> <span class="pre">€</span></code>,</p></li>
+<li><p>množstvo predávanej položky (parameter <em>quantity</em> v príkazoch <strong>printRecItem…</strong>) musí byť
+v rozsahu <code class="docutils literal notranslate"><span class="pre">0,001</span></code> až <code class="docutils literal notranslate"><span class="pre">999</span><span class="pre">999,999</span></code>,</p></li>
+<li><p>všetky číselné hodnoty (okrem niekoľkých výnimiek ako napr. hodnoty parametrov
+<a class="reference internal" href="../Commands/printRecSubtotal.html#prs-amount"><span class="std std-ref">amount</span></a> pre príkaz <a class="reference internal" href="../Commands/printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a>
+a <em>total</em> (pre príkazy <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a> a <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>)
+a parameter <a class="reference internal" href="../Commands/printRecTotalChange.html#prtc-change"><span class="std std-ref">change</span></a> pre <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>)
+sa musia posielať ako kladné čísla; skutočná hodnota operácie (záporná, alebo kladná) je určená
+typom operácie (pri vyčítavaní hodnôt z fiškálnej tlačiarne toto pravidlo neplatí a fiškálna
+tlačiareň môže vrátiť aj záporné hodnoty, ak si to situácia vyžaduje)</p></li>
+<li><p>daňové hodnoty pre každý doklad (hrubý obrat, čistý obrat a DPH) sa vypočítavajú na konci každého nákupu,</p></li>
+<li><p>daňové hodnoty pre pre dennú uzávierku a ostatných výkazoch sa vypočítajú ako súčet hodnôt z jednotlivých účteniek,</p></li>
+<li><p>fiškálna tlačiareň len zaznamenáva operácie v nákupe, ale nekontroluje logiku týchto operácií
+(táto kontrola musí byť urobená na strane aplikácie napr. záporné obraty)</p></li>
+<li><p>v prípade prerušenia tlače Z dennej uzávierky sa, po obnovení tlače, daná uzávierka vytlačí od začiatku,</p></li>
+<li><p>desatinný oddeľovač na vytlačených dokladoch je znak čiarky <code class="docutils literal notranslate"><span class="pre">','</span></code>,</p></li>
+<li><p>platný dátum a čas fiškálnych dokladov (dátum a čas vykonania transakcie) je vytlačený na konci každej účtenky,</p></li>
+<li><p>neobmedzený počet typov platieb a cudzích mien použiteľných pri uhradení registračnej transakcie
+(len pre ak <a class="reference internal" href="../Values/Properties/PaymentsRegistration.html#paymentsregistration"><span class="std std-ref">PaymentsRegistration</span></a> = <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>)</p></li>
+<li><p>v jednej registračnej transakcii nie je možné kombinovať príkazy <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>
+a <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>; je možné používať iba ten z tejto dvojice príkazov.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ServiceMessages.html" class="btn btn-neutral float-right" title="Servisné oznamy [_new_]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="RegistrationTransaction.html" class="btn btn-neutral float-left" title="Princíp registračnej transakcie vo fiškálnej tlačiarni" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

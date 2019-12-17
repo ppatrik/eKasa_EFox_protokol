@@ -1,0 +1,47 @@
+Dátum a čas vo fiškálnej tlačiarni
+==================================
+
+.. _DateTimeFormat:
+
+**Popis formátu dátumu a času**
+
+Pri posielaní, alebo pri prijímaní parametrov príkazov, ktoré obsahujú hodnoty
+dátumu a času sa tieto posielajú v niekoľkých variáciách.
+
+Hodnoty jednotlivých častí textových reťazcov majú nasledujúci význam
+a môžu byť v nasledujúcich rozsahoch:
+
+======= ================ ===============
+Kód     Popis            Rozsah
+======= ================ ===============
+DD      deň (v mesiaci)  \<1, 31\>
+MM      mesiac           \<1, 12\>
+YYYY    rok              \<2000, 2099\>
+hh      hodina           \<0, 24\>
+mm      minúta           \<0, 59\>
+ss      sekunda          \<0, 59\>
+======= ================ ===============
+
+.. note:: Skutočný rozsah hodnoty "deň" je závislý na mesiaci a roku.
+
+**Premenné dátumu a času**
+
+.. _DTSettingLimit:
+
+.. glossary::
+
+    DTSettingLimit
+        Spodná hranica pre nastavenie dátumu a času. Pri nastavovaní dátumu a času
+        nie je možné ísť pod túto hranicu.
+
+.. _DTStartOfDay:
+
+.. glossary::
+
+    DTStartOfDay
+        Dátum a čas začiatku aktuálneho obchodného dňa (v prípade, že predchádzajúci
+        obchodný deň už bol uzavretý a následne nedošlo k otvoreniu nového obchodného
+        dňa, premenná obsahuje dátum a čas posledného uzavretého obchodného dňa).
+
+.. toctree::
+    :maxdepth: 2

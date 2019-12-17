@@ -1,0 +1,11 @@
+FirmwareVersion ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+    Pôvodná vlastnosť *FirmwareVersion* bola rozdelená na:
+
+    * :ref:`FPFirmwareVersion <FPFirmwareVersion>`
+    * :ref:`ICMFirmwareVersion <ICMFirmwareVersion>`
+
+.. toctree::
+    :maxdepth: 3

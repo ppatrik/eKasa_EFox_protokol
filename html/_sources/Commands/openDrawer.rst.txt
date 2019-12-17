@@ -1,0 +1,66 @@
+_`openDrawer`
+-------------
+
+**Formát príkazu**:
+
+  ======== ================================================== =============== ====================
+  Pole     Hodnota                                            Dátový typ      Popis
+  ======== ================================================== =============== ====================
+  Cmd ID   oD                                                 \-              identifikátor príkazu
+  Req/Rsp  REQ                                                \-              požiadavka
+  Param1   :ref:`drawer <oD_drawer>`                          **INT32**       definuje číslo peňažnej zásuvky
+  ======== ================================================== =============== ====================
+
+  .. _oD_drawer:
+
+**Parameter drawer**:
+
+  Číslo peňažnej zásuvky, ktorá bude otvorená.
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  ========= ===============================================
+  Hodnota   Popis
+  ========= ===============================================
+  ``1``     peňažná zásuvka č. 1
+  ``2``     peňažná zásuvka č. 2
+  ========= ===============================================
+
+  **Poznámka**
+
+    * Počet peňažných zásuviek záleží od typu použitej tlačiarne. Pre detailnejšie informácie pozri prílohu: :ref:`Zoznam použitých tlačiarní <Zoznam použitých tlačiarní>`.
+
+
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    oD                  \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ================================= =======================================
+  Chyba                             Popis
+  ================================= =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`      Parameter :ref:`drawer <oD_drawer>` nie je z množiny dovolených hodnôt.
+  ================================= =======================================
+
+**Popis príkazu**:
+
+  Otvorí vstupným parametrom :ref:`drawer <oD_drawer>` špecifikovanú peňažnú zásuvku.
+
+    * V prípade, že parameter :ref:`drawer <oD_drawer>` sa nenachádza v poslanej správe, potom FP vygeneruje impulz pre otvorenie peňažnej zásuvky číslo 1.
+
+    * FP nekontroluje fyzickú prítomnosť peňažných zásuviek, iba na základe poslaného parametra :ref:`drawer <oD_drawer>` vygeneruje impulz pre otvorenie požadovanej peňažnej zásuvky.
+
+**Účinky príkazu**:
+
+  * :ref:`DrawerOpened <DrawerOpened>` = ``TRUE``
+
+.. toctree::
+    :maxdepth: 2

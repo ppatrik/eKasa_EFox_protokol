@@ -1,0 +1,8 @@
+exportJournal ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+    Tento komunikačný príkaz bol odstránený a nie je v eKasa verzii využívaný.
+
+.. toctree::
+    :maxdepth: 3

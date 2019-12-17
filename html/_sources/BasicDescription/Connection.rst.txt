@@ -1,0 +1,29 @@
+Pripojenie fiškálnej tlačiarne
+==============================
+
+Realizácia aplikačného protokolu predpokladá použitie služieb USB
+pre bezpečný prenos správ medzi aplikáciou a fiškálnou tlačiarňou
+pri ich spojení. USB poskytuje zabezpečené spojenie medzi
+komunikujúcimi bodmi a poskytuje primitívne komunikačné funkcie
+volané z aplikačnej protokolovej vrstvy. Rovnaké zabezpečenie
+poskytuje aj TCP protokol, ktorý je využívaný na prenos dát
+cez Ethernet.
+
+Fiškálna tlačiareň je vybavená technickými prostriedkami ako
+"USB device". Aplikácia používa služby "USB host", získa spojenie
+s fiškálnou tlačiarňou cez USB "communication-device class" (CDC)
+rozhranie, ktoré je vo Windows predstavované virtuálnym komunikačným portom (COMx).
+
+.. figure:: ../Images/ConnectionOverview.png
+    :figclass: align-center
+
+    Obrázok č. 3: Spojenie s fiškálnou tlačiarňou
+    
+    Podporná komunikačná vrstva
+
+Alternatívou k USB je použitie rozhrania RS-232 alebo Ethernet-u, ak je podporované *(má konektor)*.
+V prípade použitia rozhrania RS-232 je potrebné na strane PC navyše realizovať protokol linkovej vrstvy,
+ktorej špecifikácia je popísaná v dokumente LinkProFis.
+
+.. toctree::
+    :maxdepth: 2

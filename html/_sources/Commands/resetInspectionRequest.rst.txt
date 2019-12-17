@@ -1,0 +1,68 @@
+_`resetInspectionRequest`
+-------------------------
+
+**Formát príkazu**:
+
+  ======== ==================================================== =============== ====================
+  Pole     Hodnota                                              Dátový typ      Popis
+  ======== ==================================================== =============== ====================
+  Cmd ID   rIR                                                  \-              identifikátor príkazu
+  Req/Rsp  REQ                                                  \-              požiadavka
+  Param1   :ref:`inspectionRequestID <rIR_inspectionRequestID>` **INT32**       typ požiadavky na servisný zásah
+  Param2   :ref:`limitValue <rIR_limitValue>`                   **VARIANT**     nová medzná hodnota
+  ======== ==================================================== =============== ====================
+
+.. _rIR_inspectionRequestID:
+
+**Parameter inspectionRequestID**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  ========== ========================== ===========================================
+  Hodnota    Alias                      Popis
+  ========== ========================== ===========================================
+  ``1``      _`FP_INSPRQ_BACK_BAT_LOW`  požiadavka na kontrolu záložnej batérie
+  ``2``      _`FP_INSPRQ_SCHEDULED`     požiadavka na vykonanie plánovanej údržby zariadenia
+  ========== ========================== ===========================================
+
+.. _rIR_limitValue:
+
+**Parameter limitValue**:
+
+  Nová medzná hodnota.
+
+  Môže nadobúdať nasledujúce hodnoty:
+
+    * Ak :ref:`inspectionRequestID <rIR_inspectionRequestID>` = `FP_INSPRQ_BACK_BAT_LOW`_, potom na hodnote parametra :ref:`limitValue <rIR_limitValue>` nezáleží, ale nesmie byť = ``""`` (prázdny).
+    * AK :ref:`inspectionRequestID <rIR_inspectionRequestID>` = `FP_INSPRQ_SCHEDULED`_, potom parameter :ref:`limitValue <rIR_limitValue>` udáva dátum a čas novej servisnej údržby vo formáte :ref:`DDMMYYYYhhmm <DateTimeFormat>`.
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    rIR                 \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      výsledok vykonávania operácie
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ================================================== =======================================
+  Chyba                                              Popis
+  ================================================== =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`                       Parameter :ref:`inspectionRequestID <rIR_inspectionRequestID>` nie je z množiny dovolených hodnôt.
+  :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`           Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.
+  :ref:`EFP_OPERATION_ERROR <EFP_OPERATION_ERROR>`   Interná chyba. Pri vykonávaní služby nastala nešpecifikovaná chyba.
+  ================================================== =======================================
+
+**Popis príkazu**:
+
+  Príkaz nastaví novú hranicu pre upozornenie na udalosť.
+
+    * Ak :ref:`inspectionRequestID <rIR_inspectionRequestID>` = `FP_INSPRQ_BACK_BAT_LOW`_, potom sa nastaví default hodnota počtu dní pre novú záložnú batériu (na hodnote parametra :ref:`limitValue <rIR_limitValue>` v tomto prípade nezáleží, len nesmie byť prázdny). Novú skutočnú hodnotu počtu dní je z FP možné získať až po vypnutí a zapnutí FP.
+    * Ak :ref:`inspectionRequestID <rIR_inspectionRequestID>` = `FP_INSPRQ_SCHEDULED`_, potom nastaví novú hranicu pre nasledujúcu požiadavku na povinnú servisnú údržbu. Parameter :ref:`limitValue <rIR_limitValue>` udáva dátum a čas, od kedy bude potrebné príkazom :ref:`affirmInspectionRequest <affirmInspectionRequest>` potvrdzovať požiadavku na novú plánovanú servisnú údržbu.
+
+.. toctree::
+    :maxdepth: 2
+

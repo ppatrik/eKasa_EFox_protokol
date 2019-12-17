@@ -1,0 +1,12 @@
+Tlač vo fiškálnej tlačiarni
+***************************
+
+.. toctree::
+    :maxdepth: 2
+
+    Principles
+    Formatting
+    ReceiptFormatProfiles
+    PrintFormattingSettings
+    Summary
+    Example

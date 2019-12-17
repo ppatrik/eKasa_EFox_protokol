@@ -1,0 +1,16 @@
+_`FiscalReceiptType`
+^^^^^^^^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **FiscalReceiptType**
+typ                      INT32
+prednastavená hodnota    ``1``
+prístup                  read-only
+======================== =======================================
+
+**Popis**:
+
+  Obsahuje typ fiškálnej účtenky, ktorá bola začatá posledným úspešne vykonaným príkazom :ref:`beginFiscalReceipt <beginFiscalReceipt>`. Možné hodnoty tejto property sú z tej istej množiny ako je to definované v príkaze :ref:`beginFiscalReceipt <beginFiscalReceipt>` pre parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>`.
+
+.. toctree::
+    :maxdepth: 3

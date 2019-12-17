@@ -1,0 +1,41 @@
+Všeobecne o výpočte hodnôt
+--------------------------
+
+Snahou fiškálnej jednotky je preniesť, čo možno najviac zodpovednosti
+a tým pádom aj výpočtov na stranu aplikácie. Tento postup je zvolený
+preto, aby sa minimalizoval vplyv výpočtov a následných zaokrúhlení
+a z toho vyplývajúce nezhody medzi celkovou hodnotou transakcie
+vypočítanou v aplikácii a celkovou hodnotou vypočítanou vo fiškálnej
+tlačiarni. Keďže pre závislosti medzi vstupnými parametrami príkazov,
+ktoré slúžia na registráciu predaných/vrátených položiek (vrátane
+príkazov pre úpravu ceny, napr. zliav), nie sú určené jednoznačné
+pravidlá, fiškálna tlačiareň vykonáva len operácie sčítania a odčítania
+výsledných finančných hodnôt, ktoré prijíma z aplikácie.
+
+Z toho vyplýva, že ak aplikácia pošle pri predaji položiek v príkaze
+predaja, napr. :ref:`printRecItem <printRecItem>`, okrem výslednej ceny
+položky aj jej jednotkovú cenu, potom sa táto jednotková cena len vypíše
+a neskúma sa, či platí rovnosť :math:`jednotková\_cena * množstvo = výsledná\_cena`
+(teda :math:`unitPrice * quantity = price`).
+Zodpovednosť je z tohto pohľadu na strane aplikácie, ktorá musí zabezpečiť,
+aby táto rovnica platila.
+
+Podobné pravidlá platia aj pre úpravu cien (aplikované príkazy zľavy).
+Hodnoty sa musia v rámci príkazov komunikačného protokolu posielať ako hodnotové.
+Posiela sa len suma operácie a nie jej percentuálna hodnota. Hoci v aplikácii mohli
+byť tieto zľavy prezentované ako percentuálne a percentuálne vyjadrenie môže byť aj
+v textovom popise operácie.
+
+Úlohou fiškálnej tlačiarne je teda len sčítať/odčítať výsledné hodnoty všetkých položiek
+v nákupe a zo spočítaných súčtov vypočítať hodnoty DPH a od nich odvodené údaje, za ktorých
+výpočet už je fiškálna tlačiareň zodpovedná. Fiškálna tlačiareň používa operácie násobenia,
+delenia a prípadné následné zaokrúhlenia len v súvislosti s výpočtami, ktoré súvisia
+s daňovými sadzbami.
+
+Operácia zaokrúhlenia sa ešte môže pri výpočtoch vyskytnúť aj v situácii, ak by došlo
+k zrušeniu hotovostných platidiel najnižšej hodnoty. Ak by nastala takáto situácia,
+potom by sa hotovostné platby zaokrúhlili na hodnotu najmenšieho hotovostného platidla,
+ktoré je v aktuálnom čase v obehu. Toto pravidlo sa ale zatiaľ neaplikuje.
+
+.. toctree::
+    :maxdepth: 2

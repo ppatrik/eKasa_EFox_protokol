@@ -1,0 +1,24 @@
+_`UniqueNum` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+..
+    TODO: je otázne či to tu má byť a či to je hodnota, ktorú má byť možné meniť cez komunikácie
+          asi bude potrebné vymazať
+
+======================== =======================================
+názov vlastnosti         **UniqueNum**
+typ                      STRING\[17\]
+prednastavená hodnota    ``""``
+prístup                  read-only
+======================== =======================================
+
+**Popis**:
+
+  Jedná sa o jedinečný kód pokladnice pridelený daňovým úradom na žiadosť podanú majiteľom fiškálnej tlačiarne (pokladnice).
+
+**Poznámka**:
+
+  Reťazec obsahujúci kód pokladnice môže obsahovať len číslice.
+
+.. toctree::
+    :maxdepth: 3

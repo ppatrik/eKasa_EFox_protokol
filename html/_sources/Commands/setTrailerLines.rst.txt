@@ -1,0 +1,63 @@
+_`setTrailerLines`
+------------------
+
+**Formát príkazu**:
+
+  ======== ============================ =============== =====================
+  Pole     Hodnota                      Dátový typ      Popis
+  ======== ============================ =============== =====================
+  Cmd ID   sTL                          \-              identifikátor príkazu
+  Req/Rsp  REQ                          \-              požiadavka
+  Param1   :ref:`line1 <sTL_line>`      **STRING**      prvý riadok dolného textového loga
+  Param2   :ref:`line2 <sTL_line>`      **STRING**      druhý riadok dolného textového loga
+  ...      ...                          ...             ...
+  Param1   :ref:`lineN <sTL_line>`      **STRING**      N. riadok dolného textového loga
+  ======== ============================ =============== =====================
+
+  .. _sTL_line:
+
+**Parametre line1 až lineN**:
+
+  Parametre predstavujú riadky dolného textového loga.
+
+    * Každý parameter reprezentuje jeden riadok dolného textového loga.
+    * Každý riadok môže mať najviac max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) znakov.
+    * Počet posielaných riadkov/parametrov musí byť vždy :ref:`NumTrailerLines <NumTrailerLines>`.
+    * Ak nie je potrebné využiť všetky riadky, potom je potrebné príslušné parametre nastaviť na hodnotu ``""`` (prázdny reťazec).
+    * Prázdne riadky dolného textového loga sa netlačia.
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    sTL                 \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ===================================================== =======================================
+  Chyba                                                 Popis
+  ===================================================== =======================================
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`    Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`    Tlačiareň je odpojená.
+  ===================================================== =======================================
+
+**Popis príkazu**:
+
+  Príkaz nastaví jednotlivé riadky dolného textového loga (pätička dokumentu).
+
+  .. warning::
+    * Aj keď definovaný počet znakov v jednom riadku dolného textového loga je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`), v skutočnosti nemusí byť z tohto počtu využitý plný počet znakov. Dôvodom môže byť napríklad nevhodné nastavenie tlačového fontu, alebo jeho atribútov pre daný riadok pätičky (pozri :ref:`setFontAttribute <setFontAttribute>`).
+    * Ak bude počet naprogramovaných znakov väčší, ako je možné vytlačiť pri aktuálnom nastavení riadku, tak znaky, ktoré budú navyše nebudú vytlačené.
+
+**Príklad**:
+
+  Aplikácia naprogramuje pre 1. riadok pätičky 40 znakov, ale použitá tlačiareň má definovanú dĺžku riadku pre font A len 33 znakov (:ref:`FontALineLength <FontALineLength>` = ``33``) a pre font B je to 40 znakov (:ref:`FontBLineLength <FontBLineLength>` = ``40``).
+
+  Ak by bol pre tlač nastavený font A pre 1. riadok pätičky, potom by sa posledných 7 znakov 1. riadku pätičky nezmestilo do skutočného riadku použitej tlačiarne. Preto by boli pre font A všetky znaky od 33. znaku pri tlači ignorované.
+
+.. toctree::
+    :maxdepth: 2

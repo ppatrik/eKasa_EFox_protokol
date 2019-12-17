@@ -1,0 +1,160 @@
+Formátovacie profily fiškálnych dokumentov
+==========================================
+
+Fiškálna tlačiareň podporuje tieto profily:
+
+* zhustený profil,
+* rozšírený profil,
+* optimalizovaný profil,
+* redukovaný profil.
+
+Nasledujúci príklad znázorní rozdiely medzi jednotlivými profilmi.
+
+Doklad obsahuje tri položky. Popis (:ref:`description <pRI_description>`) položiek je takýto:
+
+* ``"časopis modelár číslo 44/2009"``
+* ``"UML2, unified modeling language, druhé vydanie, 2006, Textbook Press"``
+* ``"tvaroh"``
+
+Ostatné parametre poslaných položiek sú v nasledujúcej tabuľke:
+
+========================= ============================== ======================== ================================ ==============================
+:ref:`price  <pRI_price>` :ref:`quantity <pRI_quantity>` :ref:`vatID <pRI_vatID>` :ref:`unitPrice <pRI_unitPrice>` :ref:`unitName <pRI_unitName>`
+========================= ============================== ======================== ================================ ==============================
+``3``                     ``2``                          ``1``                    ``1.5``                          ``"ks"``
+``30``                    ``1``                          ``2``                    ``""``                           ``"ks"``
+``0.44``                  ``0.55``                       ``1``                    ``0.8``                          ``"kg"``
+========================= ============================== ======================== ================================ ==============================
+
+**Zhustený profil**:
+
+    Tento profil sa vyznačuje tým, že sa snaží zhustiť doklady na maximum, teda redukuje vytlačené
+    množstvo papiera na minimum.
+
+    Fiškálna tlačiareň v tomto profile (ak je to možné) stlačí informáciu o predávanej položke do jedného riadku.
+
+    Výhodou je úspora papierovej pásky, naopak nevýhodou je horšia čitateľnosť informácií a usporiadanie
+    číselných hodnôt.
+
+    Takto vyzerá fragment ukážkovej účtenky v zhustenom profile:
+
+    .. code-block:: text
+        :linenos:
+
+        ----------------------------------------
+        časopis modelár číslo  2 ks*1,50 =3,00 A
+        UML2, unified modeling lan 1 ks =30,00 B
+        Tvaroh              0,55 kg*0,80 =0,44 A
+
+    Popis pre riadky/formát hodnôt:
+
+    #. nefiškálny riadok (vytlačený príkazom :ref:`printRecMessage <printRecMessage>`)
+    #. :ref:`description <pRI_description>`, :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`unitPrice <pRI_unitPrice>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+    #. :ref:`description <pRI_description>`, :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+    #. :ref:`description <pRI_description>`, :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`unitPrice <pRI_unitPrice>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+
+    Princíp tohto profilu je, že:
+
+    * od ľavého okraja sa naformátuje názov položky (parameter :ref:`description <pRI_description>`),
+    * od pravého okraja postupne naformátujú parametre :ref:`vatID <pRI_vatID>`, :ref:`price <pRI_price>`, :ref:`unitPrice <pRI_unitPrice>`, :ref:`unitName <pRI_unitName>` a :ref:`quantity <pRI_quantity>`.
+
+    V prípade, že dáta naformátované z pravej strany a názov položky (parameter :ref:`description <pRI_description>`)
+    sa nezmestia do jedného riadku, potom sa názov položky prekryje dátami naformátovanými z pravej strany.
+
+    Ak by po prekrytí názvu položky ostalo na účtenke menej ako 14 znakov z názvu položky, potom nie je
+    možné text celej operácie vložiť do jedného riadku. Vtedy sa názov položky vytlačí v prvom riadku zľava,
+    kým ostatné informácie sa vytlačia na nasledujúcom riadku sprava.
+
+**Rozšírený profil**:
+
+    Cieľom tohto profilu, na rozdiel od ostatných, je priniesť na účtenku zvýšenú čitateľnosť
+    a usporiadanosť jej obsahu. Z toho pramení aj nevýhoda, ktorou je viac vytlačených riadkov.
+
+    Takto vyzerá fragment účtenky v rozšírenom profile:
+
+    .. code-block:: text
+        :linenos:
+
+        #   množstvo   jedn.cena   celková cena#
+        ----------------------------------------
+        časopis modelár číslo 44/2009           
+                2 ks        1,50         =3,00 A
+        UML2, unified modeling language,        
+        druhé vydanie, 2006, Textbook Press     
+                1 ks                    =30,00 B
+        Tvaroh                                  
+              0,55 kg       0,80         =0,44 A
+
+    Popis pre riadky/formát hodnôt:
+
+    #. nefiškálny riadok (vytlačený príkazom :ref:`printRecMessage <printRecMessage>`)
+    #. nefiškálny riadok (vytlačený príkazom :ref:`printRecMessage <printRecMessage>`)
+    #. :ref:`description <pRI_description>`
+    #. :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`unitPrice <pRI_unitPrice>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+    #. :ref:`description <pRI_description>` (začiatok)
+    #. :ref:`description <pRI_description>` (pokračovanie)
+    #. :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+    #. :ref:`description <pRI_description>`
+    #. :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`unitPrice <pRI_unitPrice>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+
+    *Poznámka*: Prvé dva riadky nie sú tlačené automaticky ale na priamy podnet z aplikácie príkazom :ref:`printRecMessage <printRecMessage>`.
+
+**Optimalizovaný profil**:
+
+    tento  profil vychádza z rozšíreného profilu. V prípade, že položka obsahuje krátky názov,
+    potom sa na rozdiel od rozšíreného profilu vytlačí názov položky spolu s ostatnými parametrami
+    položky do jedného riadku.
+
+    Takto vyzerá fragment z účtenky v optimalizovanom  profile:
+
+    .. code-block:: text
+        :linenos:
+
+        #   množstvo   jedn.cena   celková cena#
+        ----------------------------------------
+        časopis modelár číslo 44/2009           
+                2 ks        1,50         =3,00 A
+        UML2, unified modeling language,        
+        druhé vydanie, 2006, Textbook Press     
+                1 ks                    =30,00 B
+        Tvaroh 0,55 kg      0,80         =0,44 A
+
+    #. nefiškálny riadok (vytlačený príkazom :ref:`printRecMessage <printRecMessage>`)
+    #. nefiškálny riadok (vytlačený príkazom :ref:`printRecMessage <printRecMessage>`)
+    #. :ref:`description <pRI_description>`
+    #. :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`unitPrice <pRI_unitPrice>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+    #. :ref:`description <pRI_description>` (začiatok)
+    #. :ref:`description <pRI_description>` (pokračovanie)
+    #. :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+    #. :ref:`description <pRI_description>`, :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`unitPrice <pRI_unitPrice>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+
+**Redukovaný profil**:
+
+    Tento profil je obdobou optimalizovaného  profilu. Rozdiel medzi nimi je ten, že v tomto profile
+    sa nikdy netlačia jednotkové ceny položiek bez ohľadu na to, či boli poslané s položkou, alebo nie.
+
+    Takto vyzerá fragment z účtenky v redukovanom  profile:
+
+    .. code-block:: text
+        :linenos:
+
+        #          množstvo        celková cena#
+        ----------------------------------------
+        časopis modelár číslo 44/2009           
+                       2 ks              =3,00 A
+        UML2, unified modeling language,        
+        druhé vydanie, 2006, Textbook Press     
+                       1 ks             =30,00 B
+        Tvaroh      0,55 kg              =0,44 A
+
+    #. nefiškálny riadok (vytlačený príkazom :ref:`printRecMessage <printRecMessage>`)
+    #. nefiškálny riadok (vytlačený príkazom :ref:`printRecMessage <printRecMessage>`)
+    #. :ref:`description <pRI_description>`
+    #. :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+    #. :ref:`description <pRI_description>` (začiatok)
+    #. :ref:`description <pRI_description>` (pokračovanie)
+    #. :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+    #. :ref:`description <pRI_description>`, :ref:`quantity <pRI_quantity>`, :ref:`unitName <pRI_unitName>`, :ref:`price <pRI_price>`, :ref:`vatID <pRI_vatID>`
+
+.. toctree::
+    :maxdepth: 2

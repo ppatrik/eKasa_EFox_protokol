@@ -1,0 +1,59 @@
+_`setStoreFiscalID`
+-------------------
+
+..
+    TODO: vymazať, nebude používaný
+
+**Formát príkazu**:
+
+  ======== ================================================== ================= ====================
+  Pole     Hodnota                                            Dátový typ        Popis
+  ======== ================================================== ================= ====================
+  Cmd ID   sSFI                                               \-                identifikátor príkazu
+  Req/Rsp  REQ                                                \-                požiadavka
+  Param1   :ref:`tpn <sSFI_tpn>`                              **STRING\[20\]**  identifikátor
+  ======== ================================================== ================= ====================
+
+  .. _sSFI_tpn:
+
+**Parameter tpn**:
+
+  Identifikátor platcu dane. Môže byť :term:`DIČ`, alebo :term:`IČ DPH`.
+
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    sSFI                \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ===================================================== =======================================
+  Chyba                                                 Popis
+  ===================================================== =======================================
+  :ref:`EFP_BAD_DESCRIPTION <EFP_BAD_DESCRIPTION>`      Parameter :ref:`tpn <sSFI_tpn>` nie je platný/správny.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`    Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`    Tlačiareň je odpojená.
+  ===================================================== =======================================
+
+**Popis príkazu**:
+
+  Nastaví identifikátor platcu dane, majiteľa fiškálnej tlačiarne, :term:`DIČ`, alebo :term:`IČ DPH`.
+  
+  Tento identifikátor je tlačený na každom fiškálnom dokumente.
+
+  .. warning::
+    Parameter *tpn* nesmie byť poslaný s počtom znakov, ktorý by prekročil definovaný maximálny počet znakov
+    pre tento parameter, zároveň všetky poslané znaky musia byť vytlačiteľné a v rozsahu znakov definovanej
+    kódovej stránky.
+
+    V opačnom prípade príkaz vráti chybu :ref:`EFP_BAD_DESCRIPTION <EFP_BAD_DESCRIPTION>`.
+
+.. toctree::
+    :maxdepth: 2
+

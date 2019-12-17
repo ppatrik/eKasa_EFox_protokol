@@ -1,0 +1,24 @@
+Informovanie aplikácie o dostupnosti aktualizácie ``[_new_]``
+-------------------------------------------------------------
+
+Aplikácia sa o dostupnosti aktualizácie môže dozvedieť dvomi spôsobmi.
+
+Prvý spôsob je, že aplikácia aktívne zistí dostupnosť aktualizácie.
+Na aktívne zistenie dostupnosti aktualizácie slúži príkaz
+:ref:`getFirmwareUpdateRequest <getFirmwareUpdateRequest>`.
+
+Je odporúčané, aby aplikácia vykonávala kontrolu aktívne, no nie je to nevyhnutné.
+Výhodou aktívnej kontroly je to, že aplikácia môže robiť túto kontrolu v čase keď
+sa POS systém nevyužíva (v hluchom období).
+
+Najväčší problém aktívnej kontroly je to, že aktualizácia sa môže vyskytnúť kedykoľvek počas dňa.
+Preto je potrebné reagovať aj na chybový stav :ref:`EFP_FW_UPDATE_REQUEST <EFP_FW_UPDATE_REQUEST>`,
+ktorý aplikácia môže dostať odpoveď na príkazy **begin…**.
+
+Aplikácia má v oboch prípadoch len dve možnosti:
+
+1. odložiť aktualizáciu na vhodnejší čas príkazom :ref:`deferFirmwareUpdateRequest <deferFirmwareUpdateRequest>`, alebo
+2. vykonať aktualizáciu pomocou príkazu :ref:`updateFirmware <updateFirmware>`.
+
+.. toctree::
+    :maxdepth: 3

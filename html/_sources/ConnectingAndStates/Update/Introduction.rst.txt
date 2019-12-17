@@ -1,0 +1,33 @@
+Úvod ku aktualizácii firmvéru ``[_new_]``
+-----------------------------------------
+
+FP podporuje :term:`OTA` aktualizáciu firmvéru prostredníctvom
+aktualizačného balíčka. Aktualizačný balíček je sťahovaný automaticky
+a internetu ak je dostupná aktualizácia firmvéru.
+
+Aktualizačný balíček je možné nahrať do FP aj manuálne cez vstavaný web
+server v záložke "Aktualizácia systému".
+
+Zariadenie fiškálnej tlačiarne interne pozostáva z dvoch zariadení:
+
+* :term:`FP` a
+* :term:`ChDÚ`.
+
+Preto aj aktualizačný balíček obsahuje dva súbory so softvérom,
+jeden pre FP a druhý pre ChDÚ, pričom aktualizácia
+softvéru môže byť dostupná len pre jedno z týchto zariadení.
+
+Ak je dostupná aktualizácia, aplikácia musí potvrdiť,
+že bola o tejto skutočnosti informovaná, alebo vykonať aktualizáciu.
+
+Aplikácia toto potvrdenie realizuje zaslaním príkazu
+:ref:`deferFirmwareUpdateRequest <deferFirmwareUpdateRequest>`, ktorým uvedie FP
+do štandardného stavu (teda bez obmedzenia vydávať doklady). Parametrom
+:ref:`deferTime <dFUR_deferTime>` je možné aktualizáciu, ako aj informáciu o jej dostupnosti,
+odložiť na stanovený čas. Po uplynutí stanoveného času bude zase aplikácia
+informovaná o dostupnosti aktualizácie, až do jej vykonania, alebo ďalšieho odloženia.
+
+Ak aplikácia nepotvrdí oznámenie o dostupnosti aktualizácie, môže byť činnosť FP obmedzená.
+
+.. toctree::
+    :maxdepth: 3

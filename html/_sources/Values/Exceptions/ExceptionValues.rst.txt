@@ -1,0 +1,85 @@
+Zoznam návratových hodnôt
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _ExceptionCodes:
+
+========== ========================= ===========================================
+Kód chyby  Alias                     Popis
+========== ========================= ===========================================
+0          _`EFP_OK`                 Operácia skončila úspešne
+========== ========================= ===========================================
+
+.. _ExceptionCategory1_TABLE:
+
+:ref:`Kategória 1 <ExceptionCategory1>`:
+
+========== ============================ ===========================================
+Kód chyby  Alias                        Popis
+========== ============================ ===========================================
+106        _`E_ILLEGAL`                 Bola poslaná nesprávna hodnota jedného z parametrov.
+108        _`E_OFFLINE`                 FP je v režime :ref:`OffLine <OffLine>`.
+109        _`E_NOEXIST`                 Špecifikovaný objekt alebo údaj neexistuje.
+207        _`EFP_WRONG_STATE`           Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.
+213        _`EFP_BAD_QUANTITY`          Parameter množstva bol poslaný nesprávne.
+214        _`EFP_BAD_AMOUNT`            Jeden z finančných parametrov bol poslaný nesprávne.
+215        _`EFP_BAD_DESCRIPTION`       Popisný parameter bol poslaný nesprávne.
+216        _`EFP_REC_TOTAL_OVERFLOW`    Príkaz by spôsobil prekročenie maximálnej hodnoty jedného nákupu.
+217        _`EFP_BAD_VAT`               Parameter označenia daňovej skupiny bol poslaný nesprávne (napr. je mimo rozsah 1 až **NumVatRates**).
+218        _`EFP_BAD_PRICE`             Parameter jednotkovej ceny bol poslaný nesprávne.
+219        _`EFP_BAD_DATE`              Parameter dátumu bol poslaný nesprávne.
+224        _`EFP_DAY_END_REQUIRED`      Pred vykonaním príkazu je potrebné vykonať dennú uzávierku.
+225        _`EFP_INSPECTION_REQUEST`    Je potrebné potvrdiť aktivovanú požiadavku na servisný zásah alebo servisný zásah priamo vykonať.
+231        _`EFP_FW_UPDATE_REQUEST`     Bola aktivovaná požiadavka na aktualizáciu firmvéru.
+232        _`EFP_INVALID_FW_SIGNATURE`  Neplatný podpis firmvéru.
+233        _`EFP_WRONG_FW`              Nesprávna verzia firmvéru.
+234        _`EFP_EMPTY_SERIAL_NUM`      Nie je zadané sériové číslo.
+235        _`EFP_NO_CERTIFICATE`        Žiadny podpisový certifikát.
+236        _`EFP_INVALID_CERTIFICATE`   Platnosť certifikátu vypršala alebo certifikát ešte nezačal platiť.
+237        _`EFP_MISSING_IDENTITY_DATA` Chýbajúce identifikačné údaje podnikateľa.
+301        _`EFP_ILLEGAL_COMMAND`       Nie sú splnené požadované podmienky pre vykonanie tohto príkazu.
+303        _`EFP_ALREADY_FISCAL`        FP je už v režime :ref:`Fiscal <Fiscal>`.
+304        _`EFP_TOOBIG`                V pamäti obrázkov nie je dostatok priestoru na uloženie obrázku.
+305        _`EFP_NOT_FISCAL`            FP nie je uvedený do prevádzky, operáciu nemožno vykonať pred uvedením do prevádzky.
+401        _`EFP_DATA_TYPE`             Aspoň jeden z poslaných parametrov nespĺňa formálne požiadavky definované pre jeho dátový typ.
+403        _`EFP_EXTRA_FIELD`           V správe bolo poslané niektoré pole príkazu navyše.
+404        _`EFP_MISSING_FIELD`         V správe nebolo  poslané niektoré pole príkazu.
+405        _`EFP_MISSING_PRM`           V správe nebol poslaný niektorý z povinných parametrov.
+406        _`EFP_UNKNOWN_CMD`           Neznámy príkaz.
+========== ============================ ===========================================
+
+.. _ExceptionCategory2_TABLE:
+
+:ref:`Kategória 2 <ExceptionCategory2>`:
+
+========== ========================= ===========================================
+Kód chyby  Alias                     Popis
+========== ========================= ===========================================
+111        _`E_FAILURE`              Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bol tlačený doklad riadne dokončený. Pre pokračovanie v činnosti musí aplikácia zavolať príkaz :ref:`resetPrinter <resetPrinter>`, potom môže tlač prerušeného dokladu zopakovať.
+201        _`EFP_COVER_OPEN`         Kryt tlačiarne je otvorený.
+203        _`EFP_REC_EMPTY`          V tlačiarni chýba papier.
+321        _`EFP_CUTTER`             Strihač papiera je v zlom stave.
+901        _`EFP_COVER_OPEN_WARNING` Fiškálna účtenka je platná a započítaná do dennej uzávierky, ale vplyvom otvorenia krytu tlačiarne mohlo dôjsť k nedotlačeniu niektorých riadkov za fiškálnym logom.
+902        _`EFP_CUTTER_WARNING`     Strihač papiera je v zlom stave, ale účtenka bola kompletne vytlačená.
+903        _`EFP_REC_EMPTY_WARNING`  Fiškálna účtenka je platná a započítaná do dennej uzávierky, ale vplyvom vonkajšieho zásahu alebo minutia sa papierovej pásky mohlo dôjsť k nedotlačeniu niektorých riadkov za fiškálnym logom.
+========== ========================= ===========================================
+
+.. _ExceptionCategory3_TABLE:
+
+:ref:`Kategória 3 <ExceptionCategory3>`:
+
+========== ========================== ==========================================
+Kód chyby  Alias                      Popis
+========== ========================== ==========================================
+209        _`EFP_CLOCK_ERROR`         FP detegoval chybu obvodu reálneho času.
+291        _`EFP_DSP_DISCONNECTED`    Displej je odpojený.
+292        _`EFP_PRN_DISCONNECTED`    Tlačiareň je odpojená.
+294        _`EFP_DSP_INTERNAL_ERROR`  Pri práci s displejom vznikla interná chyba.
+295        _`EFP_PRN_INTERNAL_ERROR`  Pri práci s tlačiarňou vznikla interná chyba.
+297        _`EFP_OPERATION_ERROR`     Interná chyba. Pri vykonávaní príkazu nastala nešpecifikovaná chyba.
+601        _`EFP_ICM_COMM_ERROR`      Nastala chyba komunikácie s :term:`ChDÚ`.
+602        _`EFP_ICM_BUSY`            :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+603        _`EFP_ICM_OPERATION_ERROR` Pri práci s :term:`ChDÚ` vznikla interná chyba.
+========== ========================== ==========================================
+
+.. toctree::
+    :maxdepth: 3

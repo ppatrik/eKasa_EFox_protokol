@@ -1,0 +1,94 @@
+Zotavenie fiškálnej tlačiarne
+-----------------------------
+
+Protokol je vybavený takými prostriedkami (postupnosti príkazov, druhy správ),
+ktoré môže aplikácia použiť, aby mohla bezpečne postupovať aj po neočakávaných
+prerušeniach spojenia, alebo pri poruchových stavoch systému
+(napríklad poruchy v napájaní).
+
+Aplikácia po vytvorení spojenia s fiškálnou tlačiarňou (príkazom :ref:`connect <connect>`)
+zistí :ref:`stav fiškálnej tlačiarne <Stavy fiškálnej tlačiarne>`.
+Ak je fiškálna tlačiareň v stave :ref:`MONITOR <MONITOR>`, znamená to, že pred zrušením,
+alebo stratou spojenia s fiškálnou tlačiarňou neprebiehala žiadna aplikáciou rozbehnutá aktivita.
+
+V prípade, že po vytvorení spojenia je stav fiškálnej tlačiarne iný ako :ref:`MONITOR <MONITOR>`,
+potom to odráža skutočnosť, že posledná aplikáciou rozbehnutá aktivita nebola pre poruchu riadne
+dokončená. V takomto prípade existujú dve základne možnosti zotavenia, podľa toho ktorá z rozbehnutých
+aktivít bola na fiškálnej tlačiarni prerušená.
+
+**Spôsob zotavenia č. 1**:
+
+    Toto riešenie sa používa pre všetky rozbehnuté aktivity s výnimkou situácie, že pred prerušením
+    spojenia prebiehal proces dennej Z uzávierky.
+    
+    Znamená to, že v čase, keď vo fiškálnej tlačiarni vznikla výnimočná situácia (prerušené spojenie,
+    výpadok napájania, nesprávna postupnosť príkazov…) mohla práve prebiehať:
+
+    * tlač dokladu (registračná transakcia),
+
+    * tlač nefiškálneho dokladu,
+
+    * tlač prehľadovej uzávierky.
+
+    V takýchto prípadoch je aplikácia povinná zavolať príkaz :ref:`resetPrinter <resetPrinter>`.
+    Tento príkaz spôsobí predčasné ukončenie prerušenej aktivity a návrat všetkých počítadiel
+    fiškálnej jednotky (ak boli nejakým spôsobom ovplyvnené) na svoje pôvodné hodnoty (teda
+    na hodnoty, ktoré mali v čase pred začiatkom tejto aktivity). Výsledok je teda, ako keby
+    daná aktivita ani nikdy nezačala
+
+    Na účtenkách sa vytlačí oznam o predčasne ukončenej činnosti a fiškálna tlačiareň sa dostane
+    do stavu :ref:`MONITOR <MONITOR>`.
+
+    Ak prerušenou aktivitou bola realizácia registračnej transakcie, potom ak bola transakcia
+    v čase svojho prerušenia v stavoch :ref:`FP_TS_STARTED <FP_TS_STARTED>`, alebo :ref:`FP_TS_VOIDED <FP_TS_VOIDED>`,
+    stav tejto registračnej transakcie sa mení na :ref:`FP_TS_FAILED <FP_TS_FAILED>`.
+    
+    V prípade neistoty, či registračná transakcia (ktorá prebiehala pred poruchou resp.
+    prerušením) bola riadne ukončená, je možné kedykoľvek po vytvorení spojenia vyčítať
+    počet vytlačených účteniek danej registračnej transakcie, alebo overiť stav vykonávania
+    registračnej transakcie určenej jej identifikátorom *transactionID* pomocou príkazu
+    :ref:`getTransactionStatus <getTransactionStatus>`.
+
+    Nasledujúci obrázok ukazuje princíp zotavenia pre registračné transakcie, pričom rovnaký
+    princíp sa používa aj pre ostatné prerušené činnosti spomínané v tomto bloku (teda pre
+    tlač nefiškálneho dokladu, prípadne tlač prehľadovej uzávierky).
+
+.. figure:: ../Images/TransactionRecovery.png
+    :figclass: align-center
+
+    Obrázok č. 11: Zotavenie fiškálnej tlačiarne po prerušení registrácie predaja z pohľadu POS aplikácie
+
+.. raw:: latex
+
+    \newpage
+
+**Spôsob zotavenia č. 2**:
+
+    Prerušenie vykonávania dennej Z uzávierky sa z principiálnych dôvodov musí riešiť iným spôsobom,
+    ako to bolo spomínané vyššie pri ostatných prerušených aktivitách.
+    
+    Ak bolo výpadkom prerušené vykonávanie dennej Z uzávierky, potom po otvorení ovládania je
+    fiškálna tlačiareň v stave :ref:`REPORT <REPORT>`. Znamená to, že vykonávanie dennej uzávierky
+    už začalo a je nutné ho dokončiť.
+    
+    Proces vykonávania uzávierky sa môže nachádzať v jednom z viacerých vnútorných podprocesov
+    (s ohľadom na stav tlače dokladu a mazania denných počítadiel) a uzávierka sa z technických
+    dôvodov musí dokončiť.
+    
+    Pre zotavenie musí aplikácia najprv vyslať príkaz :ref:`resetPrinter <resetPrinter>`, ktorým
+    sa okrem iného vytlačí aj oznam o nedokončení tlače výkazu dennej uzávierky. Potom aplikácia
+    musí znovu poslať príkaz pre vykonanie dennej uzávierky :ref:`printZReport <printZReport>`,
+    ktorým sa uzávierka vytlačí od začiatku, dokončia sa všetky nedokončené podprocesy a po jej
+    úplnom skončení sa fiškálna tlačiareň dostane do stavu :ref:`MONITOR <MONITOR>`.
+
+.. figure:: ../Images/ReportRecovery.png
+    :figclass: align-center
+
+    Obrázok č. 12: Zotavenie fiškálnej tlačiarne po prerušení Z uzávierky z pohľadu POS aplikácie
+
+.. raw:: latex
+
+    \newpage
+
+.. toctree::
+    :maxdepth: 2

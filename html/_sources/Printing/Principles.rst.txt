@@ -1,0 +1,106 @@
+Princíp tlače vo fiškálnej tlačiarni
+====================================
+
+Príkazy na fiškálnej tlačiarni je možné rozdeliť do troch skupín:
+
+#. príkazy, ktoré nemajú tlačový výstup,
+#. príkazy, ktorých vykonávanie skončí spolu s koncom tlače,
+#. príkazy, ktoré vrátia odpoveď aplikácii skôr, ako sa skončí tlač, ktorú vyvolali,
+
+Prvej skupine príkazov sa v tomto popise nebudeme venovať, keďže nemá tlačový výstup.
+Druhá skupina príkazov bude označená ako príkazy synchrónne s tlačou a tretia skupina
+ako príkazy asynchrónne s tlačou.
+
+Fiškálna tlačiareň umožňuje tlač nasledujúcich typov dokumentov/dokladov:
+
+#. fiškálne doklady, kam patria:
+
+    * dokument predaja tovaru,
+    * dokument vrátenia tovaru,
+    * dokument vkladu hotovosti,
+    * dokument výberu hotovosti,
+    * dokument úhrady faktúry,
+
+#. doklad nefiškálnej účtenky,
+
+#. duplikát dokladu,
+
+#. doklad Z uzávierky,
+
+#. doklad X prehľadovej dennej uzávierky.
+
+Všetky dokumenty a doklady, **ako celok**, sú s tlačou synchrónne.
+V rámci niektorých dokladov však príkazy môžu byť s tlačou asynchrónne.
+Asynchrónnosť v rámci dokladu má tú výhodu, že nespomaľuje tlač, pretože tlač dokladu
+môže bežať na pozadí aj v čase, keď je prebiehajúci proces aktívny na strane aplikácie.
+
+Doklady Z a X dennej uzávierky a duplikátu sú realizované jediným príkazom
+:ref:`printZReport <printZReport>`, :ref:`printXReport <printXReport>` resp.
+:ref:`printDuplicateReceipt <printDuplicateReceipt>`.
+Tieto príkazy sú teda z princípu s tlačou synchrónne.
+
+Dokumenty nákupu/vrátenia tovaru, vkladu/výberu hotovosti a doklady nefiškálnej účtenky
+sú realizované viacerými príkazmi a preto sú v rámci týchto dokladov príkazy s tlačou asynchrónne.
+Synchrónnymi sú až záverečné príkazy týchto dokladov :ref:`endFiscalReceipt <endFiscalReceipt>`
+a :ref:`endNonFiscal <endNonFiscal>`.
+Ak tieto príkazy vrátia úspešný návratový kód, aplikácia si môže byť istá, že tlač týchto dokladov
+bola ukončená bez problémov a fiškálna tlačiareň sa vrátila do stavu :ref:`MONITOR <MONITOR>`.
+
+Synchrónnosť príkazu s tlačou znamená, že ak je jednou z úloh príkazu niečo vytlačiť,
+potom kým príkaz požadované dáta nevytlačí, aplikácia nedostane z príkazu žiadnu návratovú hodnotu
+(ak samozrejme pred tlačou nenastala iná chyba, nesúvisiaca s tlačou).
+
+* Ak sa požadované dáta dotlačia bez chyby, návratový kód je :ref:`EFP_OK <EFP_OK>`.
+
+* Ak ale dôjde k chybe pri vykonávaní príkazu, alebo tlači (aj z predchádzajúcich príkazov),
+  potom je vrátený :ref:`chybový návratový kód <ExceptionCodes>`.
+
+Asynchrónnosť príkazu s tlačou znamená, že ak je jednou z úloh príkazu niečo vytlačiť,
+potom príkaz si len overí, či fiškálna tlačiareň je momentálne v stave možné tento
+príkaz spracovať (teda overí parametre príkazu a stav fiškálnej tlačiarne), následne
+skontroluje možnosť tlačiť (otvorený kryt tlačiarne, chýbajúci papier).
+
+Ak nie je možné príkaz vykonať, potom je vrátený :ref:`chybový návratový kód <ExceptionCodes>`
+a príkaz sa ani nezačne vykonávať. V opačnom prípade fiškálna tlačiareň vykoná činnosti,
+s ktorými je príkaz synchronizovaný (napr. zobrazenie na displej, ak je to potrebné a/alebo
+rôzne výpočty a podobne). Fiškálna tlačiareň ale už nečaká, kým sa požadované dáta dotlačia,
+len ich zaradí do fronty pre tlač v samotnej tlačiarni.
+
+To či sa požadované dáta dotlačili sa aplikácia už nikdy nedozvie. Dozvie sa len informáciu o tom,
+či sa dotlačili všetky dáta, ktoré boli zaradené do fronty, alebo sa nedotlačili všetky dáta zaradené
+do fronty (v prípade nejakého problému aplikácia nebude vedieť, ktoré z riadkov vo fronte boli
+dotlačené správne a ktoré sa nevytlačili vôbec, alebo len čiastočne. Aplikácia bude vedieť len výsledok
+v rámci celej fronty, teda ako celého dokladu).
+
+Ak nastala chyba pri tlači, potom sa aplikácia dozvie informáciu o tom, že tlač nebola úspešne ukončená,
+v odpovedi niektorého z ďalších príkazov. V najhoršom prípade bude chyba vrátená príkazom,
+ktorého úlohou je synchronizovať tlač dokladu na jeho konci.
+
+Ak ani príkaz :ref:`endFiscalReceipt <endFiscalReceipt>`, resp. :ref:`endNonFiscal <endNonFiscal>`,
+nevráti chybový návratový kód, potom je garantované, že všetky dáta, poslané do tlačovej fronty sa
+vytlačili správne a doklad bol korektne ukončený (v prípade fiškálnych dokladov je doklad platný).
+
+..
+    TODO: zistiť kam to patrí a či to vôbec má zmysel (pridať linku, alebo upraviť popis)
+
+    Chyby tlače v rámci jednotlivých dokladov sa riešia odlišným spôsobom, ale to je predmetom inej
+    kapitoly tohto dokumentu.
+
+**Príkazy synchrónne s tlačou**:
+
+    * :ref:`printZReport <printZReport>`
+    * :ref:`printXReport <printXReport>`
+    * :ref:`endFiscalReceipt <endFiscalReceipt>`
+    * :ref:`endNonFiscal <endNonFiscal>`
+    * :ref:`printDuplicateReceipt <printDuplicateReceipt>`
+    * :ref:`resetPrinter <resetPrinter>`
+
+**Príkazy asynchrónne s tlačou**:
+
+    * všetky príkazy **printRec…**
+    * všetky príkazy **begin…**
+    * :ref:`printBarCode <printBarCode>`
+    * :ref:`printNormal <printNormal>`
+
+.. toctree::
+    :maxdepth: 3

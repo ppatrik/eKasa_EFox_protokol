@@ -1,0 +1,106 @@
+_`beginFiscalReceipt`
+---------------------
+
+**Formát príkazu**:
+
+  ======== ==================================================== =============== ====================
+  Pole     Hodnota                                              Dátový typ      Popis
+  ======== ==================================================== =============== ====================
+  Cmd ID   bFR                                                  \-              identifikátor príkazu
+  Req/Rsp  REQ                                                  \-              požiadavka
+  Param1   :ref:`fiscalReceiptType <bFR_fiscalReceiptType>`     **INT32**       definuje typ účtenky
+  Param2   :ref:`transactionID <bFR_transactionID>`             **STRING[32]**  identifikátor transakcie
+  ======== ==================================================== =============== ====================
+
+.. _bFR_fiscalReceiptType:
+
+**Parameter fiscalReceiptType**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  ======== ======================= ===============================================
+  Hodnota  Alias                   Popis
+  ======== ======================= ===============================================
+  ``1``    _`FP_RT_SALES`          účtenka predaja
+  ``2``    _`FP_RT_REFUND`         účtenka vrátenia (účtenka vrátených tovarov a služieb)
+  ``3``    _`FP_RT_CASH_IN`        účtenka vkladu hotovosti
+  ``4``    _`FP_RT_CASH_OUT`       účtenka výberu hotovosti
+  ``5``    _`FP_RT_SIMPLE_INVOICE` účtenka úhrady faktúr(y)
+  ``6``    _`FP_RT_CORRECTION`     účtenka opravy
+  ======== ======================= ===============================================
+
+.. _bFR_transactionID:
+
+**Parameter transactionID**:
+
+  Jedná sa o identifikátor transakcie v ktorom nesmie byť prekročený definovaný maximálny počet znakov a tiež všetky poslané znaky tohto parametra musia byť vytlačiteľné a v rozsahu znakov definovanej kódovej stránky.
+
+  Stav transakcie, ktorá obsahuje neprázdny parameter :ref:`transactionID <bFR_transactionID>` je verifikovateľný príkazom :ref:`getTransactionStatus <getTransactionStatus>`. Transakcia s neprázdnym :ref:`transactionID <bFR_transactionID>` je označená transakcia.
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    bFR                 \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ========================================================= =======================================
+  Chyba                                                     Popis
+  ========================================================= =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`                              Parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` nie je z množiny dovolených hodnôt.
+  :ref:`EFP_BAD_DESCRIPTION <EFP_BAD_DESCRIPTION>`          Parameter :ref:`transactionID <bFR_transactionID>` nebol poslaný správne.
+  :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                  Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.
+  :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`          Operácie vklad/výber nie sú povolené v tréningovom režime, alebo nie je možné začať tlač dokladu z dôvodu požiadavky na servisný zásah, alebo došlo k výmene ChDÚ.
+  :ref:`EFP_DAY_END_REQUIRED <EFP_DAY_END_REQUIRED>`        Pred vykonaním príkazu je potrebné vykonať dennú uzávierku.
+  :ref:`EFP_INSPECTION_REQUEST <EFP_INSPECTION_REQUEST>`    Je potrebné potvrdiť aktivovanú požiadavku na servisný zásah, alebo servisný zásah priamo vykonať.
+  :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                    Kryt tlačiarne je otvorený.
+  :ref:`EFP_CUTTER <EFP_CUTTER>`                            Strihač papiera je v zlom stave.
+  :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                      V tlačiarni chýba papier.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`        Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`        Tlačiareň je odpojená.
+  :ref:`EFP_CLOCK_ERROR <EFP_CLOCK_ERROR>`                  FP detegoval chybu obvodu reálneho času.
+  :ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>`    Pri práci s displejom vznikla interná chyba.
+  :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`    Pri práci s tlačiarňou vznikla interná chyba.
+  :ref:`EFP_NOT_FISCAL <EFP_NOT_FISCAL>`                    FP nie je uvedený do prevádzky, operáciu nemožno vykonať pred uvedením do prevádzky.
+  :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`            Nastala chyba komunikácie s :term:`ChDÚ`.
+  :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                        ChDÚ je zaneprázdnené, operáciu teraz nie je možné vykonať.
+  :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`  Pri práci s :term:`ChDÚ` vznikla interná chyba.
+  :ref:`EFP_FW_UPDATE_REQUEST <EFP_FW_UPDATE_REQUEST>`      Je potrebné vykonať aktualizáciu softvéru, alebo ju odložiť.
+  ========================================================= =======================================
+
+  Ak nastane niektorá z vyššie vymenovaných chýb potom transakcia predaja, alebo vrátenia,
+  resp. vkladu/výber hotovosti, vôbec nezačne, FP ostáva v stave :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+
+**Popis príkazu**:
+
+  Príkaz odštartuje tlač účtenky novej transakcie.
+
+    * Ak parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SALES <FP_RT_SALES>` sa začne účtenka predaja.
+    * Ak parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_REFUND <FP_RT_REFUND>` sa odštartuje transakcia vrátení tovarov (účtenka vrátenia) a po ukončení tejto transakcie budú všetky daňové sumárne hodnoty a počítadlá nákupu pripočítané do denných daňových sumárov a počítadiel inverzným spôsobom v porovnaní s účtenkou predaja. V tomto prípade bude na účtenke vytlačený aj špeciálny nadpis, ktorý jednoznačne identifikuje tento typ účtenky.
+    * Ak parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SIMPLE_INVOICE <FP_RT_SIMPLE_INVOICE>`, odštartuje sa tlač účtenky zaznamenávajúcej úhradu faktúr(y). Pre tento typ transakcie platí niekoľko obmedzení, ktoré budú popísané v príkazoch :ref:`printRecItem <printRecItem>`, :ref:`printRecItemVoid <printRecItemVoid>`, :ref:`printRecItemRefund <printRecItemRefund>` a :ref:`printRecItemRefundVoid <printRecItemRefundVoid>`.
+    * Ak parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_CORRECTION <FP_RT_CORRECTION>`, bude začatá účtenka oprava. Tento typ účtenky slúži na opravu chybne zaúčtovanej položky na už ukončenom doklade predaja. Po zistení chyby na vyhotovenom doklade, obsluha vystaví nový doklad **s opravnou položkou**, kde celková cena opravovanej položky je rovnaká ako suma položky z pôvodného dokladu, ale **s opačným znamienkom (t.j. záporná hodnota)** a referenčné číslo dokladu je unikátny identifikátor dokladu, alebo OKP* ( alebo číslo predajného dokladu). Tento doklad obsluha ukončí a následne vyhotoví nový doklad "Predaj" kde zaúčtuje danú položku/položky s korektnými údajmi.
+
+    * Ak :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_CASH_IN <FP_RT_CASH_IN>` (vklad hotovosti) alebo :ref:`FP_RT_CASH_OUT <FP_RT_CASH_OUT>` (výber hotovosti) bude mať vytlačená účtenka rozdielny charakter od účteniek spomínaných vyššie. Nebude sa jednať o účtenku predaja/vrátenia, ale o účtenku, ktorá bude zaznamenávať manipuláciu s hotovosťou v pokladničnom systéme. V prípade tohto typu účtenky je po prechode do stavu :ref:`FISCAL_RECEIPT <FISCAL_RECEIPT>` umožnené vyvolať len príkazy :ref:`printRecMessage <printRecMessage>`, :ref:`printBarCode <printBarCode>`, ktoré nezmenia stav FP a príkazy :ref:`printRecCash <printRecCash>` alebo :ref:`printRecVoid <printRecVoid>`, ktoré spôsobia prechod do stavu :ref:`FISCAL_RECEIPT_ENDING <FISCAL_RECEIPT_ENDING>`.
+
+**Účinky príkazu**:
+
+  * :ref:`Rec…Total… <Sumárne hodnoty>` = ``0``
+  * :ref:`Rec…Count… <Počítadlá>` = ``0``
+  * :ref:`CurrentTotal <CurrentTotal>`  = ``0``
+  * :ref:`AccPaymentTotal <AccPaymentTotal>` = ``0``
+  * :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`fiscalReceiptType <bFR_fiscalReceiptType>`
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_FISCAL_RECEIPT <FP_PS_FISCAL_RECEIPT>`
+  * Vznikne nová registračná transakcia so stavom :ref:`FP_TS_STARTED <FP_TS_STARTED>`
+
+  Ak sa jedná o prvé zavolanie príkazu :ref:`beginFiscalReceipt <beginFiscalReceipt>` po vykonaní dennej Z uzávierky:
+
+    * :ref:`DTStartOfDay <DTStartOfDay>` sa nastaví na aktuálny dátum a čas
+    * :ref:`DayOpened <DayOpened>` = ``TRUE``
+
+.. toctree::
+    :maxdepth: 2

@@ -1,0 +1,141 @@
+_`getCounter`
+-------------
+
+**Formát príkazu**:
+
+  ======== ================================================== =============== ====================
+  Pole     Hodnota                                            Dátový typ      Popis
+  ======== ================================================== =============== ====================
+  Cmd ID   gC                                                 \-              identifikátor príkazu
+  Req/Rsp  REQ                                                \-              požiadavka
+  Param1   :ref:`counterType <gC_counterType>`                **INT32**       typ počítadla
+  Param2   :ref:`vatID <gC_vatID>`                            **INT32**       identifikátor daňovej skupiny
+  Param3   :ref:`counterID <gC_counterID>`                    **INT32**       špecifikuje požadované počítadlo
+  ======== ================================================== =============== ====================
+
+  .. _gC_counterType:
+
+**Parameter counterType**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  ======== ======================= ===============================================
+  Hodnota  Alias                   Popis
+  ======== ======================= ===============================================
+  ``1``    _`FP_CT_DAY`            počet kumulovaný za deň
+  ``2``    _`FP_CT_RECEIPT`        počet kumulovaný v rámci účtenky
+  ======== ======================= ===============================================
+
+  .. _gC_vatID:
+
+**Parameter vatID**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+    * ak :ref:`vatID <gC_vatID>` = ``0``, alebo je prázdny reťazec, potom príkaz vráti sumárnu
+      hodnotu počítadla vo všetkých daňových skupinách,
+
+    * ak :ref:`vatID <gC_vatID>` = ``1`` až :ref:`NumVatRates <NumVatRates>`, potom príkaz vráti
+      hodnotu počítadla pre konkrétnu daňovú skupinu.
+
+      Má zmysel posielať, len ak parameter :ref:`counterID <gC_counterID>` nadobúda hodnoty:
+
+      * :ref:`FP_GC_ITEM <FP_GC_ITEM>`
+      * :ref:`FP_GC_ITEM_VOID <FP_GC_ITEM_VOID>`
+      * :ref:`FP_GC_REFUND <FP_GC_REFUND>`
+      * :ref:`FP_GC_REFUND <FP_GC_REFUND>`
+
+      Pre ostatné hodnoty parametra :ref:`counterID <gC_counterID>` sa hodnota parametra
+      :ref:`vatID <gC_vatID>` ignoruje.
+
+  .. _gC_counterID:
+
+**Parameter counterID**:
+
+  * Ku každej hodnote :ref:`counterID <gC_counterID>` je priradená dvojica počítadiel
+    (počet kumulovaný v rámci účtenky a počet kumulovaný za deň).
+
+  * Parametrom :ref:`counterType <gC_counterType>` sa určuje, o ktoré počítadlo,
+    z príslušnej dvojice, sa bude jednať.
+
+  Parameter môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. raw:: latex
+
+      \hyphenchar\font=-1
+      \hyphenpenalty=11000
+      \exhyphenpenalty=11000
+      \righthyphenmin=11000
+      \lefthyphenmin=11000
+
+  .. table::
+      :widths: 3 10 8
+
+      ======== ================================== ===============================================
+      Hodnota  Alias                              Počítadlá v odpovedi príkazu
+      ======== ================================== ===============================================
+      ``1``    _`FP_GC_DISCOUNT`                  :ref:`RecDiscountCount <RecDiscountCount>`, :ref:`DayDiscountCount <DayDiscountCount>`
+      ``2``    _`FP_GC_DISCOUNT_VOID`             :ref:`RecDiscountVoidCount <RecDiscountVoidCount>`, :ref:`DayDiscountVoidCount <DayDiscountVoidCount>`
+      ``3``    _`FP_GC_ITEM`                      :ref:`RecItemCount <RecItemCount>`, :ref:`DayItemCount <DayItemCount>`
+      ``4``    _`FP_GC_ITEM_VOID`                 :ref:`RecItemVoidCount <RecItemVoidCount>`, :ref:`DayItemVoidCount <DayItemVoidCount>`
+      ``5``    _`FP_GC_REFUND`                    :ref:`RecRefundCount <RecRefundCount>`, :ref:`DayRefundCount <DayRefundCount>`
+      ``6``    _`FP_GC_REFUND_VOID`               :ref:`RecRefundVoidCount <RecRefundVoidCount>`, :ref:`DayRefundVoidCount <DayRefundVoidCount>`
+      ``7``    _`FP_GC_SUBTOTAL_DISCOUNT`         :ref:`RecSubtotalDiscountCount <RecSubtotalDiscountCount>`, :ref:`DaySubtotalDiscountCount <DaySubtotalDiscountCount>`
+      ``8``    _`FP_GC_SUBTOTAL_DISCOUNT_VOID`    :ref:`RecSubtotalDiscountVoidCount <RecSubtotalDiscountVoidCount>`, :ref:`DaySubtotalDiscountVoidCount <DaySubtotalDiscountVoidCount>`
+      ``9``    _`FP_GC_SUBTOTAL_SURCHARGES`       :ref:`RecSubtotalSurchargeCount <RecSubtotalSurchargeCount>`, :ref:`DaySubtotalSurchargeCount <DaySubtotalSurchargeCount>`
+      ``10``   _`FP_GC_SUBTOTAL_SURCHARGES_VOID`  :ref:`RecSubtotalSurchargeVoidCount <RecSubtotalSurchargeVoidCount>`, :ref:`DaySubtotalSurchargeVoidCount <DaySubtotalSurchargeVoidCount>`
+      ``11``   _`FP_GC_SURCHARGE`                 :ref:`RecSurchargeCount <RecSurchargeCount>`, :ref:`DaySurchargeCount <DaySurchargeCount>`
+      ``12``   _`FP_GC_SURCHARGE_VOID`            :ref:`RecSurchargeVoidCount <RecSurchargeVoidCount>`, :ref:`DaySurchargeVoidCount <DaySurchargeVoidCount>`
+      ``13``   _`FP_GC_COMMENT`                   :ref:`RecCommentCount <RecCommentCount>`, :ref:`DayCommentCount <DayCommentCount>`
+      ``14``   _`FP_GC_SUBTOTAL`                  :ref:`RecSubtotalCount <RecSubtotalCount>`, :ref:`DaySubtotalCount <DaySubtotalCount>`
+      ``15``   _`FP_GC_PAYMENT`                   :ref:`RecPaymentCount <RecPaymentCount>`, :ref:`DayPaymentCount <DayPaymentCount>`
+      ``16``   _`FP_GC_INVOICE`                   :ref:`RecInvoiceCount <RecInvoiceCount>`, :ref:`DayInvoiceCount <DayInvoiceCount>`
+      ``17``   _`FP_GC_INVOICE_VOID`              :ref:`RecInvoiceVoidCount <RecInvoiceVoidCount>`, :ref:`DayInvoiceVoidCount <DayInvoiceVoidCount>`
+      ``18``   _`FP_GC_INVOICE_REFUND`            :ref:`RecInvoiceRefundCount <RecInvoiceRefundCount>`, :ref:`DayInvoiceRefundCount <DayInvoiceRefundCount>`
+      ``19``   _`FP_GC_INVOICE_REFUND_VOID`       :ref:`RecInvoiceRefundVoidCount <RecInvoiceRefundVoidCount>`, :ref:`DayInvoiceRefundVoidCount <DayInvoiceRefundVoidCount>`
+      ======== ================================== ===============================================
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    gC                  \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  Param1    *data*              **INT32**      požadovaná hodnota
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ================================= =======================================
+  Chyba                             Popis
+  ================================= =======================================
+  :ref:`EFP_BAD_VAT <EFP_BAD_VAT>`  Parameter :ref:`vatID <gC_vatID>` bol poslaný nesprávne.
+  :ref:`E_ILLEGAL <E_ILLEGAL>`      | Jeden z parametrov
+                                    |   - :ref:`counterType <gC_counterType>`
+                                    |   - :ref:`counterID <gC_counterID>`
+                                    | nie je z množiny dovolených hodnôt.
+  ================================= =======================================
+
+**Popis príkazu**:
+
+  Vráti požadované počítadlo, ktoré bolo špecifikované vstupnými parametrami.
+
+  Jednotlivé počítadlá sú podrobne popísané v kapitole :ref:`Počítadlá <Počítadlá>`
+
+**Príklad**:
+
+  * Ak :ref:`counterID <gC_counterID>` = `FP_GC_REFUND`_ a :ref:`counterType <gC_counterType>` = `FP_CT_RECEIPT`_,
+    potom pre :ref:`vatID <gC_vatID>` = ``3`` vráti počet refundovaných položiek aktuálneho fiškálneho dokladu
+    patriacich do 3. daňovej skupiny (:ref:`RecRefundCount <RecRefundCount>`\[``3``\]).
+
+  * Ak :ref:`counterID <gC_counterID>` = `FP_GC_REFUND`_ a :ref:`counterType <gC_counterType>` = `FP_CT_DAY`_,
+    potom pre :ref:`vatID <gC_vatID>` = ``0``, alebo pre prázdny parameter :ref:`vatID <gC_vatID>`, príkaz vráti
+    sumárny počet refundovaných položiek v aktuálnom dni (teda súčet počítadiel
+    :ref:`DayRefundCount <DayRefundCount>`\[``1``\] až
+    :ref:`DayRefundCount <DayRefundCount>`\[:ref:`NumVatRates <NumVatRates>`\], teda
+    hodnotu :ref:`DayRefundCount <DayRefundCount>`).
+
+.. toctree::
+    :maxdepth: 2

@@ -1,0 +1,20 @@
+_`ICDPH` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^
+
+..
+    TODO: je otázne či to tu má byť a či to je hodnota, ktorú má byť možné meniť cez komunikácie
+          asi bude potrebné vymazať
+
+======================== =======================================
+názov vlastnosti         **ICDPH**
+typ                      STRING\[12\]
+prednastavená hodnota    \-
+prístup                  read-only
+======================== =======================================
+
+**Popis**:
+
+  Obsahuje hodnotu IČ DPH - Identifikačné číslo platcu DPH (vo formáte ``"SK"`` + 10 číslic).
+
+.. toctree::
+    :maxdepth: 3

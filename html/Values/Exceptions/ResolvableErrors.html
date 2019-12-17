@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Popis odstrániteľných chýb fiškálnej tlačiarne &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Hľadať" href="../../search.html" />
+    <link rel="next" title="Interné chyby fiškálnej tlačiarne" href="InternalErrors.html" />
+    <link rel="prev" title="Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov" href="InvalidCommands.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Konštanty a premenné</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Návratové hodnoty</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Categorisation.html">Kategorizácia návratových hodnôt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="InvalidCommands.html">Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Popis odstrániteľných chýb fiškálnej tlačiarne</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="InternalErrors.html">Interné chyby fiškálnej tlačiarne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExceptionValues.html">Zoznam návratových hodnôt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastností (properties) fiškálnej tlačiarne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Accumulators/index.html">Akumulátory fiškálnej tlačiarne</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Konštanty a premenné</a> &raquo;</li>
+        
+          <li><a href="index.html">Návratové hodnoty</a> &raquo;</li>
+        
+      <li>Popis odstrániteľných chýb fiškálnej tlačiarne</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><span class="target" id="popis-odstranitelnych-chyb-fiskalnej-tlaciarne">Popis odstrániteľných chýb fiškálnej tlačiarne</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p id="exceptioncategory2">Pre chyby druhej kategórie je typické, že:</p>
+<ul class="simple">
+<li><p>môžu vzniknúť ešte pred prijatím príkazu, alebo počas vykonávania príkazu,</p></li>
+<li><p>nesúvisia priamo so samotným príkazom, alebo jeho parametrami, ale hovoria
+o nedostatku zdrojov v súvislosti s vykonávaným príkazom, prípadne hlásia
+odstrániteľnú chybu nejakého komponentu fiškálnej tlačiarne.</p></li>
+</ul>
+<p>Samotný príkaz sa buď vôbec nezačne vykonávať (ak sa o chybe vie už pred začiatkom jeho
+vykonávania), alebo jeho vykonávanie skončí s chybou a príkaz zostane nedokončený.</p>
+<p>Po výskyte chyby sa fiškálna tlačiareň nachádza v stave, kedy nie je možné pokračovať
+v začatej činnosti bez toho, aby obsluha fiškálnej tlačiarne vykonala opatrenia,
+ktorými odstráni príčinu problému.</p>
+<p>Po vykonaní nápravy je možné pokračovať v ďalšej činnosti. Pokračovanie je ale limitované
+stavom, v ktorom sa fiškálna tlačiareň nachádzala pred výskytom chyby.</p>
+<p>Ak sa fiškálna tlačiareň nachádza v jednom zo stavov <a class="reference internal" href="../../ConnectingAndStates/PrinterStates.html#fiscal-receipt"><span class="std std-ref">FISCAL_RECEIPT</span></a>,
+<a class="reference internal" href="../../ConnectingAndStates/PrinterStates.html#fiscal-receipt-total"><span class="std std-ref">FISCAL_RECEIPT_TOTAL</span></a>, <a class="reference internal" href="../../ConnectingAndStates/PrinterStates.html#fiscal-receipt-ending"><span class="std std-ref">FISCAL_RECEIPT_ENDING</span></a>,
+alebo <a class="reference internal" href="../../ConnectingAndStates/PrinterStates.html#report"><span class="std std-ref">REPORT</span></a>, potom ďalšia činnosť fiškálnej tlačiarne môže pokračovať až
+po zavolaní príkazu <a class="reference internal" href="../../Commands/resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a>.</p>
+<p>Ak je fiškálna tlačiareň v inom, ako hore vymenovanom, stave, potom po odstránení chyby je
+fiškálna tlačiareň schopná pokračovať v ďalšej činnosti aj bez nutnosti vykonania príkazu
+<a class="reference internal" href="../../Commands/resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a>.</p>
+<p>Chyby tejto kategórie je možné rozdeliť do viacerých podkategórii.</p>
+<p><strong>Chyby tlačiarne</strong></p>
+<blockquote>
+<div><p>Medzi chyby tlačiarne patria:</p>
+<ul class="simple">
+<li><p>nedostatok papiera (<a class="reference internal" href="ExceptionValues.html#efp-rec-empty"><span class="std std-ref">EFP_REC_EMPTY</span></a>)</p></li>
+<li><p>otvorený kryt tlačiarne (<a class="reference internal" href="ExceptionValues.html#efp-cover-open"><span class="std std-ref">EFP_COVER_OPEN</span></a>)</p></li>
+<li><p>strihač papiera je v zlom stave (<a class="reference internal" href="ExceptionValues.html#efp-cutter"><span class="std std-ref">EFP_CUTTER</span></a>)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Varovania tlačiarne</strong></p>
+<blockquote>
+<div><p>V podstate ide o rovnaké dôvody ako pri chybách, ale zároveň hovoria, že tlač
+bola dokončená do stavu, že doklad je už považovaný za platný, hoci jeho časť
+(zvyčajne časť dolného textového loga) ešte nebola dotlačená.</p>
+<p>Zoznam varovaní je:</p>
+<ul class="simple">
+<li><p>nedostatok papiera (<a class="reference internal" href="ExceptionValues.html#efp-rec-empty-warning"><span class="std std-ref">EFP_REC_EMPTY_WARNING</span></a>)</p></li>
+<li><p>otvorený kryt tlačiarne (<a class="reference internal" href="ExceptionValues.html#efp-cover-open-warning"><span class="std std-ref">EFP_COVER_OPEN_WARNING</span></a>)</p></li>
+<li><p>strihač papiera je v zlom stave (<a class="reference internal" href="ExceptionValues.html#efp-cutter-warning"><span class="std std-ref">EFP_CUTTER_WARNING</span></a>)</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Chybný stav</strong></p>
+<blockquote>
+<div><p>Chybný stav (<a class="reference internal" href="ExceptionValues.html#e-failure"><span class="std std-ref">E_FAILURE</span></a>) je dôsledok predchádzajúcej chyby a je potrebné
+vykonať príkaz <a class="reference internal" href="../../Commands/resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a>.</p>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="InternalErrors.html" class="btn btn-neutral float-right" title="Interné chyby fiškálnej tlačiarne" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="InvalidCommands.html" class="btn btn-neutral float-left" title="Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

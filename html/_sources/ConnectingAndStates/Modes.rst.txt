@@ -1,0 +1,42 @@
+Režimy (módy)
+-------------
+
+Fiškálna tlačiareň dokáže pracovať v niekoľkých režimoch. Niektoré z režimov sa
+môžu navzájom prekrývať. Spomenuté budú jednotlivé režimy a ich význam.
+
+.. _OffLine:
+
+.. _OnLine:
+
+Režimy ``OffLine`` a ``OnLine``:
+
+  V režime ``OffLine`` je fiškálna tlačiareň nedostupná z komunikačného kanála na
+  rozdiel od režimu ``OnLine``. V režime  ``OffLine`` je možné ovládať fiškálnu tlačiareň
+  len prostredníctvom klávesnice a displeja, ktorými disponuje, kým v stave ``OnLine``
+  je fiškálna tlačiareň ovládaná z komunikačného kanála.
+
+  Do ``OffLine`` režimu sa fiškálna tlačiareň dostane v prípade ak používateľ začne
+  fiškálnu tlačiareň ovládať z klávesnice, alebo počas aktualizácie firmvéru.
+
+.. ToDo - kontrola podľa reálnej implementácie
+
+.. _PreFiscal:
+
+.. _Fiscal:
+
+Režimy ``PreFiscal`` a ``Fiscal``:
+
+  Celková funkčnosť fiškálnej tlačiarne je modifikovaná režimami ``PreFiscal`` a ``Fiscal``.
+  Pokiaľ sa do fiškálnej tlačiarne nevložia predpísané údaje a neuvedie sa do prevádzky podľa
+  zákona, dovtedy pracuje v ``PreFiscal`` režime (žiadny vytlačený doklad nemôže byť fiškálny).
+
+  Štandardná a očakávaná činnosť fiškálnej tlačiarne sa odohráva v režime ``Fiscal``.
+
+.. _Training:
+
+Režim ``Training``:
+
+  Je to režim pre zaškolenie obsluhy. Tento režim kopíruje normálny režim fiškálnej tlačiarne
+  s tým rozdielom, že preň platia niektoré obmedzenia oproti normálnemu režimu fiškálnej tlačiarne
+  (nie je možné ovplyvniť akumulátory dennej uzávierky týkajúce sa daní, tiež nie sú dostupné
+  niektoré príkazy fiškálnej tlačiarne).

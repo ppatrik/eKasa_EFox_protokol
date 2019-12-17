@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Zotavenie fiškálnej tlačiarne &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Hľadať" href="../search.html" />
+    <link rel="next" title="Odstrániteľné chyby fiškálnej tlačiarne" href="RecoverableProblems.html" />
+    <link rel="prev" title="Chyby v dôsledku poslania nesprávneho príkazu, alebo nesprávnych parametrov" href="IncorrectCommand.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Riešenie chybových stavov</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="IncorrectCommand.html">Chyby v dôsledku poslania nesprávneho príkazu, alebo nesprávnych parametrov</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Zotavenie fiškálnej tlačiarne</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RecoverableProblems.html">Odstrániteľné chyby fiškálnej tlačiarne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InternalErrors.html">Interné chyby fiškálnej tlačiarne</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Riešenie chybových stavov</a> &raquo;</li>
+        
+      <li>Zotavenie fiškálnej tlačiarne</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="zotavenie-fiskalnej-tlaciarne">
+<h1>Zotavenie fiškálnej tlačiarne<a class="headerlink" href="#zotavenie-fiskalnej-tlaciarne" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p>Protokol je vybavený takými prostriedkami (postupnosti príkazov, druhy správ),
+ktoré môže aplikácia použiť, aby mohla bezpečne postupovať aj po neočakávaných
+prerušeniach spojenia, alebo pri poruchových stavoch systému
+(napríklad poruchy v napájaní).</p>
+<p>Aplikácia po vytvorení spojenia s fiškálnou tlačiarňou (príkazom <a class="reference internal" href="../ConnectingAndStates/Connect.html#connect"><span class="std std-ref">connect</span></a>)
+zistí <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#stavy-fiskalnej-tlaciarne"><span class="std std-ref">stav fiškálnej tlačiarne</span></a>.
+Ak je fiškálna tlačiareň v stave <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#monitor"><span class="std std-ref">MONITOR</span></a>, znamená to, že pred zrušením,
+alebo stratou spojenia s fiškálnou tlačiarňou neprebiehala žiadna aplikáciou rozbehnutá aktivita.</p>
+<p>V prípade, že po vytvorení spojenia je stav fiškálnej tlačiarne iný ako <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#monitor"><span class="std std-ref">MONITOR</span></a>,
+potom to odráža skutočnosť, že posledná aplikáciou rozbehnutá aktivita nebola pre poruchu riadne
+dokončená. V takomto prípade existujú dve základne možnosti zotavenia, podľa toho ktorá z rozbehnutých
+aktivít bola na fiškálnej tlačiarni prerušená.</p>
+<p><strong>Spôsob zotavenia č. 1</strong>:</p>
+<blockquote>
+<div><p>Toto riešenie sa používa pre všetky rozbehnuté aktivity s výnimkou situácie, že pred prerušením
+spojenia prebiehal proces dennej Z uzávierky.</p>
+<p>Znamená to, že v čase, keď vo fiškálnej tlačiarni vznikla výnimočná situácia (prerušené spojenie,
+výpadok napájania, nesprávna postupnosť príkazov…) mohla práve prebiehať:</p>
+<ul class="simple">
+<li><p>tlač dokladu (registračná transakcia),</p></li>
+<li><p>tlač nefiškálneho dokladu,</p></li>
+<li><p>tlač prehľadovej uzávierky.</p></li>
+</ul>
+<p>V takýchto prípadoch je aplikácia povinná zavolať príkaz <a class="reference internal" href="../Commands/resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a>.
+Tento príkaz spôsobí predčasné ukončenie prerušenej aktivity a návrat všetkých počítadiel
+fiškálnej jednotky (ak boli nejakým spôsobom ovplyvnené) na svoje pôvodné hodnoty (teda
+na hodnoty, ktoré mali v čase pred začiatkom tejto aktivity). Výsledok je teda, ako keby
+daná aktivita ani nikdy nezačala</p>
+<p>Na účtenkách sa vytlačí oznam o predčasne ukončenej činnosti a fiškálna tlačiareň sa dostane
+do stavu <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#monitor"><span class="std std-ref">MONITOR</span></a>.</p>
+<p>Ak prerušenou aktivitou bola realizácia registračnej transakcie, potom ak bola transakcia
+v čase svojho prerušenia v stavoch <a class="reference internal" href="../Rules/RegistrationTransaction.html#fp-ts-started"><span class="std std-ref">FP_TS_STARTED</span></a>, alebo <a class="reference internal" href="../Rules/RegistrationTransaction.html#fp-ts-voided"><span class="std std-ref">FP_TS_VOIDED</span></a>,
+stav tejto registračnej transakcie sa mení na <a class="reference internal" href="../Rules/RegistrationTransaction.html#fp-ts-failed"><span class="std std-ref">FP_TS_FAILED</span></a>.</p>
+<p>V prípade neistoty, či registračná transakcia (ktorá prebiehala pred poruchou resp.
+prerušením) bola riadne ukončená, je možné kedykoľvek po vytvorení spojenia vyčítať
+počet vytlačených účteniek danej registračnej transakcie, alebo overiť stav vykonávania
+registračnej transakcie určenej jej identifikátorom <em>transactionID</em> pomocou príkazu
+<a class="reference internal" href="../Commands/getTransactionStatus.html#gettransactionstatus"><span class="std std-ref">getTransactionStatus</span></a>.</p>
+<p>Nasledujúci obrázok ukazuje princíp zotavenia pre registračné transakcie, pričom rovnaký
+princíp sa používa aj pre ostatné prerušené činnosti spomínané v tomto bloku (teda pre
+tlač nefiškálneho dokladu, prípadne tlač prehľadovej uzávierky).</p>
+</div></blockquote>
+<div class="align-center figure align-default" id="id1">
+<img alt="../_images/TransactionRecovery.png" src="../_images/TransactionRecovery.png" />
+<p class="caption"><span class="caption-text">Obrázok č. 11: Zotavenie fiškálnej tlačiarne po prerušení registrácie predaja z pohľadu POS aplikácie</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento obrázok">¶</a></p>
+</div>
+<p><strong>Spôsob zotavenia č. 2</strong>:</p>
+<blockquote>
+<div><p>Prerušenie vykonávania dennej Z uzávierky sa z principiálnych dôvodov musí riešiť iným spôsobom,
+ako to bolo spomínané vyššie pri ostatných prerušených aktivitách.</p>
+<p>Ak bolo výpadkom prerušené vykonávanie dennej Z uzávierky, potom po otvorení ovládania je
+fiškálna tlačiareň v stave <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#report"><span class="std std-ref">REPORT</span></a>. Znamená to, že vykonávanie dennej uzávierky
+už začalo a je nutné ho dokončiť.</p>
+<p>Proces vykonávania uzávierky sa môže nachádzať v jednom z viacerých vnútorných podprocesov
+(s ohľadom na stav tlače dokladu a mazania denných počítadiel) a uzávierka sa z technických
+dôvodov musí dokončiť.</p>
+<p>Pre zotavenie musí aplikácia najprv vyslať príkaz <a class="reference internal" href="../Commands/resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a>, ktorým
+sa okrem iného vytlačí aj oznam o nedokončení tlače výkazu dennej uzávierky. Potom aplikácia
+musí znovu poslať príkaz pre vykonanie dennej uzávierky <a class="reference internal" href="../Commands/printZReport.html#printzreport"><span class="std std-ref">printZReport</span></a>,
+ktorým sa uzávierka vytlačí od začiatku, dokončia sa všetky nedokončené podprocesy a po jej
+úplnom skončení sa fiškálna tlačiareň dostane do stavu <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#monitor"><span class="std std-ref">MONITOR</span></a>.</p>
+</div></blockquote>
+<div class="align-center figure align-default" id="id2">
+<img alt="../_images/ReportRecovery.png" src="../_images/ReportRecovery.png" />
+<p class="caption"><span class="caption-text">Obrázok č. 12: Zotavenie fiškálnej tlačiarne po prerušení Z uzávierky z pohľadu POS aplikácie</span><a class="headerlink" href="#id2" title="Trvalý odkaz na tento obrázok">¶</a></p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="RecoverableProblems.html" class="btn btn-neutral float-right" title="Odstrániteľné chyby fiškálnej tlačiarne" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="IncorrectCommand.html" class="btn btn-neutral float-left" title="Chyby v dôsledku poslania nesprávneho príkazu, alebo nesprávnych parametrov" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

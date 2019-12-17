@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Činnosti po vytvorení spojenia [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Hľadať" href="../search.html" />
+    <link rel="next" title="Poskytovanie služieb" href="ServicesProviding.html" />
+    <link rel="prev" title="disconnect" href="Disconnect.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vytvorenie spojenie a stavy</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="Connection.html">Vytvorenie a ukončenia spojenia</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Connect.html">connect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Disconnect.html">disconnect</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Činnosti po vytvorení spojenia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ServicesProviding.html">Poskytovanie služieb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="States.html">Stavy komunikácie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Timing.html">Časovanie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrinterStates.html">Stavy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modes.html">Režimy (módy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Commissioning.html">Uvedenie do prevádzky <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Update/index.html">Aktualizácia firmvéru <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Vytvorenie spojenie a stavy</a> &raquo;</li>
+        
+          <li><a href="Connection.html">Vytvorenie a ukončenia spojenia</a> &raquo;</li>
+        
+      <li>Činnosti po vytvorení spojenia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cinnosti-po-vytvoreni-spojenia-new">
+<h1>Činnosti po vytvorení spojenia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#cinnosti-po-vytvoreni-spojenia-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p>Po (každom) príkaze <a class="reference internal" href="Connect.html#connect"><span class="std std-ref">connect</span></a> by aplikácia mala:</p>
+<ul class="simple">
+<li><p>spraviť kontrolu stavu fiškálnej tlačiarne, pozri: „<a class="reference internal" href="PrinterStates.html#stavy-fiskalnej-tlaciarne"><span class="std std-ref">Stavy fiškálnej tlačiarne</span></a>“</p></li>
+<li><p>spraviť kontrolu servisných udalostí, pozri: „<a class="reference internal" href="../Rules/ServiceMessages.html"><span class="doc">Servisné oznamy [_new_]</span></a>“</p></li>
+<li><p>nastaviť formát tlače, pozri: „<a class="reference internal" href="../Printing/PrintFormattingSettings.html#nastavenia-formatu-tlace"><span class="std std-ref">Nastavenia formátu tlače</span></a>“</p></li>
+<li><p>nastaviť režim cien bez dane, pozri: property <a class="reference internal" href="../Values/Properties/VatIncluded.html#vatincluded"><span class="std std-ref">VatIncluded</span></a></p></li>
+<li><p>nastaviť grafické logo, pozri property <a class="reference internal" href="../Values/Properties/HeaderBitmap.html#headerbitmap"><span class="std std-ref">HeaderBitmap</span></a> a <a class="reference internal" href="../Values/Properties/TrailerBitmap.html#trailerbitmap"><span class="std std-ref">TrailerBitmap</span></a></p></li>
+<li><p>nastaviť meno pokladníka a číslo POS systému, pozri príkaz <a class="reference internal" href="../Commands/setPOSID.html#setposid"><span class="std std-ref">setPOSID</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Zmazanie hore menovaných stavov sa uskutoční nie len po príkaze <a class="reference internal" href="Connect.html#connect"><span class="std std-ref">connect</span></a>,
+ale aj po príkaze <a class="reference internal" href="../Commands/resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a>.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ServicesProviding.html" class="btn btn-neutral float-right" title="Poskytovanie služieb" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Disconnect.html" class="btn btn-neutral float-left" title="disconnect" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

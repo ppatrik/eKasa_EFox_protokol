@@ -1,0 +1,474 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Počítadlá [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Hľadať" href="../../search.html" />
+    <link rel="next" title="Príkazy fiškálnej tlačiarne" href="../../Commands/index.html" />
+    <link rel="prev" title="Sumárne hodnoty" href="Totals.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Konštanty a premenné</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Exceptions/index.html">Návratové hodnoty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastností (properties) fiškálnej tlačiarne</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Akumulátory fiškálnej tlačiarne</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Totals.html">Sumárne hodnoty</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Počítadlá <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Konštanty a premenné</a> &raquo;</li>
+        
+          <li><a href="index.html">Akumulátory fiškálnej tlačiarne</a> &raquo;</li>
+        
+      <li>Počítadlá <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pocitadla-new">
+<h1><span class="target" id="pocitadla">Počítadlá</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#pocitadla-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p><strong>Počítadlá operácií v nákupe</strong>:</p>
+<blockquote>
+<div><p>V nasledujúcej tabuľke sú uvedené všetky počítadlá fiškálnej tlačiarne
+pre fiškálnu účtenku a pre obchodný deň spolu s ich vysvetlením.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><span class="target" id="recdiscountcount">RecDiscountCount</span>,</p>
+<p><span class="target" id="daydiscountcount">DayDiscountCount</span></p>
+</td>
+<td><p>počet zliav uplatnených na individuálne</p>
+<p>položky príkazom <a class="reference internal" href="../../Commands/printRecItemAdjustment.html#printrecitemadjustment"><span class="std std-ref">printRecItemAdjustment</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="recdiscountvoidcount">RecDiscountVoidCount</span>,</p>
+<p><span class="target" id="daydiscountvoidcount">DayDiscountVoidCount</span></p>
+</td>
+<td><p>počet storien zliav uplatnených na individuálne</p>
+<p>položky príkazom <a class="reference internal" href="../../Commands/printRecItemAdjustmentVoid.html#printrecitemadjustmentvoid"><span class="std std-ref">printRecItemAdjustmentVoid</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="recitemcount">RecItemCount</span>[<em>i</em>],</p>
+<p><span class="target" id="dayitemcount">DayItemCount</span>[<em>i</em>]</p>
+</td>
+<td><p>počet predaných položiek</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="recitemvoidcount">RecItemVoidCount</span>[<em>i</em>],</p>
+<p><span class="target" id="dayitemvoidcount">DayItemVoidCount</span>[<em>i</em>]</p>
+</td>
+<td><p>počet stornovaných položiek</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecItemVoid.html#printrecitemvoid"><span class="std std-ref">printRecItemVoid</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="recrefundcount">RecRefundCount</span>[<em>i</em>],</p>
+<p><span class="target" id="dayrefundcount">DayRefundCount</span>[<em>i</em>]</p>
+</td>
+<td><p>počet refundovaných položiek</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecItemRefund.html#printrecitemrefund"><span class="std std-ref">printRecItemRefund</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="recrefundvoidcount">RecRefundVoidCount</span>[<em>i</em>],</p>
+<p><span class="target" id="dayrefundvoidcount">DayRefundVoidCount</span>[<em>i</em>]</p>
+</td>
+<td><p>počet storien refundovaných položiek</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecItemRefundVoid.html#printrecitemrefundvoid"><span class="std std-ref">printRecItemRefundVoid</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="recsubtotaldiscountcount">RecSubtotalDiscountCount</span>,</p>
+<p><span class="target" id="daysubtotaldiscountcount">DaySubtotalDiscountCount</span></p>
+</td>
+<td><p>počet zliav uplatnených na skupinu položiek</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecPackageAdjustment.html#printrecpackageadjustment"><span class="std std-ref">printRecPackageAdjustment</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="recsubtotaldiscountvoidcount">RecSubtotalDiscountVoidCount</span>,</p>
+<p><span class="target" id="daysubtotaldiscountvoidcount">DaySubtotalDiscountVoidCount</span></p>
+</td>
+<td><p>počet storien zliav uplatnených na skupinu</p>
+<p>položiek príkazom <a class="reference internal" href="../../Commands/printRecPackageAdjustVoid.html#printrecpackageadjustvoid"><span class="std std-ref">printRecPackageAdjustVoid</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="recsubtotalsurchargecount">RecSubtotalSurchargeCount</span>,</p>
+<p><span class="target" id="daysubtotalsurchargecount">DaySubtotalSurchargeCount</span></p>
+</td>
+<td><p>počet prirážok uplatnených na skupinu položiek</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecPackageAdjustment.html#printrecpackageadjustment"><span class="std std-ref">printRecPackageAdjustment</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="recsubtotalsurchargevoidcount">RecSubtotalSurchargeVoidCount</span>,</p>
+<p><span class="target" id="daysubtotalsurchargevoidcount">DaySubtotalSurchargeVoidCount</span></p>
+</td>
+<td><p>počet storien prirážok uplatnených na skupinu</p>
+<p>položiek príkazom <a class="reference internal" href="../../Commands/printRecPackageAdjustVoid.html#printrecpackageadjustvoid"><span class="std std-ref">printRecPackageAdjustVoid</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="recsurchargecount">RecSurchargeCount</span>,</p>
+<p><span class="target" id="daysurchargecount">DaySurchargeCount</span></p>
+</td>
+<td><p>počet prirážok uplatnených na individuálne položky</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecItemAdjustment.html#printrecitemadjustment"><span class="std std-ref">printRecItemAdjustment</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="recsurchargevoidcount">RecSurchargeVoidCount</span>,</p>
+<p><span class="target" id="daysurchargevoidcount">DaySurchargeVoidCount</span></p>
+</td>
+<td><p>počet storien prirážok uplatnených na individuálne</p>
+<p>položky príkazom <a class="reference internal" href="../../Commands/printRecItemAdjustmentVoid.html#printrecitemadjustmentvoid"><span class="std std-ref">printRecItemAdjustmentVoid</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="reccommentcount">RecCommentCount</span>,</p>
+<p><span class="target" id="daycommentcount">DayCommentCount</span></p>
+</td>
+<td><p>počet popisných textov v nákupe poslaných</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="recsubtotalcount">RecSubtotalCount</span>,</p>
+<p><span class="target" id="daysubtotalcount">DaySubtotalCount</span></p>
+</td>
+<td><p>počet vytlačení hodnoty medzisúčet</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="recpaymentcount">RecPaymentCount</span>,</p>
+<p><span class="target" id="daypaymentcount">DayPaymentCount</span></p>
+</td>
+<td><p>počet platieb vykonaných</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="recinvoicecount">RecInvoiceCount</span>,</p>
+<p><span class="target" id="dayinvoicecount">DayInvoiceCount</span></p>
+</td>
+<td><p>počet uhradených faktúr</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="recinvoicevoidcount">RecInvoiceVoidCount</span>,</p>
+<p><span class="target" id="dayinvoicevoidcount">DayInvoiceVoidCount</span></p>
+</td>
+<td><p>počet stornovaných uhradených faktúr</p>
+<p>príkazom <a class="reference internal" href="../../Commands/printRecItemVoid.html#printrecitemvoid"><span class="std std-ref">printRecItemVoid</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="recinvoicerefundcount">RecInvoiceRefundCount</span>,</p>
+<p><span class="target" id="dayinvoicerefundcount">DayInvoiceRefundCount</span></p>
+</td>
+<td><p>počet refundovaných resp. vrátených uhradených</p>
+<p>faktúr príkazom <a class="reference internal" href="../../Commands/printRecItemRefund.html#printrecitemrefund"><span class="std std-ref">printRecItemRefund</span></a></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="recinvoicerefundvoidcount">RecInvoiceRefundVoidCount</span>,</p>
+<p><span class="target" id="dayinvoicerefundvoidcount">DayInvoiceRefundVoidCount</span></p>
+</td>
+<td><p>počet storien refundovaných resp. vrátených</p>
+<p>uhradených faktúr príkazom <a class="reference internal" href="../../Commands/printRecItemRefundVoid.html#printrecitemrefundvoid"><span class="std std-ref">printRecItemRefundVoid</span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Počítadlá, ktoré majú v tabuľke označenie „[<em>i</em>]“ sú evidované ako sumárne (suma pre všetky
+daňové skupiny), tak aj pre jednotlivé daňové skupiny samostatne.</p>
+<p>V prípade odkazovania sa na počítadlo pre konkrétnu daňovú skupinu (v texte tohto dokumentu)
+sa vybrané počítadlo označí ešte indexom daňovej skupiny.</p>
+<p><strong>Napríklad</strong>:</p>
+<blockquote>
+<div><p><a class="reference internal" href="#dayrefundcount"><span class="std std-ref">DayRefundCount[3]</span></a> označuje počet refundovaných položiek pre
+3. daňovú skupinu v aktuálnom dni <a class="reference internal" href="#dayrefundcount"><span class="std std-ref">DayRefundCount[0]</span></a>, alebo
+<a class="reference internal" href="#dayrefundcount"><span class="std std-ref">DayRefundCount</span></a> (bez indexu) označuje celkový počet
+refundovaných položiek v aktuálnom dni.</p>
+</div></blockquote>
+<p>Zároveň platí, že:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(DayRefundCount[0] = \displaystyle\sum_{i=1}^{NumVatRates} DayRefundCount[i]\)</span></p>
+</div></blockquote>
+<p>Všetky hore vymenované počítadlá a ich súvis s daňovými skupinami je viac zrejmý z popisu
+príkazu <a class="reference internal" href="../../Commands/getCounter.html#getcounter"><span class="std std-ref">getCounter</span></a>, ktorým je zároveň možné požiadať fiškálnu tlačiareň
+o vrátenie jedného z vyššie vymenovaných počítadiel.</p>
+</div></blockquote>
+<p><strong>Ostatné počítadlá</strong>:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><span class="target" id="cashincount">CashInCount</span></p></td>
+<td><p>počet vkladov v aktuálnom dni</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="cashoutcount">CashOutCount</span></p></td>
+<td><p>počet výberov v aktuálnom dni</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="nonfiscalreccount">NonfiscalRecCount</span></p></td>
+<td><p>počet nefiškálnych účteniek v aktuálnom dni</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="fiscalreccount">FiscalRecCount</span></p></td>
+<td><p>počet fiškálnych účteniek v aktuálnom dni</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="fiscalrecvoidcount">FiscalRecVoidCount</span></p></td>
+<td><p>počet stornovaných fiškálnych účteniek v aktuálnom dni</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="trainingcount">TrainingCount</span></p></td>
+<td><p>počet tréningových účteniek v aktuálnom dni</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="trainingvoidcount">TrainingVoidCount</span></p></td>
+<td><p>počet stornovaných tréningových účteniek v aktuálnom dni</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="simpinvoicecount">SimpInvoiceCount</span></p></td>
+<td><p>počet účteniek úhrad alebo vrátení faktúr v aktuálnom dni</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="transpaymentcount">TransPaymentCount</span></p></td>
+<td><p>počet platieb v aktuálnej transakcii</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="paymentcount">PaymentCount</span></p></td>
+<td><p>počet platieb v aktuálnom dni</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="transchangecount">TransChangeCount</span></p></td>
+<td><p>počet výdavkov v aktuálnej transakcii</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="target" id="changecount">ChangeCount</span></p></td>
+<td><p>počet výdavkov v aktuálnom dni</p></td>
+</tr>
+</tbody>
+</table>
+<p>Vyššie zmienené počítadlá je prečítať pomocou príkazu <a class="reference internal" href="../../Commands/getData.html#getdata"><span class="std std-ref">getData</span></a>.</p>
+</div></blockquote>
+<p><strong>Počítadlá týkajúce sa platieb</strong>:</p>
+<blockquote>
+<div><p>Nasleduje zoznam dvojíc počítadiel (pre transakciu, obchodný deň, vklad a výber v aktuálnom
+obchodnom dni) týkajúcich sa jednotlivých typov platieb, ktorých reálne využitie je možné
+len v prípade, ak <a class="reference internal" href="../Properties/PaymentsRegistration.html#paymentsregistration"><span class="std std-ref">PaymentsRegistration</span></a> = <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>TransPaymentCount[<em>i</em>]</p></td>
+<td><p>počet platieb v transakcii pre typ platby „<em>i</em>“</p></td>
+</tr>
+<tr class="row-even"><td><p>TransChangeCount[<em>i</em>]</p></td>
+<td><p>počet výdavkov v transakcii pre typ platby „<em>i</em>“</p></td>
+</tr>
+<tr class="row-odd"><td><p>PaymentCount[<em>i</em>]</p></td>
+<td><p>počet platieb počas dňa pre typ platby „<em>i</em>“</p></td>
+</tr>
+<tr class="row-even"><td><p>ChangeCount[<em>i</em>]</p></td>
+<td><p>počet výdavkov počas dňa pre typ platby „<em>i</em>“</p></td>
+</tr>
+<tr class="row-odd"><td><p>CashInCount[<em>i</em>]</p></td>
+<td><p>počet vkladov pre typ platby „<em>i</em>“</p></td>
+</tr>
+<tr class="row-even"><td><p>CashOutCount[<em>i</em>]</p></td>
+<td><p>počet výberov pre typ platby „<em>i</em>“</p></td>
+</tr>
+</tbody>
+</table>
+<p>Pričom index <em>i</em> je v rozsahu 1 až <a class="reference internal" href="../Properties/NumPayments.html#numpayments"><span class="std std-ref">NumPayments</span></a>.</p>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Commands/index.html" class="btn btn-neutral float-right" title="Príkazy fiškálnej tlačiarne" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Totals.html" class="btn btn-neutral float-left" title="Sumárne hodnoty" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

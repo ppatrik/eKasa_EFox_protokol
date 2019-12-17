@@ -1,0 +1,8 @@
+BJFreeSpace ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+    Táto vlastnosť (property) bola odstránená a nie je v eKasa verzii využívaná.
+
+.. toctree::
+    :maxdepth: 3

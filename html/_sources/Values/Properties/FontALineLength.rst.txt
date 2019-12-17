@@ -1,0 +1,26 @@
+_`FontALineLength`
+^^^^^^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **FontALineLength**
+typ                      INT32
+prednastavená hodnota    \-
+prístup                  read-only
+======================== =======================================
+
+**Popis**:
+
+  Obsahuje maximálnu hodnotu počtu znakov, ktoré je možné vytlačiť v jednom riadku pre font tlačiarne označený ako "A".
+
+**Upozornenie**:
+
+  Je potrebné si uvedomiť, že pre prípad tlače riadku s dvojitou šírkou znakov, je skutočná hodnota počtu znakov na riadok rovná podielu :ref:`FontALineLength <FontALineLength>`/2 a nie :ref:`FontALineLength <FontALineLength>`.
+
+  Ak platí, že :ref:`FontALineLength <FontALineLength>` > :ref:`FontBLineLength <FontBLineLength>`, potom maximálny počet znakov na jeden riadok daného typu tlačiarne je :ref:`FontALineLength <FontALineLength>`.
+
+**Poznámka**:
+
+  Pre možné typy použitých tlačiarní pozri :ref:`Zoznam použitých tlačiarní <Zoznam použitých tlačiarní>`.
+
+.. toctree::
+    :maxdepth: 3

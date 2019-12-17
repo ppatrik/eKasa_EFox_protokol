@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dátové typy a kódovanie ich hodnôt &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Hľadať" href="../search.html" />
+    <link rel="next" title="Dátum a čas vo fiškálnej tlačiarni" href="DateTime.html" />
+    <link rel="prev" title="Komunikačný rámec" href="CommunicationFrame.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Popis protokolu</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Overview.html">Prehľad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ProtocolFeatures.html">Črty protokolu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connection.html">Pripojenie fiškálnej tlačiarne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CommunicationFrame.html">Komunikačný rámec</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dátové typy a kódovanie ich hodnôt</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="DateTime.html">Dátum a čas vo fiškálnej tlačiarni</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Popis protokolu</a> &raquo;</li>
+        
+      <li>Dátové typy a kódovanie ich hodnôt</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="datove-typy-a-kodovanie-ich-hodnot">
+<h1>Dátové typy a kódovanie ich hodnôt<a class="headerlink" href="#datove-typy-a-kodovanie-ich-hodnot" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p>Komunikačný protokol stanovuje prenos všetkých dát ako textov.
+Teda aj čísla sa posielajú ako textové reťazce pozostávajúce
+zo znakov <code class="docutils literal notranslate"><span class="pre">0</span></code> až <code class="docutils literal notranslate"><span class="pre">9</span></code>. V desatinných číslach je možné použiť
+ako desatinný oddeľovač len znak bodky <code class="docutils literal notranslate"><span class="pre">.</span></code>. Znak negatívnej
+hodnoty <code class="docutils literal notranslate"><span class="pre">-</span></code> je možné použiť len na začiatku čísla.</p>
+<p><strong>Poznámka</strong>: Pre zjednodušenie čítania čísel je v zápise rozsahu
+použitý ako oddeľovač skupín znak medzery. Tento znak sa ale nepoužíva
+pri komunikácii.</p>
+<dl class="glossary">
+<dt id="term-boolean">BOOLEAN</dt><dd><p>Môže nadobúdať len hodnoty <code class="docutils literal notranslate"><span class="pre">0</span></code> a <code class="docutils literal notranslate"><span class="pre">1</span></code>, pričom platí, že <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">=</span> <span class="pre">FALSE</span></code> a <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">=</span> <span class="pre">TRUE</span></code>.</p>
+</dd>
+<dt id="term-char">CHAR</dt><dd><p>Jeden znak v kódovej stránke Windows-1250. Znak nesmie byť kontrolným znakom.</p>
+<p>Ak sa v texte objaví popis znaku, je zobrazený v apostrofoch; príklad: <code class="docutils literal notranslate"><span class="pre">','</span></code></p>
+</dd>
+<dt id="term-currency">CURRENCY</dt><dd><p>Desatinné číslo s dĺžkou najviac 21 znakov a s presnosťou najviac na 4 desatinné miesta.</p>
+<p>Rozsah: &lt;-922 337 203 685 477.5808, 922 337 203 685 477.5807&gt;</p>
+</dd>
+<dt id="term-datetime">DATETIME</dt><dd><p>Dátum a čas vo fiškálnej tlačiarni je reprezentovaný ako textový reťazec.
+Sú používané viaceré formáty zápisu dátumu a času.</p>
+<p>Konkrétny formát dát bude uvedený pri jednotlivých príkazoch.
+<a class="reference internal" href="DateTime.html#datetimeformat"><span class="std std-ref">Všeobecný popis ku významu zápisu formátu dátumu a času</span></a>
+je v samostatnej <a class="reference internal" href="DateTime.html#datetimeformat"><span class="std std-ref">kapitole</span></a>.</p>
+</dd>
+<dt id="term-int32">INT32</dt><dd><p>Celé číslo. Čísla sú zapísané v desiatkovej sústave a ak je potrebné obsahujú znak <code class="docutils literal notranslate"><span class="pre">'-'</span></code>.</p>
+<p>Rozsah: &lt;-2 147 483 648, 2 147 483 647&gt;</p>
+</dd>
+<dt id="term-percentage">PERCENTAGE</dt><dd><p>Desatinné číslo s dĺžkou najviac 8 znakov a s presnosťou najviac na 4 desatinné miesta.</p>
+<p>Rozsah: &lt;0.0000, 100.0000&gt;</p>
+</dd>
+<dt id="term-quantity">QUANTITY</dt><dd><p>Desatinné číslo s dĺžkou najviac 12 znakov a s presnosťou najviac na 3 desatinné miesta.</p>
+<p>Rozsah: &lt;-999 999.999, 999 999.999&gt;</p>
+</dd>
+<dt id="term-string">STRING</dt><dd><p>Reťazec znakov v kódovej stránke Windows-1250. Reťazec nesmie obsahovať žiadne kontrolné znaky.</p>
+<p>Ak sa v texte objavia textové reťazce ich obsah je v úvodzovkách; príklad: <code class="docutils literal notranslate"><span class="pre">&quot;textový</span> <span class="pre">reťazec&quot;</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Tento dátový typ sa používa aj na zložené dátové typy, ako napríklad dve čísla oddelené
+bodkočiarkou, alebo binárne reťazce (zapísané ako „BASE-16 string“).</p>
+</div>
+</dd>
+<dt id="term-uint32">UINT32</dt><dd><p>Celé číslo bez znamienka. Toto číslo je zapísané v šestnástkovej sústave s prefixom <code class="docutils literal notranslate"><span class="pre">&quot;0x&quot;</span></code>.</p>
+<p>Príklad: Tento zápis sa používa napríklad pre <a class="reference internal" href="../Values/Properties/ErrorExtension.html#errorextension"><span class="std std-ref">ErrorExtension</span></a></p>
+</dd>
+<dt id="term-variant">VARIANT</dt><dd><p>Tento dátový typ je náhradou za ľubovoľný iný základný dátový typ. Teda hodnota môže (podľa potreby)
+byť hociktorá z hore vymenovaných základných dátových typov.</p>
+<p>Tento typ má využitie hlavne pre príkazy, ktoré môžu používať, alebo vrátiť viacero typov dát.
+Príklad takéhoto príkazu je príkaz <a class="reference internal" href="../Commands/getData.html#getdata"><span class="std std-ref">getData</span></a>. Výstupný parameter môže byť
+v tomto prípade:</p>
+<ul class="simple">
+<li><p>aj <a class="reference internal" href="#term-int32"><span class="xref std std-term">INT32</span></a> (napríklad pre parameter <a class="reference internal" href="../Commands/getData.html#fp-gd-cash-in-cnt"><span class="std std-ref">FP_GD_CASH_IN_CNT</span></a>/hodnotu
+<a class="reference internal" href="../Values/Accumulators/Counters.html#cashincount"><span class="std std-ref">CashInCount</span></a>),</p></li>
+<li><p>alebo <a class="reference internal" href="#term-currency"><span class="xref std std-term">CURRENCY</span></a> (napríklad pre parameter <a class="reference internal" href="../Commands/getData.html#fp-gd-rec-cash-in-total"><span class="std std-ref">FP_GD_REC_CASH_IN_TOTAL</span></a>/hodnotu
+<a class="reference internal" href="../Values/Accumulators/Totals.html#reccashintotal"><span class="std std-ref">RecCashInTotal</span></a>),</p></li>
+<li><p>ale aj <a class="reference internal" href="#term-string"><span class="xref std std-term">STRING</span></a> (napríklad pre parameter <a class="reference internal" href="../Commands/getData.html#fp-gd-tpn-id"><span class="std std-ref">FP_GD_TPN_ID</span></a>).</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Pre nepovinné parametre platí, že môžu nadobúdať aj hodnotu <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec) aj keď sú iného typu,
+napríklad <strong>INT32</strong>. Takáto hodnota je ekvivalentná ku nezadanej hodnote.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="DateTime.html" class="btn btn-neutral float-right" title="Dátum a čas vo fiškálnej tlačiarni" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="CommunicationFrame.html" class="btn btn-neutral float-left" title="Komunikačný rámec" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

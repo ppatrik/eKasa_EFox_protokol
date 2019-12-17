@@ -1,0 +1,18 @@
+Vytvorenie a ukončenia spojenia
+===============================
+
+Pred začiatkom posielania príkazov do fiškálnej tlačiarne je
+potrebné vytvoriť logické spojenie s fiškálnou tlačiarňou.
+Rovnako po skončení komunikácie je vhodné spojenie ukončiť.
+
+Na tento účel sa používajú príkazy: :ref:`connect <connect>` a :ref:`disconnect <disconnect>`.
+
+Po vytvorení spojenia je potrebné, aby aplikácia skontrolovala stav
+fiškálnej tlačiarne a zabezpečila korektné nastavenia tlače.
+
+.. toctree::
+    :maxdepth: 3
+
+    Connect
+    Disconnect
+    AfterConnection

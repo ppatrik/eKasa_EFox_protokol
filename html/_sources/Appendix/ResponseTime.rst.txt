@@ -1,0 +1,131 @@
+Typický a maximálny čas trvania vykonávania príkazov
+====================================================
+
+V tabuľke (nižšie) sú napísané typické a maximálne časy pre vykonanie jednotlivých príkazov.
+V prípade, ak aplikácia nedostane odpoveď ani do času, ktorý je označený ako maximálny čas pre tento príkaz,
+je možné predpokladať, že došlo k strate spojenia, prípadne nastala nejaká interná chyba na zariadení.
+V takomto prípade, je potrebné pokúsiť sa znovu nadviazať spojenie (príkaz :ref:`connect <connect>`),
+prípadne vypnúť a zapnúť fiškálnu tlačiareň.
+
+Pre všetky príkazy, ktoré nie sú priamo vymenované v tabuľke, platí, že typický čas vykonania príkazu
+je do 100 milisekúnd a maximálny čas vykonania príkazu je 1 sekunda (pozri posledný riadok tabuľky).
+
+..
+    TODO: prerobiť tabuľku časov, ak zostanú aj iné tlačiarne,
+          ale vzhľadom na to, že sa budú odstraňovať ihličkové tlačiarne a mini EFox, tak to nemá zmysel
+
++-----------------------------------+-----------------------------------+-----------------------------------+
+| príkaz                            | typický čas vykonania             | maximálny čas vykonania           |
++===================================+===================================+===================================+
+| beginFiscalReceipt                | 250ms \[560ms M\] \[1s C\]        | 3s \[6s M\]                       |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| beginNonFiscal                    | 100ms \[200ms M\]                 | 2s \[3s M\]                       |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| endFiscalReceipt\*                | 2s \[< 30s M\]                    | 15s \[60s M\]                     |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| endNonFiscal                      | 1s \[1,5s M\]                     | 15s \[60s M\]                     |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| printBarCode                      | 100ms \[- M\] \[- C\]             | 2s \[- M\] \[- C\]                |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| printDuplicateReceipt\*           | 3s/100r                           | 9s/100r                           |
+|                                   |                                   |                                   |
+|                                   | \[4,5s/(1. 100r) + 4,5s/20r M\]   | \[10s/(1. 100r) + 13s/20r M\]     |
+|                                   |                                   |                                   |
+|                                   | \[6s/100r C\]                     |                                   |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| printNormal                       | 100ms \[100ms M\] \[160ms C\]     | 2s \[3s M\]                       |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| printRecTotal\*                   | 2s \[< 30s M\]                    | 15s \[60s M\]                     |
+|                                   |                                   |                                   |
+| printRecTotalChange \*            |                                   |                                   |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| printRecVoid\*                    | 1s \[< 5s M\]                     | 5s \[20s M\]                      |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| ostatné **printRec…** príkazy\*   | 100ms \[< 2,5s M\] \[< 0,4s C\]   | 2s \[8s M\]                       |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| printXReport                      | 2s \[10s M\] \[3s C\]             | 15s \[60s M\]                     |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| printZReport                      | 3,5s \[10s M\] \[4s C\]           | 15s \[60s M\]                     |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| resetPrinter                      | 1,2s \[2s M\]                     | 10s \[20s M\]                     |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| setFiscalMode                     | 1s                                | 4s                                |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| storeAllBitmaps\*                 | 4s + 0,6s/1kB                     | 12s + 2s/1kB                      |
++-----------------------------------+-----------------------------------+-----------------------------------+
+| ostatné nevymenované príkazy      | <= 100ms                          | 1s                                |
++-----------------------------------+-----------------------------------+-----------------------------------+
+
+..
+    TODO: upraviť časy pre endFiscalReceipt
+
+**Legenda**:
+
+* znak \* za identifikátorom príkazu, znamená, že k danému príkazu je podrobnejšie popísané v ďalšej časti,
+* základný čas je napísaný priamo,
+* v hranatých zátvorkách je uvedený čas pre rôzne typy tlačiarni, pričom:
+
+    * písmeno "M" označuje čas maticové (ihličkové) tlačiarne),
+    * písmeno "C" označuje čas pre tlačiareň Euro-50 (mini EFox),
+
+* písmeno "r" je označenie pre riadok; teda zápis "3s/100r" znamená 3 sekundy na 100 riadkov,
+* označenie "1. 100r" znamená "prvých 100 riadkov", teda "10s/(1. 100r) + 13s/20r" znamená 10 sekúnd na prvých 100 riadkov a 13 sekúnd na každých ďalších 20 riadkov.
+
+..
+    Príkazy vykonávajúce tlač majú rozdielne trvanie pre rôzne typy tlačiarni,
+
+    termo (tepelné) tlačiarne a maticové (ihličkové) tlačiarne,
+    Pre tieto príkazy sú uvedené dva časy, Prvý čas je pre termo (tepelné) tlačiarne a čas v zátvorkách určuje
+    čas pre maticové (ihličkové) tlačiarne,
+
+    Pri niektorých tlačových príkazoch, ktoré majú uvedenú hodnotu času aj v zátvorkách, táto informácia  vyjadruje skutočnosť, že čas príkazu závisí od typu použitej tlačiarne (je to dané aj hodnotou property PrinterVariant). Prvá hodnota znamená čas pre TERMO tlačiareň. Hodnota uvedená v zátvorke doplnená písmenom "M" označuje čas pre maticovú(ihličkovú) tlačiareň. Hodnota uvedená v zátvorke doplnená písmenom "C" označuje čas pre tlačiareň Euro-50 (mini EFox). Ak je v zátvorke (- M), resp. (- C), znamená to, že daný typ tlačiarne tento príkaz nepodporuje.
+
+    V prípadoch, kde je pred hodnotou času uvedený znak "< ", tento znak indikuje, že typický čas pre daný príkaz je závislý od parametra, ktorý bude uvedený v detailnejšom popise daného príkazu pod tabuľkou. V prípade nižších hodnôt tohto parametra bývajú typické časy  vykonania daného príkazu nezriedka aj rádovo nižšie ako je hodnota uvedená za znakom "< ".
+
+    Väčšinou sú typické časy vykonania jednotlivých príkazov kratšie ako hodnoty zobrazené v tabuľke, hoci pred týmito hodnotami nie je zvýraznený znak "< ". Naopak v prípade nastavenia extrémnych podmienok a stavov je za istých okolností možné pri niektorých príkazoch dosiahnuť aj časy dlhšie, ale tie by mali vznikať len vo výnimočných prípadoch, ktoré sa v bežnej praxi prakticky nevyskytujú. Aj z tohto dôvodu je do tabuľky zaradený aj druhý stĺpec, ktorý ohraničuje trvanie príkazu na jeho maximálny možný čas. Informácia o tomto čase dáva aplikácii možnosti zabrániť zbytočne dlhému čakaniu na odpoveď v prípadoch, keď je vysoko pravdepodobné, že by sa danej odpovede už nedočkala.
+
+    * príkazy označené hviezdičkou "\*" sú podrobnejšie popísané v nasledujúcej časti
+
+**endFiscalReceipt a printRec… príkazy**
+
+    Pre fiškálne tlačiarne s maticovou (ihličkovou) tlačiarňou je typický čas vykonania
+    príkazu značne závislý od aktuálneho počtu položiek, ktoré boli do fiškálnej tlačiarne
+    z aplikácie poslané, ale ešte neboli vytlačené do momentu zavolania tohto príkazu.
+
+    Čím viac poslaných nespracovaných položiek v transakcii existuje, tým je dlhší aj
+    čas vykonania tohto príkazu (daný jav sa neprejavuje viditeľne pri okamžitom
+    spracovaní položiek medzi aplikáciou a fiškálnou tlačiarňou, ani pri transakciách
+    s počtom položiek menším ako 30).
+
+**príkaz printDuplicateReceipt**
+
+    Typický čas vykonania tohto príkazu je závislý od počtu riadkov,
+    ktoré sa majú prostredníctvom tohto príkazu vytlačiť.
+
+    Pre termo (tepelné) verzie fiškálnej tlačiarne platí pravidlo,
+    že typický čas vykonania príkazu je cca 3s na každých 100 tlačených riadkov
+    (napr. ak originálny doklad má 330 riadkov potom typický čas vykonania tohto
+    príkazu je: :math:`330 / 100 * 3 = 9,9 s`).
+
+    Pre maticové (ihličkové) verzie fiškálnej tlačiarne platí obdobné pravidlo,
+    ale s inými časmi. Konkrétne je to 4,5s na prvých 100 riadkov + 4,5s na každých ďalších
+    20 riadkov (napr. ak originálny doklad má 330 riadkov potom typický čas vykonania tohto
+    príkazu je: :math:`4,5s + (330 - 100) / 20 * 4,5s = 4,5 + 51,75 = 56,25s`).
+
+**príkaz storeAllBitmaps**
+
+    Pre tento príkaz, typický čas príkazu je závislý od počtu kopírovaných bajtov.
+
+    Pre typický čas príkazu platí vzťah 4s + 0,6s na každých 1000 bajtov, teda ak je
+    potrebných naprogramovať obrázok vo internej pamäti hlavného modulu fiškálnej
+    tlačiarne do internej pamäte tlačiarne, potom počet kopírovaných bajtov je daný
+    vzťahom :ref:`BitmapMemorySize <BitmapMemorySize>` – :ref:`BitmapMemoryFreeSpace <BitmapMemoryFreeSpace>`,
+    ktorý definuje aktuálne zaplnenie pamäťového priestoru v internej pamäti fiškálnej tlačiarne
+    vyhradeného pre grafické logá). 
+
+    Ak je pamäťový priestor obsadený na 98 564 bajtov, potom typický čas vykonania tohto
+    príkazu bude: :math:`4s + 98564/1000*0,6 = 4 + 59,14 = 63,14s`. Pre maximálny čas platí
+    analogický postup podľa vzťahu uvedeného v zodpovedajúcom stĺpci tabuľky.
+
+.. toctree::
+    :maxdepth: 2

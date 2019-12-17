@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Protokol eKasa fiškálnej tlačiarne EFox &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Hľadať" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Protokol eKasa fiškálnej tlačiarne EFox</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="protokol-ekasa-fiskalnej-tlaciarne-efox">
+<h1>Protokol eKasa fiškálnej tlačiarne EFox<a class="headerlink" href="#protokol-ekasa-fiskalnej-tlaciarne-efox" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p>Verzia dokumentu: 2.00.00</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Úvod</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Terminology.html">Terminológia</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Terminology.html#pojmy">Pojmy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Terminology.html#skratky">Skratky</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Terminology.html#konvencie">Konvencie</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="BasicDescription/index.html">Popis protokolu</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="BasicDescription/Overview.html">Prehľad</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="BasicDescription/ProtocolFeatures.html">Črty protokolu</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="BasicDescription/Connection.html">Pripojenie fiškálnej tlačiarne</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="BasicDescription/CommunicationFrame.html">Komunikačný rámec</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="BasicDescription/DataTypes.html">Dátové typy a kódovanie ich hodnôt</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="BasicDescription/DateTime.html">Dátum a čas vo fiškálnej tlačiarni</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ConnectingAndStates/Connection.html">Vytvorenie a ukončenia spojenia</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConnectingAndStates/Connect.html">connect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConnectingAndStates/Disconnect.html">disconnect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConnectingAndStates/AfterConnection.html">Činnosti po vytvorení spojenia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConnectingAndStates/ServicesProviding.html">Poskytovanie služieb</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConnectingAndStates/States.html">Stavy komunikácie</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConnectingAndStates/Timing.html">Časovanie</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConnectingAndStates/PrinterStates.html">Stavy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ConnectingAndStates/Modes.html">Režimy (módy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConnectingAndStates/Commissioning.html">Uvedenie do prevádzky <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ConnectingAndStates/Update/index.html">Aktualizácia firmvéru <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ConnectingAndStates/Update/Introduction.html">Úvod ku aktualizácii firmvéru <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConnectingAndStates/Update/Availability.html">Informovanie aplikácie o dostupnosti aktualizácie <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ConnectingAndStates/Update/Update.html">Postup pre aktualizáciu <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Rules/index.html">Pravidlá</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Rules/Rounding.html">Pravidlá pre zaokrúhlenie</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Rules/VAT.html">Pravidlá pre výpočet DPH</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Rules/ValueCalculations.html">Všeobecne o výpočte hodnôt</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Rules/RegistrationTransaction.html">Princíp registračnej transakcie vo fiškálnej tlačiarni</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Rules/Characteristics.html">Vstavané charakteristiky fiškálnej tlačiarne</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Rules/ServiceMessages.html">Servisné oznamy <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Rules/ServiceMessages_Introduction.html">Úvod ku servisným oznamom <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Rules/ServiceMessages_Events.html">Informovanie aplikácie o požiadavke na servisný zásah</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Rules/ServiceMessages_Confirmation.html">Spôsoby povinného potvrdzovania servisných oznamov</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Rules/ServiceMessages_Perfom.html">Vykonávanie servisných prehliadok <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Printing/index.html">Tlač vo fiškálnej tlačiarni</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Printing/Principles.html">Princíp tlače vo fiškálnej tlačiarni</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Printing/Formatting.html">Formátovanie textového výstupu</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Printing/ReceiptFormatProfiles.html">Formátovacie profily fiškálnych dokumentov</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Printing/PrintFormattingSettings.html">Nastavenia formátu tlače <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Printing/Summary.html">Zhrnutie formátovania tlače</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Printing/Example.html">Príklady fiškálnych dokladov</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Values/index.html">Konštanty a premenné</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Values/Exceptions/index.html">Návratové hodnoty</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Values/Exceptions/Categorisation.html">Kategorizácia návratových hodnôt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Exceptions/InvalidCommands.html">Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Exceptions/ResolvableErrors.html">Popis odstrániteľných chýb fiškálnej tlačiarne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Exceptions/InternalErrors.html">Interné chyby fiškálnej tlačiarne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Exceptions/ExceptionValues.html">Zoznam návratových hodnôt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Values/Properties/index.html">Vlastností (properties) fiškálnej tlačiarne</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/AutomaticDrawerOpening.html">AutomaticDrawerOpening</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/BitmapMemoryFreeSpace.html">BitmapMemoryFreeSpace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/BitmapMemorySize.html">BitmapMemorySize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/BitmapWidth.html">BitmapWidth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/BJCleared.html">BJCleared <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/BJFreeSpace.html">BJFreeSpace <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/BJRead.html">BJRead <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/BJSize.html">BJSize <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/BuildDateTime.html">BuildDateTime <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ChangeDue.html">ChangeDue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ChangeType.html">ChangeType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/CoverOpen.html">CoverOpen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/CurrSymbol.html">CurrSymbol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/CurrSymbolPosition.html">CurrSymbolPosition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/DayOpened.html">DayOpened</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/DIC.html">DIC <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/DisplayColumns.html">DisplayColumns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/DisplayRows.html">DisplayRows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/DrawerOpened.html">DrawerOpened</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ErrorExtension.html">ErrorExtension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ErrorString.html">ErrorString</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/FirmwareVersion.html">FirmwareVersion <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/FiscalReceiptType.html">FiscalReceiptType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/FiscalState.html">FiscalState</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/FontALineLength.html">FontALineLength</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/FontBLineLength.html">FontBLineLength</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/FormatProfile.html">FormatProfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/FPFirmwareVersion.html">FPFirmwareVersion <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/HeaderBitmap.html">HeaderBitmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ICDPH.html">ICDPH <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ICMFirmwareVersion.html">ICMFirmwareVersion <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ICO.html">ICO <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ManufacturerName.html">ManufacturerName</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/MediumCoverOpened.html">MediumCoverOpened</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/NumHeaderLines.html">NumHeaderLines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/NumPayments.html">NumPayments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/NumTrailerLines.html">NumTrailerLines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/NumVatRates.html">NumVatRates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/PaymentsRegistration.html">PaymentsRegistration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/PrinterState.html">PrinterState <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/PrinterVariant.html">PrinterVariant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ProductModelDescription.html">ProductModelDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ProtocolVersion.html">ProtocolVersion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/RecEmpty.html">RecEmpty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/RecNearEnd.html">RecNearEnd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/RemainingFiscalMemory.html">RemainingFiscalMemory <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/SerialNumber.html">SerialNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/SignalLevel.html">SignalLevel <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/SSID.html">SSID <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/TJCleared.html">TJCleared <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/TJFreeSpace.html">TJFreeSpace <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/TJRead.html">TJRead <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/TJSize.html">TJSize <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/TrailerBitmap.html">TrailerBitmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/TrainingModeActive.html">TrainingModeActive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/TransactionIDPrinting.html">TransactionIDPrinting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/UniqueNum.html">UniqueNum <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/VatIncluded.html">VatIncluded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/VatSummaryPrinting.html">VatSummaryPrinting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Properties/ZReportObligation.html">ZReportObligation <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Values/Accumulators/index.html">Akumulátory fiškálnej tlačiarne</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Values/Accumulators/Totals.html">Sumárne hodnoty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Values/Accumulators/Counters.html">Počítadlá <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Commands/index.html">Príkazy fiškálnej tlačiarne</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Commands/affirmInspectionRequest.html">affirmInspectionRequest</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/beginFiscalReceipt.html">beginFiscalReceipt</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/beginNonFiscal.html">beginNonFiscal</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/beginTraining.html">beginTraining</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/cancelRest.html">cancelRest <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/clearDisplay.html">clearDisplay</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/clearJournal.html">clearJournal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/closeJournalSegment.html">closeJournalSegment <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/confirmJournalStorageContent.html">confirmJournalStorageContent <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/cutPaper.html">cutPaper</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/deferFirmwareUpdateRequest.html">deferFirmwareUpdateRequest <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/displayTextAt.html">displayTextAt</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/endFiscalReceipt.html">endFiscalReceipt</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/endNonFiscal.html">endNonFiscal</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/endTraining.html">endTraining</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/exportJournal.html">exportJournal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getBusinessDayJournalInfo.html">getBusinessDayJournalInfo <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getCounter.html">getCounter</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getData.html">getData <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getDate.html">getDate</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getDocumentJournalInfo.html">getDocumentJournalInfo <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getFirmwareUpdateRequest.html">getFirmwareUpdateRequest <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getFMTableHeader.html">getFMTableHeader <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getFMTableRecord.html">getFMTableRecord <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getFontAttribute.html">getFontAttribute</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getHeaderLine.html">getHeaderLine</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getInspectionRequest.html">getInspectionRequest</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getJournalBackupInfo.html">getJournalBackupInfo <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getJournalLine.html">getJournalLine <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getJournalSegmentLine.html">getJournalSegmentLine <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getJournalStorageInfo.html">getJournalStorageInfo <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getNextLogRecord.html">getNextLogRecord <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getProperty.html">getProperty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getTotalizer.html">getTotalizer</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getTrailerLine.html">getTrailerLine</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getTransactionStatus.html">getTransactionStatus</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/getVatEntry.html">getVatEntry</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/obtainProgress.html">obtainProgress <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/openDrawer.html">openDrawer</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/openJournalSegment.html">openJournalSegment <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printBarCode.html">printBarCode</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printDuplicateReceipt.html">printDuplicateReceipt</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printJournalContent.html">printJournalContent <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printNormal.html">printNormal</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecCash.html">printRecCash</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecItem.html">printRecItem <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecItemAdjustment.html">printRecItemAdjustment <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecItemAdjustmentVoid.html">printRecItemAdjustmentVoid <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecItemRefund.html">printRecItemRefund <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecItemRefundVoid.html">printRecItemRefundVoid <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecItemVoid.html">printRecItemVoid <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecMessage.html">printRecMessage</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecPackageAdjustment.html">printRecPackageAdjustment</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecPackageAdjustVoid.html">printRecPackageAdjustVoid</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecSubtotal.html">printRecSubtotal</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecTotal.html">printRecTotal</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecTotalChange.html">printRecTotalChange</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printRecVoid.html">printRecVoid</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printReport.html">printReport <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printXReport.html">printXReport</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/printZReport.html">printZReport</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/resetInspectionRequest.html">resetInspectionRequest</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/resetPrinter.html">resetPrinter</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/retrieveRecBoundary.html">retrieveRecBoundary <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setBitmap.html">setBitmap</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setCustomer.html">setCustomer <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setDate.html">setDate</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setFiscalMode.html">setFiscalMode <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setFontAttribute.html">setFontAttribute</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setHeaderLines.html">setHeaderLines</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setParagon.html">setParagon <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setPaymentType.html">setPaymentType <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setPOSID.html">setPOSID</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setProperty.html">setProperty</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setStoreFiscalID.html">setStoreFiscalID</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setTrailerLines.html">setTrailerLines</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setUnique.html">setUnique <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/setVatTable.html">setVatTable <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/soundImmediate.html">soundImmediate</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/storeAllBitmaps.html">storeAllBitmaps</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Commands/updateFirmware.html">updateFirmware <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ProblemSolving/index.html">Riešenie chybových stavov</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ProblemSolving/IncorrectCommand.html">Chyby v dôsledku poslania nesprávneho príkazu, alebo nesprávnych parametrov</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ProblemSolving/FiscalPrinterRecovery.html">Zotavenie fiškálnej tlačiarne</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ProblemSolving/RecoverableProblems.html">Odstrániteľné chyby fiškálnej tlačiarne</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ProblemSolving/InternalErrors.html">Interné chyby fiškálnej tlačiarne</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix/index.html">Prílohy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Appendix/PrinterType.html">Zoznam použitých tlačiarní</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix/ResponseTime.html">Typický a maximálny čas trvania vykonávania príkazov</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+_`connect`
+----------
+
+**Formát príkazu**:
+
+  ========= =================== ============== =====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== =====================
+  Cmd ID    CONNECT             \-             identifikátor príkazu
+  Req/Rsp   REQ                 \-             požiadavka
+  ========= =================== ============== =====================
+
+**Formát odpovede**:
+
+  ========= =================== ============== =====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== =====================
+  Cmd ID    CONNECT             \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== =====================
+
+**Návratové hodnoty**:
+
+  ================================================ =======================================
+  Chyba                                            Popis
+  ================================================ =======================================
+  :ref:`EFP_OK <EFP_OK>`                           Spojenie bolo vytvorené
+  :ref:`E_OFFLINE <E_OFFLINE>`                     FP je v režime ``OffLine``
+  :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>` Nie je možné vytvoriť spojenie medzi fiškálnou tlačiarňou a aplikáciou (už bolo vytvorené)
+  ================================================ =======================================
+
+**Popis príkazu**:
+
+  Vytvorí logické spojenie medzi aplikáciou a zariadením. Po úspešnom
+  vytvorení spojenia so zariadením začne zariadenie prijímať požiadavky
+  na poskytované služby.
+
+  Ak spojenie už bolo vytvorené, potom príkaz odpovie chybou a spojenie bude ukončené.
+
+  Otvorenie môže byť úspešné len ak existuje transportné spojenie medzi
+  aplikáciou a zariadením.
+
+**Účinky príkazu**:
+
+  * :ref:`VatIncluded <VatIncluded>` = ``1``,
+  * :ref:`HeaderBitmap <HeaderBitmap>` = ``0``,
+  * :ref:`TrailerBitmap <TrailerBitmap>` = ``0``,
+  * :ref:`FormatProfile <FormatProfile>` = :ref:`FP_FP_OPTIMIZED <FP_FP_OPTIMIZED>`
+  * :ref:`POSID <sPI_POSID>` = ``""``
+  * :ref:`cashierID <sPI_cashierID>` = ``""``
+  * :ref:`fontAttribute <sFA_fontAttribute>` = :ref:`FP_FA_DEFAULT <FP_FA_DEFAULT>` pre všetky skupiny (:ref:`group <sFA_group>` a :ref:`optArg <sFA_optArg>`)
+
+**Príklad**:
+
+* Správa požiadavky v C zápise textového reťazca
+
+.. code-block:: text
+    :linenos:
+
+    CONNECT\t\REQ\n
+
+* Správa úspešnej a neúspešnej odpovede v C zápise textového reťazca
+
+.. code-block:: text
+    :linenos:
+
+    CONNECT\t\RSP\0\n
+    CONNECT\t\RSP\108\n
+    CONNECT\t\RSP\301\n
+
+.. toctree::
+    :maxdepth: 3

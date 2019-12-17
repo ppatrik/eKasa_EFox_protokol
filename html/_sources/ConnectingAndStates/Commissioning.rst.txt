@@ -1,0 +1,26 @@
+_`Uvedenie do prevádzky` ``[_new_]``
+====================================
+
+..
+    TODO: asi budú potrebné úpravy pre inicializáciu po novom; TBD
+
+
+Na to, aby sa fiškálna tlačiareň dostala do režimu :ref:`Fiscal <Fiscal>`), je potrebné aby
+
+* boli naprogramované identifikačné a autentifikačné údaje,
+* bol nastavený korektný dátum a čas,
+* zariadenie malo naprogramované sériové číslo.
+
+Ak sú splnené spomenuté predpoklady, potom aplikácia zavolá príkaz :ref:`setFiscalMode <setFiscalMode>`,
+ktorým uvedie fiškálnu tlačiareň do prevádzky, teda zmení režim z :ref:`PreFiscal <PreFiscal>`
+na :ref:`Fiscal <Fiscal>`.
+
+Alternatívne je možné uvedenie do prevádzky vykonať aj v :ref:`Offline <Offline>` režime za použitia
+displeja a klávesnice na fiškálnej tlačiarni.
+
+.. note::
+    Naprogramovanie identifikačných a autentifikačných údajov neprebieha cez komunikačný protokol,
+    ale pomocou programovanie cez web-server a preto nie je popísané v tomto komunikačnom protokole.
+
+.. warning::
+    Za správnosť naprogramovaných údajov je zodpovedný majiteľ fiškálnej tlačiarne.

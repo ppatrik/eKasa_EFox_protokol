@@ -1,0 +1,16 @@
+_`FPFirmwareVersion` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **FPFirmwareVersion**
+typ                      STRING
+prednastavená hodnota    \-
+prístup                  read-only
+======================== =======================================
+
+**Popis**:
+
+  Obsahuje verziu firmvéru :term:`FP`.
+
+.. toctree::
+    :maxdepth: 3

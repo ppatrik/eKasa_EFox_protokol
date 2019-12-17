@@ -1,0 +1,58 @@
+_`setPaymentType` ``[_new_]``
+-----------------------------
+
+**Formát príkazu**:
+
+  ======== ================================================== =============== ====================
+  Pole     Hodnota                                            Dátový typ      Popis
+  ======== ================================================== =============== ====================
+  Cmd ID   sPT                                                \-              identifikátor príkazu
+  Req/Rsp  REQ                                                \-              požiadavka
+  Param1   :ref:`paymentID <sPT_paymentID>`                   **INT32**       identifikátor typu platby
+  Param2   :ref:`paymentName <sPT_paymentName>`               **STRING[30]**  názov typu platby
+  ======== ================================================== =============== ====================
+
+  .. _sPT_paymentID:
+
+**Parameter paymentID**:
+
+  Identifikátor typu platby.
+
+    * Môže nadobúdať hodnoty z rozsahu <1, :ref:`NumPayments <NumPayments>`>.
+
+  .. _sPT_paymentName:
+
+**Parameter paymentName**:
+
+  Názov typu platby.
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    sPT                 \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ======================================================= =======================================
+  Chyba                                                   Popis
+  ======================================================= =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`                            Parameter :ref:`paymentID <sPT_paymentID>` nie je z množiny dovolených hodnôt.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+  ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Nastaví typ platby a jej identifikátor. Tento identifikátor je možné použiť:
+
+    * v parametri :ref:`description <pRT_description>` príkazu :ref:`printRecTotal <printRecTotal>`
+    * v parametri :ref:`description <pRTC_description>` príkazu :ref:`printRecTotalChange <printRecTotalChange>`
+    * v parametri :ref:`paymentID <pRC_paymentID>` príkazu :ref:`printRecCash <printRecCash>`, ak :ref:`PaymentsRegistration <PaymentsRegistration>` = ``TRUE``
+
+.. toctree::
+    :maxdepth: 2

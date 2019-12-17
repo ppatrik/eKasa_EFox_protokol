@@ -1,0 +1,10 @@
+Servisné oznamy ``[_new_]``
+---------------------------
+
+.. toctree::
+    :maxdepth: 3
+
+    ServiceMessages_Introduction
+    ServiceMessages_Events
+    ServiceMessages_Confirmation
+    ServiceMessages_Perfom

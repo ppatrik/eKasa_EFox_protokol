@@ -1,0 +1,39 @@
+_`FormatProfile`
+^^^^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **FormatProfile**
+typ                      INT32
+prednastavená hodnota    ``3`` (:ref:`FP_FP_OPTIMIZED <FP_FP_OPTIMIZED>`)
+prístup                  read-write
+======================== =======================================
+
+**Popis**:
+
+  Obsahuje typ formátovacieho profilu fiškálnej účtenky otvorenej príkazom :ref:`beginFiscalReceipt <beginFiscalReceipt>`.
+
+  Možné hodnoty tejto property sú:
+
+  ========= ====================== ===================
+  Hodnota   Alias                  Popis
+  ========= ====================== ===================
+  ``1``     _`FP_FP_COMPRESSED`    zhustený profil
+  ``2``     _`FP_FP_EXPANDED`      rozšírený profil
+  ``3``     _`FP_FP_OPTIMIZED`     optimalizovaný profil
+  ``4``     _`FP_FP_REDUCED`       redukovaný profil (nevypisuje jednotkovú cenu)
+  ========= ====================== ===================
+
+**Návratové hodnoty**:
+
+  ====================================================== =======================================
+  Chyba                                                  Popis
+  ====================================================== =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`                           Nastavovaný parameter nie je z množiny dovolených hodnôt.
+  ====================================================== =======================================
+
+**Upozornenie**:
+
+  Po každej strate spojenia medzi FP a aplikáciou a tiež po zavolaní príkazu :ref:`resetPrinter <resetPrinter>` sa property nastaví na svoju prednastavenú hodnotu.
+
+.. toctree::
+    :maxdepth: 3

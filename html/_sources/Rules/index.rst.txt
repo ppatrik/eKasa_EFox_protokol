@@ -1,0 +1,16 @@
+Pravidlá
+========
+
+V tejto kapitole sú popísané  všeobecné pravidlá rôznych výpočtov použitých pri vykonávaní príkazov.
+Pravidlá, ktoré sa týkajú konkrétneho príkazu resp. vlastnosti (property), budú popísané pri popisoch
+konkrétneho príkazu resp. vlastnosti.
+
+.. toctree::
+    :maxdepth: 2
+
+    Rounding
+    VAT
+    ValueCalculations
+    RegistrationTransaction
+    Characteristics
+    ServiceMessages

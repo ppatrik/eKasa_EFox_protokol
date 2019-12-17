@@ -1,0 +1,16 @@
+_`SignalLevel` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **SignalLevel**
+typ                      INT32
+prednastavená hodnota    ``0``
+prístup                  read-only
+======================== =======================================
+
+**Popis**:
+
+  Obsahuje úroveň signálu pripojenej WiFi siete (``0`` - ``100`` %).
+
+.. toctree::
+    :maxdepth: 3

@@ -1,0 +1,167 @@
+_`Počítadlá` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Počítadlá operácií v nákupe**:
+
+    V nasledujúcej tabuľke sú uvedené všetky počítadlá fiškálnej tlačiarne
+    pre fiškálnu účtenku a pre obchodný deň spolu s ich vysvetlením.
+
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecDiscountCount`,             | počet zliav uplatnených na individuálne                |
+    |                                  |                                                        |
+    | _`DayDiscountCount`              | položky príkazom |printRecItemAdjustment|              |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecDiscountVoidCount`,         | počet storien zliav uplatnených na individuálne        |
+    |                                  |                                                        |
+    | _`DayDiscountVoidCount`          | položky príkazom |printRecItemAdjustmentVoid|          |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecItemCount`\[*i*\],          | počet predaných položiek                               |
+    |                                  |                                                        |
+    | _`DayItemCount`\[*i*\]           | príkazom |printRecItem|                                |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecItemVoidCount`\[*i*\],      | počet stornovaných položiek                            |
+    |                                  |                                                        |
+    | _`DayItemVoidCount`\[*i*\]       | príkazom |printRecItemVoid|                            |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecRefundCount`\[*i*\],        | počet refundovaných položiek                           |
+    |                                  |                                                        |
+    | _`DayRefundCount`\[*i*\]         | príkazom |printRecItemRefund|                          |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecRefundVoidCount`\[*i*\],    | počet storien refundovaných položiek                   |
+    |                                  |                                                        |
+    | _`DayRefundVoidCount`\[*i*\]     | príkazom |printRecItemRefundVoid|                      |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecSubtotalDiscountCount`,     | počet zliav uplatnených na skupinu položiek            |
+    |                                  |                                                        |
+    | _`DaySubtotalDiscountCount`      | príkazom |printRecPackageAdjustment|                   |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecSubtotalDiscountVoidCount`, | počet storien zliav uplatnených na skupinu             |
+    |                                  |                                                        |
+    | _`DaySubtotalDiscountVoidCount`  | položiek príkazom |printRecPackageAdjustVoid|          |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecSubtotalSurchargeCount`,    | počet prirážok uplatnených na skupinu položiek         |
+    |                                  |                                                        |
+    | _`DaySubtotalSurchargeCount`     | príkazom |printRecPackageAdjustment|                   |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecSubtotalSurchargeVoidCount`,| počet storien prirážok uplatnených na skupinu          |
+    |                                  |                                                        |
+    | _`DaySubtotalSurchargeVoidCount` | položiek príkazom |printRecPackageAdjustVoid|          |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecSurchargeCount`,            | počet prirážok uplatnených na individuálne položky     |
+    |                                  |                                                        |
+    | _`DaySurchargeCount`             | príkazom |printRecItemAdjustment|                      |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecSurchargeVoidCount`,        | počet storien prirážok uplatnených na individuálne     |
+    |                                  |                                                        |
+    | _`DaySurchargeVoidCount`         | položky príkazom |printRecItemAdjustmentVoid|          |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecCommentCount`,              | počet popisných textov v nákupe poslaných              |
+    |                                  |                                                        |
+    | _`DayCommentCount`               | príkazom |printRecMessage|                             |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecSubtotalCount`,             | počet vytlačení hodnoty medzisúčet                     |
+    |                                  |                                                        |
+    | _`DaySubtotalCount`              | príkazom |printRecSubtotal|                            |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecPaymentCount`,              | počet platieb vykonaných                               |
+    |                                  |                                                        |
+    | _`DayPaymentCount`               | príkazom |printRecTotal|                               |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecInvoiceCount`,              | počet uhradených faktúr                                |
+    |                                  |                                                        |
+    | _`DayInvoiceCount`               | príkazom |printRecItem|                                |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecInvoiceVoidCount`,          | počet stornovaných uhradených faktúr                   |
+    |                                  |                                                        |
+    | _`DayInvoiceVoidCount`           | príkazom |printRecItemVoid|                            |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecInvoiceRefundCount`,        | počet refundovaných resp. vrátených uhradených         |
+    |                                  |                                                        |
+    | _`DayInvoiceRefundCount`         | faktúr príkazom |printRecItemRefund|                   |
+    +----------------------------------+--------------------------------------------------------+
+    | _`RecInvoiceRefundVoidCount`,    | počet storien refundovaných resp. vrátených            |
+    |                                  |                                                        |
+    | _`DayInvoiceRefundVoidCount`     | uhradených faktúr príkazom |printRecItemRefundVoid|    |
+    +----------------------------------+--------------------------------------------------------+
+
+    Počítadlá, ktoré majú v tabuľke označenie "\[*i*\]" sú evidované ako sumárne (suma pre všetky
+    daňové skupiny), tak aj pre jednotlivé daňové skupiny samostatne.
+
+    V prípade odkazovania sa na počítadlo pre konkrétnu daňovú skupinu (v texte tohto dokumentu)
+    sa vybrané počítadlo označí ešte indexom daňovej skupiny. 
+    
+    **Napríklad**:
+
+        :ref:`DayRefundCount\[3\] <DayRefundCount>` označuje počet refundovaných položiek pre
+        3. daňovú skupinu v aktuálnom dni :ref:`DayRefundCount\[0\] <DayRefundCount>`, alebo
+        :ref:`DayRefundCount <DayRefundCount>` (bez indexu) označuje celkový počet
+        refundovaných položiek v aktuálnom dni.
+
+    Zároveň platí, že:
+
+        :math:`DayRefundCount[0] = \displaystyle\sum_{i=1}^{NumVatRates} DayRefundCount[i]`
+
+    Všetky hore vymenované počítadlá a ich súvis s daňovými skupinami je viac zrejmý z popisu
+    príkazu :ref:`getCounter <getCounter>`, ktorým je zároveň možné požiadať fiškálnu tlačiareň
+    o vrátenie jedného z vyššie vymenovaných počítadiel.
+
+**Ostatné počítadlá**:
+
+    ======================= =========================================================
+    _`CashInCount`          počet vkladov v aktuálnom dni
+    _`CashOutCount`         počet výberov v aktuálnom dni
+    _`NonfiscalRecCount`    počet nefiškálnych účteniek v aktuálnom dni
+    _`FiscalRecCount`       počet fiškálnych účteniek v aktuálnom dni
+    _`FiscalRecVoidCount`   počet stornovaných fiškálnych účteniek v aktuálnom dni
+    _`TrainingCount`        počet tréningových účteniek v aktuálnom dni
+    _`TrainingVoidCount`    počet stornovaných tréningových účteniek v aktuálnom dni
+    _`SimpInvoiceCount`     počet účteniek úhrad alebo vrátení faktúr v aktuálnom dni
+    _`TransPaymentCount`    počet platieb v aktuálnej transakcii
+    _`PaymentCount`         počet platieb v aktuálnom dni
+    _`TransChangeCount`     počet výdavkov v aktuálnej transakcii
+    _`ChangeCount`          počet výdavkov v aktuálnom dni
+    ======================= =========================================================
+
+    Vyššie zmienené počítadlá je prečítať pomocou príkazu :ref:`getData <getData>`.
+
+**Počítadlá týkajúce sa platieb**:
+
+    Nasleduje zoznam dvojíc počítadiel (pre transakciu, obchodný deň, vklad a výber v aktuálnom
+    obchodnom dni) týkajúcich sa jednotlivých typov platieb, ktorých reálne využitie je možné
+    len v prípade, ak :ref:`PaymentsRegistration <PaymentsRegistration>` = ``TRUE``.
+
+    ======================== =========================================================
+    TransPaymentCount\[*i*\] počet platieb v transakcii pre typ platby "*i*"
+    TransChangeCount\[*i*\]  počet výdavkov v transakcii pre typ platby "*i*"
+    PaymentCount\[*i*\]      počet platieb počas dňa pre typ platby "*i*"
+    ChangeCount\[*i*\]       počet výdavkov počas dňa pre typ platby "*i*"
+    CashInCount\[*i*\]       počet vkladov pre typ platby "*i*"
+    CashOutCount\[*i*\]      počet výberov pre typ platby "*i*"
+    ======================== =========================================================
+
+    Pričom index *i* je v rozsahu 1 až :ref:`NumPayments <NumPayments>`.
+
+.. |printRecItemAdjustment| replace:: :ref:`printRecItemAdjustment <printRecItemAdjustment>`
+
+.. |printRecItemAdjustmentVoid| replace:: :ref:`printRecItemAdjustmentVoid <printRecItemAdjustmentVoid>`
+
+.. |printRecItem| replace:: :ref:`printRecItem <printRecItem>`
+
+.. |printRecItemVoid| replace:: :ref:`printRecItemVoid <printRecItemVoid>`
+
+.. |printRecItemRefund| replace:: :ref:`printRecItemRefund <printRecItemRefund>`
+
+.. |printRecItemRefundVoid| replace:: :ref:`printRecItemRefundVoid <printRecItemRefundVoid>`
+
+.. |printRecPackageAdjustment| replace:: :ref:`printRecPackageAdjustment <printRecPackageAdjustment>`
+
+.. |printRecPackageAdjustVoid| replace:: :ref:`printRecPackageAdjustVoid <printRecPackageAdjustVoid>`
+
+.. |printRecMessage| replace:: :ref:`printRecMessage <printRecMessage>`
+
+.. |printRecTotal| replace:: :ref:`printRecTotal <printRecTotal>`
+
+.. |printRecSubtotal| replace:: :ref:`printRecSubtotal <printRecSubtotal>`
+
+.. toctree::
+    :maxdepth: 3

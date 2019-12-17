@@ -1,0 +1,58 @@
+_`endNonFiscal`
+---------------
+
+**Formát príkazu**:
+
+  ======== ==================================================== =============== ====================
+  Pole     Hodnota                                              Dátový typ      Popis
+  ======== ==================================================== =============== ====================
+  Cmd ID   eNF                                                  \-              identifikátor príkazu
+  Req/Rsp  REQ                                                  \-              požiadavka
+  Param1   :ref:`separation <eNF_separation>`                   **BOOLEAN**     určuje oddelenie aktuálneho dokladu od nasledujúceho dokladu
+  ======== ==================================================== =============== ====================
+
+  .. _eNF_separation:
+
+**Parameter separation**:
+
+  * Ak je parameter :ref:`separation <eNF_separation>` = ``TRUE``, potom tlačiareň po dotlačení aktuálneho nefiškálneho vysunie papier tak, aby sa dal odtrhnúť a v prípade prítomnosti strihača pásky aj odstrihnúť.
+  * Ak je parameter :ref:`separation <eNF_separation>` = ``FALSE``, potom tlačiareň po dotlačení aktuálneho nefiškálneho dokladu nestrihne ani nevysunie papier a nasledujúci fiškálny alebo nefiškálny doklad bude nasledovať tesne za práve ukončeným dokladom.
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    eNF                 \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ====================================================== =======================================
+  Chyba                                                  Popis
+  ====================================================== =======================================
+  :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                   V tlačiarni chýba papier.
+  :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                 Kryt tlačiarne je otvorený.
+  :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`               Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.
+  :ref:`EFP_CUTTER <EFP_CUTTER>`                         Strihač papiera je v zlom stave.
+  :ref:`EFP_CUTTER_WARNING <EFP_CUTTER_WARNING>`         Strihač papiera je v zlom stave, ale účtenka bola kompletne vytlačená.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`     Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`     Tlačiareň je odpojená.
+  :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>` Pri práci s tlačiarňou vznikla interná chyba.
+  ====================================================== =======================================
+
+**Popis príkazu**:
+
+  Príkaz ukončí a uzavrie tlač bloku nefiškálnych údajov na fiškálnej tlačiarni.
+
+  Po úspešnom vykonaní príkazu je FP v stave :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+
+**Účinky príkazu**:
+
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`
+  * :ref:`NonfiscalRecCount <NonfiscalRecCount>` = :ref:`NonfiscalRecCount <NonfiscalRecCount>` + ``1``
+
+.. toctree::
+    :maxdepth: 2

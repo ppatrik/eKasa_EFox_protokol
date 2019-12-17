@@ -1,0 +1,18 @@
+_`CurrSymbol`
+^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **CurrSymbol**
+typ                      STRING\[3\]
+prednastavená hodnota    ``"EUR"``
+prístup                  read-write
+======================== =======================================
+
+**Popis**:
+
+  Obsahuje skratku alebo symbol používanej meny. Hodnotu je možné nastaviť len po vykonaní dennej uzávierky.
+
+  V prípade pokusu o nastavenie hodnoty pred vykonaním dennej uzávierky bude vrátená chyba :ref:`EFP_DAY_END_REQUIRED <EFP_DAY_END_REQUIRED>`.
+
+.. toctree::
+    :maxdepth: 3

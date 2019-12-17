@@ -1,0 +1,55 @@
+_`clearDisplay`
+---------------
+
+**Formát príkazu**:
+
+  ======== ==================================================== =============== ====================
+  Pole     Hodnota                                              Dátový typ      Popis
+  ======== ==================================================== =============== ====================
+  Cmd ID   cD                                                   \-              identifikátor príkazu
+  Req/Rsp  REQ                                                  \-              požiadavka
+  Param1   :ref:`row <cD_row>`                                  **INT32**       definuje ktorý riadok displeja sa má zmazať
+  ======== ==================================================== =============== ====================
+
+  .. _cD_row:
+
+**Parameter row**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  ======== ======================= ===============================================
+  Hodnota  Alias                   Popis
+  ======== ======================= ===============================================
+  ``0``    _`FP_CD_ALL`            všetky riadky
+  ``1``    _`FP_CD_FIRST`          1. riadok
+  ``2``    _`FP_CD_SECOND`         2. riadok
+  ======== ======================= ===============================================
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    cD                  \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ====================================================== =======================================
+  Chyba                                                  Popis
+  ====================================================== =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`                           Parameter :ref:`row <cD_row>` nie je z množiny dovolených hodnôt.
+  :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`               Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`     Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`     Tlačiareň je odpojená.
+  :ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>` Pri práci s displejom vznikla interná chyba.
+  ====================================================== =======================================
+
+**Popis príkazu**:
+
+  Príkaz zmaže informácie zobrazené na displeji.
+
+.. toctree::
+    :maxdepth: 2

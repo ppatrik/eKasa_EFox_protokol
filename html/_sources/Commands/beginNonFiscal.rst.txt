@@ -1,0 +1,52 @@
+_`beginNonFiscal`
+-----------------
+
+**Formát príkazu**:
+
+  ======== ==================== =============== ====================
+  Pole     Hodnota              Dátový typ      Popis
+  ======== ==================== =============== ====================
+  Cmd ID   bNF                  \-              identifikátor príkazu
+  Req/Rsp  REQ                  \-              požiadavka
+  ======== ==================== =============== ====================
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    bNF                 \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ====================================================== =======================================
+  Chyba                                                  Popis
+  ====================================================== =======================================
+  :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`       Nie je možné začať tlač dokladu z dôvodu požiadavky na servisný zásah.
+  :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`               Aktuálny stav FP nedovoľuje vykonanie tohto príkazu alebo je FP v tréningovom režime.
+  :ref:`EFP_INSPECTION_REQUEST <EFP_INSPECTION_REQUEST>` Je potrebné potvrdiť aktivovanú požiadavku na servisný zásah alebo servisný zásah priamo vykonať.
+  :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                 Kryt tlačiarne je otvorený.
+  :ref:`EFP_CUTTER <EFP_CUTTER>`                         Strihač papiera je v zlom stave.
+  :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                   V tlačiarni chýba papier.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`     Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`     Tlačiareň je odpojená.
+  :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>` Pri práci s tlačiarňou vznikla interná chyba.
+  :ref:`EFP_FW_UPDATE_REQUEST <EFP_FW_UPDATE_REQUEST>`   Je potrebné vykonať aktualizáciu softvéru, alebo ju odložiť
+  ====================================================== =======================================
+
+**Popis príkazu**:
+
+  * Príkaz odštartuje tlač bloku nefiškálnych údajov na FP, ktorá je následne vykonávaná príkazmi :ref:`printNormal <printNormal>` prípadne :ref:`printBarCode <printBarCode>`.
+  * Príkaz je možné vyvolať len ak je FP v stave :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`, pričom FP nesmie byť prepnutý do tréningového režimu.
+  * Po úspešnom vykonaní príkazu sa FP nachádza v stave :ref:`FP_PS_NONFISCAL <FP_PS_NONFISCAL>`.
+  * Ukončenie nefiškálnej tlače je potrebné vykonať príkazom :ref:`endNonFiscal <endNonFiscal>`.
+
+**Účinky príkazu**:
+
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_NONFISCAL <FP_PS_NONFISCAL>`
+
+.. toctree::
+    :maxdepth: 2

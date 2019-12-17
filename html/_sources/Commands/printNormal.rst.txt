@@ -1,0 +1,52 @@
+_`printNormal`
+--------------
+
+**Formát príkazu**:
+
+  ======== ================================================== =============== ====================
+  Pole     Hodnota                                            Dátový typ      Popis
+  ======== ================================================== =============== ====================
+  Cmd ID   pN                                                 \-              identifikátor príkazu
+  Req/Rsp  REQ                                                \-              požiadavka
+  Param1   :ref:`data <pN_data>`                              **STRING**      riadok textu, ktorý bude vytlačený na tlačiarni
+  ======== ================================================== =============== ====================
+
+  .. _pN_data:
+
+**Parameter data**:
+
+  Reťazec znakov predstavujúci riadok textu, ktorý bude vytlačený na tlačiarni.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`).
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    pDR                 \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ======================================================= =======================================
+  Chyba                                                   Popis
+  ======================================================= =======================================
+  :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.
+  :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                    V tlačiarni chýba papier.
+  :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                  Kryt tlačiarne je otvorený.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+  :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`  Pri práci s tlačiarňou vznikla interná chyba.
+  ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz vykoná tlač nefiškálneho textu definovaného v parametri :ref:`data <pN_data>`.
+
+  Znaky, ktoré sa nezmestia do jedného riadku budú ignorované.
+
+.. toctree::
+    :maxdepth: 2

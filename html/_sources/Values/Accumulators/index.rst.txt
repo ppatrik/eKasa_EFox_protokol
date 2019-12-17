@@ -1,0 +1,13 @@
+_`Akumulátory fiškálnej tlačiarne`
+----------------------------------
+
+Fiškálna jednotka udržiava sadu akumulátorov, ktoré sú zo svojej povahy rozdelené
+na sadu počítadiel a sadu sumárov. Zmena hodnôt sa realizuje na základe poslania
+konkrétnych príkazov do fiškálnej tlačiarne tak, aby vyhovovala predpísaným
+registračným pravidlám.
+
+.. toctree::
+    :maxdepth: 3
+
+    Totals
+    Counters

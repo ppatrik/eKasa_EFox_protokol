@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FormatProfile &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Hľadať" href="../../search.html" />
+    <link rel="next" title="FPFirmwareVersion [_new_]" href="FPFirmwareVersion.html" />
+    <link rel="prev" title="FontBLineLength" href="FontBLineLength.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Konštanty a premenné</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Exceptions/index.html">Návratové hodnoty</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Vlastností (properties) fiškálnej tlačiarne</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="AutomaticDrawerOpening.html">AutomaticDrawerOpening</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BitmapMemoryFreeSpace.html">BitmapMemoryFreeSpace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BitmapMemorySize.html">BitmapMemorySize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BitmapWidth.html">BitmapWidth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BJCleared.html">BJCleared <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="BJFreeSpace.html">BJFreeSpace <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="BJRead.html">BJRead <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="BJSize.html">BJSize <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="BuildDateTime.html">BuildDateTime <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ChangeDue.html">ChangeDue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ChangeType.html">ChangeType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CoverOpen.html">CoverOpen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CurrSymbol.html">CurrSymbol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CurrSymbolPosition.html">CurrSymbolPosition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DayOpened.html">DayOpened</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DIC.html">DIC <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="DisplayColumns.html">DisplayColumns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DisplayRows.html">DisplayRows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DrawerOpened.html">DrawerOpened</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ErrorExtension.html">ErrorExtension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ErrorString.html">ErrorString</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FirmwareVersion.html">FirmwareVersion <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="FiscalReceiptType.html">FiscalReceiptType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FiscalState.html">FiscalState</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FontALineLength.html">FontALineLength</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FontBLineLength.html">FontBLineLength</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">FormatProfile</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="FPFirmwareVersion.html">FPFirmwareVersion <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="HeaderBitmap.html">HeaderBitmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ICDPH.html">ICDPH <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ICMFirmwareVersion.html">ICMFirmwareVersion <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ICO.html">ICO <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ManufacturerName.html">ManufacturerName</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MediumCoverOpened.html">MediumCoverOpened</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NumHeaderLines.html">NumHeaderLines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NumPayments.html">NumPayments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NumTrailerLines.html">NumTrailerLines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NumVatRates.html">NumVatRates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PaymentsRegistration.html">PaymentsRegistration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PrinterState.html">PrinterState <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="PrinterVariant.html">PrinterVariant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ProductModelDescription.html">ProductModelDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ProtocolVersion.html">ProtocolVersion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RecEmpty.html">RecEmpty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RecNearEnd.html">RecNearEnd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RemainingFiscalMemory.html">RemainingFiscalMemory <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SerialNumber.html">SerialNumber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SignalLevel.html">SignalLevel <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSID.html">SSID <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TJCleared.html">TJCleared <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TJFreeSpace.html">TJFreeSpace <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TJRead.html">TJRead <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TJSize.html">TJSize <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="TrailerBitmap.html">TrailerBitmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TrainingModeActive.html">TrainingModeActive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TransactionIDPrinting.html">TransactionIDPrinting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UniqueNum.html">UniqueNum <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="VatIncluded.html">VatIncluded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VatSummaryPrinting.html">VatSummaryPrinting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ZReportObligation.html">ZReportObligation <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Accumulators/index.html">Akumulátory fiškálnej tlačiarne</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Konštanty a premenné</a> &raquo;</li>
+        
+          <li><a href="index.html">Vlastností (properties) fiškálnej tlačiarne</a> &raquo;</li>
+        
+      <li>FormatProfile</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><span class="target" id="formatprofile">FormatProfile</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>názov vlastnosti</p></td>
+<td><p><strong>FormatProfile</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>typ</p></td>
+<td><p>INT32</p></td>
+</tr>
+<tr class="row-odd"><td><p>prednastavená hodnota</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code> (<a class="reference internal" href="#fp-fp-optimized"><span class="std std-ref">FP_FP_OPTIMIZED</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>prístup</p></td>
+<td><p>read-write</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Popis</strong>:</p>
+<blockquote>
+<div><p>Obsahuje typ formátovacieho profilu fiškálnej účtenky otvorenej príkazom <a class="reference internal" href="../../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>.</p>
+<p>Možné hodnoty tejto property sú:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 29%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Alias</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p><span class="target" id="fp-fp-compressed">FP_FP_COMPRESSED</span></p></td>
+<td><p>zhustený profil</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p><span class="target" id="fp-fp-expanded">FP_FP_EXPANDED</span></p></td>
+<td><p>rozšírený profil</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+<td><p><span class="target" id="fp-fp-optimized">FP_FP_OPTIMIZED</span></p></td>
+<td><p>optimalizovaný profil</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+<td><p><span class="target" id="fp-fp-reduced">FP_FP_REDUCED</span></p></td>
+<td><p>redukovaný profil (nevypisuje jednotkovú cenu)</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Návratové hodnoty</strong>:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 49%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Chyba</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../Exceptions/ExceptionValues.html#e-illegal"><span class="std std-ref">E_ILLEGAL</span></a></p></td>
+<td><p>Nastavovaný parameter nie je z množiny dovolených hodnôt.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Upozornenie</strong>:</p>
+<blockquote>
+<div><p>Po každej strate spojenia medzi FP a aplikáciou a tiež po zavolaní príkazu <a class="reference internal" href="../../Commands/resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a> sa property nastaví na svoju prednastavenú hodnotu.</p>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="FPFirmwareVersion.html" class="btn btn-neutral float-right" title="FPFirmwareVersion [_new_]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="FontBLineLength.html" class="btn btn-neutral float-left" title="FontBLineLength" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

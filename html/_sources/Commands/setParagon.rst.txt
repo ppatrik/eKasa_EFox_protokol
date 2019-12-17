@@ -1,0 +1,60 @@
+_`setParagon` ``[_new_]``
+-------------------------
+
+**Formát príkazu**:
+
+  ======== ================================================== =============== ====================
+  Pole     Hodnota                                            Dátový typ      Popis
+  ======== ================================================== =============== ====================
+  Cmd ID   sPA                                                \-              identifikátor príkazu
+  Req/Rsp  REQ                                                \-              požiadavka
+  Param1   :ref:`parNum <sPA_parNum>`                         **INT32**       poradové číslo paragónu
+  Param2   :ref:`parDate <sPA_parDate>`                       **STRING[12]**  dátum a čas vyhotovenia paragónu
+  ======== ================================================== =============== ====================
+
+  .. _sPA_parNum:
+
+**Parameter parNum**:
+
+  Poradové číslo paragónu.
+
+  .. _sPA_parDate:
+
+**Parameter parDate**:
+
+  Dátum a čas vyhotovenia paragónu vo formáte :ref:`DDMMYYYYhhmm <DateTimeFormat>`.
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    sPA                 \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ======================================================= =======================================
+  Chyba                                                   Popis
+  ======================================================= =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`                            | Jeden z parametrov
+                                                          |   - :ref:`parNum <sPA_parNum>`
+                                                          |   - :ref:`parDate <sPA_parDate>`
+                                                          | nie je z množiny dovolených hodnôt.
+  :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+  ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Nastaví informácie potrebné pre vystavenie paragónu.
+
+  .. note::
+      * Túto operáciu je možné vykonať len ak je FP v stave :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_FISCAL_RECEIPT <FP_PS_FISCAL_RECEIPT>`.
+      * Údaje sú platné len do ukončenia, alebo zrušenia dokladu.
+
+.. toctree::
+    :maxdepth: 2

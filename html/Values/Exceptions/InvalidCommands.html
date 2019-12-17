@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Hľadať" href="../../search.html" />
+    <link rel="next" title="Popis odstrániteľných chýb fiškálnej tlačiarne" href="ResolvableErrors.html" />
+    <link rel="prev" title="Kategorizácia návratových hodnôt" href="Categorisation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Konštanty a premenné</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Návratové hodnoty</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Categorisation.html">Kategorizácia návratových hodnôt</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ResolvableErrors.html">Popis odstrániteľných chýb fiškálnej tlačiarne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="InternalErrors.html">Interné chyby fiškálnej tlačiarne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExceptionValues.html">Zoznam návratových hodnôt</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastností (properties) fiškálnej tlačiarne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Accumulators/index.html">Akumulátory fiškálnej tlačiarne</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Konštanty a premenné</a> &raquo;</li>
+        
+          <li><a href="index.html">Návratové hodnoty</a> &raquo;</li>
+        
+      <li>Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chyby-v-dosledku-poslania-nespravneho-prikazu-alebo-jeho-parametrov">
+<h1>Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov<a class="headerlink" href="#chyby-v-dosledku-poslania-nespravneho-prikazu-alebo-jeho-parametrov" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p id="exceptioncategory1">Pre chyby prvej kategórie je typické, že:</p>
+<ul class="simple">
+<li><p>sú známe po prijatí príkazu, ešte pred jeho samotným vykonaním,</p></li>
+<li><p>vzniknú na základe nevhodnej kombinácie aktuálneho stavu fiškálnej tlačiarne
+a poslaného príkazu, alebo z dôvodu poslania nesprávnych parametrov príkazu.</p></li>
+</ul>
+<p>V tomto prípade sa príkaz vôbec nezačne vykonávať.</p>
+<p>Dôvodov, pre ktoré príkaz nie je možné vykonať, môže byť viacero:</p>
+<ul class="simple">
+<li><p>príkaz neexistuje (zlý názov príkazu),</p></li>
+<li><p>príkaz nie je dovolený v aktuálnom stave,</p></li>
+<li><p>nesprávne argumenty príkazu.</p></li>
+</ul>
+<p>Podľa typu chyby je potrebné buď opraviť hodnoty parametrov príkazu, alebo poslať iný príkaz.</p>
+<p>Chyby tejto kategórie je možné rozdeliť do viacerých podkategórii.</p>
+<p><strong>Chyby základnej kontroly príkazov</strong></p>
+<blockquote>
+<div><p>Tieto chyby môžu vzniknúť z dôvodu:</p>
+<ul>
+<li><p>nesprávneho dátového typu parametra (<a class="reference internal" href="ExceptionValues.html#efp-data-type"><span class="std std-ref">EFP_DATA_TYPE</span></a>),</p>
+<blockquote>
+<div><p>(teda ak parameter obsahuje nedovolený znak, alebo nie je v povolenom rozsahu dátového typu)</p>
+</div></blockquote>
+</li>
+<li><p>chýbajúcej hodnoty povinného parametra príkazu (<a class="reference internal" href="ExceptionValues.html#efp-missing-prm"><span class="std std-ref">EFP_MISSING_PRM</span></a>),</p></li>
+<li><p>nesprávneho počtu parametrov (<a class="reference internal" href="ExceptionValues.html#efp-extra-field"><span class="std std-ref">EFP_EXTRA_FIELD</span></a>, <a class="reference internal" href="ExceptionValues.html#efp-missing-field"><span class="std std-ref">EFP_MISSING_FIELD</span></a>)</p></li>
+<li><p>nesprávneho pomenovania, alebo neexistujúceho príkazu (<a class="reference internal" href="ExceptionValues.html#efp-unknown-cmd"><span class="std std-ref">EFP_UNKNOWN_CMD</span></a>),</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Chybná hodnota (rozsah) parametra príkazu</strong></p>
+<blockquote>
+<div><p>Každý parameter príkazu má svoj definovaný rozsah, ktorý je podmnožinou rozsahu dátového typu parametra.</p>
+<p>Ak je hodnota parametra príkazu obmedzená, môže sa pri nesprávnej hodnote vyskytnúť jedna z nasledujúcich chýb:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="ExceptionValues.html#e-illegal"><span class="std std-ref">E_ILLEGAL</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#efp-bad-description"><span class="std std-ref">EFP_BAD_DESCRIPTION</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#efp-bad-quantity"><span class="std std-ref">EFP_BAD_QUANTITY</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#efp-bad-amount"><span class="std std-ref">EFP_BAD_AMOUNT</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#efp-bad-vat"><span class="std std-ref">EFP_BAD_VAT</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#efp-bad-price"><span class="std std-ref">EFP_BAD_PRICE</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#efp-bad-date"><span class="std std-ref">EFP_BAD_DATE</span></a></p></li>
+</ul>
+</div></blockquote>
+<p><strong>Chyby v dôsledku nevhodných hodnôt parametrov príkazu</strong></p>
+<blockquote>
+<div><p>V tomto prípade síce parametre príkazu nie sú mimo svoj definovaný rozsah, ale v dôsledku
+iných obmedzení nie je možné príkaz s takýmito hodnotami parametrov vykonať.</p>
+<p>Tento typ chyby môže nastať pri prekročení dovolenej hodnoty jedného nákupu
+(<a class="reference internal" href="ExceptionValues.html#efp-rec-total-overflow"><span class="std std-ref">EFP_REC_TOTAL_OVERFLOW</span></a>).</p>
+</div></blockquote>
+<p><strong>Chyby príkazov v dôsledku aktuálneho stavu fiškálnej tlačiarne</strong></p>
+<blockquote>
+<div><p>Príkaz, ktorý vrátil chybu, nie je možné z nejakých dôvodov vykonať v stave, v ktorom sa
+fiškálna tlačiareň nachádza.</p>
+<p>Dôvod určuje kód chyby:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="ExceptionValues.html#e-offline"><span class="std std-ref">E_OFFLINE</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#efp-wrong-state"><span class="std std-ref">EFP_WRONG_STATE</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#efp-illegal-command"><span class="std std-ref">EFP_ILLEGAL_COMMAND</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#efp-day-end-required"><span class="std std-ref">EFP_DAY_END_REQUIRED</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#e-noexist"><span class="std std-ref">E_NOEXIST</span></a></p></li>
+<li><p><a class="reference internal" href="ExceptionValues.html#efp-toobig"><span class="std std-ref">EFP_TOOBIG</span></a></p></li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ResolvableErrors.html" class="btn btn-neutral float-right" title="Popis odstrániteľných chýb fiškálnej tlačiarne" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Categorisation.html" class="btn btn-neutral float-left" title="Kategorizácia návratových hodnôt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

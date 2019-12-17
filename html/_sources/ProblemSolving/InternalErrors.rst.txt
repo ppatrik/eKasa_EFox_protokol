@@ -1,0 +1,48 @@
+Interné chyby fiškálnej tlačiarne
+=================================
+
+Po výskyte chyby 3. kategórie sa fiškálna tlačiareň nachádza v stave, kedy nie je
+možná štandardná činnosť a je potrebné odstrániť príčinu chyby.
+
+V takomto prípade prejde fiškálna tlačiareň do stavu :ref:`LOCKED <LOCKED>`.
+
+Aby bolo možné pokračovať v činnosti, je potrebné vypnúť fiškálnu tlačiareň
+a odstrániť príčinu chyby. Ak je potrebné odstrániť plombu, potom je oprava
+možná len v súčinnosti s licencovaným servisným technikom.
+
+Po odstránení príčiny problému a opätovnom zapnutí fiškálnej tlačiarne sa
+overení odstránenie príčiny problému. Ak bol problém odstránený, fiškálna tlačiareň
+sa vráti späť do stavu, z ktorého prešla do stavu :ref:`LOCKED <LOCKED>`.
+
+Ďalšia činnosť je analogická z princípom zotavenia fiškálnej tlačiarne po výpadku napájania.
+
+V prípade zistenia pretrvávajúceho problému, fiškálnej tlačiarne zostane v stave
+:ref:`LOCKED <LOCKED>` a celý proces odstránenia príčiny problému je potrebné zopakovať,
+až pokiaľ nebude úspešný.
+
+**Príklad postupnosti pre riešenie chyby v dôsledku odpojenia fiškálnej tlačiarne**:
+
+    * pri vzniku chyby dôjde k zmene stavu fiškálnej tlačiarne na stav :ref:`LOCKED <LOCKED>`,
+
+    * pri zavolaní najbližšieho príkazu rôzneho od niektorého z príkazov **get…**, fiškálna tlačiareň
+      vráti kód chyby,
+
+    * v stave :ref:`LOCKED <LOCKED>` je možné v prípade potreby získavať dáta jedným z príkazov **get…**,
+
+    * štandardná prevádzka môže pokračovať až po vypnutí fiškálnej tlačiarne a odstránení príčiny problému,
+
+    * obsluha fiškálnej tlačiarne sama, alebo v súčinnosti s licencovaným servisným technikom,
+      odstráni príčinu chyby,
+
+    * po opätovnom zapnutí fiškálnej tlačiarne dôjde k overeniu odstránenia chyby,
+
+        * ak bola chyba odstránená dôjde k návratu fiškálnej tlačiarne do stavu,
+          v ktorom bola fiškálna tlačiareň pred vznikom chyby a ďalšia následná činnosť
+          je analogická s činnosťou zotavenia fiškálnej tlačiarne po výpadku napájania
+          resp. po strate spojenia medzi aplikáciou a fiškálnou tlačiarňou,
+
+        * ak chyba nebola odstránená, potom fiškálna tlačiareň ostáva v stave :ref:`LOCKED <LOCKED>`
+          a činnosť odstránenia príčiny chyby je potrebné zopakovať ešte raz.
+
+.. toctree::
+    :maxdepth: 3

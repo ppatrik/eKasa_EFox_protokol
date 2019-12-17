@@ -1,0 +1,83 @@
+_`printRecCash`
+---------------
+
+**Formát príkazu**:
+
+  ======== ================================================== =============== ====================
+  Pole     Hodnota                                            Dátový typ      Popis
+  ======== ================================================== =============== ====================
+  Cmd ID   pRC                                                \-              identifikátor príkazu
+  Req/Rsp  REQ                                                \-              požiadavka
+  Param1   :ref:`amount <pRC_amount>`                         **CURRENCY**    finančná hodnota vkladu/výberu hotovosti
+  Param2   :ref:`paymentID <pRC_paymentID>`                   **INT32**       identifikátor typu platby - nepovinný parameter (rozsah 1 až :ref:`NumPayments <NumPayments>`)
+  ======== ================================================== =============== ====================
+
+  .. _pRC_amount:
+
+**Parameter amount**:
+
+  Finančná hodnota vkladu/výberu hotovosti.
+
+  To či sa jedná o vklad, alebo výber je dané nastaveným property :ref:`FiscalReceiptType <FiscalReceiptType>`:
+
+    * pre vklad :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_CASH_IN <FP_RT_CASH_IN>`
+    * pre výber :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_CASH_OUT <FP_RT_CASH_OUT>`
+
+  , ktoré je nastavené príkazom :ref:`beginFiscalReceipt <beginFiscalReceipt>` s príslušným parametrom :ref:`fiscalReceiptType <bFR_fiscalReceiptType>`.
+
+  .. _pRC_paymentID:
+
+**Parameter paymentID**:
+
+  Identifikátor typu platby - nepovinný parameter.
+
+  Môže nadobúdať hodnoty v rozsahu <``1``, :ref:`NumPayments <NumPayments>`>.
+
+    * Ak :ref:`PaymentsRegistration <PaymentsRegistration>` = ``FALSE``, tak hodnota parametra je ignorovaná.
+    * Ak :ref:`PaymentsRegistration <PaymentsRegistration>` = ``TRUE`` a parameter :ref:`paymentID <pRC_paymentID>` nebude zadaný, tak bude v príkaze automaticky doplnená hodnota :ref:`paymentID <pRC_paymentID>` = ``1``.
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    pRC                 \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ======================================================= =======================================
+  Chyba                                                   Popis
+  ======================================================= =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`                            Parameter :ref:`paymentID <pRC_paymentID>` nie je z množiny dovolených hodnôt.
+  :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                Aktuálny stav FP je rôzny od :ref:`FISCAL_RECEIPT <FISCAL_RECEIPT>`.
+  :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`        FP je v procese realizácie účtenky predaja/vrátenia.
+  :ref:`EFP_BAD_AMOUNT <EFP_BAD_AMOUNT>`                  Parameter :ref:`amount <pRC_amount>` bol poslaný nesprávne.
+  :ref:`E_FAILURE <E_FAILURE>`                            Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bola transakčná účtenka riadne dokončená. Pre ďalšie zmysluplné pokračovanie v činnosti musí aplikácia zavolať príkaz :ref:`resetPrinter <resetPrinter>` a transakciu môže zopakovať.
+  :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                    V tlačiarni chýba papier.
+  :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                  Kryt tlačiarne je otvorený.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+  :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`  Pri práci s tlačiarňou vznikla interná chyba.
+  ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz zabezpečí vytlačenie hodnoty vkladu/výberu hotovosti na účtenke pre typ platby daný vstupným parametrom :ref:`paymentID <pRC_paymentID>`.
+
+  Tento príkaz je povolený len v prípade, že:
+
+    * :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_CASH_IN <FP_RT_CASH_IN>`, alebo :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_CASH_OUT <FP_RT_CASH_OUT>`
+    * FP sa nachádza v stave :ref:`FISCAL_RECEIPT <FISCAL_RECEIPT>`
+
+**Účinky príkazu**:
+
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_FISCAL_RECEIPT_ENDING <FP_PS_FISCAL_RECEIPT_ENDING>`
+  * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_CASH_IN <FP_RT_CASH_IN>`, potom :ref:`RecCashInTotal <RecCashInTotal>` = :ref:`amount <pRC_amount>`
+  * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_CASH_OUT <FP_RT_CASH_OUT>`, potom :ref:`RecCashOutTotal <RecCashOutTotal>` = :ref:`amount <pRC_amount>`
+  * Ak :ref:`AutomaticDrawerOpening <AutomaticDrawerOpening>` = ``TRUE`` a :ref:`amount <pRC_amount>` > ``0``, potom dôjde k otvoreniu peňažnej zásuvky č. 1
+
+.. toctree::
+    :maxdepth: 2

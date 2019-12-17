@@ -1,0 +1,40 @@
+_`Zoznam použitých tlačiarní`
+=============================
+
+V tejto kapitole budú popísané charakteristiky tlačiarní, ktoré je možné pripojiť k fiškálnemu modulu EFox firmy Elcom.
+
+  +----------------------+-------------+-----------+----------+------------+-----------+
+  | |                    | | Počet     | | Max.    | |        | | Tlač     | |         |
+  | | Typ                | | znakov    | | šírka   | | Strihač| | čiarových| | Počet   |
+  | | tlačiarne          | | na riadok | | obrázku | | papiera| | kódov    | | zásuviek|
+  | |                    | | font A / B| | v bodoch| |        | |          | |         |
+  +======================+=============+===========+==========+============+===========+
+  | EPSON TM88           | **42** / 56 |    512    |   Áno    |    Áno     |     2     |
+  +----------------------+-------------+-----------+----------+------------+-----------+
+  | EPSON U220           | 33 / **40** |    200    |   Áno    |    Nie     |     2     |
+  +----------------------+-------------+-----------+----------+------------+-----------+
+  | | Bixolon SRP 350    | **42** / 56 |    512    |   Áno    |    Áno     |     2     |
+  | | (Samsung)          |             |           |          |            |           |
+  +----------------------+-------------+-----------+----------+------------+-----------+
+  | | Bixolon SRP 275    | 33 / **40** |    200    |   Áno    |    Nie     |     2     |
+  | | (Samsung)          |             |           |          |            |           |
+  +----------------------+-------------+-----------+----------+------------+-----------+
+  | | Elcom LKT 20       | **42** / 56 |    512    |   Áno    |    Áno     |     2     |
+  | | Elcom LKT 200      |             |           |          |            |           |
+  +----------------------+-------------+-----------+----------+------------+-----------+
+  | | Elcom LKD 30       | 33 / **40** |    200    |   Áno    |    Nie     |     2     |
+  +----------------------+-------------+-----------+----------+------------+-----------+
+  | | Elcom Euro-50 Mini | **42** / \- |    360    |   Nie    |    Nie     |     1     |
+  +----------------------+-------------+-----------+----------+------------+-----------+
+
+  **Poznámky**:
+
+    * Pre tlačiareň typu **Elcom Euro-50 Mini**
+
+      * je možné vytlačiť len dvojitú šírku znaku vložením znaku "~" (``0x7E`` v šestnástkovej sústave) pred požadovaný znak (napr. text "~s~s" bude vytlačený ako "**ss**")
+      * nie je možné nastavovať atribúty fontu príkazom :ref:`setFontAttribute <setFontAttribute>`
+
+    * V stĺpci **Počet znakov na riadok font A / B** je tučným vyznačený počet znakov pre predvolený typ fontu a teda aj predvolený font.
+
+.. toctree::
+    :maxdepth: 2

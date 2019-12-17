@@ -1,0 +1,16 @@
+_`ManufacturerName`
+^^^^^^^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **ManufacturerName**
+typ                      STRING\[5\]
+prednastavená hodnota    ``"ELCOM"``
+prístup                  read-only
+======================== =======================================
+
+**Popis**:
+
+  Obsahuje meno výrobcu fiškálnej tlačiarne.
+
+.. toctree::
+    :maxdepth: 3

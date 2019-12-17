@@ -1,0 +1,19 @@
+_`VatSummaryPrinting`
+^^^^^^^^^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **VatSummaryPrinting**
+typ                      BOOLEAN
+prednastavená hodnota    ``TRUE``
+prístup                  read-write
+======================== =======================================
+
+**Popis**:
+
+  Toto nastavenie signalizuje zapnutie, alebo vypnutie tlače daňového sumáru
+  na fiškálnych dokumentoch a doklade dennej uzávierky.
+  
+  Vypnutie sa primárne používa pre subjekty, ktoré nie sú platcami DPH.
+
+.. toctree::
+    :maxdepth: 3

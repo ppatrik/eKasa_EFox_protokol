@@ -1,0 +1,47 @@
+_`getHeaderLine`
+----------------
+
+**Formát príkazu**:
+
+  ======== ================================================== =============== ====================
+  Pole     Hodnota                                            Dátový typ      Popis
+  ======== ================================================== =============== ====================
+  Cmd ID   gHL                                                \-              identifikátor príkazu
+  Req/Rsp  REQ                                                \-              požiadavka
+  Param1   :ref:`lineNumber <gHL_lineNumber>`                 **INT32**       poradové číslo požadovaného riadku hlavičky fiškálneho dokladu v rozsahu <``1``, :ref:`NumHeaderLines <NumHeaderLines>`>
+  ======== ================================================== =============== ====================
+
+  .. _gHL_lineNumber:
+
+**Parameter lineNumber**:
+
+  Poradové číslo požadovaného riadku hlavičky fiškálneho dokladu.
+
+  Môže nadobúdať hodnoty v rozsahu <``1``, :ref:`NumHeaderLines <NumHeaderLines>`>.
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    gHL                 \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  Param1    *lineNumber*        **INT32**      poradové číslo požadovaného riadku hlavičky fiškálneho dokladu
+  Param2    *lineText*          **STRING**     text požadovaného riadku hlavičky
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ================================= =======================================
+  Chyba                             Popis
+  ================================= =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`      Parameter :ref:`lineNumber <gHL_lineNumber>` nie je z množiny dovolených hodnôt.
+  ================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz vráti požadovaný riadok hlavičky, ktorý je možné nastaviť príkazom :ref:`setHeaderLines <setHeaderLines>`.
+
+.. toctree::
+    :maxdepth: 2

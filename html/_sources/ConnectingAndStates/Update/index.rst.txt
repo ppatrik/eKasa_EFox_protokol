@@ -1,0 +1,9 @@
+Aktualizácia firmvéru ``[_new_]``
+=================================
+
+.. toctree::
+    :maxdepth: 3
+
+    Introduction
+    Availability
+    Update

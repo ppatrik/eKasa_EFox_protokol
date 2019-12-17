@@ -1,0 +1,182 @@
+_`printRecPackageAdjustment`
+----------------------------
+
+**Formát príkazu**:
+
+  ======== ================================================== =============== ====================
+  Pole     Hodnota                                            Dátový typ      Popis
+  ======== ================================================== =============== ====================
+  Cmd ID   pRPA                                               \-              identifikátor príkazu
+  Req/Rsp  REQ                                                \-              požiadavka
+  Param1   :ref:`adjustmentType <pRPA_adjustmentType>`        **INT32**       typ operácie
+  Param2   :ref:`description <pRPA_description>`              **STRING**      popisný text príkazu
+  Param3   :ref:`vatAdjustment <pRPA_vatAdjustment>`          **STRING**      textový reťazec obsahujúci zoznam hodnôt zliav, alebo prirážok o ktoré budú jednotlivé daňové skupiny modifikované
+  Param4   :ref:`preLine <pRPA_preLine>`                      **STRING**      text tlačený pred týmto príkazom
+  Param5   :ref:`postLine <pRPA_postLine>`                    **STRING**      text tlačený za týmto príkazom
+  ======== ================================================== =============== ====================
+
+  .. _pRPA_adjustmentType:
+
+**Parameter adjustmentType**:
+
+  Typ operácie môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  ========= ============================= ===============================================
+  Hodnota   Alias                         Popis
+  ========= ============================= ===============================================
+  ``1``     _`FP_AT_AMOUNT_DISCOUNT`      hodnotová zľava
+  ``2``     _`FP_AT_AMOUNT_SURCHARGE`     hodnotová prirážka
+  ========= ============================= ===============================================
+
+  .. _pRPA_description:
+
+**Parameter description**:
+
+  Popisný text príkazu.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) znakov.
+
+  .. _pRPA_vatAdjustment:
+
+**Parameter vatAdjustment**:
+
+  Textový reťazec obsahujúci zoznam hodnôt zliav, alebo prirážok o ktoré budú jednotlivé daňové skupiny modifikované.
+
+  .. _pRPA_vatGroup:
+
+  * Obsahuje prvky, ktoré sú oddelené bodkočiarkou:
+
+      ``"vatGroup1; vatGroup2; …  ; vatGroupN"``
+
+    kde N <= :ref:`NumVatRates <NumVatRates>`.
+
+  .. _pRPA_vatGroup_vatID:
+  .. _pRPA_vatGroup_amount:
+
+  * Každý prvok obsahuje údaje oddelené čiarkou a pozostáva z údajov:
+
+      ``"vatID, amount"``
+
+    kde:
+
+      ===================================== =============== ====================
+      Údaj                                  Dátový typ      Popis
+      ===================================== =============== ====================
+      :ref:`vatID <pRPA_vatGroup_vatID>`    **INT32**       označuje daňovú skupinu, do ktorej bude zarátaná zľava, alebo prirážka
+      :ref:`amount <pRPA_vatGroup_amount>`  **CURRENCY**    hodnota zľavy, alebo prirážky pre danú daňovú skupinu
+      ===================================== =============== ====================
+
+  .. _pRPA_preLine:
+
+**Parameter preLine**:
+
+  Text tlačený pred týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+  .. _pRPA_postLine:
+
+**Parameter postLine**:
+
+  Text tlačený za týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    pRPA                \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+  .. _pRPA_RESULTS:
+
+**Návratové hodnoty**:
+
+  ======================================================= =======================================
+  Chyba                                                   Popis
+  ======================================================= =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`                            Parameter :ref:`adjustmentType <pRPA_adjustmentType>` nie je z množiny dovolených hodnôt, alebo počet poslaných prvkov :ref:`vatGroup <pRPA_vatGroup>` je > :ref:`NumVatRates <NumVatRates>`.
+  :ref:`EFP_BAD_AMOUNT <EFP_BAD_AMOUNT>`                  Parameter :ref:`amount <pRPA_vatGroup_amount>` je <= ``0``, alebo nie je násobkom ``0.01`` pre aspoň jednu :ref:`vatID <pRPA_vatGroup_vatID>`, alebo = ``0`` pre všetky :ref:`vatID <pRPA_vatGroup_vatID>` súčasne (kde :ref:`vatID <pRPA_vatGroup_vatID>` = ``1`` až :ref:`NumVatRates <NumVatRates>`).
+  :ref:`EFP_BAD_VAT <EFP_BAD_VAT>`                        Parameter :ref:`vatID <pRPA_vatGroup_vatID>` bol poslaný nesprávne.
+  :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.
+  :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`        FP je v procese realizácie účtenky vkladu/výberu hotovosti, alebo práve prebieha tlač účtenky vrátenia, alebo tlač úhrady faktúr.
+  :ref:`EFP_REC_TOTAL_OVERFLOW <EFP_REC_TOTAL_OVERFLOW>`  Príkaz by spôsobil prekročenie maximálnej hodnoty jedného nákupu.
+  :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                    V tlačiarni chýba papier.
+  :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                  Kryt tlačiarne je otvorený.
+  :ref:`E_FAILURE <E_FAILURE>`                            Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bola transakčná účtenka riadne dokončená. Pre ďalšie zmysluplné pokračovanie v činnosti musí aplikácia zavolať príkaz :ref:`resetPrinter <resetPrinter>` a transakciu môže zopakovať.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+  :ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>`  Pri práci s displejom vznikla interná chyba.
+  :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`  Pri práci s tlačiarňou vznikla interná chyba.
+  ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz aplikuje zľavu alebo prirážku na nejakú skupinu položiek v aktuálnom nákupe, ktoré už boli zaúčtované.
+
+    * Na účtenke bude vytlačený aj text označujúci operáciu zľavy alebo prirážky.
+    * Všetky hodnoty parametrov sa posielajú ako kladné, ich príspevok je daný parametrom :ref:`adjustmentType <pRPA_adjustmentType>`.
+    * Ak sa v parametri :ref:`vatAdjustment <pRPA_vatAdjustment>` bude nachádzať 2 krát tá istá daňová skupina, bude vrátená chyba :ref:`EFP_BAD_VAT <pRPA_RESULTS>`.
+    * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_REFUND <FP_RT_REFUND>`, potom je tento príkaz zakázaný.
+
+**Účinky príkazu**:
+
+  .. note::
+      :ref:`vatID <pRPA_vatGroup_vatID>` v nasledujúcich výrazoch znamená hodnotu zľavy, alebo prirážky v daňovej skupine určenej v prvku :ref:`vatGroup <pRPA_vatGroup>` zaslanom v parametri :ref:`vatAdjustment <pRPA_vatAdjustment>`.
+
+  * Ak :ref:`adjustmentType <pRPA_adjustmentType>` = `FP_AT_AMOUNT_DISCOUNT`_ a :ref:`VatIncluded <VatIncluded>` = ``TRUE`` (ceny s DPH)
+
+      * :ref:`RecSubtotalDiscountTotal <RecSubtotalDiscountTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecSubtotalDiscountTotal <RecSubtotalDiscountTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] + :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[1\]`
+      * :ref:`RecSubtotalDiscountCount <RecSubtotalDiscountCount>` = :ref:`RecSubtotalDiscountCount <RecSubtotalDiscountCount>` + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` - :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[1\]`
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] - :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\]  :sup:`\[1\]`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`VAT_GROSS <VAT_GROSS>`\(:ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\], :ref:`vatID <pRPA_vatGroup_vatID>`\)  :sup:`\[1\]`
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] - :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[1\]`
+
+      .. note::
+          **[1]** Platí pre všetky :ref:`vatGroup <pRPA_vatGroup>` zaslané v parametri :ref:`vatAdjustment <pRPA_vatAdjustment>`.
+
+  * Ak :ref:`adjustmentType <pRPA_adjustmentType>` = `FP_AT_AMOUNT_SURCHARGE`_ a :ref:`VatIncluded <VatIncluded>` = ``TRUE`` (ceny s DPH)
+
+      * :ref:`RecSubtotalSurchargeTotal <RecSubtotalSurchargeTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecSubtotalSurchargeTotal <RecSubtotalSurchargeTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] + :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[2\]`
+      * :ref:`RecSubtotalSurchargeCount <RecSubtotalSurchargeCount>` = :ref:`RecSubtotalSurchargeCount <RecSubtotalSurchargeCount>` + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` + :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[2\]`
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] + :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\]  :sup:`\[2\]`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`VAT_GROSS <VAT_GROSS>`\(:ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\], :ref:`vatID <pRPA_vatGroup_vatID>`\)  :sup:`\[2\]`
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] - :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[2\]`
+
+      .. note::
+          **[2]** Platí pre všetky :ref:`vatGroup <pRPA_vatGroup>` zaslané v parametri :ref:`vatAdjustment <pRPA_vatAdjustment>`.
+
+  * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = `FP_AT_AMOUNT_DISCOUNT`_ a :ref:`VatIncluded <VatIncluded>` = ``FALSE`` (ceny bez DPH)
+
+      * :ref:`RecSubtotalDiscountTotal <RecSubtotalDiscountTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecSubtotalDiscountTotal <RecSubtotalDiscountTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] + :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[3\]`
+      * :ref:`RecSubtotalDiscountCount <RecSubtotalDiscountCount>` = :ref:`RecSubtotalDiscountCount <RecSubtotalDiscountCount>` + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` - :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[3\]`
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] - :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[3\]`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`VAT_NET <VAT_NET>`\(:ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\], :ref:`vatID <pRPA_vatGroup_vatID>`\) :sup:`\[3\]`
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] + :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[3\]`
+
+      .. note::
+          **[3]** Platí pre všetky :ref:`vatGroup <pRPA_vatGroup>` zaslané v parametri :ref:`vatAdjustment <pRPA_vatAdjustment>`.
+
+  * Ak :ref:`adjustmentType <pRPA_adjustmentType>` = `FP_AT_AMOUNT_SURCHARGE`_ a :ref:`VatIncluded <VatIncluded>` = ``FALSE`` (ceny bez DPH)
+
+      * :ref:`RecSubtotalSurchargeTotal <RecSubtotalSurchargeTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecSubtotalSurchargeTotal <RecSubtotalSurchargeTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] + :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[4\]`
+      * :ref:`RecSubtotalSurchargeCount <RecSubtotalSurchargeCount>` = :ref:`RecSubtotalSurchargeCount <RecSubtotalSurchargeCount>` + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` + :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[4\]`
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] + :ref:`amount <pRPA_vatGroup_amount>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[4\]`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`VAT_NET <VAT_NET>`\(:ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\], :ref:`vatID <pRPA_vatGroup_vatID>`\) :sup:`\[4\]`
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] + :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRPA_vatGroup_vatID>`\] :sup:`\[4\]`
+
+      .. note::
+          **[4]** Platí pre všetky :ref:`vatGroup <pRPA_vatGroup>` zaslané v parametri :ref:`vatAdjustment <pRPA_vatAdjustment>`.
+
+.. toctree::
+    :maxdepth: 2

@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Úvod ku servisným oznamom [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Hľadať" href="../search.html" />
+    <link rel="next" title="Informovanie aplikácie o požiadavke na servisný zásah" href="ServiceMessages_Events.html" />
+    <link rel="prev" title="Servisné oznamy [_new_]" href="ServiceMessages.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Pravidlá</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Rounding.html">Pravidlá pre zaokrúhlenie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VAT.html">Pravidlá pre výpočet DPH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ValueCalculations.html">Všeobecne o výpočte hodnôt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RegistrationTransaction.html">Princíp registračnej transakcie vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Characteristics.html">Vstavané charakteristiky fiškálnej tlačiarne</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="ServiceMessages.html">Servisné oznamy <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Úvod ku servisným oznamom <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ServiceMessages_Events.html">Informovanie aplikácie o požiadavke na servisný zásah</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ServiceMessages_Confirmation.html">Spôsoby povinného potvrdzovania servisných oznamov</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ServiceMessages_Perfom.html">Vykonávanie servisných prehliadok <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Pravidlá</a> &raquo;</li>
+        
+          <li><a href="ServiceMessages.html">Servisné oznamy <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a> &raquo;</li>
+        
+      <li>Úvod ku servisným oznamom <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="uvod-ku-servisnym-oznamom-new">
+<h1>Úvod ku servisným oznamom <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#uvod-ku-servisnym-oznamom-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p>Fiškálna tlačiareň informuje obsluhu pokladničného systému o požiadavke na servisný zásah
+v prípade, ak:</p>
+<ol class="arabic simple">
+<li><p>bol zaznamenaný stav poklesu kapacity záložnej batérie pod hraničnú hodnotu,</p></li>
+<li><p>nastal čas, keď je majiteľ fiškálnej tlačiarne povinný požiadať servisnú organizáciu,
+aby vykonala plánovanú údržbu zariadenia.</p></li>
+</ol>
+<p>(Podrobnosti pre jednotlivé servisné udalosti sú napísané na konci sekcie.)</p>
+<p>Ak dôjde k aktivovaniu aspoň jednej z požiadaviek na servisný zásah, obsluha (aplikácia) musí
+potvrdiť, že bola o tejto skutočnosti informovaná. Aplikácia toto potvrdenie realizuje zaslaním
+príkazu <a class="reference internal" href="../Commands/affirmInspectionRequest.html#affirminspectionrequest"><span class="std std-ref">affirmInspectionRequest</span></a>, ktorým uvedie fiškálnu tlačiareň
+do štandardného stavu bez obmedzenia vydávať doklady. V prípade nepotvrdenia spracovania
+servisného oznámenia môže byť činnosť fiškálnej tlačiarne obmedzená.</p>
+<p>Ak nastanú viaceré servisné udalosti súbežne, aplikácia musí potvrdiť každú z nich samostatne.</p>
+<p>Aplikácia by oznam mala zobraziť aj majiteľovi pokladnice, alebo obsluhe. Nevylučuje sa ale ani možnosť,
+že aplikácia priamo kontaktuje servisnú organizáciu a naplánuje servisnú prehliadku.</p>
+<p>Z pohľadu požiadavky na servisný zásah, existujú 3 ohraničené časové obdobia pre každý typ požiadavky
+na servisný zásah:</p>
+<ol class="arabic simple">
+<li><p>požiadavka na servisný zásah nie je aktivovaná,</p></li>
+<li><p>požiadavka na servisný zásah sa aktivovala,</p></li>
+<li><p>uplynul čas určený na vyriešenie servisnej požiadavky.</p></li>
+</ol>
+<p>V prvom prípade nie je potrebné nič robiť. Všetko je v poriadku.</p>
+<p>V druhom prípade by o tejto skutočnosti mal byť informovaný majiteľ fiškálnej tlačiarne,
+alebo iná osoba zodpovedná za prevádzku, kde sa fiškálna tlačiareň používa. zároveň by
+majiteľ, resp. prevádzkar, mal potvrdiť že bol o požiadavke na servisnú kontrou informovaný.
+Pokiaľ sa nezrealizuje servisný zásah, je potrebné/vhodné, aby obsluha požiadavku na servisný
+zásah pravidelne potvrdzovala (vždy po zapnutí fiškálnej tlačiarne pred tlačou prvého dokladu).</p>
+<p>V treťom prípade, teda ak už uplynul čas na vykonanie servisného zásahu, môže nastať úplné
+zablokovanie tlače dokladov. To môže nastať len ak ide o kritický problém, napríklad
+ak je riziko straty dát pre vybitú záložnú batériu.</p>
+<p><strong>Pokles kapacity batérie</strong>:</p>
+<blockquote>
+<div><p>Aktivovanie požiadavky na tento typ servisného zásahu nastáva 30 dní pred úplným zablokovaním fiškálnej
+tlačiarne z dôvodu potreby výmeny záložnej batérie.</p>
+<p>Na vyriešenie problému je potrebné vykonať servisný zásah, aby bolo možné preveriť stavu záložnej batérie
+a jej prípadnú výmenu.</p>
+<p>Majiteľ fiškálnej tlačiarne má čas 30 dní (od výskytu hlásenia problému), na to, aby si zabezpečil
+vykonanie servisného zásahu.</p>
+</div></blockquote>
+<p><strong>Nastal čas pre servisnú kontrolu</strong>:</p>
+<blockquote>
+<div><p>Aktivovanie požiadavky na tento typ servisného zásahu nastáva v deň dátumu, na ktorý servisná
+organizácia naplánovala údržbu fiškálnej tlačiarne. Oznam o tejto požiadavke trvá až do skutočného
+vykonania servisnej prehliadky.</p>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ServiceMessages_Events.html" class="btn btn-neutral float-right" title="Informovanie aplikácie o požiadavke na servisný zásah" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ServiceMessages.html" class="btn btn-neutral float-left" title="Servisné oznamy [_new_]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

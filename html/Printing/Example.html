@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Príklady fiškálnych dokladov &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Hľadať" href="../search.html" />
+    <link rel="next" title="Konštanty a premenné" href="../Values/index.html" />
+    <link rel="prev" title="Zhrnutie formátovania tlače" href="Summary.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tlač vo fiškálnej tlačiarni</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Principles.html">Princíp tlače vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Formatting.html">Formátovanie textového výstupu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ReceiptFormatProfiles.html">Formátovacie profily fiškálnych dokumentov</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrintFormattingSettings.html">Nastavenia formátu tlače <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Summary.html">Zhrnutie formátovania tlače</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Príklady fiškálnych dokladov</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tlač vo fiškálnej tlačiarni</a> &raquo;</li>
+        
+      <li>Príklady fiškálnych dokladov</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="priklady-fiskalnych-dokladov">
+<h1>Príklady fiškálnych dokladov<a class="headerlink" href="#priklady-fiskalnych-dokladov" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p><strong>Príklad predaja tovaru</strong>:</p>
+<blockquote>
+<div><p>Za príkladom vytlačeného dokladu (textová podoba) nasleduje popis a priradenie vytlačených
+riadkov k príkazom, ktoré vyvolali tlač daných riadkov.</p>
+<p>Šírka riadku je pre daný prípad 40 znakov a použitý bol optimalizovaný tlačový profil.
+Pre inú dĺžku riadku a/alebo iný tlačový profil by doklad vyzeral mierne odlišne.</p>
+<div class="highlight-text notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span>ELCOM, spoločnosť s ručením obmedzeným,
+Prešov; Jesenná 2695/26, 080 01 Prešov
+Tel.: 051/7464111; Fax:051/7464444
+E-mail:elcom@elcom.eu; web: www.elcom.eu
+DIČ:1254236587
+
+#Názov    množstvo  jed.cena  celk.cena#
+----------------------------------------
+Chlieb čierny 2 ks     *0,80     =1,60 A
+Sezónna ponuka
+Paradajky  1,25 kg     *1,35     =1,69 A
+Zapaľovač     1 ks     *0,50     =0,50 A
+Matematika pre základné školy, učebnica
+              3 ks     *4,00    =12,00 B
+Zľava (2kusy + 1 zdarma)        =-4,00 B
+Storno
+Zapaľovač     1 ks     *0,50    =-0,50 A
+Vrátenie
+Fľaša Pilsner 3 ks     *0,15    =-0,45 G
+Medzisúčet                       10,84
+Zošit A4      1 ks     *0,50     =0,50 A
+–––––––––––––––––––––––––––––––––––––––-
+Celkom                         11,34 EUR
+HOTOVOSŤ                        4.00 EUR
+MASTERCARD                      4.00 EUR
+Č.karty 4*** **** **** 5465; 07/11
+ACCORD ŠEK                      4.00 EUR
+VYDAŤ                           0,66 EUR
+–––––––––––––––––––––––––––––––––––––––-
+Sadzba      Bez DPH      DPH      s DPH
+A 19,00%       3,07     0,72       3,79
+B 10,00%       7,20     0,80       8,00
+G 0,00%       -0,45     0,00      -0,45
+Celkom         9,82     1,52      11,34
+–––––––––––––––––––––––––––––––––––––––-
+Získali ste 11 vernostných bodov
+Stav vášho zákazníckeho konta je:1568
+13-05-2010  12:45  0019
+0009                        Karabinošová
+DKP: 123456789
+                  MF
+         Ďakujeme za návštevu
+            Otvorené denne
+           Od 8:00 do 18:00
+          Prajeme pekný deň
+</pre></div>
+</td></tr></table></div>
+<p><em>Popis jednotlivých riadkov</em>:</p>
+<ol class="arabic simple">
+<li><p>otvorenie registračnej transakcie (príkaz <a class="reference internal" href="../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>)</p></li>
+<li><p>vytlačí sa hlavička dokladu</p></li>
+<li><p>naprogramovaná hlavička</p></li>
+<li><p>naprogramovaná hlavička</p></li>
+<li><p>DIČ</p></li>
+<li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
+<li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
+<li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
+<li><p>predaj 1. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
+<li><p><a class="reference internal" href="../Commands/printRecItem.html#pri-preline"><span class="std std-ref">preLine</span></a> z 2. príkazu predaj položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
+<li><p>predaj 2. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
+<li><p>predaj 3. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
+<li><p>predaj 4. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>), názov (parameter <a class="reference internal" href="../Commands/printRecItem.html#pri-description"><span class="std std-ref">description</span></a>)</p></li>
+<li><p>predaj 4. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>), dáta (parametre <a class="reference internal" href="../Commands/printRecItem.html#pri-quantity"><span class="std std-ref">quantity</span></a>, <a class="reference internal" href="../Commands/printRecItem.html#pri-unitname"><span class="std std-ref">unitName</span></a>, <a class="reference internal" href="../Commands/printRecItem.html#pri-price"><span class="std std-ref">price</span></a>, <a class="reference internal" href="../Commands/printRecItem.html#pri-vatid"><span class="std std-ref">vatID</span></a>)</p></li>
+<li><p>zľava (príkaz <a class="reference internal" href="../Commands/printRecItemAdjustment.html#printrecitemadjustment"><span class="std std-ref">printRecItemAdjustment</span></a>)</p></li>
+<li><p>storno položky (príkaz <a class="reference internal" href="../Commands/printRecItemVoid.html#printrecitemvoid"><span class="std std-ref">printRecItemVoid</span></a>), textový popis</p></li>
+<li><p>storno položky (príkaz <a class="reference internal" href="../Commands/printRecItemVoid.html#printrecitemvoid"><span class="std std-ref">printRecItemVoid</span></a>), dáta</p></li>
+<li><p>vrátenie položky (príkaz <a class="reference internal" href="../Commands/printRecItemRefund.html#printrecitemrefund"><span class="std std-ref">printRecItemRefund</span></a>), textový popis</p></li>
+<li><p>vrátenie položky (príkaz <a class="reference internal" href="../Commands/printRecItemRefund.html#printrecitemrefund"><span class="std std-ref">printRecItemRefund</span></a>), dáta</p></li>
+<li><p>vytlačenie medzisúčtu (príkaz <a class="reference internal" href="../Commands/printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a>)</p></li>
+<li><p>predaj 5. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
+<li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), riadok pre optické oddelenie</p></li>
+<li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), celková hodnota dokladu</p></li>
+<li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
+<li><p>druhá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
+<li><p><a class="reference internal" href="../Commands/printRecTotal.html#prt-postline"><span class="std std-ref">postLine</span></a> z príkazu druhej platby (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>) využitý na číslo karty</p></li>
+<li><p>tretia a posledná platba v transakcii (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>)</p></li>
+<li><p>ak posledná platba prevyšuje celkovú cenu nákupu, tlačí sa aj výdavok</p></li>
+<li><p>zároveň sa s poslednou platbou vytlačí aj riadok pre optické oddelenie</p></li>
+<li><p>daňový sumár (1. riadok), popisný riadok</p></li>
+<li><p>daňový sumár (2. riadok), riadok hodnôt pre daňovú hladinu</p></li>
+<li><p>daňový sumár (3. riadok), riadok hodnôt pre daňovú hladinu</p></li>
+<li><p>daňový sumár (4. riadok), riadok hodnôt pre daňovú hladinu</p></li>
+<li><p>daňový sumár (5. riadok), riadok sumárnych hodnôt</p></li>
+<li><p>daňový sumár, riadok pre optické oddelenie</p></li>
+<li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
+<li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
+<li><p>ukončenie transakcie (<a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>), dátum, čas, číslo dokladu;</p></li>
+<li><p>ukončenie transakcie (<a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>), POSID, pokladník</p></li>
+<li><p>ukončenie transakcie (<a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>), <a class="reference internal" href="../Terminology.html#term-dkp"><span class="xref std std-term">DKP</span></a></p></li>
+<li><p>ochranný znak (fiškálne logo), tvorený povinným grafickým obrazcom</p></li>
+<li><p>naprogramované riadky dolného loga (naprogramované príkazom <a class="reference internal" href="../Commands/setTrailerLines.html#settrailerlines"><span class="std std-ref">setTrailerLines</span></a>)</p></li>
+<li><p>naprogramované riadky dolného loga</p></li>
+<li><p>naprogramované riadky dolného loga</p></li>
+<li><p>naprogramované riadky dolného loga</p></li>
+</ol>
+</div></blockquote>
+<p><strong>Príklad úhrady dvoch faktúr</strong>:</p>
+<blockquote>
+<div><div class="highlight-text notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span>ELCOM, spoločnosť s ručením obmedzeným,
+Prešov; Jesenná 2695/26, 080 01 Prešov
+Tel.: 051/7464111; Fax:051/7464444
+E-mail:elcom@elcom.eu; web: www.elcom.eu
+DIČ:1254236587
+
+             ÚHRADA FAKTÚR
+
+Úhrada faktúry č.123456789       =1,60
+Úhrada faktúry č.45454566612     =1,60
+Medzisúčet                        3,20
+–––––––––––––––––––––––––––––––––––––––-
+Celkom                          3,20 EUR
+HOTOVOSŤ                        2.00 EUR
+MASTERCARD                      2.00 EUR
+Č.karty 4*** **** **** 5465; 07/11
+VYDAŤ                           0,80 EUR
+–––––––––––––––––––––––––––––––––––––––-
+Získali ste 11 vernostných bodov
+Stav vášho zákazníckeho konta je:1568
+13-05-2010  12:45  0019
+0009                        Karabinošová
+DKP: 123456789
+                  MF
+         Ďakujeme za návštevu
+            Otvorené denne
+           Od 8:00 do 18:00
+          Prajeme pekný deň
+</pre></div>
+</td></tr></table></div>
+<p><em>Popis jednotlivých riadkov</em>:</p>
+<ol class="arabic simple">
+<li><p>otvorenie registračnej transakcie (príkaz <a class="reference internal" href="../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>)</p></li>
+<li><p>vytlačí sa hlavička dokladu</p></li>
+<li><p>naprogramovaná hlavička</p></li>
+<li><p>naprogramovaná hlavička</p></li>
+<li><p>DIČ</p></li>
+<li><p>optické oddelenie</p></li>
+<li><p>informačný text pre režim úhrady faktúry</p></li>
+<li><p>optické oddelenie</p></li>
+<li><p>úhrada 1. faktúry (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
+<li><p>úhrada 2. faktúry (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
+<li><p>vytlačenie medzisúčtu (príkaz <a class="reference internal" href="../Commands/printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a>)</p></li>
+<li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), riadok pre optické oddelenie</p></li>
+<li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), celková hodnota dokladu</p></li>
+<li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
+<li><p>druhá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
+<li><p><a class="reference internal" href="../Commands/printRecTotal.html#prt-postline"><span class="std std-ref">postLine</span></a> z príkazu druhej platby (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>) využitý na číslo karty</p></li>
+<li><p>ak posledná platba prevyšuje celkovú cenu nákupu, tlačí sa aj výdavok</p></li>
+<li><p>zároveň sa s poslednou platbou vytlačí aj riadok pre optické oddelenie</p></li>
+<li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
+<li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
+<li><p>ukončenie transakcie (<a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>), dátum, čas, číslo dokladu;</p></li>
+<li><p>ukončenie transakcie (<a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>), POSID, pokladník</p></li>
+<li><p>ukončenie transakcie (<a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>), <a class="reference internal" href="../Terminology.html#term-dkp"><span class="xref std std-term">DKP</span></a></p></li>
+<li><p>ochranný znak (fiškálne logo), tvorený povinným grafickým obrazcom</p></li>
+<li><p>naprogramované riadky dolného loga (naprogramované príkazom <a class="reference internal" href="../Commands/setTrailerLines.html#settrailerlines"><span class="std std-ref">setTrailerLines</span></a>)</p></li>
+<li><p>naprogramované riadky dolného loga</p></li>
+<li><p>naprogramované riadky dolného loga</p></li>
+<li><p>naprogramované riadky dolného loga</p></li>
+</ol>
+</div></blockquote>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Values/index.html" class="btn btn-neutral float-right" title="Konštanty a premenné" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Summary.html" class="btn btn-neutral float-left" title="Zhrnutie formátovania tlače" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

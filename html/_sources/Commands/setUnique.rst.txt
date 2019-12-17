@@ -1,0 +1,61 @@
+setUnique ``[_new_]``
+---------------------
+
+.. note::
+    Tento komunikačný príkaz bol odstránený a nie je v eKasa verzii využívaný.
+
+..
+  TODO: asi odstrániť, nebude používané
+
+  **Formát príkazu**:
+
+    ======== ================================ =================== =====================
+    Pole     Hodnota                          Dátový typ          Popis
+    ======== ================================ =================== =====================
+    Cmd ID   sHL                              \-                  identifikátor príkazu
+    Req/Rsp  REQ                              \-                  požiadavka
+    Param1   :ref:`printerID <sU_printerID>`  **STRING\[20\]**    identifikátor
+    ======== ================================ =================== =====================
+
+    .. _sU_printerID:
+
+  **Parameter printerID**:
+
+    Identifikátor daňového kódu pokladnice (:term:`DKP`).
+
+  **Formát odpovede**:
+
+    ========= =================== ============== ====================
+    Pole      Hodnota             Dátový typ     Popis
+    ========= =================== ============== ====================
+    Cmd ID    sSTL                \-             identifikátor príkazu
+    Req/Rsp   RSP                 \-             odpoveď
+    Exception *exceptionCode*     **INT32**      návratový kód
+    ========= =================== ============== ====================
+
+  **Návratové hodnoty**:
+
+    ===================================================== =======================================
+    Chyba                                                 Popis
+    ===================================================== =======================================
+    :ref:`EFP_BAD_DESCRIPTION <EFP_BAD_DESCRIPTION>`      Parameter :ref:`printerID <sU_printerID>` bol poslaný nesprávne.
+    :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`    Displej je odpojený.
+    :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`    Tlačiareň je odpojená.
+    ===================================================== =======================================
+
+  **Popis príkazu**:
+
+    Nastaví identifikátor daňového kódu pokladnice (:term:`DKP`) majiteľa fiškálnej tlačiarne.
+    
+    Tento identifikátor je tlačený na každom fiškálnom dokumente.
+
+    .. warning::
+      Parameter :ref:`printerID <sU_printerID>` nesmie byť poslaný s počtom znakov, ktorý by prekročil
+      definovaný maximálny počet znakov pre tento parameter a tiež všetky poslané znaky musia byť
+      vytlačiteľné a v rozsahu znakov definovanej kódovej stránky.
+
+      V opačnom prípade príkaz vráti chybu :ref:`EFP_BAD_DESCRIPTION <EFP_BAD_DESCRIPTION>`.
+
+.. toctree::
+    :maxdepth: 2
+

@@ -1,0 +1,17 @@
+_`ChangeType`
+^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **ChangeType**
+typ                      INT32
+prednastavená hodnota    ``1``
+prístup                  read-write
+======================== =======================================
+
+**Popis**:
+
+  * V prípade, že property :ref:`PaymentsRegistration <PaymentsRegistration>` = ``TRUE``, obsahuje identifikátor typu platby, ktorou bude realizovaná operácia výdavku po prevýšení platenej sumy v príkaze :ref:`printRecTotal <printRecTotal>`. V príkaze :ref:`printRecTotalChange <printRecTotalChange>` sa táto property neuplatňuje a typ výdavku je daný indexom typu výdavku v parametri :ref:`description <pRT_description>`.
+  * V prípade, že property :ref:`PaymentsRegistration <PaymentsRegistration>` = ``FALSE``, hodnota tohto property nemá žiadne využitie.
+
+.. toctree::
+    :maxdepth: 3

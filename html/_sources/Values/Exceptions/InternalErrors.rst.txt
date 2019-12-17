@@ -1,0 +1,43 @@
+Interné chyby fiškálnej tlačiarne
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _ExceptionCategory3:
+
+Chyby tretej kategórie vznikajú nezávisle na vykonávaných príkazoch.
+
+Po výskyte chyby z tejto kategórie sa fiškálna tlačiareň nachádza v stave
+:ref:`LOCKED <LOCKED>`. Na to aby bolo možné pokračovať v činnosti je potrebné
+odstrániť príčinu problému.
+
+To či príčinu chyby môže odstrániť obsluha, alebo to musí vykonať servisný technik
+je dané závažnosťou problému, prípadne potrebou narušenia plomby.
+
+V prípade týchto chýb je potrebné vypnúť fiškálnu tlačiareň, odstrániť príčinu chyby
+a následne zapnúť fiškálnu tlačiareň. Ak bola chyba úspešne odstránená, potom
+sa fiškálna tlačiareň vráti do stavu, v ktorom bola pred výskytom chyby.
+
+Ďalšia činnosť je analogická z princípom zotavenia fiškálnej tlačiarne po výpadku napájania.
+
+..
+    TODO: prepojiť linkou hore "menovanú" kapitolu
+
+Chyby tejto kategórie je možné rozdeliť do viacerých podkategórii.
+
+**Chyby v dôsledku odpojenia komponentu**
+
+    * displej je odpojený (:ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`),
+    * tlačiareň je odpojená (:ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>` ).
+
+**Chyby funkčnosti pripojených komponentov**
+
+    Chyby funkčnosti:
+
+    * displeja (:ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>`),
+    * tlačiarne (:ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`),
+    * obvodu reálneho času (:ref:`EFP_CLOCK_ERROR <EFP_CLOCK_ERROR>`).
+
+..
+    TODO: chýba tu "EFP_OPERATION_ERROR"
+
+.. toctree::
+    :maxdepth: 3

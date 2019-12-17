@@ -1,0 +1,78 @@
+Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _ExceptionCategory1:
+
+Pre chyby prvej kategórie je typické, že:
+
+* sú známe po prijatí príkazu, ešte pred jeho samotným vykonaním,
+* vzniknú na základe nevhodnej kombinácie aktuálneho stavu fiškálnej tlačiarne
+  a poslaného príkazu, alebo z dôvodu poslania nesprávnych parametrov príkazu.
+
+V tomto prípade sa príkaz vôbec nezačne vykonávať.
+
+Dôvodov, pre ktoré príkaz nie je možné vykonať, môže byť viacero:
+
+* príkaz neexistuje (zlý názov príkazu),
+* príkaz nie je dovolený v aktuálnom stave,
+* nesprávne argumenty príkazu.
+
+Podľa typu chyby je potrebné buď opraviť hodnoty parametrov príkazu, alebo poslať iný príkaz.
+
+Chyby tejto kategórie je možné rozdeliť do viacerých podkategórii.
+
+**Chyby základnej kontroly príkazov**
+
+    Tieto chyby môžu vzniknúť z dôvodu:
+
+    * nesprávneho dátového typu parametra (:ref:`EFP_DATA_TYPE <EFP_DATA_TYPE>`),
+
+        (teda ak parameter obsahuje nedovolený znak, alebo nie je v povolenom rozsahu dátového typu)
+
+    * chýbajúcej hodnoty povinného parametra príkazu (:ref:`EFP_MISSING_PRM <EFP_MISSING_PRM>`),
+
+    * nesprávneho počtu parametrov (:ref:`EFP_EXTRA_FIELD <EFP_EXTRA_FIELD>`, :ref:`EFP_MISSING_FIELD <EFP_MISSING_FIELD>`)
+
+    * nesprávneho pomenovania, alebo neexistujúceho príkazu (:ref:`EFP_UNKNOWN_CMD <EFP_UNKNOWN_CMD>`),
+
+**Chybná hodnota (rozsah) parametra príkazu**
+
+    Každý parameter príkazu má svoj definovaný rozsah, ktorý je podmnožinou rozsahu dátového typu parametra.
+
+    Ak je hodnota parametra príkazu obmedzená, môže sa pri nesprávnej hodnote vyskytnúť jedna z nasledujúcich chýb:
+
+    * :ref:`E_ILLEGAL <E_ILLEGAL>`
+    * :ref:`EFP_BAD_DESCRIPTION <EFP_BAD_DESCRIPTION>`
+    * :ref:`EFP_BAD_QUANTITY <EFP_BAD_QUANTITY>`
+    * :ref:`EFP_BAD_AMOUNT <EFP_BAD_AMOUNT>`
+    * :ref:`EFP_BAD_VAT <EFP_BAD_VAT>`
+    * :ref:`EFP_BAD_PRICE <EFP_BAD_PRICE>`
+    * :ref:`EFP_BAD_DATE <EFP_BAD_DATE>`
+
+**Chyby v dôsledku nevhodných hodnôt parametrov príkazu**
+
+    V tomto prípade síce parametre príkazu nie sú mimo svoj definovaný rozsah, ale v dôsledku
+    iných obmedzení nie je možné príkaz s takýmito hodnotami parametrov vykonať.
+
+    Tento typ chyby môže nastať pri prekročení dovolenej hodnoty jedného nákupu
+    (:ref:`EFP_REC_TOTAL_OVERFLOW <EFP_REC_TOTAL_OVERFLOW>`).
+
+**Chyby príkazov v dôsledku aktuálneho stavu fiškálnej tlačiarne**
+
+    Príkaz, ktorý vrátil chybu, nie je možné z nejakých dôvodov vykonať v stave, v ktorom sa
+    fiškálna tlačiareň nachádza.
+
+    Dôvod určuje kód chyby:
+
+    * :ref:`E_OFFLINE <E_OFFLINE>`
+    * :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`
+    * :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`
+    * :ref:`EFP_DAY_END_REQUIRED <EFP_DAY_END_REQUIRED>`
+    * :ref:`E_NOEXIST <E_NOEXIST>`
+    * :ref:`EFP_TOOBIG <EFP_TOOBIG>`
+
+..
+    TODO: skontrolovať, či sú tu všetky chyby z prvej kategórie
+
+.. toctree::
+    :maxdepth: 3

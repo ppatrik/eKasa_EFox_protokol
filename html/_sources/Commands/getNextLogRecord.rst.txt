@@ -1,0 +1,88 @@
+_`getNextLogRecord` ``[_new_]``
+-------------------------------
+
+**Formát príkazu**:
+
+  ======== ================================================== =============== ====================
+  Pole     Hodnota                                            Dátový typ      Popis
+  ======== ================================================== =============== ====================
+  Cmd ID   gNLR                                               \-              identifikátor príkazu
+  Req/Rsp  REQ                                                \-              požiadavka
+  Param1   :ref:`recordID <gNLR_recordID>`                    **INT32**       označuje aktuálny záznam LOG-u určený na prečítanie
+  ======== ================================================== =============== ====================
+
+  .. _gNLR_recordID:
+
+**Parameter recordID**:
+
+  Udáva ID záznamu, ktorý bude vyčítaný z LOG-u fiškálnej tlačiarne. Môže nadobúdať hodnoty v rozsahu <``0``, ``N``>.
+
+    * Hodnota ``0`` určuje prvý záznam v poradí, ktorý je zároveň najstarší uchovaný záznam.
+    * Prvé volanie príkazu sa vždy začína s :ref:`recordID <gNLR_recordID>` = ``0``.
+    * Pre nasledujúce volania príkazu platí pravidlo:
+
+        :ref:`recordID <gNLR_recordID>` (pre volanie ``N + 1``) = :ref:`nextRecordID <gNLR_RSPformat>` (z volania ``N``)
+
+      teda hodnota pre parameter :ref:`recordID <gNLR_recordID>` nasledujúceho volania príkazu :ref:`getNextLogRecord <getNextLogRecord>` je daná hodnotou výstupného parametra :ref:`nextRecordID <gNLR_RSPformat>` aktuálneho volania príkazu :ref:`getNextLogRecord <getNextLogRecord>`.
+
+  .. _gNLR_RSPformat:
+
+**Formát odpovede**:
+
+  ========= ============================================= =============== ====================
+  Pole      Hodnota                                       Dátový typ      Popis
+  ========= ============================================= =============== ====================
+  Cmd ID    gNLR                                          \-              identifikátor príkazu
+  Req/Rsp   RSP                                           \-              odpoveď
+  Exception *exceptionCode*                               **INT32**       návratový kód
+  Param1    :ref:`nextRecordID <gNLR_RSP_nextRecordID>`   **INT32**       ID záznamu, ktorý nasleduje v LOG-u po aktuálnom zázname s hodnotou :ref:`recordID <gNLR_recordID>`
+  Param2    :ref:`recordData <gNLR_RSP_recordData>`       **STRING**      v prípade platného záznamu obsahuje údaje tohto záznamu
+  Param3    :ref:`dateTime <gNLR_RSP_dateTime>`           **STRING**      obsahuje dátum a čas patriaci danej udalosti
+  Param4    :ref:`tickCount <gNLR_RSP_tickCount>`         **INT32**       udáva počet hodinových tikov od dátumu a času patriacemu udalosti až do okamihu vzniku zapisovanej udalosti
+  ========= ============================================= =============== ====================
+
+  .. _gNLR_RSP_nextRecordID:
+
+**Výstupný parameter nextRecordID**:
+
+  Označuje ID záznamu, ktorý nasleduje v LOG-u po aktuálnom zázname s hodnotou :ref:`recordID <gNLR_recordID>`. Hodnota :ref:`nextRecordID <gNLR_RSPformat>` zároveň určuje hodnotu parametra :ref:`recordID <gNLR_recordID>` pre nasledujúce volanie.
+
+  * Ak :ref:`nextRecordID <gNLR_RSP_nextRecordID>` = ``–1``, jedná sa posledný záznam LOG-u.
+  * Ak :ref:`nextRecordID <gNLR_RSP_nextRecordID>` = ``–2``, pole záznamov LOG-u sa v čase od prečítania 1. záznamu zmenilo (pribudol nejaký záznam) a tým pádom nie je možné prečítať nasledujúci záznam. Čítanie záznamov ostáva prístupné, ale musí začať od začiatku.
+
+  .. _gNLR_RSP_recordData:
+
+**Výstupný parameter recordData**:
+
+  Obsahuje údaje vyčítaného záznamu v prípade, že záznam je platný.
+
+  .. _gNLR_RSP_dateTime:
+
+**Výstupný parameter dateTime**:
+
+  Obsahuje dátum a čas udalosti a je kódovaný v tvare :ref:`DD-MM-YYYY hh:mm:ss <DateTimeFormat>`.
+
+  Pokiaľ sa v pamäti zariadenia nachádzajú staré záznamy, tak tie budú mať zobrazený nekorektný údaj dátumu a času. Novo zapísané záznamy budú obsahovať korektný dátum a čas. Celý zoznam bude korektný, keď sa v kruhovej pamäti prepíšu všetky staré záznamy novými.
+
+.. _gNLR_RSP_tickCount:
+
+**Výstupný parameter tickCount**:
+
+  Udáva počet hodinových tikov od dátumu a času patriacemu udalosti až do okamihu vzniku zapisovanej udalosti.
+
+
+**Návratové hodnoty**:
+
+  ================================================= =======================================
+  Chyba                                             Popis
+  ================================================= =======================================
+  :ref:`E_ILLEGAL <E_ILLEGAL>`                      Parameter :ref:`recordID <gNLR_recordID>` nie je z množiny dovolených hodnôt.
+  :ref:`EFP_OPERATION_ERROR <EFP_OPERATION_ERROR>`  Interná chyba. Pri vykonávaní príkazu nastala nešpecifikovaná chyba.
+  ================================================= =======================================
+
+**Popis príkazu**:
+
+  Umožňuje postupné čítanie záznamov udalostí. Údaje vybraných udalostí sú zapisované pri ich výskyte v čase činnosti fiškálnej tlačiarne. Tento príkaz okrem údajov aktuálneho záznamu vráti aj identifikátor záznamu, ktorý nasleduje po aktuálnom zázname (výstupný parameter :ref:`nextRecordID <gNLR_RSP_nextRecordID>`). Čítanie musí vždy začať prvým záznamom (:ref:`recordID <gNLR_recordID>` = ``0``).
+
+.. toctree::
+    :maxdepth: 2

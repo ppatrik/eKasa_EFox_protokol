@@ -1,0 +1,145 @@
+Princíp registračnej transakcie vo fiškálnej tlačiarni
+------------------------------------------------------
+
+Registračná transakcia (:term:`RT`) začína príkazom :ref:`beginFiscalReceipt <beginFiscalReceipt>`,
+ktorým sa začína tlač :ref:`fiškálneho dokladu <FiscalDocument>`.
+Ak je príkaz úspešný, transakcia sa začala a je možné poslať sériu **printRec…** príkazov.
+Registračná transakcia za normálnych okolností (v prípade jej úspešného priebehu) skončí
+príkazom :ref:`endFiscalReceipt <endFiscalReceipt>`.
+
+Prostredníctvom registračnej transakcie je možné vytlačiť doklady predaja/vrátenia
+v normálnom aj tréningovom režime a doklad vkladu/výberu hotovosti.
+
+Všetky registračné transakcie (aj v tréningovom režime) podliehajú kontrole štátu
+a preto sú ich priebeh a výsledky podliehajú spracovaniu a ukladaniu podľa
+pravidiel zákona o pokladniciach.
+Prítomnosť, alebo neprítomnosť ochranných prvkov (a QR kódu) nie je signalizáciou
+:ref:`fiškálneho, alebo nefiškálneho dokladu <FiscalDocument>`.
+
+Vzhľadom na analógiu transakčného riadenia vymenovaných dokladov registračnej transakcie
+bude ďalej v tejto kapitole rozobratý len doklad fiškálnej účtenky predaja/vrátenia.
+
+Registračná transakcia sa otvára príkazom :ref:`beginFiscalReceipt <beginFiscalReceipt>`,
+v ktorom je možné definovať identifikátor registračnej transakcie parametrom *transactionID*.
+Príkazom :ref:`getTransactionStatus <getTransactionStatus>` je možné zistiť aktuálny stav
+tejto transakcie, práve na základe identifikátora *transactionID*.
+
+V prípade, že identifikátor registračnej transakcie v príkaze :ref:`beginFiscalReceipt <beginFiscalReceipt>`
+nebol zadefinovaný (registračná transakcia je neoznačená), vtedy je možné zistiť priebeh
+a stav tejto registračnej transakcie len do času otvorenia novej registračnej transakcie.
+Ak identifikátor registračnej transakcie :ref:`transactionID <bFR_transactionID>` bol zadefinovaný, ale nebol
+unikátny, potom je možné, že pri získavaní stavu tejto transakcie dôjde k zisteniu stavu
+úplne inej transakcie, ako je požadované.
+
+.. figure:: ../Images/TransactionStates.png
+    :figclass: align-center
+
+    Obrázok č. 10: Stavový diagram registračnej transakcie fiškálnej tlačiarne
+
+.. raw:: latex
+
+    \newpage
+
+Registračná transakcia sa môže nachádzať v rôznych stavoch, ako je to ukázané na predchádzajúcom
+obrázku. Ak registračná transakcia už bola niekedy v minulosti začatá, potom sa nachádza práve
+v jednom z týchto stavov.
+
+..
+    # Táto poznámka nedáva zmysel. Prečo by som mal transakciu začínať len preto, lebo neexistuje.
+
+    V prípade, že registračná transakcia nikdy neexistovala, potom je potrebné
+    ju otvoriť príkazom :ref:`beginFiscalReceipt <beginFiscalReceipt>`.
+
+_`FP_TS_STARTED`
+
+    Registračná transakcia sa táto dostane do stavu `FP_TS_STARTED`_ hneď po otvorení.
+    V tomto stave sú realizované všetky podstatné operácie danej transakcie. Ak je
+    v priebehu registračnej transakcie zistený nesúlad medzi celkovou hodnotou transakcie,
+    ktorá je vypočítaná aplikáciou a medzi celkovou hodnotou transakcie vypočítanou fiškálnou
+    tlačiarňou (pri vykonávaní príkazov :ref:`printRecTotal <printRecTotal>`,
+    :ref:`printRecTotalChange <printRecTotalChange>`, alebo :ref:`printRecSubtotal <printRecSubtotal>`),
+    potom sa registračná transakcia dostáva do stavu `FP_TS_ABORTED`_.
+
+_`FP_TS_VOIDED`
+
+    Ak je v priebehu transakcie zavolaný príkaz :ref:`printRecVoid <printRecVoid>`, potom sa
+    transakcia dostáva do stavu `FP_TS_VOIDED`_. Ak je transakcia v stave `FP_TS_VOIDED`_ ukončená
+    príkazom :ref:`endFiscalReceipt <endFiscalReceipt>`, potom je to pre túto registračnú
+    transakciu konečný stav.
+    
+    V prípade, ak je transakcia v stavoch `FP_TS_STARTED`_ alebo `FP_TS_VOIDED`_ a ešte nebola
+    ukončená príkazom :ref:`endFiscalReceipt <endFiscalReceipt>`, potom sa takáto transakcia
+    v prípade jej zlyhania dostane do stavu `FP_TS_FAILED`_ a pre túto registračnú transakciu
+    je to jej konečný stav.
+    
+    Ku zlyhaniu transakcie dôjde vtedy, ak počas tejto transakcie nastane prerušenie spojenia
+    medzi aplikáciou a fiškálnou tlačiarňou, alebo nastane niektorá
+    z chýb 2. a 3. kategórie
+    (pozri kapitoly Zotavenie, Kategorizácia chýb a Riešenie chybových stavov).
+
+_`FP_TS_DONE`
+
+    Ak je transakcia začatá a úspešne ukončená, potom sa zo stavu `FP_TS_STARTED`_
+    dostane do stavu `FP_TS_DONE`_ a pre túto registračnú transakciu je to jej konečný stav.
+
+_`FP_TS_ABORTED`
+
+    Tento stav reprezentuje prerušenie účtenky pre chybu súčtu. Registračná transakcia
+    sa do tohto stavu dostane vtedy, ak celková hodnota vypočítaná aplikáciou je iná
+    ako celková hodnota vypočítaná fiškálnou tlačiarňou.
+
+_`FP_TS_FAILED`
+
+    Tento stav reprezentuje chybu vykonávania transakcie. Napríklad pre chybu spojenia
+    s fiškálnou tlačiarňou, alebo z iných dôvodov ako je rozdielny súčet.
+
+_`FP_TS_UNKNOWN`
+
+    Tento stav reprezentuje situáciu, keď bolo požadované vyhľadanie registračnej transakcie,
+    ktorá vo fiškálnej tlačiarni nie je evidovaná (neexistuje).
+
+Transakčný princíp je využiteľný hlavne v rôznych kritických stavoch ako výpadok napájania,
+alebo strata spojenia medzi aplikáciou a fiškálnou tlačiarňou, kedy aplikácia potrebuje vedieť,
+ako začatá registračná transakcia skončila, aby následne mohla urobiť potrebné úkony na svojej strane.
+
+Viditeľným znakom bezchybného ukončenia registračnej transakcie predaja/vrátenia (nie tréningovej)
+je prítomnosť úplného QR kódu na vytlačenom fiškálnom doklade predaja/vrátenia.
+
+..
+    TODO: upraviť podľa nového správania sa pre zaregistrované transakcie
+
+Vzhľadom na povahu zákona sa ale registračná transakcia môže odstať do stavu, keď údaje o doklade
+boli zaslané na server finančnej správy, ale ešte nedošlo k úspešnému vytlačeniu účtenky.
+V takomto prípade je potrebné prerušenú účtenku dokončiť (uzavrieť).
+Následne je odporúčané vytvoriť opravný doklad (pomocou :ref:`beginFiscalReceipt <beginFiscalReceipt>`
+s parametrom *fiscalReceiptType* = :ref:`FP_RT_CORRECTION <FP_RT_CORRECTION>`).
+Následne po tom zase vytlačiť doklad od znova a tento odovzdať zákazníkovi.
+
+..
+    TODO: upraviť podľa nového správania sa pre zaregistrované transakcie
+
+    V prípade nevytlačenia QR kódu, alebo jeho neúplného vytlačenia je tento doklad nepoužiteľný na
+    daňové účely. Dáta tohto dokladu sa nepremietnu do akumulátorov dennej uzávierky a obsah tohto
+    dokladu sa nezapíše ani do žurnálov fiškálnej tlačiarne. Takýto doklad je nepoužiteľný na
+    daňové účely, pretože pri spätnej kontrole tohto dokladu by bola zistená jeho absencia
+    v archivovaných žurnáloch fiškálnej tlačiarne.
+
+Okrem registračných transakcií podlieha transakčnému riadeniu aj proces vykonania dennej
+Z uzávierky, ktorý obsahuje niekoľko podprocesov (tlač uzávierky, vymazanie denných sumárov a počítadiel).
+Tento proces sa od registračnej transakcie líši tým, že je vykonaný v rámci jediného príkazu
+:ref:`printZReport <printZReport>`.
+
+V prípade, že sa spustí vykonávanie dennej Z uzávierky a fiškálna tlačiareň nevráti po vstupných
+kontrolách príkazu žiadnu chybu (tzn. dôjde k zmene stavu z :ref:`MONITOR <MONITOR>` na
+:ref:`REPORT <REPORT>`), potom daná spustená uzávierka sa už musí dokončiť (musia dobehnúť
+všetky podprocesy).
+V prípade akéhokoľvek problému, ktorý počas procesu vykonania Z uzávierky vznikne,
+nie je možné tento proces zrušiť a začať inú činnosť bez toho, aby došlo k dokončeniu tejto
+Z uzávierky. Pre viac informácii pozri:
+
+* kapitolu :doc:`/ProblemSolving/FiscalPrinterRecovery` a
+
+* :ref:`príklad riešenia odstrániteľnej chyby pri tlači Z uzávierky <RecoverableProblems_ZReport_EXAMPLE>`.
+
+.. toctree::
+    :maxdepth: 2

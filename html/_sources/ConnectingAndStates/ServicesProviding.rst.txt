@@ -1,0 +1,13 @@
+Poskytovanie služieb
+====================
+
+Postupnosť správ pre spojenie, začiatok predaja, predaj jednej položky
+a zaplatenie ukazuje nasledujúci obrázok.
+
+.. figure:: ../Images/CommandSequence.png
+    :figclass: align-center
+
+    Obrázok č. 5: Správy pri predaji tovaru
+
+.. toctree::
+    :maxdepth: 3

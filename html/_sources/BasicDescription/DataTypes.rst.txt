@@ -1,0 +1,87 @@
+Dátové typy a kódovanie ich hodnôt
+==================================
+
+Komunikačný protokol stanovuje prenos všetkých dát ako textov.
+Teda aj čísla sa posielajú ako textové reťazce pozostávajúce
+zo znakov ``0`` až ``9``. V desatinných číslach je možné použiť
+ako desatinný oddeľovač len znak bodky ``.``. Znak negatívnej
+hodnoty ``-`` je možné použiť len na začiatku čísla.
+
+**Poznámka**: Pre zjednodušenie čítania čísel je v zápise rozsahu
+použitý ako oddeľovač skupín znak medzery. Tento znak sa ale nepoužíva
+pri komunikácii.
+
+.. glossary::
+
+    BOOLEAN
+        Môže nadobúdať len hodnoty ``0`` a ``1``, pričom platí, že ``0 = FALSE`` a ``1 = TRUE``.
+
+    CHAR
+        Jeden znak v kódovej stránke Windows-1250. Znak nesmie byť kontrolným znakom.
+
+        Ak sa v texte objaví popis znaku, je zobrazený v apostrofoch; príklad: ``','``
+
+    CURRENCY
+        Desatinné číslo s dĺžkou najviac 21 znakov a s presnosťou najviac na 4 desatinné miesta.
+
+        Rozsah: \<-922 337 203 685 477.5808, 922 337 203 685 477.5807\>
+
+    DATETIME
+        Dátum a čas vo fiškálnej tlačiarni je reprezentovaný ako textový reťazec.
+        Sú používané viaceré formáty zápisu dátumu a času.
+
+        Konkrétny formát dát bude uvedený pri jednotlivých príkazoch.
+        :ref:`Všeobecný popis ku významu zápisu formátu dátumu a času <DateTimeFormat>`
+        je v samostatnej :ref:`kapitole <DateTimeFormat>`.
+
+    INT32
+        Celé číslo. Čísla sú zapísané v desiatkovej sústave a ak je potrebné obsahujú znak ``'-'``.
+
+        Rozsah: \<-2 147 483 648, 2 147 483 647\>
+
+    PERCENTAGE
+        Desatinné číslo s dĺžkou najviac 8 znakov a s presnosťou najviac na 4 desatinné miesta.
+
+        Rozsah: \<0.0000, 100.0000\>
+
+    QUANTITY
+        Desatinné číslo s dĺžkou najviac 12 znakov a s presnosťou najviac na 3 desatinné miesta.
+        
+        Rozsah: \<-999 999.999, 999 999.999\>
+
+    STRING
+        Reťazec znakov v kódovej stránke Windows-1250. Reťazec nesmie obsahovať žiadne kontrolné znaky.
+
+        Ak sa v texte objavia textové reťazce ich obsah je v úvodzovkách; príklad: ``"textový reťazec"``
+
+        .. note::
+            Tento dátový typ sa používa aj na zložené dátové typy, ako napríklad dve čísla oddelené
+            bodkočiarkou, alebo binárne reťazce (zapísané ako "BASE-16 string").
+
+    UINT32
+        Celé číslo bez znamienka. Toto číslo je zapísané v šestnástkovej sústave s prefixom ``"0x"``.
+
+        Príklad: Tento zápis sa používa napríklad pre :ref:`ErrorExtension <ErrorExtension>`
+
+    VARIANT
+        Tento dátový typ je náhradou za ľubovoľný iný základný dátový typ. Teda hodnota môže (podľa potreby)
+        byť hociktorá z hore vymenovaných základných dátových typov.
+
+        Tento typ má využitie hlavne pre príkazy, ktoré môžu používať, alebo vrátiť viacero typov dát.
+        Príklad takéhoto príkazu je príkaz :ref:`getData <getData>`. Výstupný parameter môže byť
+        v tomto prípade:
+
+        * aj :term:`INT32` (napríklad pre parameter :ref:`FP_GD_CASH_IN_CNT <FP_GD_CASH_IN_CNT>`/hodnotu
+          :ref:`CashInCount <CashInCount>`),
+
+        * alebo :term:`CURRENCY` (napríklad pre parameter :ref:`FP_GD_REC_CASH_IN_TOTAL <FP_GD_REC_CASH_IN_TOTAL>`/hodnotu
+          :ref:`RecCashInTotal <RecCashInTotal>`),
+
+        * ale aj :term:`STRING` (napríklad pre parameter :ref:`FP_GD_TPN_ID <FP_GD_TPN_ID>`).
+
+.. note::
+    Pre nepovinné parametre platí, že môžu nadobúdať aj hodnotu ``""`` (prázdny reťazec) aj keď sú iného typu,
+    napríklad **INT32**. Takáto hodnota je ekvivalentná ku nezadanej hodnote.
+
+.. toctree::
+    :maxdepth: 2

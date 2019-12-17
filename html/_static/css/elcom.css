@@ -1,0 +1,9 @@
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+    white-space: normal;
+    vertical-align: middle;
+}
+
+table th p {
+    margin-bottom: 2px;
+}

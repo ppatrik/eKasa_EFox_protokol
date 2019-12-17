@@ -1,0 +1,23 @@
+Kategorizácia návratových hodnôt
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Riešenie chybových stavov je dané spracovaním chýb, ktoré môžu byť rôzneho charakteru.
+Tieto chyby je možné rozdeliť do troch kategórii.
+
+Podrobnejšie informácie sú v nasledujúcich sekciách.
+
+1. :doc:`InvalidCommands`,
+2. :doc:`ResolvableErrors`,
+3. :doc:`InternalErrors`.
+
+Okrem chýb môže byť v odpovedi na požiadavku v poli *exceptionCode* vrátený aj kód pre
+varovanie. Na rozdiel od chýb (keď sa príkaz buď vôbec nezačne vykonávať, alebo ostane
+nedokončený), kód typu "varovanie" aplikácii oznamuje, že príkaz síce bol vykonaný,
+ale nie ideálne. Takýmto kódom môže fiškálna tlačiareň prípadne oznamovať aj nejaký problém,
+ktorý znemožní vykonanie budúcich príkazov.
+
+To, ako bol príkaz vykonaný, je dané kódom varovania. Všetky pomenovania pre kódy varovania
+sú označené sufixom  ``_WARNING``.
+
+.. toctree::
+    :maxdepth: 3

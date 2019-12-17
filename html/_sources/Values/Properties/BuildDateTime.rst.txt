@@ -1,0 +1,18 @@
+_`BuildDateTime` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+======================== =======================================
+názov vlastnosti         **BuildDateTime**
+typ                      STRING\[15\]
+prednastavená hodnota    \-
+prístup                  read-only
+======================== =======================================
+
+**Popis**:
+
+  Dátum a čas buildu vo formáte :ref:`YYYYMMDD hhmmss <DateTimeFormat>`
+
+  Ako oddeľovač medzi dátumom a časom je medzera.
+
+.. toctree::
+    :maxdepth: 3

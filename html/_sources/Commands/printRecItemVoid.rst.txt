@@ -1,0 +1,217 @@
+_`printRecItemVoid` ``[_new_]``
+-------------------------------
+
+**Formát príkazu**:
+
+  ======== ================================================== =============== ====================
+  Pole     Hodnota                                            Dátový typ      Popis
+  ======== ================================================== =============== ====================
+  Cmd ID   pRIV                                               \-              identifikátor príkazu
+  Req/Rsp  REQ                                                \-              požiadavka
+  Param1   :ref:`description <pRIV_description>`              **STRING\[80]** názov stornovanej položky
+  Param2   :ref:`price <pRIV_price>`                          **CURRENCY**    výsledná cena položky
+  Param3   :ref:`quantity <pRIV_quantity>`                    **QUANTITY**    množstvo položky
+  Param4   :ref:`vatID <pRIV_vatID>`                          **INT32**       identifikátor daňovej skupiny
+  Param5   :ref:`specialRegulation <pRIV_specialRegulation>`  **INT32**       identifikátor špeciálnej regulácie
+  Param6   :ref:`unitPrice <pRIV_unitPrice>`                  **CURRENCY**    jednotková cena položky
+  Param7   :ref:`unitName <pRIV_unitName>`                    **STRING\[3\]** merná jednotka položky
+  Param8   :ref:`refReceiptID <pRIV_RefReceiptID>`            **STRING\[44]** identifikátor originálneho dokladu
+  Param9   :ref:`preLine <pRIV_preLine>`                      **STRING**      text tlačený pred týmto príkazom
+  Param10   :ref:`postLine <pRIV_postLine>`                    **STRING**      text tlačený za týmto príkazom
+  ======== ================================================== =============== ====================
+
+.. _pRIV_description:
+
+**Parameter description**:
+
+  Názov stornovanej položky.
+
+    * Maximálna dĺžka reťazca je ``80`` znakov a bude vytlačený vo viacerých riadkoch.
+    * Môže obsahovať len vytlačiteľné znaky.
+
+.. _pRIV_price:
+
+**Parameter price**:
+
+  Výsledná cena položky.
+
+.. _pRIV_quantity:
+
+**Parameter quantity**:
+
+  Množstvo položky.
+
+    * Ak sa jedná o doklad faktúry (parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SIMPLE_INVOICE <FP_RT_SIMPLE_INVOICE>` príkazu :ref:`beginFiscalReceipt <beginFiscalReceipt>`), tak je obsah parametra :ref:`quantity <pRIV_quantity>` ignorovaný, ale keďže je povinný, tak musí nadobúdať nenulovú hodnotu.
+
+.. _pRIV_vatID:
+
+**Parameter vatID**:
+
+  Identifikátor daňovej skupiny naprogramovanej vo FP, ku ktorej je položka priradená.
+
+    * Môže nadobúdať hodnoty v rozsahu :ref:`vatID <gVE_vatID>` = ``1`` až :ref:`NumVatRates <NumVatRates>`.
+    * Ak sa jedná o doklad faktúry (parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SIMPLE_INVOICE <FP_RT_SIMPLE_INVOICE>` príkazu :ref:`beginFiscalReceipt <beginFiscalReceipt>`), potom parameter :ref:`vatID <gVE_vatID>` musí odkazovať na daňovú skupinu, ktorej príznak :ref:`vatFlag <gVE_RSP_vatFlag>` = :ref:`FP_VF_SIMPINVOICE <FP_VF_SIMPINVOICE>`.
+    * Ak sa jedná o doklad predaja (parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SALES <FP_RT_SALES>` príkazu :ref:`beginFiscalReceipt <beginFiscalReceipt>`), alebo vrátenia (parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_REFUND <FP_RT_REFUND>` príkazu :ref:`beginFiscalReceipt <beginFiscalReceipt>`), potom parameter :ref:`vatID <gVE_vatID>` musí odkazovať na daňovú skupinu, ktorej príznak :ref:`vatFlag <gVE_RSP_vatFlag>` je rôzny od :ref:`FP_VF_SIMPINVOICE <FP_VF_SIMPINVOICE>`.
+
+.. _pRIV_specialRegulation:
+
+**Parameter specialRegulation**
+
+  Identifikátor špeciálnej regulátor špeciálne regulácie určuje dôvod priradenia k nezdaniteľnej daňovej hladine.
+
+  Môže nadobúdať hodnoty v rozsahu \<``0``, ``6``>, pričom význam jednotlivých hodnôt je:
+
+  ========= ===============================================
+  Hodnota   Popis
+  ========= ===============================================
+  ``0``     bez uvedenia dôvodu
+  ``1``     prenesenie daňovej povinnosti
+  ``2``     oslobodené od dane
+  ``3``     cestovné kancelárie
+  ``4``     použitý tovar
+  ``5``     umelecké diela
+  ``6``     zberateľské predmety a starožitnosti
+  ========= ===============================================
+
+  .. warning::
+    Parameter ešte nie je implementovaný. Hodnota je v aktuálnej verzii vynechaná.
+
+.. _pRIV_unitPrice:
+
+**Parameter unitPrice**:
+
+  Jednotková cena položky.
+
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+    * Ak sa jedná o doklad faktúry (parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SIMPLE_INVOICE <FP_RT_SIMPLE_INVOICE>` príkazu :ref:`beginFiscalReceipt <beginFiscalReceipt>`), tak je obsah parametra :ref:`unitPrice <pRIV_unitPrice>` ignorovaný.
+
+.. _pRIV_unitName:
+
+**Parameter unitName**:
+
+  Merná jednotka položky (napr.: ``"kg"``, ``"l"``, ``"kus"``, ``"bal"``…).
+
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+    * Ak sa jedná o doklad faktúry (parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SIMPLE_INVOICE <FP_RT_SIMPLE_INVOICE>` príkazu :ref:`beginFiscalReceipt <beginFiscalReceipt>`), tak je obsah parametra :ref:`unitName <pRIV_unitName>` ignorovaný.
+
+.. _pRIV_RefReceiptID:
+
+**Parameter refReceiptID**
+
+  Parameter určuje číslo originálneho dokladu, na ktorom bola položka predaná a môže nadobúdať hodnoty:
+
+  .. warning::
+    Hodnota parametra musí byť prázdna.
+
+.. _pRIV_preLine:
+
+**Parameter preLine**:
+
+  Text tlačený pred týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+.. _pRIV_postLine:
+
+**Parameter postLine**:
+
+  Text tlačený za týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+**Formát odpovede**:
+
+  ========= =================== ============== ====================
+  Pole      Hodnota             Dátový typ     Popis
+  ========= =================== ============== ====================
+  Cmd ID    pRIV                \-             identifikátor príkazu
+  Req/Rsp   RSP                 \-             odpoveď
+  Exception *exceptionCode*     **INT32**      návratový kód
+  ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  ======================================================= =======================================
+  Chyba                                                   Popis
+  ======================================================= =======================================
+  :ref:`EFP_BAD_QUANTITY <EFP_BAD_QUANTITY>`              Parameter :ref:`quantity <pRIV_quantity>` bol poslaný nesprávne (<= ``0``).
+  :ref:`EFP_BAD_AMOUNT <EFP_BAD_AMOUNT>`                  Parameter :ref:`price <pRIV_price>` je <= ``0``, alebo nie je násobkom ``0.01``, alebo :ref:`price <pRIV_price>` > ako :ref:`RecItemTotal <RecItemTotal>`\[:ref:`vatID <pRIV_vatID>`\].
+  :ref:`EFP_BAD_VAT <EFP_BAD_VAT>`                        Parameter :ref:`vatID <pRIV_vatID>` bol poslaný nesprávne.
+  :ref:`EFP_BAD_PRICE <EFP_BAD_PRICE>`                    Parameter :ref:`unitPrice <pRIV_unitPrice>` bol poslaný nesprávne (<= ``0``).
+  :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.
+  :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`        V nákupe sa nenachádza žiadna predaná položka, alebo FP je v procese realizácie účtenky vkladu/výberu hotovosti.
+  :ref:`EFP_REC_TOTAL_OVERFLOW <EFP_REC_TOTAL_OVERFLOW>`  Príkaz by spôsobil prekročenie maximálnej hodnoty jedného nákupu.
+  :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                    V tlačiarni chýba papier.
+  :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                  Kryt tlačiarne je otvorený.
+  :ref:`E_FAILURE <E_FAILURE>`                            Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bola transakčná účtenka riadne dokončená. Pre ďalšie zmysluplné pokračovanie v činnosti musí aplikácia zavolať príkaz :ref:`resetPrinter <resetPrinter>` a transakciu môže zopakovať.
+  :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+  :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+  :ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>`  Pri práci s displejom vznikla interná chyba.
+  :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`  Pri práci s tlačiarňou vznikla interná chyba.
+  ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz zabezpečí stornovanie už skôr predanej a vytlačenej položky v aktuálnom nákupe.
+
+    * Spolu s položkou bude na účtenke vytlačený aj text označujúci príkaz storna.
+    * Všetky číselné hodnoty parametrov sa posielajú ako kladné a o vytlačenie správneho znamienka výslednej ceny tohto príkazu sa postará FP.
+    * Hodnota storna položky v parametri :ref:`price <pRIV_price>` nesmie prekročiť hodnotu obratu predaných položiek, poslaných príkazom :ref:`printRecItem <printRecItem>` v daňovej skupine danej parametrom :ref:`vatID <pRIV_vatID>`.
+
+      .. note::
+          Túto hodnotu je možné získať príkazom :ref:`getTotalizer <getTotalizer>` s parametrami :ref:`totalizerType <gT_totalizerType>` = :ref:`FP_TT_RECEIPT <FP_TT_RECEIPT>`, :ref:`vatID <gT_vatID>` = poslané :ref:`vatID <gT_vatID>` a :ref:`totalizerID <gT_totalizerID>` = :ref:`FP_GT_ITEM <FP_GT_ITEM>`.
+
+**Príklad**:
+
+  Pozri príklad z príkazu :ref:`printRecItem <pRI_Example>`.
+
+**Účinky príkazu**:
+
+  * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_SALES <FP_RT_SALES>` a :ref:`VatIncluded <VatIncluded>` = ``TRUE`` (účtenka predaja v cenách s DPH)
+
+      * :ref:`RecItemVoidTotal <RecItemVoidTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecItemVoidTotal <RecItemVoidTotal>`\[:ref:`vatID <pRIV_vatID>`\] + :ref:`price <pRIV_price>`
+      * :ref:`RecItemVoidCount <RecItemVoidCount>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecItemVoidCount <RecItemVoidCount>`\[:ref:`vatID <pRIV_vatID>`\] + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` - :ref:`price <pRIV_price>`
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\] - :ref:`price <pRIV_price>`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`VAT_GROSS <VAT_GROSS>`\(:ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\], :ref:`vatID <pRIV_vatID>`\)
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\] - :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIV_vatID>`\]
+
+  * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_REFUND <FP_RT_REFUND>` a :ref:`VatIncluded <VatIncluded>` = ``TRUE`` (účtenka vrátenia v cenách s DPH)
+
+      * :ref:`RecRefundVoidTotal <RecRefundVoidTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecRefundVoidTotal <RecRefundVoidTotal>`\[:ref:`vatID <pRIV_vatID>`\] + :ref:`price <pRIV_price>`
+      * :ref:`RecRefundVoidCount <RecRefundVoidCount>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecRefundVoidCount <RecRefundVoidCount>`\[:ref:`vatID <pRIV_vatID>`\] + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` + :ref:`price <pRIV_price>`
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\] + :ref:`price <pRIV_price>`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`VAT_GROSS <VAT_GROSS>`\(:ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\], :ref:`vatID <pRIV_vatID>`\)
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\] - :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIV_vatID>`\]
+
+  * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_SALES <FP_RT_SALES>` a :ref:`VatIncluded <VatIncluded>` = ``FALSE`` (účtenka predaja v cenách bez DPH)
+
+      * :ref:`RecItemVoidTotal <RecItemVoidTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecItemVoidTotal <RecItemVoidTotal>`\[:ref:`vatID <pRIV_vatID>`\] + :ref:`price <pRIV_price>`
+      * :ref:`RecItemVoidCount <RecItemVoidCount>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecItemVoidCount <RecItemVoidCount>`\[:ref:`vatID <pRIV_vatID>`\] + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` - :ref:`price <pRIV_price>`
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\] - :ref:`price <pRIV_price>`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`VAT_NET <VAT_NET>`\(:ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\], :ref:`vatID <pRIV_vatID>`\)
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\] + :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIV_vatID>`\]
+
+  * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_REFUND <FP_RT_REFUND>` a :ref:`VatIncluded <VatIncluded>` = ``FALSE`` (účtenka predaja v cenách bez DPH)
+
+      * :ref:`RecRefundVoidTotal <RecRefundVoidTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecRefundVoidTotal <RecRefundVoidTotal>`\[:ref:`vatID <pRIV_vatID>`\] + :ref:`price <pRIV_price>`
+      * :ref:`RecRefundVoidCount <RecRefundVoidCount>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecRefundVoidCount <RecRefundVoidCount>`\[:ref:`vatID <pRIV_vatID>`\] + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` + :ref:`price <pRIV_price>`
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\] + :ref:`price <pRIV_price>`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`VAT_NET <VAT_NET>`\(:ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\], :ref:`vatID <pRIV_vatID>`\)
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\] + :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIV_vatID>`\]
+
+  * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_SIMPLE_INVOICE <FP_RT_SIMPLE_INVOICE>` (úhrada faktúry)
+
+      * :ref:`RecInvoiceVoidTotal <RecInvoiceVoidTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecInvoiceVoidTotal <RecInvoiceVoidTotal>`\[:ref:`vatID <pRIV_vatID>`\] + :ref:`price <pRIV_price>`
+      * :ref:`RecInvoiceVoidCount <RecInvoiceVoidCount>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecInvoiceVoidCount <RecInvoiceVoidCount>`\[:ref:`vatID <pRIV_vatID>`\] + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` - :ref:`price <pRIV_price>`
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIV_vatID>`\] - :ref:`price <pRIV_price>`
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIV_vatID>`\] - :ref:`price <pRIV_price>`
+
+.. toctree::
+    :maxdepth: 2
