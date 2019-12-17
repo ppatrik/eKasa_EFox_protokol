@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Typický a maximálny čas trvania vykonávania príkazov &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  <title>Typický a maximálny čas trvania vykonávania príkazov [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
   
 
   
@@ -94,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Prílohy</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="PrinterType.html">Zoznam použitých tlačiarní</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Typický a maximálny čas trvania vykonávania príkazov</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Typický a maximálny čas trvania vykonávania príkazov <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -146,7 +146,7 @@
         
           <li><a href="index.html">Prílohy</a> &raquo;</li>
         
-      <li>Typický a maximálny čas trvania vykonávania príkazov</li>
+      <li>Typický a maximálny čas trvania vykonávania príkazov <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,8 +163,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="typicky-a-maximalny-cas-trvania-vykonavania-prikazov">
-<h1>Typický a maximálny čas trvania vykonávania príkazov<a class="headerlink" href="#typicky-a-maximalny-cas-trvania-vykonavania-prikazov" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+  <div class="section" id="typicky-a-maximalny-cas-trvania-vykonavania-prikazov-new">
+<h1>Typický a maximálny čas trvania vykonávania príkazov <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#typicky-a-maximalny-cas-trvania-vykonavania-prikazov-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p>V tabuľke (nižšie) sú napísané typické a maximálne časy pre vykonanie jednotlivých príkazov.
 V prípade, ak aplikácia nedostane odpoveď ani do času, ktorý je označený ako maximálny čas pre tento príkaz,
 je možné predpokladať, že došlo k strate spojenia, prípadne nastala nejaká interná chyba na zariadení.
@@ -188,7 +188,7 @@ je do 100 milisekúnd a maximálny čas vykonania príkazu je 1 sekunda (pozri p
 <tbody>
 <tr class="row-even"><td><p>beginFiscalReceipt</p></td>
 <td><p>250ms</p></td>
-<td><p>10s</p></td>
+<td><p>15s</p></td>
 </tr>
 <tr class="row-odd"><td><p>beginNonFiscal</p></td>
 <td><p>100ms</p></td>
@@ -196,7 +196,7 @@ je do 100 milisekúnd a maximálny čas vykonania príkazu je 1 sekunda (pozri p
 </tr>
 <tr class="row-even"><td><p>endFiscalReceipt*</p></td>
 <td><p>8s</p></td>
-<td><p>25s</p></td>
+<td><p>80s</p></td>
 </tr>
 <tr class="row-odd"><td><p>endNonFiscal</p></td>
 <td><p>1s</p></td>
@@ -226,7 +226,7 @@ je do 100 milisekúnd a maximálny čas vykonania príkazu je 1 sekunda (pozri p
 </tr>
 <tr class="row-odd"><td><p>ostatné <strong>printRec…</strong> príkazy*</p></td>
 <td><p>100ms</p></td>
-<td><p>10s</p></td>
+<td><p>15s</p></td>
 </tr>
 <tr class="row-even"><td><p>printXReport</p></td>
 <td><p>2s</p></td>

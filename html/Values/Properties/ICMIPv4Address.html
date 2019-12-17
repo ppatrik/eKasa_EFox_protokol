@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>NumPayments &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  <title>ICMIPv4Address [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="../../_static/css/elcom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Hľadať" href="../../search.html" />
-    <link rel="next" title="NumTrailerLines" href="NumTrailerLines.html" />
-    <link rel="prev" title="NumHeaderLines" href="NumHeaderLines.html" /> 
+    <link rel="next" title="ICO" href="ICO.html" />
+    <link rel="prev" title="ICMFirmwareVersion" href="ICMFirmwareVersion.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -120,15 +120,15 @@
 <li class="toctree-l3"><a class="reference internal" href="HeaderBitmap.html">HeaderBitmap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ICDPH.html">ICDPH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ICMFirmwareVersion.html">ICMFirmwareVersion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ICMIPv4Address.html">ICMIPv4Address <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ICMIPv4Address <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="ICO.html">ICO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ManufacturerName.html">ManufacturerName</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MediumCoverOpened.html">MediumCoverOpened</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NumDataMsgItems.html">NumDataMsgItems</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NumHeaderLines.html">NumHeaderLines</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">NumPayments</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="NumPayments.html">NumPayments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NumTrailerLines.html">NumTrailerLines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NumVatRates.html">NumVatRates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PaymentsRegistration.html">PaymentsRegistration</a></li>
@@ -204,7 +204,7 @@
         
           <li><a href="index.html">Vlastností (properties) fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a> &raquo;</li>
         
-      <li>NumPayments</li>
+      <li>ICMIPv4Address <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -221,8 +221,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1><span class="target" id="numpayments">NumPayments</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+  <div class="section" id="icmipv4address-new">
+<h1><span class="target" id="icmipv4address">ICMIPv4Address</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#icmipv4address-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 38%" />
@@ -230,13 +230,13 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>názov vlastnosti</p></td>
-<td><p><strong>NumPayments</strong></p></td>
+<td><p><strong>ICMIPv4Address</strong></p></td>
 </tr>
 <tr class="row-even"><td><p>typ</p></td>
-<td><p>INT32</p></td>
+<td><p>STRING</p></td>
 </tr>
 <tr class="row-odd"><td><p>prednastavená hodnota</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">20</span></code></p></td>
+<td><p>-</p></td>
 </tr>
 <tr class="row-even"><td><p>prístup</p></td>
 <td><p>read-only</p></td>
@@ -245,26 +245,13 @@
 </table>
 <p><strong>Popis</strong>:</p>
 <blockquote>
-<div><ul>
-<li><p>V prípade, že property <a class="reference internal" href="PaymentsRegistration.html#paymentsregistration"><span class="std std-ref">PaymentsRegistration</span></a> = <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, potom toto property obsahuje maximálny počet typov platieb, ktorých popisy je možné:</p>
-<blockquote>
-<div><ul>
-<li><p>naprogramovať príkazom <a class="reference internal" href="../../Commands/setPaymentType.html#setpaymenttype"><span class="std std-ref">setPaymentType</span></a></p></li>
-<li><p>použiť v príkazoch:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><a class="reference internal" href="../../Commands/printRecCash.html#printreccash"><span class="std std-ref">printRecCash</span></a></p></li>
-<li><p><a class="reference internal" href="../../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a></p></li>
-<li><p><a class="reference internal" href="../../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a></p></li>
-</ul>
+<div><p>Obsahuje infromáciu o pridelenej IP adrese modulu <a class="reference internal" href="../../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a>.</p>
 </div></blockquote>
-</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>V prípade, že property <a class="reference internal" href="PaymentsRegistration.html#paymentsregistration"><span class="std std-ref">PaymentsRegistration</span></a> = <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, hodnota tohto property nemá žiadne využitie.</p></li>
-</ul>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Ak nie je možné túto informáciu získať, alebo nebola pridelená žiadna IP adresa,
+bude obsahovať prázdny reťazec.</p>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -277,10 +264,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="NumTrailerLines.html" class="btn btn-neutral float-right" title="NumTrailerLines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ICO.html" class="btn btn-neutral float-right" title="ICO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="NumHeaderLines.html" class="btn btn-neutral float-left" title="NumHeaderLines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ICMFirmwareVersion.html" class="btn btn-neutral float-left" title="ICMFirmwareVersion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

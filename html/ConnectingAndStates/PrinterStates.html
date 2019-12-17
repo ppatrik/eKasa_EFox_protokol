@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Stavy fiškálnej tlačiarne &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  <title>Stavy fiškálnej tlačiarne [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
   
 
   
@@ -92,7 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ServicesProviding.html">Poskytovanie služieb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="States.html">Stavy komunikácie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Timing.html">Časovanie</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Stavy fiškálnej tlačiarne</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Stavy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Modes.html">Režimy (módy)</a></li>
@@ -153,7 +153,7 @@
         
           <li><a href="index.html">Vytvorenie spojenie a stavy</a> &raquo;</li>
         
-      <li>Stavy fiškálnej tlačiarne</li>
+      <li>Stavy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1><span class="target" id="stavy-fiskalnej-tlaciarne">Stavy fiškálnej tlačiarne</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+  <div class="section" id="stavy-fiskalnej-tlaciarne-new">
+<h1><span class="target" id="stavy-fiskalnej-tlaciarne">Stavy fiškálnej tlačiarne</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#stavy-fiskalnej-tlaciarne-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p>Fiškálna tlačiareň pri vykonávaní požadovaných príkazov prechádza cez viditeľné stavy,
 ktoré predurčujú následné povolené príkazy a tým aj povolené správy vysielané
 z aplikácie. Tieto stavy odzrkadľujú stavy fiškálnej jednotky.</p>
@@ -181,13 +181,13 @@ sa prechádza po prvej platbe a zotrváva sa v ňom, pokiaľ sa celkom nezaplat�
 rovná celkovej hodnote transakcie. <a class="reference internal" href="#fiscal-receipt-ending">FISCAL_RECEIPT_ENDING</a> umožňuje dotlačenie účtenky.
 <a class="reference internal" href="#nonfiscal">NONFISCAL</a> stav umožňuje tlačiť nefiškálne doklady. V stave <a class="reference internal" href="#report">REPORT</a> sa vykonáva tlač
 výkazov (uzávierok) a v stave <a class="reference internal" href="#locked">LOCKED</a> je zariadenie v prípade výskytu nejakého problému.</p>
-<div class="align-center figure align-default" id="id2">
+<div class="align-center figure align-default" id="id1">
 <img alt="../_images/SimpleStateDiagram.png" src="../_images/SimpleStateDiagram.png" />
-<p class="caption"><span class="caption-text">Obrázok č. 8: Zjednodušený stavový diagram fiškálnej tlačiarne</span><a class="headerlink" href="#id2" title="Trvalý odkaz na tento obrázok">¶</a></p>
+<p class="caption"><span class="caption-text">Obrázok č. 8: Zjednodušený stavový diagram fiškálnej tlačiarne</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento obrázok">¶</a></p>
 </div>
-<div class="align-center figure align-default" id="id3">
+<div class="align-center figure align-default" id="id2">
 <img alt="../_images/DeviceStateDiagram.png" src="../_images/DeviceStateDiagram.png" />
-<p class="caption"><span class="caption-text">Obrázok č. 9: Úplný stavový diagram fiškálnej tlačiarne</span><a class="headerlink" href="#id3" title="Trvalý odkaz na tento obrázok">¶</a></p>
+<p class="caption"><span class="caption-text">Obrázok č. 9: Úplný stavový diagram fiškálnej tlačiarne</span><a class="headerlink" href="#id2" title="Trvalý odkaz na tento obrázok">¶</a></p>
 </div>
 <p><strong>Popis jednotlivých stavov</strong>:</p>
 <p><span class="target" id="monitor">MONITOR</span></p>
@@ -205,7 +205,7 @@ je začatý príkazom <a class="reference internal" href="../Commands/beginTrain
 <p><span class="target" id="fiscal-receipt">FISCAL_RECEIPT</span></p>
 <blockquote>
 <div><p>Fiškálna tlačiareň práve spracováva fiškálnu účtenku (položky účtenky). Existujú dve
-modifikácie tohto stavu a to podľa parametra <em>fiscalReceiptType</em> príkazu
+modifikácie tohto stavu a to podľa parametra <a class="reference internal" href="../Commands/beginFiscalReceipt.html#bfr-fiscalreceipttype"><span class="std std-ref">fiscalReceiptType</span></a> príkazu
 <a class="reference internal" href="../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>, ktorým jediným je možné vstúpiť do tohto stavu.</p>
 <p>Ak <a class="reference internal" href="../Values/Properties/FiscalReceiptType.html#fiscalreceipttype"><span class="std std-ref">FiscalReceiptType</span></a> = <a class="reference internal" href="../Commands/beginFiscalReceipt.html#fp-rt-sales"><span class="std std-ref">FP_RT_SALES</span></a>,
 <a class="reference internal" href="../Commands/beginFiscalReceipt.html#fp-rt-refund"><span class="std std-ref">FP_RT_REFUND</span></a>, alebo
@@ -223,7 +223,7 @@ Pre odlíšenie od normálneho stavu, je účtenka tlačená v tréningovom rež
 </div></blockquote>
 <p><span class="target" id="fiscal-receipt-total">FISCAL_RECEIPT_TOTAL</span></p>
 <blockquote>
-<div><p>Fiškálna tlačiareň už akceptoval najmenej jednu platbu alebo výdavok, ale celá suma nákupu ešte
+<div><p>Fiškálna tlačiareň už akceptovala najmenej jednu platbu alebo výdavok, ale celá suma nákupu ešte
 nebola úplne uhradená. Zo stavu <a class="reference internal" href="#fiscal-receipt">FISCAL_RECEIPT</a> sa do tohto stavu vstúpi pomocou príkazu
 <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>, alebo <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>.
 Pokiaľ nedôjde k úplnému uhradeniu sumy registračnej transakcie, potom fiškálna tlačiareň ostáva
@@ -232,7 +232,7 @@ Tento stav možno opustiť len pomocou príkazov <a class="reference internal" h
 <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>, alebo <a class="reference internal" href="../Commands/printRecVoid.html#printrecvoid"><span class="std std-ref">printRecVoid</span></a>.
 Príkazy <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a> a <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>
 sa nesmú navzájom kombinovať v jednej a tej istej registračnej transakcii.</p>
-<p>Ak <a class="reference internal" href="../Values/Properties/TrainingModeActive.html#trainingmodeactive"><span class="std std-ref">TrainingModeActive</span></a> = TRUE, potom sa <a class="reference internal" href="../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> používa len na tréningové účely.</p>
+<p>Ak <a class="reference internal" href="../Values/Properties/TrainingModeActive.html#trainingmodeactive"><span class="std std-ref">TrainingModeActive</span></a> = <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, potom sa <a class="reference internal" href="../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> používa len na tréningové účely.</p>
 </div></blockquote>
 <p><span class="target" id="fiscal-receipt-ending">FISCAL_RECEIPT_ENDING</span></p>
 <blockquote>
@@ -270,7 +270,11 @@ Fiškálna tlačiareň nemôže opustiť tento stav bez zásahu servisného tech
 </div></blockquote>
 <p><span class="target" id="progress">PROGRESS</span></p>
 <blockquote>
-<div><p>Tento stav už nie je využívaný.</p>
+<div><p>Fiškálna tlačiareň práve spracováva asynchrónny príkaz, ktorý sa vykonáva na pozadí.
+Ak sa asynchrónne vykonávaný príkaz skončí, tak sa fiškálna tlačiareň automaticky vracia
+do stavu <a class="reference internal" href="#monitor">MONITOR</a>.</p>
+<p>V tomto stave sú prístupné len príkazy <a class="reference internal" href="../Commands/obtainProgress.html#obtainprogress"><span class="std std-ref">obtainProgress</span></a>,
+<a class="reference internal" href="../Commands/cancelRest.html#cancelrest"><span class="std std-ref">cancelRest</span></a> a v prípade vzniku chyby aj <a class="reference internal" href="../Commands/resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a>.</p>
 </div></blockquote>
 <p>Aplikácia po otvorení služieb fiškálnej tlačiarne príkazom <strong>connect</strong> musí tiež monitorovať
 jej aktuálny stav. V štandardnej situácii je <a class="reference internal" href="../Values/Properties/PrinterState.html#printerstate"><span class="std std-ref">PrinterState</span></a> = <a class="reference internal" href="../Values/Properties/PrinterState.html#fp-ps-monitor"><span class="std std-ref">FP_PS_MONITOR</span></a>.
