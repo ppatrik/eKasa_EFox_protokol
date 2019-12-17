@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="../../_static/css/elcom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Hľadať" href="../../search.html" />
-    <link rel="next" title="Vlastností (properties) fiškálnej tlačiarne [_new_]" href="../Properties/index.html" />
+    <link rel="next" title="Vlastností (properties) fiškálnej tlačiarne" href="../Properties/index.html" />
     <link rel="prev" title="Interné chyby fiškálnej tlačiarne" href="InternalErrors.html" /> 
 </head>
 
@@ -85,7 +85,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../BasicDescription/index.html">Popis protokolu</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Rules/index.html">Pravidlá</a></li>
@@ -101,11 +101,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastností (properties) fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastností (properties) fiškálnej tlačiarne</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Accumulators/index.html">Akumulátory fiškálnej tlačiarne</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -275,7 +275,7 @@
 </tr>
 <tr class="row-even"><td><p>225</p></td>
 <td><p><span class="target" id="efp-inspection-request">EFP_INSPECTION_REQUEST</span></p></td>
-<td><p>Je potrebné potvrdiť aktivovanú požiadavku na servisný zásah alebo servisný zásah priamo vykonať.</p></td>
+<td><p>Je potrebné potvrdiť aktivovanú požiadavku na servisný zásah, alebo servisný zásah priamo vykonať.</p></td>
 </tr>
 <tr class="row-odd"><td><p>226</p></td>
 <td><p><span class="target" id="efp-tax-auth-reg-in-progress">EFP_TAX_AUTH_REG_IN_PROGRESS</span></p></td>
@@ -304,45 +304,49 @@ Je potrebné opäť zavolať príkaz <a class="reference internal" href="../../C
 </tr>
 <tr class="row-odd"><td><p>236</p></td>
 <td><p><span class="target" id="efp-invalid-certificate">EFP_INVALID_CERTIFICATE</span></p></td>
-<td><p>Platnosť certifikátu vypršala alebo certifikát ešte nezačal platiť.</p></td>
+<td><p>Platnosť certifikátu vypršala, alebo certifikát ešte nezačal platiť.</p></td>
 </tr>
 <tr class="row-even"><td><p>237</p></td>
 <td><p><span class="target" id="efp-missing-identity-data">EFP_MISSING_IDENTITY_DATA</span></p></td>
 <td><p>Chýbajúce identifikačné údaje podnikateľa.</p></td>
 </tr>
-<tr class="row-odd"><td><p>301</p></td>
+<tr class="row-odd"><td><p>239</p></td>
+<td><p><span class="target" id="efp-fw-downloading">EFP_FW_DOWNLOADING</span></p></td>
+<td><p>Prebieha sťahovanie aktualizácie softvéru, je potrebné počkať cca 1 minútu a príkaz znovu zopakovať.</p></td>
+</tr>
+<tr class="row-even"><td><p>301</p></td>
 <td><p><span class="target" id="efp-illegal-command">EFP_ILLEGAL_COMMAND</span></p></td>
 <td><p>Nie sú splnené požadované podmienky pre vykonanie tohto príkazu.</p></td>
 </tr>
-<tr class="row-even"><td><p>303</p></td>
+<tr class="row-odd"><td><p>303</p></td>
 <td><p><span class="target" id="efp-already-fiscal">EFP_ALREADY_FISCAL</span></p></td>
 <td><p><a class="reference internal" href="../../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> je už v režime <a class="reference internal" href="../../ConnectingAndStates/Modes.html#fiscal"><span class="std std-ref">Fiscal</span></a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>304</p></td>
+<tr class="row-even"><td><p>304</p></td>
 <td><p><span class="target" id="efp-toobig">EFP_TOOBIG</span></p></td>
 <td><p>V pamäti obrázkov nie je dostatok priestoru na uloženie obrázku.</p></td>
 </tr>
-<tr class="row-even"><td><p>305</p></td>
+<tr class="row-odd"><td><p>305</p></td>
 <td><p><span class="target" id="efp-not-fiscal">EFP_NOT_FISCAL</span></p></td>
 <td><p><a class="reference internal" href="../../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> nie je uvedený do prevádzky, operáciu nemožno vykonať pred uvedením do prevádzky.</p></td>
 </tr>
-<tr class="row-odd"><td><p>401</p></td>
+<tr class="row-even"><td><p>401</p></td>
 <td><p><span class="target" id="efp-data-type">EFP_DATA_TYPE</span></p></td>
 <td><p>Aspoň jeden z poslaných parametrov nespĺňa formálne požiadavky definované pre jeho dátový typ.</p></td>
 </tr>
-<tr class="row-even"><td><p>403</p></td>
+<tr class="row-odd"><td><p>403</p></td>
 <td><p><span class="target" id="efp-extra-field">EFP_EXTRA_FIELD</span></p></td>
 <td><p>V správe bolo poslané niektoré pole príkazu navyše.</p></td>
 </tr>
-<tr class="row-odd"><td><p>404</p></td>
+<tr class="row-even"><td><p>404</p></td>
 <td><p><span class="target" id="efp-missing-field">EFP_MISSING_FIELD</span></p></td>
 <td><p>V správe nebolo  poslané niektoré pole príkazu.</p></td>
 </tr>
-<tr class="row-even"><td><p>405</p></td>
+<tr class="row-odd"><td><p>405</p></td>
 <td><p><span class="target" id="efp-missing-prm">EFP_MISSING_PRM</span></p></td>
 <td><p>V správe nebol poslaný niektorý z povinných parametrov.</p></td>
 </tr>
-<tr class="row-odd"><td><p>406</p></td>
+<tr class="row-even"><td><p>406</p></td>
 <td><p><span class="target" id="efp-unknown-cmd">EFP_UNKNOWN_CMD</span></p></td>
 <td><p>Neznámy príkaz.</p></td>
 </tr>
@@ -404,15 +408,15 @@ Je potrebné opäť zavolať príkaz <a class="reference internal" href="../../C
 </tr>
 <tr class="row-even"><td><p>901</p></td>
 <td><p><span class="target" id="efp-cover-open-warning">EFP_COVER_OPEN_WARNING</span></p></td>
-<td><p>Fiškálna účtenka je platná a započítaná do dennej uzávierky, ale vplyvom otvorenia krytu tlačiarne mohlo dôjsť k nedotlačeniu niektorých riadkov za fiškálnym logom.</p></td>
+<td><p>Fiškálny doklad je platný a započítaný do dennej uzávierky, ale vplyvom otvorenia krytu tlačiarne mohlo dôjsť k nedotlačeniu niektorých riadkov za povinnými údajmi.</p></td>
 </tr>
 <tr class="row-odd"><td><p>902</p></td>
 <td><p><span class="target" id="efp-cutter-warning">EFP_CUTTER_WARNING</span></p></td>
-<td><p>Strihač papiera je v zlom stave, ale účtenka bola kompletne vytlačená.</p></td>
+<td><p>Strihač papiera je v zlom stave, ale doklad bol kompletne vytlačený.</p></td>
 </tr>
 <tr class="row-even"><td><p>903</p></td>
 <td><p><span class="target" id="efp-rec-empty-warning">EFP_REC_EMPTY_WARNING</span></p></td>
-<td><p>Fiškálna účtenka je platná a započítaná do dennej uzávierky, ale vplyvom vonkajšieho zásahu alebo minutia sa papierovej pásky mohlo dôjsť k nedotlačeniu niektorých riadkov za fiškálnym logom.</p></td>
+<td><p>Fiškálny doklad je platný a započítaný do dennej uzávierky, ale vplyvom vonkajšieho zásahu, alebo konca pásky mohlo dôjsť k nedotlačeniu niektorých riadkov za povinnými údajmi.</p></td>
 </tr>
 </tbody>
 </table>
@@ -468,7 +472,7 @@ Je potrebné opäť zavolať príkaz <a class="reference internal" href="../../C
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Properties/index.html" class="btn btn-neutral float-right" title="Vlastností (properties) fiškálnej tlačiarne [_new_]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Properties/index.html" class="btn btn-neutral float-right" title="Vlastností (properties) fiškálnej tlačiarne" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="InternalErrors.html" class="btn btn-neutral float-left" title="Interné chyby fiškálnej tlačiarne" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

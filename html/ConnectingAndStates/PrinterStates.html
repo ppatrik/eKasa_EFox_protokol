@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Stavy fiškálnej tlačiarne [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  <title>Stavy fiškálnej tlačiarne &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
   
 
   
@@ -85,14 +85,14 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Vytvorenie spojenie a stavy</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Connection.html">Vytvorenie a ukončenia spojenia</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ServicesProviding.html">Poskytovanie služieb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="States.html">Stavy komunikácie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Timing.html">Časovanie</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Stavy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Stavy fiškálnej tlačiarne</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Modes.html">Režimy (módy)</a></li>
@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -153,7 +153,7 @@
         
           <li><a href="index.html">Vytvorenie spojenie a stavy</a> &raquo;</li>
         
-      <li>Stavy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
+      <li>Stavy fiškálnej tlačiarne</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,8 +170,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="stavy-fiskalnej-tlaciarne-new">
-<h1><span class="target" id="stavy-fiskalnej-tlaciarne">Stavy fiškálnej tlačiarne</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#stavy-fiskalnej-tlaciarne-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+  <div class="section" id="id1">
+<h1><span class="target" id="stavy-fiskalnej-tlaciarne">Stavy fiškálnej tlačiarne</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p>Fiškálna tlačiareň pri vykonávaní požadovaných príkazov prechádza cez viditeľné stavy,
 ktoré predurčujú následné povolené príkazy a tým aj povolené správy vysielané
 z aplikácie. Tieto stavy odzrkadľujú stavy fiškálnej jednotky.</p>
@@ -181,13 +181,13 @@ sa prechádza po prvej platbe a zotrváva sa v ňom, pokiaľ sa celkom nezaplat�
 rovná celkovej hodnote transakcie. <a class="reference internal" href="#fiscal-receipt-ending">FISCAL_RECEIPT_ENDING</a> umožňuje dotlačenie účtenky.
 <a class="reference internal" href="#nonfiscal">NONFISCAL</a> stav umožňuje tlačiť nefiškálne doklady. V stave <a class="reference internal" href="#report">REPORT</a> sa vykonáva tlač
 výkazov (uzávierok) a v stave <a class="reference internal" href="#locked">LOCKED</a> je zariadenie v prípade výskytu nejakého problému.</p>
-<div class="align-center figure align-default" id="id1">
-<img alt="../_images/SimpleStateDiagram.png" src="../_images/SimpleStateDiagram.png" />
-<p class="caption"><span class="caption-text">Obrázok č. 8: Zjednodušený stavový diagram fiškálnej tlačiarne</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento obrázok">¶</a></p>
-</div>
 <div class="align-center figure align-default" id="id2">
+<img alt="../_images/SimpleStateDiagram.png" src="../_images/SimpleStateDiagram.png" />
+<p class="caption"><span class="caption-text">Obrázok č. 8: Zjednodušený stavový diagram fiškálnej tlačiarne</span><a class="headerlink" href="#id2" title="Trvalý odkaz na tento obrázok">¶</a></p>
+</div>
+<div class="align-center figure align-default" id="id3">
 <img alt="../_images/DeviceStateDiagram.png" src="../_images/DeviceStateDiagram.png" />
-<p class="caption"><span class="caption-text">Obrázok č. 9: Úplný stavový diagram fiškálnej tlačiarne</span><a class="headerlink" href="#id2" title="Trvalý odkaz na tento obrázok">¶</a></p>
+<p class="caption"><span class="caption-text">Obrázok č. 9: Úplný stavový diagram fiškálnej tlačiarne</span><a class="headerlink" href="#id3" title="Trvalý odkaz na tento obrázok">¶</a></p>
 </div>
 <p><strong>Popis jednotlivých stavov</strong>:</p>
 <p><span class="target" id="monitor">MONITOR</span></p>
