@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="../../_static/css/elcom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Hľadať" href="../../search.html" />
-    <link rel="next" title="Zoznam návratových hodnôt" href="ExceptionValues.html" />
+    <link rel="next" title="Zoznam návratových hodnôt [_new_]" href="ExceptionValues.html" />
     <link rel="prev" title="Popis odstrániteľných chýb fiškálnej tlačiarne" href="ResolvableErrors.html" /> 
 </head>
 
@@ -85,27 +85,27 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../BasicDescription/index.html">Popis protokolu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Konštanty a premenné</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Konštanty a premenné</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Návratové hodnoty</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="Categorisation.html">Kategorizácia návratových hodnôt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="InvalidCommands.html">Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov</a></li>
+<li class="toctree-l3"><a class="reference internal" href="InvalidCommands.html">Chyby v dôsledku poslania nesprávneho príkazu, alebo jeho parametrov</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ResolvableErrors.html">Popis odstrániteľných chýb fiškálnej tlačiarne</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Interné chyby fiškálnej tlačiarne</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="ExceptionValues.html">Zoznam návratových hodnôt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExceptionValues.html">Zoznam návratových hodnôt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastností (properties) fiškálnej tlačiarne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastností (properties) fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Accumulators/index.html">Akumulátory fiškálnej tlačiarne</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -153,7 +153,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../index.html">Konštanty a premenné</a> &raquo;</li>
+          <li><a href="../index.html">Konštanty a premenné</a> &raquo;</li>
         
           <li><a href="index.html">Návratové hodnoty</a> &raquo;</li>
         
@@ -177,17 +177,17 @@
   <div class="section" id="interne-chyby-fiskalnej-tlaciarne">
 <h1>Interné chyby fiškálnej tlačiarne<a class="headerlink" href="#interne-chyby-fiskalnej-tlaciarne" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p id="exceptioncategory3">Chyby tretej kategórie vznikajú nezávisle na vykonávaných príkazoch.</p>
-<p>Po výskyte chyby z tejto kategórie sa fiškálna tlačiareň nachádza v stave
-<a class="reference internal" href="../../ConnectingAndStates/PrinterStates.html#locked"><span class="std std-ref">LOCKED</span></a>. Na to aby bolo možné pokračovať v činnosti je potrebné
+<p>Po výskyte chyby z tejto kategórie sa fiškálna tlačiareň nachádza v stave
+<a class="reference internal" href="../../ConnectingAndStates/PrinterStates.html#locked"><span class="std std-ref">LOCKED</span></a>. Na to aby bolo možné pokračovať v činnosti je potrebné
 odstrániť príčinu problému.</p>
 <p>To či príčinu chyby môže odstrániť obsluha, alebo to musí vykonať servisný technik
 je dané závažnosťou problému, prípadne potrebou narušenia plomby.</p>
-<p>V prípade týchto chýb je potrebné vypnúť fiškálnu tlačiareň, odstrániť príčinu chyby
-a následne zapnúť fiškálnu tlačiareň. Ak bola chyba úspešne odstránená, potom
-sa fiškálna tlačiareň vráti do stavu, v ktorom bola pred výskytom chyby.</p>
-<p>Ďalšia činnosť je analogická z princípom zotavenia fiškálnej tlačiarne po výpadku napájania.</p>
+<p>V prípade týchto chýb je potrebné vypnúť fiškálnu tlačiareň, odstrániť príčinu chyby
+a následne zapnúť fiškálnu tlačiareň. Ak bola chyba úspešne odstránená, potom
+sa fiškálna tlačiareň vráti do stavu, v ktorom bola pred výskytom chyby.</p>
+<p>Ďalšia činnosť je analogická z princípom zotavenia fiškálnej tlačiarne po výpadku napájania.</p>
 <p>Chyby tejto kategórie je možné rozdeliť do viacerých podkategórii.</p>
-<p><strong>Chyby v dôsledku odpojenia komponentu</strong></p>
+<p><strong>Chyby v dôsledku odpojenia komponentu</strong></p>
 <blockquote>
 <div><ul class="simple">
 <li><p>displej je odpojený (<a class="reference internal" href="ExceptionValues.html#efp-dsp-disconnected"><span class="std std-ref">EFP_DSP_DISCONNECTED</span></a>),</p></li>
@@ -215,7 +215,7 @@ sa fiškálna tlačiareň vráti do stavu, v ktorom bola pred výskytom chyby.<
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ExceptionValues.html" class="btn btn-neutral float-right" title="Zoznam návratových hodnôt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ExceptionValues.html" class="btn btn-neutral float-right" title="Zoznam návratových hodnôt [_new_]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="ResolvableErrors.html" class="btn btn-neutral float-left" title="Popis odstrániteľných chýb fiškálnej tlačiarne" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

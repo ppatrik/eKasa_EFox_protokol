@@ -85,23 +85,23 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Popis protokolu</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Prehľad</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="ProtocolFeatures.html">Črty protokolu</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Connection.html">Pripojenie fiškálnej tlačiarne</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CommunicationFrame.html">Komunikačný rámec</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DataTypes.html">Dátové typy a kódovanie ich hodnôt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DateTime.html">Dátum a čas vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Connection.html">Pripojenie fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="CommunicationFrame.html">Komunikačný rámec <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="DataTypes.html">Dátové typy a kódovanie ich hodnôt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DateTime.html">Dátum a čas vo fiškálnej tlačiarni</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -170,45 +170,45 @@
             
   <div class="section" id="prehlad">
 <h1>Prehľad<a class="headerlink" href="#prehlad" title="Trvalý odkaz na tento nadpis">¶</a></h1>
-<p><a class="reference internal" href="../Terminology.html#term-fiskalna-tlaciaren"><span class="xref std std-term">Fiškálna tlačiareň</span></a> predstavuje zariadenie, ktoré ovláda <a class="reference internal" href="../Terminology.html#term-aplikacia"><span class="xref std std-term">Aplikácia</span></a>.
-Aplikácia a fiškálna tlačiareň spolu tvoria jeden logický celok registrujúci
+<p><a class="reference internal" href="../Terminology.html#term-fiskalna-tlaciaren"><span class="xref std std-term">Fiškálna tlačiareň</span></a> predstavuje zariadenie, ktoré ovláda <a class="reference internal" href="../Terminology.html#term-aplikacia"><span class="xref std std-term">Aplikácia</span></a>.
+Aplikácia a fiškálna tlačiareň spolu tvoria jeden logický celok registrujúci
 maloobchodný predaj. Fiškálna tlačiareň svojou výbavou umožňuje aplikácii
 naplniť zákonné požiadavky kladené na on-line registračné pokladnice.
-Ich spolupráca sa podrobuje pravidlám vyjadreným v komunikačnom protokole.
+Ich spolupráca sa podrobuje pravidlám vyjadreným v komunikačnom protokole.
 Protokol definuje vnútorné usporiadanie vymieňaných správ,
 predpisuje správne postupnosti vysielania týchto
-správ a stanovuje účinky posielaných správ.</p>
+správ a stanovuje účinky posielaných správ.</p>
 <div class="align-center figure align-default" id="id1">
 <img alt="../_images/DeploymentSimpleView.png" src="../_images/DeploymentSimpleView.png" />
-<p class="caption"><span class="caption-text">Obrázok č. 1: Spolupráca aplikácie a fiškálnej tlačiarne</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento obrázok">¶</a></p>
+<p class="caption"><span class="caption-text">Obrázok č. 1: Spolupráca aplikácie a fiškálnej tlačiarne</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento obrázok">¶</a></p>
 </div>
 <p>Fiškálna tlačiareň poskytuje pre aplikáciu funkcie registračnej pokladnice
 na registrovanie obratov vo svojej fiškálnej jednotke, súvisiace tlačenie
-dokladov a zobrazovanie obratov na zákazníckom displeji.</p>
+dokladov a zobrazovanie obratov na zákazníckom displeji.</p>
 <div class="align-center figure align-default" id="id2">
 <img alt="../_images/FiscalPrinterComponents.png" src="../_images/FiscalPrinterComponents.png" />
 <p class="caption"><span class="caption-text">Obrázok č. 2: Komponenty Fiškálnej tlačiarne</span><a class="headerlink" href="#id2" title="Trvalý odkaz na tento obrázok">¶</a></p>
 </div>
 <p>Ako je znázornené na predchádzajúcom obrázku, fiškálna tlačiareň
 obsahuje sadu niekoľkých vnútorných zariadení resp. komponentov.</p>
-<p>Existencia nasledujúcich vymenovaných komponentov vyplýva z požiadaviek zákona:</p>
+<p>Existencia nasledujúcich vymenovaných komponentov vyplýva z požiadaviek zákona:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../Terminology.html#term-fiskalna-jednotka"><span class="xref std std-term">Fiškálna jednotka</span></a>: jej úlohou je zabezpečovať výpočty, kumulovať hodnoty
-v akumulátoroch a správa vnútornej pamäte.</p></li>
-<li><p>Obvod reálneho času (<a class="reference internal" href="../Terminology.html#term-rtc"><span class="xref std std-term">RTC</span></a>), udržuje aktuálny dátum a čas vo fiškálnej
-tlačiarni, pričom v rámci definovaných pravidiel je možné tento aktuálny
-dátum a čas zmeniť.</p></li>
+v akumulátoroch a správa vnútornej pamäte.</p></li>
+<li><p>Obvod reálneho času (<a class="reference internal" href="../Terminology.html#term-rtc"><span class="xref std std-term">RTC</span></a>), udržuje aktuálny dátum a čas vo fiškálnej
+tlačiarni, pričom v rámci definovaných pravidiel je možné tento aktuálny
+dátum a čas zmeniť.</p></li>
 <li><p>Tlačiareň, tlačový mechanizmus prípadne tlačový stojan (Printer, Printer Stand),
 je použitá na tlač dokladov, pričom nie je pre aplikáciu prístupná zvonku priamo
 svojim rozhraním, ale len prostredníctvom príkazov fiškálnej tlačiarne.</p></li>
 <li><p>Displej resp. zobrazovacie zariadenie (Display), slúži na zobrazovanie informácií
 pre zákazníka počas účtovania, prípadne aj na iné účely (mimo účtovania).</p></li>
 </ul>
-<p>Fiškálna tlačiareň obsahuje z praktických dôvodov aj nasledujúce komponenty:</p>
+<p>Fiškálna tlačiareň obsahuje z praktických dôvodov aj nasledujúce komponenty:</p>
 <ul class="simple">
-<li><p>Konektor pre peňažnú zásuvku (Drawer), slúži na pripojenie a ovládanie peňažnej zásuvky.</p></li>
-<li><p>Mini klávesnica (Keyboard), slúži prevažne na manipuláciu s fiškálnou tlačiarňou
-v režime bez pripojenia k aplikácii, prípadne na manuálne potvrdzovanie hlásení (oznamov)
+<li><p>Konektor pre peňažnú zásuvku (Drawer), slúži na pripojenie a ovládanie peňažnej zásuvky.</p></li>
+<li><p>Mini klávesnica (Keyboard), slúži prevažne na manipuláciu s fiškálnou tlačiarňou
+v režime bez pripojenia k aplikácii, prípadne na manuálne potvrdzovanie hlásení (oznamov)
 vyplývajúcich zo zákona priamo na fiškálnej tlačiarni.</p></li>
 <li><p>Tónový indikátor resp. „pípak“ (Tone Indicator), slúži na generovanie zvukových znamení
 pre potreby aplikácie.</p></li>

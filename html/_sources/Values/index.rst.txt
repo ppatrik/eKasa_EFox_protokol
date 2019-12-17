@@ -1,9 +1,0 @@
-Konštanty a premenné
-====================
-
-.. toctree::
-    :maxdepth: 3
-
-    Exceptions/index
-    Properties/index
-    Accumulators/index

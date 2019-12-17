@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Hľadať" href="../search.html" />
-    <link rel="next" title="Servisné oznamy [_new_]" href="ServiceMessages.html" />
+    <link rel="next" title="Servisné oznamy" href="ServiceMessages.html" />
     <link rel="prev" title="Princíp registračnej transakcie vo fiškálnej tlačiarni" href="RegistrationTransaction.html" /> 
 </head>
 
@@ -85,23 +85,23 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Pravidlá</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Rounding.html">Pravidlá pre zaokrúhlenie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VAT.html">Pravidlá pre výpočet DPH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ValueCalculations.html">Všeobecne o výpočte hodnôt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ValueCalculations.html">Všeobecne o výpočte hodnôt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="RegistrationTransaction.html">Princíp registračnej transakcie vo fiškálnej tlačiarni</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Vstavané charakteristiky fiškálnej tlačiarne</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ServiceMessages.html">Servisné oznamy <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ServiceMessages.html">Servisné oznamy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -173,39 +173,39 @@
 <p>Fiškálna tlačiareň sa riadi týmito pravidlami:</p>
 <ul class="simple">
 <li><p>výsledná hodnota transakcie predaja/vrátenia, platba za nákup, medzisúčet transakcie
-a hodnota vkladu/výberu (sú typu <strong>CURRENCY</strong>) sa posielajú ako násobok <code class="docutils literal notranslate"><span class="pre">0,01</span><span class="pre">€</span></code>,
-resp. 1 euro-cent (sú to parametre <em>total</em> a <em>payment</em>/<em>change</em> príkazov
+a hodnota vkladu/výberu (sú typu <strong>CURRENCY</strong>) sa posielajú ako násobok <code class="docutils literal notranslate"><span class="pre">0,01</span> <span class="pre">€</span></code>,
+resp. 1 euro-cent (sú to parametre <em>total</em> a <em>payment</em>/<em>change</em> príkazov
 <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>/<a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>
-a parameter <em>amount</em> v príkazoch <a class="reference internal" href="../Commands/printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a>
-a <a class="reference internal" href="../Commands/printRecCash.html#printreccash"><span class="std std-ref">printRecCash</span></a>),</p></li>
-<li><p>výsledné ceny položiek v nákupe (sú typu <strong>CURRENCY</strong>) sa posielajú ako násobky <code class="docutils literal notranslate"><span class="pre">0,01</span><span class="pre">€</span></code>,
-resp. <code class="docutils literal notranslate"><span class="pre">1</span></code> euro-cent (parametre price a amount príkazov <strong>printRecItem…</strong> a <strong>printRecPackage…</strong>),</p></li>
-<li><p>jednotkové ceny položiek v nákupe (sú typu <strong>CURRENCY</strong>) sa posielajú ako násobky <code class="docutils literal notranslate"><span class="pre">0,0001</span><span class="pre">€</span></code>
-resp. <code class="docutils literal notranslate"><span class="pre">1</span></code> euro-cent (parametre <em>unitPrice</em> alebo <em>unitAmount</em> príkazov <strong>printRecItem…</strong>),</p></li>
+a parameter <em>amount</em> v príkazoch <a class="reference internal" href="../Commands/printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a>
+a <a class="reference internal" href="../Commands/printRecCash.html#printreccash"><span class="std std-ref">printRecCash</span></a>),</p></li>
+<li><p>výsledné ceny položiek v nákupe (sú typu <strong>CURRENCY</strong>) sa posielajú ako násobky <code class="docutils literal notranslate"><span class="pre">0,01</span> <span class="pre">€</span></code>,
+resp. <code class="docutils literal notranslate"><span class="pre">1</span></code> euro-cent (parametre price a amount príkazov <strong>printRecItem…</strong> a <strong>printRecPackage…</strong>),</p></li>
+<li><p>jednotkové ceny položiek v nákupe (sú typu <strong>CURRENCY</strong>) sa posielajú ako násobky <code class="docutils literal notranslate"><span class="pre">0,0001</span> <span class="pre">€</span></code>
+resp. <code class="docutils literal notranslate"><span class="pre">1</span></code> euro-cent (parametre <em>unitPrice</em> alebo <em>unitAmount</em> príkazov <strong>printRecItem…</strong>),</p></li>
 <li><p>všetky finančné hodnoty okrem jednotkových cien položiek sa vypisujú na dve desatinné miesta,</p></li>
-<li><p>jednotkové ceny položiek sa posielajú na dve, tri, alebo štyri desatinné miesta, v závislosti
-na počte významových miest v desatinnej časti, najmenej však na dve desatinné miesta,</p></li>
-<li><p>limit na jeden nákup je <code class="docutils literal notranslate"><span class="pre">1</span><span class="pre">000</span><span class="pre">000,00</span> <span class="pre">€</span></code>,</p></li>
-<li><p>množstvo predávanej položky (parameter <em>quantity</em> v príkazoch <strong>printRecItem…</strong>) musí byť
-v rozsahu <code class="docutils literal notranslate"><span class="pre">0,001</span></code> až <code class="docutils literal notranslate"><span class="pre">999</span><span class="pre">999,999</span></code>,</p></li>
+<li><p>jednotkové ceny položiek sa posielajú na dve, tri, alebo štyri desatinné miesta, v závislosti
+na počte významových miest v desatinnej časti, najmenej však na dve desatinné miesta,</p></li>
+<li><p>limit na jeden nákup je <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">000</span> <span class="pre">000,00</span> <span class="pre">€</span></code>,</p></li>
+<li><p>množstvo predávanej položky (parameter <em>quantity</em> v príkazoch <strong>printRecItem…</strong>) musí byť
+v rozsahu <code class="docutils literal notranslate"><span class="pre">0,001</span></code> až <code class="docutils literal notranslate"><span class="pre">999</span> <span class="pre">999,999</span></code>,</p></li>
 <li><p>všetky číselné hodnoty (okrem niekoľkých výnimiek ako napr. hodnoty parametrov
 <a class="reference internal" href="../Commands/printRecSubtotal.html#prs-amount"><span class="std std-ref">amount</span></a> pre príkaz <a class="reference internal" href="../Commands/printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a>
-a <em>total</em> (pre príkazy <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a> a <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>)
-a parameter <a class="reference internal" href="../Commands/printRecTotalChange.html#prtc-change"><span class="std std-ref">change</span></a> pre <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>)
+a <em>total</em> (pre príkazy <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a> a <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>)
+a parameter <a class="reference internal" href="../Commands/printRecTotalChange.html#prtc-change"><span class="std std-ref">change</span></a> pre <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>)
 sa musia posielať ako kladné čísla; skutočná hodnota operácie (záporná, alebo kladná) je určená
-typom operácie (pri vyčítavaní hodnôt z fiškálnej tlačiarne toto pravidlo neplatí a fiškálna
+typom operácie (pri vyčítavaní hodnôt z fiškálnej tlačiarne toto pravidlo neplatí a fiškálna
 tlačiareň môže vrátiť aj záporné hodnoty, ak si to situácia vyžaduje)</p></li>
-<li><p>daňové hodnoty pre každý doklad (hrubý obrat, čistý obrat a DPH) sa vypočítavajú na konci každého nákupu,</p></li>
-<li><p>daňové hodnoty pre pre dennú uzávierku a ostatných výkazoch sa vypočítajú ako súčet hodnôt z jednotlivých účteniek,</p></li>
-<li><p>fiškálna tlačiareň len zaznamenáva operácie v nákupe, ale nekontroluje logiku týchto operácií
+<li><p>daňové hodnoty pre každý doklad (hrubý obrat, čistý obrat a DPH) sa vypočítavajú na konci každého nákupu,</p></li>
+<li><p>daňové hodnoty pre pre dennú uzávierku a ostatných výkazoch sa vypočítajú ako súčet hodnôt z jednotlivých účteniek,</p></li>
+<li><p>fiškálna tlačiareň len zaznamenáva operácie v nákupe, ale nekontroluje logiku týchto operácií
 (táto kontrola musí byť urobená na strane aplikácie napr. záporné obraty)</p></li>
-<li><p>v prípade prerušenia tlače Z dennej uzávierky sa, po obnovení tlače, daná uzávierka vytlačí od začiatku,</p></li>
+<li><p>v prípade prerušenia tlače Z dennej uzávierky sa, po obnovení tlače, daná uzávierka vytlačí od začiatku,</p></li>
 <li><p>desatinný oddeľovač na vytlačených dokladoch je znak čiarky <code class="docutils literal notranslate"><span class="pre">','</span></code>,</p></li>
-<li><p>platný dátum a čas fiškálnych dokladov (dátum a čas vykonania transakcie) je vytlačený na konci každej účtenky,</p></li>
-<li><p>neobmedzený počet typov platieb a cudzích mien použiteľných pri uhradení registračnej transakcie
+<li><p>platný dátum a čas fiškálnych dokladov (dátum a čas vykonania transakcie) je vytlačený na konci každej účtenky,</p></li>
+<li><p>neobmedzený počet typov platieb a cudzích mien použiteľných pri uhradení registračnej transakcie
 (len pre ak <a class="reference internal" href="../Values/Properties/PaymentsRegistration.html#paymentsregistration"><span class="std std-ref">PaymentsRegistration</span></a> = <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>)</p></li>
-<li><p>v jednej registračnej transakcii nie je možné kombinovať príkazy <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>
-a <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>; je možné používať iba ten z tejto dvojice príkazov.</p></li>
+<li><p>v jednej registračnej transakcii nie je možné kombinovať príkazy <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>
+a <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>; je možné používať iba ten z tejto dvojice príkazov.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -219,7 +219,7 @@ a <a class="reference internal" href="../Commands/printRecTotalChange.html#prin
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ServiceMessages.html" class="btn btn-neutral float-right" title="Servisné oznamy [_new_]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ServiceMessages.html" class="btn btn-neutral float-right" title="Servisné oznamy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="RegistrationTransaction.html" class="btn btn-neutral float-left" title="Princíp registračnej transakcie vo fiškálnej tlačiarni" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

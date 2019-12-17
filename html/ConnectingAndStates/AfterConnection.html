@@ -85,11 +85,11 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vytvorenie spojenie a stavy</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="Connection.html">Vytvorenie a ukončenia spojenia</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Connect.html">connect</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vytvorenie spojenie a stavy</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="Connection.html">Vytvorenie a ukončenia spojenia</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Connect.html">connect <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="Disconnect.html">disconnect</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Činnosti po vytvorení spojenia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
 </ul>
@@ -101,14 +101,14 @@
 <li class="toctree-l2"><a class="reference internal" href="Timing.html">Časovanie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PrinterStates.html">Stavy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Modes.html">Režimy (módy)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Commissioning.html">Uvedenie do prevádzky <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="Update/index.html">Aktualizácia firmvéru <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Commissioning.html">Uvedenie do prevádzky</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Update/index.html">Aktualizácia firmvéru</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -156,9 +156,9 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Vytvorenie spojenie a stavy</a> &raquo;</li>
+          <li><a href="index.html">Vytvorenie spojenie a stavy</a> &raquo;</li>
         
-          <li><a href="Connection.html">Vytvorenie a ukončenia spojenia</a> &raquo;</li>
+          <li><a href="Connection.html">Vytvorenie a ukončenia spojenia</a> &raquo;</li>
         
       <li>Činnosti po vytvorení spojenia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
     
@@ -182,11 +182,11 @@
 <p>Po (každom) príkaze <a class="reference internal" href="Connect.html#connect"><span class="std std-ref">connect</span></a> by aplikácia mala:</p>
 <ul class="simple">
 <li><p>spraviť kontrolu stavu fiškálnej tlačiarne, pozri: „<a class="reference internal" href="PrinterStates.html#stavy-fiskalnej-tlaciarne"><span class="std std-ref">Stavy fiškálnej tlačiarne</span></a>“</p></li>
-<li><p>spraviť kontrolu servisných udalostí, pozri: „<a class="reference internal" href="../Rules/ServiceMessages.html"><span class="doc">Servisné oznamy [_new_]</span></a>“</p></li>
+<li><p>spraviť kontrolu servisných udalostí, pozri: „<a class="reference internal" href="../Rules/ServiceMessages.html"><span class="doc">Servisné oznamy</span></a>“</p></li>
 <li><p>nastaviť formát tlače, pozri: „<a class="reference internal" href="../Printing/PrintFormattingSettings.html#nastavenia-formatu-tlace"><span class="std std-ref">Nastavenia formátu tlače</span></a>“</p></li>
 <li><p>nastaviť režim cien bez dane, pozri: property <a class="reference internal" href="../Values/Properties/VatIncluded.html#vatincluded"><span class="std std-ref">VatIncluded</span></a></p></li>
-<li><p>nastaviť grafické logo, pozri property <a class="reference internal" href="../Values/Properties/HeaderBitmap.html#headerbitmap"><span class="std std-ref">HeaderBitmap</span></a> a <a class="reference internal" href="../Values/Properties/TrailerBitmap.html#trailerbitmap"><span class="std std-ref">TrailerBitmap</span></a></p></li>
-<li><p>nastaviť meno pokladníka a číslo POS systému, pozri príkaz <a class="reference internal" href="../Commands/setPOSID.html#setposid"><span class="std std-ref">setPOSID</span></a></p></li>
+<li><p>nastaviť grafické logo, pozri property <a class="reference internal" href="../Values/Properties/HeaderBitmap.html#headerbitmap"><span class="std std-ref">HeaderBitmap</span></a> a <a class="reference internal" href="../Values/Properties/TrailerBitmap.html#trailerbitmap"><span class="std std-ref">TrailerBitmap</span></a></p></li>
+<li><p>nastaviť meno pokladníka a číslo <a class="reference internal" href="../Terminology.html#term-pos"><span class="xref std std-term">POS</span></a> systému, pozri príkaz <a class="reference internal" href="../Commands/setPOSID.html#setposid"><span class="std std-ref">setPOSID</span></a></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>

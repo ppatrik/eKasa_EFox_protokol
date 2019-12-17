@@ -85,23 +85,23 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Pravidlá</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Rounding.html">Pravidlá pre zaokrúhlenie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VAT.html">Pravidlá pre výpočet DPH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ValueCalculations.html">Všeobecne o výpočte hodnôt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ValueCalculations.html">Všeobecne o výpočte hodnôt</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Princíp registračnej transakcie vo fiškálnej tlačiarni</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Characteristics.html">Vstavané charakteristiky fiškálnej tlačiarne</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ServiceMessages.html">Servisné oznamy <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ServiceMessages.html">Servisné oznamy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -172,64 +172,64 @@
 <h1>Princíp registračnej transakcie vo fiškálnej tlačiarni<a class="headerlink" href="#princip-registracnej-transakcie-vo-fiskalnej-tlaciarni" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p>Registračná transakcia (<a class="reference internal" href="../Terminology.html#term-rt"><span class="xref std std-term">RT</span></a>) začína príkazom <a class="reference internal" href="../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>,
 ktorým sa začína tlač <a class="reference internal" href="../Terminology.html#fiscaldocument"><span class="std std-ref">fiškálneho dokladu</span></a>.
-Ak je príkaz úspešný, transakcia sa začala a je možné poslať sériu <strong>printRec…</strong> príkazov.
+Ak je príkaz úspešný, transakcia sa začala a je možné poslať sériu <strong>printRec…</strong> príkazov.
 Registračná transakcia za normálnych okolností (v prípade jej úspešného priebehu) skončí
 príkazom <a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>.</p>
 <p>Prostredníctvom registračnej transakcie je možné vytlačiť doklady predaja/vrátenia
-v normálnom aj tréningovom režime a doklad vkladu/výberu hotovosti.</p>
-<p>Všetky registračné transakcie (aj v tréningovom režime) podliehajú kontrole štátu
-a preto sú ich priebeh a výsledky podliehajú spracovaniu a ukladaniu podľa
-pravidiel zákona o pokladniciach.
-Prítomnosť, alebo neprítomnosť ochranných prvkov (a QR kódu) nie je signalizáciou
+v normálnom aj tréningovom režime a doklad vkladu/výberu hotovosti.</p>
+<p>Všetky registračné transakcie (aj v tréningovom režime) podliehajú kontrole štátu
+a preto sú ich priebeh a výsledky podliehajú spracovaniu a ukladaniu podľa
+pravidiel zákona o pokladniciach.
+Prítomnosť, alebo neprítomnosť ochranných prvkov (a QR kódu) nie je signalizáciou
 <a class="reference internal" href="../Terminology.html#fiscaldocument"><span class="std std-ref">fiškálneho, alebo nefiškálneho dokladu</span></a>.</p>
 <p>Vzhľadom na analógiu transakčného riadenia vymenovaných dokladov registračnej transakcie
-bude ďalej v tejto kapitole rozobratý len doklad fiškálnej účtenky predaja/vrátenia.</p>
+bude ďalej v tejto kapitole rozobratý len doklad fiškálnej účtenky predaja/vrátenia.</p>
 <p>Registračná transakcia sa otvára príkazom <a class="reference internal" href="../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>,
-v ktorom je možné definovať identifikátor registračnej transakcie parametrom <em>transactionID</em>.
+v ktorom je možné definovať identifikátor registračnej transakcie parametrom <em>transactionID</em>.
 Príkazom <a class="reference internal" href="../Commands/getTransactionStatus.html#gettransactionstatus"><span class="std std-ref">getTransactionStatus</span></a> je možné zistiť aktuálny stav
 tejto transakcie, práve na základe identifikátora <em>transactionID</em>.</p>
-<p>V prípade, že identifikátor registračnej transakcie v príkaze <a class="reference internal" href="../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>
+<p>V prípade, že identifikátor registračnej transakcie v príkaze <a class="reference internal" href="../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>
 nebol zadefinovaný (registračná transakcia je neoznačená), vtedy je možné zistiť priebeh
-a stav tejto registračnej transakcie len do času otvorenia novej registračnej transakcie.
+a stav tejto registračnej transakcie len do času otvorenia novej registračnej transakcie.
 Ak identifikátor registračnej transakcie <a class="reference internal" href="../Commands/beginFiscalReceipt.html#bfr-transactionid"><span class="std std-ref">transactionID</span></a> bol zadefinovaný, ale nebol
-unikátny, potom je možné, že pri získavaní stavu tejto transakcie dôjde k zisteniu stavu
+unikátny, potom je možné, že pri získavaní stavu tejto transakcie dôjde k zisteniu stavu
 úplne inej transakcie, ako je požadované.</p>
 <div class="align-center figure align-default" id="id1">
 <img alt="../_images/TransactionStates.png" src="../_images/TransactionStates.png" />
 <p class="caption"><span class="caption-text">Obrázok č. 10: Stavový diagram registračnej transakcie fiškálnej tlačiarne</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento obrázok">¶</a></p>
 </div>
-<p>Registračná transakcia sa môže nachádzať v rôznych stavoch, ako je to ukázané na predchádzajúcom
-obrázku. Ak registračná transakcia už bola niekedy v minulosti začatá, potom sa nachádza práve
-v jednom z týchto stavov.</p>
+<p>Registračná transakcia sa môže nachádzať v rôznych stavoch, ako je to ukázané na predchádzajúcom
+obrázku. Ak registračná transakcia už bola niekedy v minulosti začatá, potom sa nachádza práve
+v jednom z týchto stavov.</p>
 <p><span class="target" id="fp-ts-started">FP_TS_STARTED</span></p>
 <blockquote>
 <div><p>Registračná transakcia sa táto dostane do stavu <a class="reference internal" href="#fp-ts-started">FP_TS_STARTED</a> hneď po otvorení.
-V tomto stave sú realizované všetky podstatné operácie danej transakcie. Ak je
-v priebehu registračnej transakcie zistený nesúlad medzi celkovou hodnotou transakcie,
-ktorá je vypočítaná aplikáciou a medzi celkovou hodnotou transakcie vypočítanou fiškálnou
+V tomto stave sú realizované všetky podstatné operácie danej transakcie. Ak je
+v priebehu registračnej transakcie zistený nesúlad medzi celkovou hodnotou transakcie,
+ktorá je vypočítaná aplikáciou a medzi celkovou hodnotou transakcie vypočítanou fiškálnou
 tlačiarňou (pri vykonávaní príkazov <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>,
 <a class="reference internal" href="../Commands/printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a>, alebo <a class="reference internal" href="../Commands/printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a>),
 potom sa registračná transakcia dostáva do stavu <a class="reference internal" href="#fp-ts-aborted">FP_TS_ABORTED</a>.</p>
 </div></blockquote>
 <p><span class="target" id="fp-ts-voided">FP_TS_VOIDED</span></p>
 <blockquote>
-<div><p>Ak je v priebehu transakcie zavolaný príkaz <a class="reference internal" href="../Commands/printRecVoid.html#printrecvoid"><span class="std std-ref">printRecVoid</span></a>, potom sa
-transakcia dostáva do stavu <a class="reference internal" href="#fp-ts-voided">FP_TS_VOIDED</a>. Ak je transakcia v stave <a class="reference internal" href="#fp-ts-voided">FP_TS_VOIDED</a> ukončená
+<div><p>Ak je v priebehu transakcie zavolaný príkaz <a class="reference internal" href="../Commands/printRecVoid.html#printrecvoid"><span class="std std-ref">printRecVoid</span></a>, potom sa
+transakcia dostáva do stavu <a class="reference internal" href="#fp-ts-voided">FP_TS_VOIDED</a>. Ak je transakcia v stave <a class="reference internal" href="#fp-ts-voided">FP_TS_VOIDED</a> ukončená
 príkazom <a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>, potom je to pre túto registračnú
 transakciu konečný stav.</p>
-<p>V prípade, ak je transakcia v stavoch <a class="reference internal" href="#fp-ts-started">FP_TS_STARTED</a> alebo <a class="reference internal" href="#fp-ts-voided">FP_TS_VOIDED</a> a ešte nebola
+<p>V prípade, ak je transakcia v stavoch <a class="reference internal" href="#fp-ts-started">FP_TS_STARTED</a> alebo <a class="reference internal" href="#fp-ts-voided">FP_TS_VOIDED</a> a ešte nebola
 ukončená príkazom <a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>, potom sa takáto transakcia
-v prípade jej zlyhania dostane do stavu <a class="reference internal" href="#fp-ts-failed">FP_TS_FAILED</a> a pre túto registračnú transakciu
+v prípade jej zlyhania dostane do stavu <a class="reference internal" href="#fp-ts-failed">FP_TS_FAILED</a> a pre túto registračnú transakciu
 je to jej konečný stav.</p>
 <p>Ku zlyhaniu transakcie dôjde vtedy, ak počas tejto transakcie nastane prerušenie spojenia
-medzi aplikáciou a fiškálnou tlačiarňou, alebo nastane niektorá
-z chýb 2. a 3. kategórie
-(pozri kapitoly Zotavenie, Kategorizácia chýb a Riešenie chybových stavov).</p>
+medzi aplikáciou a fiškálnou tlačiarňou, alebo nastane niektorá
+z chýb 2. a 3. kategórie
+(pozri kapitoly Zotavenie, Kategorizácia chýb a Riešenie chybových stavov).</p>
 </div></blockquote>
 <p><span class="target" id="fp-ts-done">FP_TS_DONE</span></p>
 <blockquote>
-<div><p>Ak je transakcia začatá a úspešne ukončená, potom sa zo stavu <a class="reference internal" href="#fp-ts-started">FP_TS_STARTED</a>
-dostane do stavu <a class="reference internal" href="#fp-ts-done">FP_TS_DONE</a> a pre túto registračnú transakciu je to jej konečný stav.</p>
+<div><p>Ak je transakcia začatá a úspešne ukončená, potom sa zo stavu <a class="reference internal" href="#fp-ts-started">FP_TS_STARTED</a>
+dostane do stavu <a class="reference internal" href="#fp-ts-done">FP_TS_DONE</a> a pre túto registračnú transakciu je to jej konečný stav.</p>
 </div></blockquote>
 <p><span class="target" id="fp-ts-aborted">FP_TS_ABORTED</span></p>
 <blockquote>
@@ -240,38 +240,38 @@ ako celková hodnota vypočítaná fiškálnou tlačiarňou.</p>
 <p><span class="target" id="fp-ts-failed">FP_TS_FAILED</span></p>
 <blockquote>
 <div><p>Tento stav reprezentuje chybu vykonávania transakcie. Napríklad pre chybu spojenia
-s fiškálnou tlačiarňou, alebo z iných dôvodov ako je rozdielny súčet.</p>
+s fiškálnou tlačiarňou, alebo z iných dôvodov ako je rozdielny súčet.</p>
 </div></blockquote>
 <p><span class="target" id="fp-ts-unknown">FP_TS_UNKNOWN</span></p>
 <blockquote>
 <div><p>Tento stav reprezentuje situáciu, keď bolo požadované vyhľadanie registračnej transakcie,
 ktorá vo fiškálnej tlačiarni nie je evidovaná (neexistuje).</p>
 </div></blockquote>
-<p>Transakčný princíp je využiteľný hlavne v rôznych kritických stavoch ako výpadok napájania,
-alebo strata spojenia medzi aplikáciou a fiškálnou tlačiarňou, kedy aplikácia potrebuje vedieť,
+<p>Transakčný princíp je využiteľný hlavne v rôznych kritických stavoch ako výpadok napájania,
+alebo strata spojenia medzi aplikáciou a fiškálnou tlačiarňou, kedy aplikácia potrebuje vedieť,
 ako začatá registračná transakcia skončila, aby následne mohla urobiť potrebné úkony na svojej strane.</p>
 <p>Viditeľným znakom bezchybného ukončenia registračnej transakcie predaja/vrátenia (nie tréningovej)
 je prítomnosť úplného QR kódu na vytlačenom fiškálnom doklade predaja/vrátenia.</p>
-<p>Vzhľadom na povahu zákona sa ale registračná transakcia môže odstať do stavu, keď údaje o doklade
-boli zaslané na server finančnej správy, ale ešte nedošlo k úspešnému vytlačeniu účtenky.
-V takomto prípade je potrebné prerušenú účtenku dokončiť (uzavrieť).
+<p>Vzhľadom na povahu zákona sa ale registračná transakcia môže odstať do stavu, keď údaje o doklade
+boli zaslané na server finančnej správy, ale ešte nedošlo k úspešnému vytlačeniu účtenky.
+V takomto prípade je potrebné prerušenú účtenku dokončiť (uzavrieť).
 Následne je odporúčané vytvoriť opravný doklad (pomocou <a class="reference internal" href="../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>
-s parametrom <em>fiscalReceiptType</em> = <a class="reference internal" href="../Commands/beginFiscalReceipt.html#fp-rt-correction"><span class="std std-ref">FP_RT_CORRECTION</span></a>).
-Následne po tom zase vytlačiť doklad od znova a tento odovzdať zákazníkovi.</p>
+s parametrom <em>fiscalReceiptType</em> = <a class="reference internal" href="../Commands/beginFiscalReceipt.html#fp-rt-correction"><span class="std std-ref">FP_RT_CORRECTION</span></a>).
+Následne po tom zase vytlačiť doklad od znova a tento odovzdať zákazníkovi.</p>
 <p>Okrem registračných transakcií podlieha transakčnému riadeniu aj proces vykonania dennej
-Z uzávierky, ktorý obsahuje niekoľko podprocesov (tlač uzávierky, vymazanie denných sumárov a počítadiel).
-Tento proces sa od registračnej transakcie líši tým, že je vykonaný v rámci jediného príkazu
+Z uzávierky, ktorý obsahuje niekoľko podprocesov (tlač uzávierky, vymazanie denných sumárov a počítadiel).
+Tento proces sa od registračnej transakcie líši tým, že je vykonaný v rámci jediného príkazu
 <a class="reference internal" href="../Commands/printZReport.html#printzreport"><span class="std std-ref">printZReport</span></a>.</p>
-<p>V prípade, že sa spustí vykonávanie dennej Z uzávierky a fiškálna tlačiareň nevráti po vstupných
-kontrolách príkazu žiadnu chybu (tzn. dôjde k zmene stavu z <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#monitor"><span class="std std-ref">MONITOR</span></a> na
+<p>V prípade, že sa spustí vykonávanie dennej Z uzávierky a fiškálna tlačiareň nevráti po vstupných
+kontrolách príkazu žiadnu chybu (tzn. dôjde k zmene stavu z <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#monitor"><span class="std std-ref">MONITOR</span></a> na
 <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#report"><span class="std std-ref">REPORT</span></a>), potom daná spustená uzávierka sa už musí dokončiť (musia dobehnúť
 všetky podprocesy).
-V prípade akéhokoľvek problému, ktorý počas procesu vykonania Z uzávierky vznikne,
-nie je možné tento proces zrušiť a začať inú činnosť bez toho, aby došlo k dokončeniu tejto
-Z uzávierky. Pre viac informácii pozri:</p>
+V prípade akéhokoľvek problému, ktorý počas procesu vykonania Z uzávierky vznikne,
+nie je možné tento proces zrušiť a začať inú činnosť bez toho, aby došlo k dokončeniu tejto
+Z uzávierky. Pre viac informácii pozri:</p>
 <ul class="simple">
-<li><p>kapitolu <a class="reference internal" href="../ProblemSolving/FiscalPrinterRecovery.html"><span class="doc">Zotavenie fiškálnej tlačiarne</span></a> a</p></li>
-<li><p><a class="reference internal" href="../ProblemSolving/RecoverableProblems.html#recoverableproblems-zreport-example"><span class="std std-ref">príklad riešenia odstrániteľnej chyby pri tlači Z uzávierky</span></a>.</p></li>
+<li><p>kapitolu <a class="reference internal" href="../ProblemSolving/FiscalPrinterRecovery.html"><span class="doc">Zotavenie fiškálnej tlačiarne [_new_]</span></a> a</p></li>
+<li><p><a class="reference internal" href="../ProblemSolving/RecoverableProblems.html#recoverableproblems-zreport-example"><span class="std std-ref">príklad riešenia odstrániteľnej chyby pri tlači Z uzávierky</span></a>.</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>

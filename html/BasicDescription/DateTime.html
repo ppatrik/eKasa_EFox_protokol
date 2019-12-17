@@ -85,23 +85,23 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Popis protokolu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Overview.html">Prehľad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProtocolFeatures.html">Črty protokolu</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Connection.html">Pripojenie fiškálnej tlačiarne</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CommunicationFrame.html">Komunikačný rámec</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DataTypes.html">Dátové typy a kódovanie ich hodnôt</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Dátum a čas vo fiškálnej tlačiarni</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="Connection.html">Pripojenie fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="CommunicationFrame.html">Komunikačný rámec <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="DataTypes.html">Dátové typy a kódovanie ich hodnôt</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dátum a čas vo fiškálnej tlačiarni</a><ul class="simple">
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -151,7 +151,7 @@
         
           <li><a href="index.html">Popis protokolu</a> &raquo;</li>
         
-      <li>Dátum a čas vo fiškálnej tlačiarni</li>
+      <li>Dátum a čas vo fiškálnej tlačiarni</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -169,12 +169,12 @@
            <div itemprop="articleBody">
             
   <div class="section" id="datum-a-cas-vo-fiskalnej-tlaciarni">
-<h1>Dátum a čas vo fiškálnej tlačiarni<a class="headerlink" href="#datum-a-cas-vo-fiskalnej-tlaciarni" title="Trvalý odkaz na tento nadpis">¶</a></h1>
-<p id="datetimeformat"><strong>Popis formátu dátumu a času</strong></p>
+<h1>Dátum a čas vo fiškálnej tlačiarni<a class="headerlink" href="#datum-a-cas-vo-fiskalnej-tlaciarni" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p id="datetimeformat"><strong>Popis formátu dátumu a času</strong></p>
 <p>Pri posielaní, alebo pri prijímaní parametrov príkazov, ktoré obsahujú hodnoty
-dátumu a času sa tieto posielajú v niekoľkých variáciách.</p>
+dátumu a času sa tieto posielajú v niekoľkých variáciách.</p>
 <p>Hodnoty jednotlivých častí textových reťazcov majú nasledujúci význam
-a môžu byť v nasledujúcich rozsahoch:</p>
+a môžu byť v nasledujúcich rozsahoch:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 18%" />
@@ -189,7 +189,7 @@ a môžu byť v nasledujúcich rozsahoch:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>DD</p></td>
-<td><p>deň (v mesiaci)</p></td>
+<td><p>deň (v mesiaci)</p></td>
 <td><p>&lt;1, 31&gt;</p></td>
 </tr>
 <tr class="row-odd"><td><p>MM</p></td>
@@ -216,18 +216,18 @@ a môžu byť v nasledujúcich rozsahoch:</p>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
-<p>Skutočný rozsah hodnoty „deň“ je závislý na mesiaci a roku.</p>
+<p>Skutočný rozsah hodnoty „deň“ je závislý na mesiaci a roku.</p>
 </div>
-<p><strong>Premenné dátumu a času</strong></p>
+<p><strong>Premenné dátumu a času</strong></p>
 <dl class="glossary simple">
-<dt id="term-dtsettinglimit">DTSettingLimit</dt><dd><p>Spodná hranica pre nastavenie dátumu a času. Pri nastavovaní dátumu a času
+<dt id="term-dtsettinglimit">DTSettingLimit</dt><dd><p>Spodná hranica pre nastavenie dátumu a času. Pri nastavovaní dátumu a času
 nie je možné ísť pod túto hranicu.</p>
 </dd>
 </dl>
 <dl class="glossary simple">
-<dt id="term-dtstartofday">DTStartOfDay</dt><dd><p>Dátum a čas začiatku aktuálneho obchodného dňa (v prípade, že predchádzajúci
-obchodný deň už bol uzavretý a následne nedošlo k otvoreniu nového obchodného
-dňa, premenná obsahuje dátum a čas posledného uzavretého obchodného dňa).</p>
+<dt id="term-dtstartofday">DTStartOfDay</dt><dd><p>Dátum a čas začiatku aktuálneho obchodného dňa (v prípade, že predchádzajúci
+obchodný deň už bol uzavretý a následne nedošlo k otvoreniu nového obchodného
+dňa, premenná obsahuje dátum a čas posledného uzavretého obchodného dňa).</p>
 </dd>
 </dl>
 <div class="toctree-wrapper compound">

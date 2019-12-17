@@ -85,21 +85,21 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tlač vo fiškálnej tlačiarni</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Principles.html">Princíp tlače vo fiškálnej tlačiarni</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Formatting.html">Formátovanie textového výstupu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ReceiptFormatProfiles.html">Formátovacie profily fiškálnych dokumentov</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PrintFormattingSettings.html">Nastavenia formátu tlače <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrintFormattingSettings.html">Nastavenia formátu tlače</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Summary.html">Zhrnutie formátovania tlače</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Príklady fiškálnych dokladov</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -170,10 +170,10 @@
 <h1>Príklady fiškálnych dokladov<a class="headerlink" href="#priklady-fiskalnych-dokladov" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p><strong>Príklad predaja tovaru</strong>:</p>
 <blockquote>
-<div><p>Za príkladom vytlačeného dokladu (textová podoba) nasleduje popis a priradenie vytlačených
-riadkov k príkazom, ktoré vyvolali tlač daných riadkov.</p>
-<p>Šírka riadku je pre daný prípad 40 znakov a použitý bol optimalizovaný tlačový profil.
-Pre inú dĺžku riadku a/alebo iný tlačový profil by doklad vyzeral mierne odlišne.</p>
+<div><p>Za príkladom vytlačeného dokladu (textová podoba) nasleduje popis a priradenie vytlačených
+riadkov k príkazom, ktoré vyvolali tlač daných riadkov.</p>
+<p>Šírka riadku je pre daný prípad 40 znakov a použitý bol optimalizovaný tlačový profil.
+Pre inú dĺžku riadku a/alebo iný tlačový profil by doklad vyzeral mierne odlišne.</p>
 <div class="highlight-text notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -218,7 +218,7 @@ Pre inú dĺžku riadku a/alebo iný tlačový profil by doklad vyzeral mierne 
 42
 43
 44
-45</pre></div></td><td class="code"><div class="highlight"><pre><span></span>ELCOM, spoločnosť s ručením obmedzeným,
+45</pre></div></td><td class="code"><div class="highlight"><pre><span></span>ELCOM, spoločnosť s ručením obmedzeným,
 Prešov; Jesenná 2695/26, 080 01 Prešov
 Tel.: 051/7464111; Fax:051/7464444
 E-mail:elcom@elcom.eu; web: www.elcom.eu
@@ -248,9 +248,9 @@ ACCORD ŠEK                      4.00 EUR
 VYDAŤ                           0,66 EUR
 –––––––––––––––––––––––––––––––––––––––-
 Sadzba      Bez DPH      DPH      s DPH
-A 19,00%       3,07     0,72       3,79
-B 10,00%       7,20     0,80       8,00
-G 0,00%       -0,45     0,00      -0,45
+A 19,00%       3,07     0,72       3,79
+B 10,00%       7,20     0,80       8,00
+G 0,00%       -0,45     0,00      -0,45
 Celkom         9,82     1,52      11,34
 –––––––––––––––––––––––––––––––––––––––-
 Získali ste 11 vernostných bodov
@@ -276,7 +276,7 @@ DKP: 123456789
 <li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
 <li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
 <li><p>predaj 1. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
-<li><p><a class="reference internal" href="../Commands/printRecItem.html#pri-preline"><span class="std std-ref">preLine</span></a> z 2. príkazu predaj položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
+<li><p><a class="reference internal" href="../Commands/printRecItem.html#pri-preline"><span class="std std-ref">preLine</span></a> z 2. príkazu predaj položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
 <li><p>predaj 2. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
 <li><p>predaj 3. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
 <li><p>predaj 4. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>), názov (parameter <a class="reference internal" href="../Commands/printRecItem.html#pri-description"><span class="std std-ref">description</span></a>)</p></li>
@@ -290,12 +290,12 @@ DKP: 123456789
 <li><p>predaj 5. položky (príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>)</p></li>
 <li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), riadok pre optické oddelenie</p></li>
 <li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), celková hodnota dokladu</p></li>
-<li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
-<li><p>druhá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
-<li><p><a class="reference internal" href="../Commands/printRecTotal.html#prt-postline"><span class="std std-ref">postLine</span></a> z príkazu druhej platby (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>) využitý na číslo karty</p></li>
-<li><p>tretia a posledná platba v transakcii (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>)</p></li>
+<li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
+<li><p>druhá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
+<li><p><a class="reference internal" href="../Commands/printRecTotal.html#prt-postline"><span class="std std-ref">postLine</span></a> z príkazu druhej platby (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>) využitý na číslo karty</p></li>
+<li><p>tretia a posledná platba v transakcii (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>)</p></li>
 <li><p>ak posledná platba prevyšuje celkovú cenu nákupu, tlačí sa aj výdavok</p></li>
-<li><p>zároveň sa s poslednou platbou vytlačí aj riadok pre optické oddelenie</p></li>
+<li><p>zároveň sa s poslednou platbou vytlačí aj riadok pre optické oddelenie</p></li>
 <li><p>daňový sumár (1. riadok), popisný riadok</p></li>
 <li><p>daňový sumár (2. riadok), riadok hodnôt pre daňovú hladinu</p></li>
 <li><p>daňový sumár (3. riadok), riadok hodnôt pre daňovú hladinu</p></li>
@@ -343,7 +343,7 @@ DKP: 123456789
 25
 26
 27
-28</pre></div></td><td class="code"><div class="highlight"><pre><span></span>ELCOM, spoločnosť s ručením obmedzeným,
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span>ELCOM, spoločnosť s ručením obmedzeným,
 Prešov; Jesenná 2695/26, 080 01 Prešov
 Tel.: 051/7464111; Fax:051/7464444
 E-mail:elcom@elcom.eu; web: www.elcom.eu
@@ -388,11 +388,11 @@ DKP: 123456789
 <li><p>vytlačenie medzisúčtu (príkaz <a class="reference internal" href="../Commands/printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a>)</p></li>
 <li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), riadok pre optické oddelenie</p></li>
 <li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), celková hodnota dokladu</p></li>
-<li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
-<li><p>druhá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
-<li><p><a class="reference internal" href="../Commands/printRecTotal.html#prt-postline"><span class="std std-ref">postLine</span></a> z príkazu druhej platby (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>) využitý na číslo karty</p></li>
+<li><p>prvá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
+<li><p>druhá platba (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>), názov a hodnota platby</p></li>
+<li><p><a class="reference internal" href="../Commands/printRecTotal.html#prt-postline"><span class="std std-ref">postLine</span></a> z príkazu druhej platby (príkaz <a class="reference internal" href="../Commands/printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a>) využitý na číslo karty</p></li>
 <li><p>ak posledná platba prevyšuje celkovú cenu nákupu, tlačí sa aj výdavok</p></li>
-<li><p>zároveň sa s poslednou platbou vytlačí aj riadok pre optické oddelenie</p></li>
+<li><p>zároveň sa s poslednou platbou vytlačí aj riadok pre optické oddelenie</p></li>
 <li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
 <li><p>nefiškálny textový riadok (príkaz <a class="reference internal" href="../Commands/printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a>)</p></li>
 <li><p>ukončenie transakcie (<a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>), dátum, čas, číslo dokladu;</p></li>

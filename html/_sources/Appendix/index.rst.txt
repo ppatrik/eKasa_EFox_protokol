@@ -1,8 +1,0 @@
-Prílohy
-*******
-
-.. toctree::
-    :maxdepth: 2
-
-    PrinterType
-    ResponseTime

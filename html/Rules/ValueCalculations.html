@@ -85,23 +85,23 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Pravidlá</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Rounding.html">Pravidlá pre zaokrúhlenie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VAT.html">Pravidlá pre výpočet DPH</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Všeobecne o výpočte hodnôt</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Všeobecne o výpočte hodnôt</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="RegistrationTransaction.html">Princíp registračnej transakcie vo fiškálnej tlačiarni</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Characteristics.html">Vstavané charakteristiky fiškálnej tlačiarne</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ServiceMessages.html">Servisné oznamy <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ServiceMessages.html">Servisné oznamy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -151,7 +151,7 @@
         
           <li><a href="index.html">Pravidlá</a> &raquo;</li>
         
-      <li>Všeobecne o výpočte hodnôt</li>
+      <li>Všeobecne o výpočte hodnôt</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -169,38 +169,38 @@
            <div itemprop="articleBody">
             
   <div class="section" id="vseobecne-o-vypocte-hodnot">
-<h1>Všeobecne o výpočte hodnôt<a class="headerlink" href="#vseobecne-o-vypocte-hodnot" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<h1>Všeobecne o výpočte hodnôt<a class="headerlink" href="#vseobecne-o-vypocte-hodnot" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p>Snahou fiškálnej jednotky je preniesť, čo možno najviac zodpovednosti
-a tým pádom aj výpočtov na stranu aplikácie. Tento postup je zvolený
-preto, aby sa minimalizoval vplyv výpočtov a následných zaokrúhlení
-a z toho vyplývajúce nezhody medzi celkovou hodnotou transakcie
-vypočítanou v aplikácii a celkovou hodnotou vypočítanou vo fiškálnej
+a tým pádom aj výpočtov na stranu aplikácie. Tento postup je zvolený
+preto, aby sa minimalizoval vplyv výpočtov a následných zaokrúhlení
+a z toho vyplývajúce nezhody medzi celkovou hodnotou transakcie
+vypočítanou v aplikácii a celkovou hodnotou vypočítanou vo fiškálnej
 tlačiarni. Keďže pre závislosti medzi vstupnými parametrami príkazov,
 ktoré slúžia na registráciu predaných/vrátených položiek (vrátane
 príkazov pre úpravu ceny, napr. zliav), nie sú určené jednoznačné
-pravidlá, fiškálna tlačiareň vykonáva len operácie sčítania a odčítania
-výsledných finančných hodnôt, ktoré prijíma z aplikácie.</p>
-<p>Z toho vyplýva, že ak aplikácia pošle pri predaji položiek v príkaze
+pravidlá, fiškálna tlačiareň vykonáva len operácie sčítania a odčítania
+výsledných finančných hodnôt, ktoré prijíma z aplikácie.</p>
+<p>Z toho vyplýva, že ak aplikácia pošle pri predaji položiek v príkaze
 predaja, napr. <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a>, okrem výslednej ceny
 položky aj jej jednotkovú cenu, potom sa táto jednotková cena len vypíše
-a neskúma sa, či platí rovnosť <span class="math notranslate nohighlight">\(jednotková\_cena * množstvo = výsledná\_cena\)</span>
+a neskúma sa, či platí rovnosť <span class="math notranslate nohighlight">\(jednotková\_cena * množstvo = výsledná\_cena\)</span>
 (teda <span class="math notranslate nohighlight">\(unitPrice * quantity = price\)</span>).
-Zodpovednosť je z tohto pohľadu na strane aplikácie, ktorá musí zabezpečiť,
+Zodpovednosť je z tohto pohľadu na strane aplikácie, ktorá musí zabezpečiť,
 aby táto rovnica platila.</p>
 <p>Podobné pravidlá platia aj pre úpravu cien (aplikované príkazy zľavy).
-Hodnoty sa musia v rámci príkazov komunikačného protokolu posielať ako hodnotové.
-Posiela sa len suma operácie a nie jej percentuálna hodnota. Hoci v aplikácii mohli
-byť tieto zľavy prezentované ako percentuálne a percentuálne vyjadrenie môže byť aj
-v textovom popise operácie.</p>
+Hodnoty sa musia v rámci príkazov komunikačného protokolu posielať ako hodnotové.
+Posiela sa len suma operácie a nie jej percentuálna hodnota. Hoci v aplikácii mohli
+byť tieto zľavy prezentované ako percentuálne a percentuálne vyjadrenie môže byť aj
+v textovom popise operácie.</p>
 <p>Úlohou fiškálnej tlačiarne je teda len sčítať/odčítať výsledné hodnoty všetkých položiek
-v nákupe a zo spočítaných súčtov vypočítať hodnoty DPH a od nich odvodené údaje, za ktorých
+v nákupe a zo spočítaných súčtov vypočítať hodnoty DPH a od nich odvodené údaje, za ktorých
 výpočet už je fiškálna tlačiareň zodpovedná. Fiškálna tlačiareň používa operácie násobenia,
-delenia a prípadné následné zaokrúhlenia len v súvislosti s výpočtami, ktoré súvisia
-s daňovými sadzbami.</p>
-<p>Operácia zaokrúhlenia sa ešte môže pri výpočtoch vyskytnúť aj v situácii, ak by došlo
-k zrušeniu hotovostných platidiel najnižšej hodnoty. Ak by nastala takáto situácia,
+delenia a prípadné následné zaokrúhlenia len v súvislosti s výpočtami, ktoré súvisia
+s daňovými sadzbami.</p>
+<p>Operácia zaokrúhlenia sa ešte môže pri výpočtoch vyskytnúť aj v situácii, ak by došlo
+k zrušeniu hotovostných platidiel najnižšej hodnoty. Ak by nastala takáto situácia,
 potom by sa hotovostné platby zaokrúhlili na hodnotu najmenšieho hotovostného platidla,
-ktoré je v aktuálnom čase v obehu. Toto pravidlo sa ale zatiaľ neaplikuje.</p>
+ktoré je v aktuálnom čase v obehu. Toto pravidlo sa ale zatiaľ neaplikuje.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>

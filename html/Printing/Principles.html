@@ -85,9 +85,9 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tlač vo fiškálnej tlačiarni</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Princíp tlače vo fiškálnej tlačiarni</a><ul class="simple">
@@ -95,13 +95,13 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Formatting.html">Formátovanie textového výstupu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ReceiptFormatProfiles.html">Formátovacie profily fiškálnych dokumentov</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PrintFormattingSettings.html">Nastavenia formátu tlače <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrintFormattingSettings.html">Nastavenia formátu tlače</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Summary.html">Zhrnutie formátovania tlače</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Example.html">Príklady fiškálnych dokladov</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -173,12 +173,12 @@
 <p>Príkazy na fiškálnej tlačiarni je možné rozdeliť do troch skupín:</p>
 <ol class="arabic simple">
 <li><p>príkazy, ktoré nemajú tlačový výstup,</p></li>
-<li><p>príkazy, ktorých vykonávanie skončí spolu s koncom tlače,</p></li>
+<li><p>príkazy, ktorých vykonávanie skončí spolu s koncom tlače,</p></li>
 <li><p>príkazy, ktoré vrátia odpoveď aplikácii skôr, ako sa skončí tlač, ktorú vyvolali,</p></li>
 </ol>
-<p>Prvej skupine príkazov sa v tomto popise nebudeme venovať, keďže nemá tlačový výstup.
-Druhá skupina príkazov bude označená ako príkazy synchrónne s tlačou a tretia skupina
-ako príkazy asynchrónne s tlačou.</p>
+<p>Prvej skupine príkazov sa v tomto popise nebudeme venovať, keďže nemá tlačový výstup.
+Druhá skupina príkazov bude označená ako príkazy synchrónne s tlačou a tretia skupina
+ako príkazy asynchrónne s tlačou.</p>
 <p>Fiškálna tlačiareň umožňuje tlač nasledujúcich typov dokumentov/dokladov:</p>
 <ol class="arabic">
 <li><p>fiškálne doklady, kam patria:</p>
@@ -194,52 +194,52 @@ ako príkazy asynchrónne s tlačou.</p>
 </li>
 <li><p>doklad nefiškálnej účtenky,</p></li>
 <li><p>duplikát dokladu,</p></li>
-<li><p>doklad Z uzávierky,</p></li>
-<li><p>doklad X prehľadovej dennej uzávierky.</p></li>
+<li><p>doklad Z uzávierky,</p></li>
+<li><p>doklad X prehľadovej dennej uzávierky.</p></li>
 </ol>
-<p>Všetky dokumenty a doklady, <strong>ako celok</strong>, sú s tlačou synchrónne.
-V rámci niektorých dokladov však príkazy môžu byť s tlačou asynchrónne.
-Asynchrónnosť v rámci dokladu má tú výhodu, že nespomaľuje tlač, pretože tlač dokladu
-môže bežať na pozadí aj v čase, keď je prebiehajúci proces aktívny na strane aplikácie.</p>
-<p>Doklady Z a X dennej uzávierky a duplikátu sú realizované jediným príkazom
+<p>Všetky dokumenty a doklady, <strong>ako celok</strong>, sú s tlačou synchrónne.
+V rámci niektorých dokladov však príkazy môžu byť s tlačou asynchrónne.
+Asynchrónnosť v rámci dokladu má tú výhodu, že nespomaľuje tlač, pretože tlač dokladu
+môže bežať na pozadí aj v čase, keď je prebiehajúci proces aktívny na strane aplikácie.</p>
+<p>Doklady Z a X dennej uzávierky a duplikátu sú realizované jediným príkazom
 <a class="reference internal" href="../Commands/printZReport.html#printzreport"><span class="std std-ref">printZReport</span></a>, <a class="reference internal" href="../Commands/printXReport.html#printxreport"><span class="std std-ref">printXReport</span></a> resp.
 <a class="reference internal" href="../Commands/printDuplicateReceipt.html#printduplicatereceipt"><span class="std std-ref">printDuplicateReceipt</span></a>.
-Tieto príkazy sú teda z princípu s tlačou synchrónne.</p>
-<p>Dokumenty nákupu/vrátenia tovaru, vkladu/výberu hotovosti a doklady nefiškálnej účtenky
-sú realizované viacerými príkazmi a preto sú v rámci týchto dokladov príkazy s tlačou asynchrónne.
+Tieto príkazy sú teda z princípu s tlačou synchrónne.</p>
+<p>Dokumenty nákupu/vrátenia tovaru, vkladu/výberu hotovosti a doklady nefiškálnej účtenky
+sú realizované viacerými príkazmi a preto sú v rámci týchto dokladov príkazy s tlačou asynchrónne.
 Synchrónnymi sú až záverečné príkazy týchto dokladov <a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>
-a <a class="reference internal" href="../Commands/endNonFiscal.html#endnonfiscal"><span class="std std-ref">endNonFiscal</span></a>.
+a <a class="reference internal" href="../Commands/endNonFiscal.html#endnonfiscal"><span class="std std-ref">endNonFiscal</span></a>.
 Ak tieto príkazy vrátia úspešný návratový kód, aplikácia si môže byť istá, že tlač týchto dokladov
-bola ukončená bez problémov a fiškálna tlačiareň sa vrátila do stavu <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#monitor"><span class="std std-ref">MONITOR</span></a>.</p>
-<p>Synchrónnosť príkazu s tlačou znamená, že ak je jednou z úloh príkazu niečo vytlačiť,
-potom kým príkaz požadované dáta nevytlačí, aplikácia nedostane z príkazu žiadnu návratovú hodnotu
-(ak samozrejme pred tlačou nenastala iná chyba, nesúvisiaca s tlačou).</p>
+bola ukončená bez problémov a fiškálna tlačiareň sa vrátila do stavu <a class="reference internal" href="../ConnectingAndStates/PrinterStates.html#monitor"><span class="std std-ref">MONITOR</span></a>.</p>
+<p>Synchrónnosť príkazu s tlačou znamená, že ak je jednou z úloh príkazu niečo vytlačiť,
+potom kým príkaz požadované dáta nevytlačí, aplikácia nedostane z príkazu žiadnu návratovú hodnotu
+(ak samozrejme pred tlačou nenastala iná chyba, nesúvisiaca s tlačou).</p>
 <ul class="simple">
 <li><p>Ak sa požadované dáta dotlačia bez chyby, návratový kód je <a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-ok"><span class="std std-ref">EFP_OK</span></a>.</p></li>
-<li><p>Ak ale dôjde k chybe pri vykonávaní príkazu, alebo tlači (aj z predchádzajúcich príkazov),
+<li><p>Ak ale dôjde k chybe pri vykonávaní príkazu, alebo tlači (aj z predchádzajúcich príkazov),
 potom je vrátený <a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#exceptioncodes"><span class="std std-ref">chybový návratový kód</span></a>.</p></li>
 </ul>
-<p>Asynchrónnosť príkazu s tlačou znamená, že ak je jednou z úloh príkazu niečo vytlačiť,
-potom príkaz si len overí, či fiškálna tlačiareň je momentálne v stave možné tento
-príkaz spracovať (teda overí parametre príkazu a stav fiškálnej tlačiarne), následne
+<p>Asynchrónnosť príkazu s tlačou znamená, že ak je jednou z úloh príkazu niečo vytlačiť,
+potom príkaz si len overí, či fiškálna tlačiareň je momentálne v stave možné tento
+príkaz spracovať (teda overí parametre príkazu a stav fiškálnej tlačiarne), následne
 skontroluje možnosť tlačiť (otvorený kryt tlačiarne, chýbajúci papier).</p>
 <p>Ak nie je možné príkaz vykonať, potom je vrátený <a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#exceptioncodes"><span class="std std-ref">chybový návratový kód</span></a>
-a príkaz sa ani nezačne vykonávať. V opačnom prípade fiškálna tlačiareň vykoná činnosti,
-s ktorými je príkaz synchronizovaný (napr. zobrazenie na displej, ak je to potrebné a/alebo
-rôzne výpočty a podobne). Fiškálna tlačiareň ale už nečaká, kým sa požadované dáta dotlačia,
-len ich zaradí do fronty pre tlač v samotnej tlačiarni.</p>
-<p>To či sa požadované dáta dotlačili sa aplikácia už nikdy nedozvie. Dozvie sa len informáciu o tom,
+a príkaz sa ani nezačne vykonávať. V opačnom prípade fiškálna tlačiareň vykoná činnosti,
+s ktorými je príkaz synchronizovaný (napr. zobrazenie na displej, ak je to potrebné a/alebo
+rôzne výpočty a podobne). Fiškálna tlačiareň ale už nečaká, kým sa požadované dáta dotlačia,
+len ich zaradí do fronty pre tlač v samotnej tlačiarni.</p>
+<p>To či sa požadované dáta dotlačili sa aplikácia už nikdy nedozvie. Dozvie sa len informáciu o tom,
 či sa dotlačili všetky dáta, ktoré boli zaradené do fronty, alebo sa nedotlačili všetky dáta zaradené
-do fronty (v prípade nejakého problému aplikácia nebude vedieť, ktoré z riadkov vo fronte boli
-dotlačené správne a ktoré sa nevytlačili vôbec, alebo len čiastočne. Aplikácia bude vedieť len výsledok
-v rámci celej fronty, teda ako celého dokladu).</p>
-<p>Ak nastala chyba pri tlači, potom sa aplikácia dozvie informáciu o tom, že tlač nebola úspešne ukončená,
-v odpovedi niektorého z ďalších príkazov. V najhoršom prípade bude chyba vrátená príkazom,
+do fronty (v prípade nejakého problému aplikácia nebude vedieť, ktoré z riadkov vo fronte boli
+dotlačené správne a ktoré sa nevytlačili vôbec, alebo len čiastočne. Aplikácia bude vedieť len výsledok
+v rámci celej fronty, teda ako celého dokladu).</p>
+<p>Ak nastala chyba pri tlači, potom sa aplikácia dozvie informáciu o tom, že tlač nebola úspešne ukončená,
+v odpovedi niektorého z ďalších príkazov. V najhoršom prípade bude chyba vrátená príkazom,
 ktorého úlohou je synchronizovať tlač dokladu na jeho konci.</p>
 <p>Ak ani príkaz <a class="reference internal" href="../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>, resp. <a class="reference internal" href="../Commands/endNonFiscal.html#endnonfiscal"><span class="std std-ref">endNonFiscal</span></a>,
 nevráti chybový návratový kód, potom je garantované, že všetky dáta, poslané do tlačovej fronty sa
-vytlačili správne a doklad bol korektne ukončený (v prípade fiškálnych dokladov je doklad platný).</p>
-<p><strong>Príkazy synchrónne s tlačou</strong>:</p>
+vytlačili správne a doklad bol korektne ukončený (v prípade fiškálnych dokladov je doklad platný).</p>
+<p><strong>Príkazy synchrónne s tlačou</strong>:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="../Commands/printZReport.html#printzreport"><span class="std std-ref">printZReport</span></a></p></li>
@@ -250,7 +250,7 @@ vytlačili správne a doklad bol korektne ukončený (v prípade fiškálnych 
 <li><p><a class="reference internal" href="../Commands/resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a></p></li>
 </ul>
 </div></blockquote>
-<p><strong>Príkazy asynchrónne s tlačou</strong>:</p>
+<p><strong>Príkazy asynchrónne s tlačou</strong>:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>všetky príkazy <strong>printRec…</strong></p></li>

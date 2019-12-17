@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Komunikačný rámec &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  <title>Komunikačný rámec [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
   
 
   
@@ -39,7 +39,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Hľadať" href="../search.html" />
     <link rel="next" title="Dátové typy a kódovanie ich hodnôt" href="DataTypes.html" />
-    <link rel="prev" title="Pripojenie fiškálnej tlačiarne" href="Connection.html" /> 
+    <link rel="prev" title="Pripojenie fiškálnej tlačiarne [_new_]" href="Connection.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,23 +85,23 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Popis protokolu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Overview.html">Prehľad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProtocolFeatures.html">Črty protokolu</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Connection.html">Pripojenie fiškálnej tlačiarne</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Komunikačný rámec</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="Connection.html">Pripojenie fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Komunikačný rámec <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="DataTypes.html">Dátové typy a kódovanie ich hodnôt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DateTime.html">Dátum a čas vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DataTypes.html">Dátové typy a kódovanie ich hodnôt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DateTime.html">Dátum a čas vo fiškálnej tlačiarni</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -151,7 +151,7 @@
         
           <li><a href="index.html">Popis protokolu</a> &raquo;</li>
         
-      <li>Komunikačný rámec</li>
+      <li>Komunikačný rámec <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -168,66 +168,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="komunikacny-ramec">
-<h1>Komunikačný rámec<a class="headerlink" href="#komunikacny-ramec" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+  <div class="section" id="komunikacny-ramec-new">
+<h1>Komunikačný rámec <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#komunikacny-ramec-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p>Komunikačný protokol stanovuje predpis komunikácie medzi aplikáciou
-(„front-end“ registračný program bežiaci na strane PC) a zariadením
+(„front-end“ registračný program bežiaci na strane <a class="reference internal" href="../Terminology.html#term-pc"><span class="xref std std-term">PC</span></a>) a zariadením
 fiškálnej tlačiarne („back-end“).</p>
 <p>Zariadenie poskytuje služby pre aplikáciu, ktorá ich požaduje vyslaním správy
 obsahujúcej požiadavku na požadovanú službu. Žiadosť je pre zariadenie príkazom,
-ktorý vykoná a výsledok tohto vykonania, ako správu obsahujúcu odpoveď,
-odošle naspäť do aplikácie. Komunikácia medzi aplikáciou a zariadením sa
-odohráva v rámcoch zostavených z požiadavky a odpovede. Zariadenie nikdy
-nezačína komunikáciu a vždy iba odpovedá na požiadavky z aplikácie. Zároveň
+ktorý vykoná a výsledok tohto vykonania, ako správu obsahujúcu odpoveď,
+odošle naspäť do aplikácie. Komunikácia medzi aplikáciou a zariadením sa
+odohráva v rámcoch zostavených z požiadavky a odpovede. Zariadenie nikdy
+nezačína komunikáciu a vždy iba odpovedá na požiadavky z aplikácie. Zároveň
 ale aplikácia nemôže vyslať požiadavku, pokiaľ nedostala odpoveď na predchádzajúcu
 požiadavku. Ak odpoveď nepríde do stanovenej doby (time-out), alebo ak sa
 transportná vrstva rozpojí, znamená to, že spojenie so zariadením sa prerušilo
-a pre ďalšie pokračovanie spolupráce je potrebné ho znovu obnoviť.</p>
+a pre ďalšie pokračovanie spolupráce je potrebné ho znovu obnoviť.</p>
 <div class="align-center figure align-default" id="id1">
 <img alt="../_images/Communication.png" src="../_images/Communication.png" />
 <p class="caption"><span class="caption-text">Obrázok č. 4: Spracovanie príkazov</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento obrázok">¶</a></p>
 </div>
-<p>Usporiadanie správy pre požiadavku a odpoveď je vzájomne podobné.
-Pozostáva z niekoľkých znakových polí vzájomne oddelených znakom
+<p>Usporiadanie správy pre požiadavku a odpoveď je vzájomne podobné.
+Pozostáva z niekoľkých znakových polí vzájomne oddelených znakom
 <code class="docutils literal notranslate"><span class="pre">Horizontal</span> <span class="pre">Tab</span></code> (<code class="docutils literal notranslate"><span class="pre">0x09</span></code> hexadecimálne, ďalej len <code class="docutils literal notranslate"><span class="pre">HT</span></code>).
 Príkaz, resp. celá správa je ukončená znakom <code class="docutils literal notranslate"><span class="pre">Line</span> <span class="pre">Feed</span></code>
 (<code class="docutils literal notranslate"><span class="pre">0x0A</span></code> hexadecimálne, ďalej len <code class="docutils literal notranslate"><span class="pre">LF</span></code>).</p>
 <p>Na kódovanie textov sa používa kódová stránka Windows-1250.
 Žiadne pole správy nesmie obsahovať vo svojom textovom reťazci kontrolné znaky
-a to nie len spomínané znaky <code class="docutils literal notranslate"><span class="pre">HT</span></code> a <code class="docutils literal notranslate"><span class="pre">LF</span></code>, ale ani iné kontrolné znaky.</p>
-<p>Správa s požiadavkou obsahuje pole s identifikátorom príkazu a pole s reťazcom „REQ“.
-Význam a počet parametrov je rôzny pre jednotlivé príkazy.</p>
-<p>Správa s odpoveďou obsahuje identifikátor príkazu nasledovaný reťazcom „RSP“,
-návratovou hodnotou vykonávania príkazu a množinou výstupných parametrov (ak
+a to nie len spomínané znaky <code class="docutils literal notranslate"><span class="pre">HT</span></code> a <code class="docutils literal notranslate"><span class="pre">LF</span></code>, ale ani iné kontrolné znaky.</p>
+<p>Správa s požiadavkou obsahuje pole s identifikátorom príkazu a pole s reťazcom „REQ“.
+Význam a počet parametrov je rôzny pre jednotlivé príkazy.</p>
+<p>Správa s odpoveďou obsahuje identifikátor príkazu nasledovaný reťazcom „RSP“,
+návratovou hodnotou vykonávania príkazu a množinou výstupných parametrov (ak
 má príkaz návratové parametre).</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;commandName&gt;&lt;HT&gt;&lt;ReqRsp&gt;&lt;HT&gt;&lt;Par1&gt;&lt;HT&gt;&lt;Par2&gt;&lt;HT&gt;...&lt;HT&gt;&lt;ParN&gt;&lt;LF&gt;
 </pre></div>
 </div>
 <p>Pričom platí, že:</p>
 <ul class="simple">
-<li><p>&lt;commandName&gt; v požiadavke aj v odpovedi predstavuje reťazec s identifikátorom príkazu,</p></li>
-<li><p>&lt;ReqRsp&gt; je v požiadavke reťazec „REQ“ a v odpovedi reťazec „RSP“,</p></li>
-<li><p>&lt;Par1&gt;, &lt;Par2&gt;, až &lt;ParN&gt; obsahujú reťazce reprezentujúce argumenty príkazu, alebo výstupných hodnôt, v poradí 1,2, až N. Vynechanie parametra, default hodnota je vyjadrená v správe ako prázdny reťazec.</p></li>
+<li><p>&lt;commandName&gt; v požiadavke aj v odpovedi predstavuje reťazec s identifikátorom príkazu,</p></li>
+<li><p>&lt;ReqRsp&gt; je v požiadavke reťazec „REQ“ a v odpovedi reťazec „RSP“,</p></li>
+<li><p>&lt;Par1&gt;, &lt;Par2&gt;, až &lt;ParN&gt; obsahujú reťazce reprezentujúce argumenty príkazu, alebo výstupných hodnôt, v poradí 1,2, až N. Vynechanie parametra, default hodnota je vyjadrená v správe ako prázdny reťazec.</p></li>
 </ul>
-<p><strong>Príklad</strong>: Požiadavka a odpoveď na zaregistrovanie predaja tovaru:</p>
+<p><strong>Príklad</strong>: Požiadavka a odpoveď na zaregistrovanie predaja tovaru:</p>
 <p>Abstraktný zápis požiadavky:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;printRecItem&gt;&lt;HT&gt;REQ&lt;HT&gt;&lt;description&gt;&lt;HT&gt;&lt;price&gt;&lt;HT&gt;&lt;quantity&gt;&lt;HT&gt;
 &lt;vatID&gt;&lt;HT&gt;&lt;unitPrice*&gt;&lt;HT&gt;&lt;unitName*&gt;&lt;HT&gt;&lt;preLine*&gt;&lt;HT&gt;&lt;postLine*&gt;&lt;LF&gt;
 </pre></div>
 </div>
-<p>Konkrétne správy ako reťazec v C zápise:</p>
+<p>Konkrétne správy ako reťazec v C zápise:</p>
 <div class="highlight-text notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span>pRI\tREQ\tChlieb\t0.76\t1.0\t1\t0.76\tks\t0123456789\tsklad\n
 pRI\tREQ\tChlieb\t0.76\t1.0\t1\t\t\t\t\n
 </pre></div>
 </td></tr></table></div>
-<p>Ako z predchádzajúceho vidno, posledné 4 parametre sú prázdne, pretože sú v príkaze
-<strong>printRecItem</strong> definované ako nepovinné a je len na aplikácii, či sa ich rozhodne poslať.</p>
+<p>Ako z predchádzajúceho vidno, posledné 4 parametre sú prázdne, pretože sú v príkaze
+<strong>printRecItem</strong> definované ako nepovinné a je len na aplikácii, či sa ich rozhodne poslať.</p>
 <p>Abstraktný zápis odpovede:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;printRecItem&gt;&lt;HT&gt;RSP&lt;HT&gt;&lt;exception&gt;&lt;LF&gt;
 </pre></div>
 </div>
-<p>Konkrétne správy ako reťazec v C zápise:</p>
+<p>Konkrétne správy ako reťazec v C zápise:</p>
 <div class="highlight-text notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> pRI\tRSP\t0\n
  pRI\tRSP\t108\n
@@ -250,7 +250,7 @@ Pri neúspešnom vykonaní požiadavky je hodnota <em>exception</em> rôzna od 0
         <a href="DataTypes.html" class="btn btn-neutral float-right" title="Dátové typy a kódovanie ich hodnôt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Connection.html" class="btn btn-neutral float-left" title="Pripojenie fiškálnej tlačiarne" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Connection.html" class="btn btn-neutral float-left" title="Pripojenie fiškálnej tlačiarne [_new_]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

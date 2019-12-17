@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="../../_static/css/elcom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Hľadať" href="../../search.html" />
-    <link rel="next" title="Počítadlá [_new_]" href="Counters.html" />
+    <link rel="next" title="Počítadlá" href="Counters.html" />
     <link rel="prev" title="Akumulátory fiškálnej tlačiarne" href="index.html" /> 
 </head>
 
@@ -85,24 +85,24 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../BasicDescription/index.html">Popis protokolu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Konštanty a premenné</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Konštanty a premenné</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Exceptions/index.html">Návratové hodnoty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastností (properties) fiškálnej tlačiarne</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastností (properties) fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Akumulátory fiškálnej tlačiarne</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Sumárne hodnoty</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Counters.html">Počítadlá <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Counters.html">Počítadlá</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -150,7 +150,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../index.html">Konštanty a premenné</a> &raquo;</li>
+          <li><a href="../index.html">Konštanty a premenné</a> &raquo;</li>
         
           <li><a href="index.html">Akumulátory fiškálnej tlačiarne</a> &raquo;</li>
         
@@ -173,7 +173,7 @@
             
   <div class="section" id="id1">
 <h1><span class="target" id="sumarne-hodnoty">Sumárne hodnoty</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento nadpis">¶</a></h1>
-<p><strong>Sumárne hodnoty zviazané s daňovými skupinami</strong></p>
+<p><strong>Sumárne hodnoty zviazané s daňovými skupinami</strong></p>
 <blockquote>
 <div><table class="docutils align-default">
 <colgroup>
@@ -368,21 +368,21 @@
 </tr>
 </tbody>
 </table>
-<p>Pre všetky vyššie vymenované sumárne hodnoty účtenky a obchodného dňa platí,
-že je možné získať hodnotu každej z vymenovaných hodnôt pre každú daňovú skupinu
-zvlášť ako aj sumárnu hodnotu každú z vymenovaných hodnôt, teda hodnotu súčtu vo
+<p>Pre všetky vyššie vymenované sumárne hodnoty účtenky a obchodného dňa platí,
+že je možné získať hodnotu každej z vymenovaných hodnôt pre každú daňovú skupinu
+zvlášť ako aj sumárnu hodnotu každú z vymenovaných hodnôt, teda hodnotu súčtu vo
 všetkých daňových skupinách spolu.</p>
-<p>V prípade odkazovania sa na sumár pre konkrétnu daňovú skupinu (v texte tohto dokumentu)
+<p>V prípade odkazovania sa na sumár pre konkrétnu daňovú skupinu (v texte tohto dokumentu)
 sa vybraná hodnota označí ešte indexom daňovej skupiny.</p>
 <p><strong>Napríklad</strong>: Zápis <a class="reference internal" href="#dayrefundtotal"><span class="std std-ref">DayRefundTotal[3]</span></a> označuje hodnotu refundovaných
-položiek pre 3. daňovú skupinu v aktuálnom dni a <a class="reference internal" href="#dayrefundtotal">DayRefundTotal</a> označuje celkovú hodnotu
-refundovaných položiek v aktuálnom dni teda:</p>
+položiek pre 3. daňovú skupinu v aktuálnom dni a <a class="reference internal" href="#dayrefundtotal">DayRefundTotal</a> označuje celkovú hodnotu
+refundovaných položiek v aktuálnom dni teda:</p>
 <p><span class="math notranslate nohighlight">\(DayRefundTotal[0] = \displaystyle_{i=0}^{NumVatRates} DayRefundTotal[i]\)</span></p>
-<p>Všetky vyššie vymenované sumárne hodnoty a ich súvis s daňovými skupinami je viac zrejmý
-z popisu príkazu <a class="reference internal" href="../../Commands/getTotalizer.html#gettotalizer"><span class="std std-ref">getTotalizer</span></a>. Tento príkaz je možné zároveň použiť
-na získanie príslušnej hodnoty z fiškálnej tlačiarne.</p>
+<p>Všetky vyššie vymenované sumárne hodnoty a ich súvis s daňovými skupinami je viac zrejmý
+z popisu príkazu <a class="reference internal" href="../../Commands/getTotalizer.html#gettotalizer"><span class="std std-ref">getTotalizer</span></a>. Tento príkaz je možné zároveň použiť
+na získanie príslušnej hodnoty z fiškálnej tlačiarne.</p>
 </div></blockquote>
-<p><strong>Sumárne hodnoty nesúvisiace s daňovými skupinami</strong>:</p>
+<p><strong>Sumárne hodnoty nesúvisiace s daňovými skupinami</strong>:</p>
 <blockquote>
 <div><table class="docutils align-default">
 <colgroup>
@@ -394,16 +394,16 @@ na získanie príslušnej hodnoty z fiškálnej tlačiarne.</p>
 <td><p>hodnota aktuálnej sumy dokladu <a class="footnote-reference brackets" href="#id3" id="id2">1</a></p></td>
 </tr>
 <tr class="row-even"><td><p><span class="target" id="dailytotal">DailyTotal</span></p></td>
-<td><p>hodnota dennej sumy (zhodná s <a class="reference external" href="DayGrossTotal">DayGrossTotal[0]</a>)</p></td>
+<td><p>hodnota dennej sumy (zhodná s <a class="reference external" href="DayGrossTotal">DayGrossTotal[0]</a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="target" id="grandtotal">GrandTotal</span></p></td>
 <td><p>hodnota ‚Grand Total‘ (suma počítaná od začiatku prevádzky)</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="target" id="dailyvoidtotal">DailyVoidTotal</span></p></td>
-<td><p>hodnota stornovaných účteniek v aktuálnom dni</p></td>
+<td><p>hodnota stornovaných účteniek v aktuálnom dni</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="target" id="accpaymenttotal">AccPaymentTotal</span></p></td>
-<td><p>celková hodnota platieb a výdavkov v aktuálnej transakcii</p></td>
+<td><p>celková hodnota platieb a výdavkov v aktuálnej transakcii</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="target" id="trainingtotal">TrainingTotal</span></p></td>
 <td><p>hodnota dennej sumy tréningových účteniek</p></td>
@@ -412,28 +412,28 @@ na získanie príslušnej hodnoty z fiškálnej tlačiarne.</p>
 <td><p>hodnota dennej sumy stornovaných tréningových účteniek</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="target" id="cashintotal">CashInTotal</span>[<em>i</em>]</p></td>
-<td><p>hodnota vkladov v aktuálnom dni</p></td>
+<td><p>hodnota vkladov v aktuálnom dni</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="target" id="cashouttotal">CashOutTotal</span>[<em>i</em>]</p></td>
-<td><p>hodnota výberov v aktuálnom dni</p></td>
+<td><p>hodnota výberov v aktuálnom dni</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="target" id="reccashintotal">RecCashInTotal</span></p></td>
-<td><p>hodnota vkladov v aktuálnom doklade</p></td>
+<td><p>hodnota vkladov v aktuálnom doklade</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="target" id="reccashouttotal">RecCashOutTotal</span></p></td>
-<td><p>hodnota výberov v aktuálnom doklade</p></td>
+<td><p>hodnota výberov v aktuálnom doklade</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="target" id="recpaymenttotal">RecPaymentTotal</span>[<em>i</em>]</p></td>
-<td><p>hodnota platieb v aktuálnej transakcii</p></td>
+<td><p>hodnota platieb v aktuálnej transakcii</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="target" id="daypaymenttotal">DayPaymentTotal</span>[<em>i</em>]</p></td>
-<td><p>hodnota platieb v aktuálnom dni</p></td>
+<td><p>hodnota platieb v aktuálnom dni</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="target" id="recchangetotal">RecChangeTotal</span>[<em>i</em>]</p></td>
-<td><p>hodnota výdavkov v aktuálnej transakcii</p></td>
+<td><p>hodnota výdavkov v aktuálnej transakcii</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="target" id="daychangetotal">DayChangeTotal</span>[<em>i</em>]</p></td>
-<td><p>hodnota výdavkov v aktuálnom dni</p></td>
+<td><p>hodnota výdavkov v aktuálnom dni</p></td>
 </tr>
 </tbody>
 </table>
@@ -444,8 +444,8 @@ na získanie príslušnej hodnoty z fiškálnej tlačiarne.</p>
 <p>Ak je aktívny režim platieb, teda ak <a class="reference internal" href="../Properties/PaymentsRegistration.html#paymentsregistration"><span class="std std-ref">PaymentsRegistration</span></a> = <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>,
 potom je možné prečítať jednotlivé hodnoty platieb pre každý typ
 platby samostatne.</p>
-<p>Počítadla, ktoré podporujú rozdelenie podľa platidiel sú označené v tabuľke
-s indexovým zápisom poľa: „[<em>i</em>]“</p>
+<p>Počítadla, ktoré podporujú rozdelenie podľa platidiel sú označené v tabuľke
+s indexovým zápisom poľa: „[<em>i</em>]“</p>
 <p>Pričom platí:</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(hodnota[0] = \displaystyle\sum_{i = 1}^{NumPayments} hodnota[i]\)</span></p>
@@ -463,10 +463,10 @@ s indexovým zápisom poľa: „[<em>i</em>]“</p>
 </dl>
 <p><strong>Sumárne hodnoty týkajúce sa evidencie platieb</strong>:</p>
 <blockquote>
-<div><p>Nasleduje zoznam dvojíc hodnôt (pre transakciu a pre obchodný deň
-resp. pre vklad a výber v aktuálnom obchodnom dni) týkajúcich sa
+<div><p>Nasleduje zoznam dvojíc hodnôt (pre transakciu a pre obchodný deň
+resp. pre vklad a výber v aktuálnom obchodnom dni) týkajúcich sa
 jednotlivých typov platieb, ktorých reálne využitie je možné len
-v prípade, ak <a class="reference internal" href="../Properties/PaymentsRegistration.html#paymentsregistration"><span class="std std-ref">PaymentsRegistration</span></a> = <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>.</p>
+v prípade, ak <a class="reference internal" href="../Properties/PaymentsRegistration.html#paymentsregistration"><span class="std std-ref">PaymentsRegistration</span></a> = <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 32%" />
@@ -509,7 +509,7 @@ v prípade, ak <a class="reference internal" href="../Properties/PaymentsRegist
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Counters.html" class="btn btn-neutral float-right" title="Počítadlá [_new_]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Counters.html" class="btn btn-neutral float-right" title="Počítadlá" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Akumulátory fiškálnej tlačiarne" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -1,8 +1,0 @@
-obtainProgress ``[_new_]``
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. note::
-    Tento komunikačný nie je v aktuálnej verzii FP využívaný.
-
-.. toctree::
-    :maxdepth: 3
