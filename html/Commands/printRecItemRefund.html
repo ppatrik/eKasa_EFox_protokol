@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>printRecItemRefund &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  <title>printRecItemRefund [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
   
 
   
@@ -128,7 +128,7 @@
 <li class="toctree-l2"><a class="reference internal" href="printRecItemAdjustment.html">printRecItemAdjustment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecItemAdjustmentVoid.html">printRecItemAdjustmentVoid</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecItemCorrection.html">printRecItemCorrection</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">printRecItemRefund</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">printRecItemRefund <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="printRecItemRefundCorrection.html">printRecItemRefundCorrection</a></li>
@@ -213,7 +213,7 @@
         
           <li><a href="index.html">Príkazy fiškálnej tlačiarne</a> &raquo;</li>
         
-      <li>printRecItemRefund</li>
+      <li>printRecItemRefund <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -230,8 +230,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1><span class="target" id="printrecitemrefund">printRecItemRefund</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+  <div class="section" id="printrecitemrefund-new">
+<h1><span class="target" id="printrecitemrefund">printRecItemRefund</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#printrecitemrefund-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p><strong>Formát príkazu</strong>:</p>
 <blockquote>
 <div><table class="docutils align-default">
@@ -435,7 +435,7 @@
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Varovanie</p>
-<p>Hodnota parametra musí byť prázdna pre vratné obaly.</p>
+<p>Hodnota parametra musí byť prázdna pre vratné obaly. Rovnako musí byť prázdna ak sa jedná o doklad faktúry (parameter <a class="reference internal" href="beginFiscalReceipt.html#bfr-fiscalreceipttype"><span class="std std-ref">fiscalReceiptType</span></a> = <a class="reference internal" href="beginFiscalReceipt.html#fp-rt-simple-invoice"><span class="std std-ref">FP_RT_SIMPLE_INVOICE</span></a> príkazu <a class="reference internal" href="beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>).</p>
 </div>
 </div></blockquote>
 <p id="prir-preline"><strong>Parameter preLine</strong>:</p>
