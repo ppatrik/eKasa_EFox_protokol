@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Princíp registračnej transakcie vo fiškálnej tlačiarni &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  <title>Princíp registračnej transakcie vo fiškálnej tlačiarni [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
   
 
   
@@ -92,7 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Rounding.html">Pravidlá pre zaokrúhlenie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="VAT.html">Pravidlá pre výpočet DPH</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ValueCalculations.html">Všeobecne o výpočte hodnôt</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Princíp registračnej transakcie vo fiškálnej tlačiarni</a><ul class="simple">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Princíp registračnej transakcie vo fiškálnej tlačiarni <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Characteristics.html">Vstavané charakteristiky fiškálnej tlačiarne</a></li>
@@ -151,7 +151,7 @@
         
           <li><a href="index.html">Pravidlá</a> &raquo;</li>
         
-      <li>Princíp registračnej transakcie vo fiškálnej tlačiarni</li>
+      <li>Princíp registračnej transakcie vo fiškálnej tlačiarni <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -168,8 +168,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="princip-registracnej-transakcie-vo-fiskalnej-tlaciarni">
-<h1>Princíp registračnej transakcie vo fiškálnej tlačiarni<a class="headerlink" href="#princip-registracnej-transakcie-vo-fiskalnej-tlaciarni" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+  <div class="section" id="princip-registracnej-transakcie-vo-fiskalnej-tlaciarni-new">
+<h1>Princíp registračnej transakcie vo fiškálnej tlačiarni <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#princip-registracnej-transakcie-vo-fiskalnej-tlaciarni-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p>Registračná transakcia (<a class="reference internal" href="../Terminology.html#term-rt"><span class="xref std std-term">RT</span></a>) začína príkazom <a class="reference internal" href="../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>,
 ktorým sa začína tlač <a class="reference internal" href="../Terminology.html#fiscaldocument"><span class="std std-ref">fiškálneho dokladu</span></a>.
 Ak je príkaz úspešný, transakcia sa začala a je možné poslať sériu <strong>printRec…</strong> príkazov.
@@ -255,9 +255,20 @@ je prítomnosť úplného QR kódu na vytlačenom fiškálnom doklade predaja/vr
 <p>Vzhľadom na povahu zákona sa ale registračná transakcia môže odstať do stavu, keď údaje o doklade
 boli zaslané na server finančnej správy, ale ešte nedošlo k úspešnému vytlačeniu účtenky.
 V takomto prípade je potrebné prerušenú účtenku dokončiť (uzavrieť).
-Následne je odporúčané vytvoriť opravný doklad (pomocou <a class="reference internal" href="../Commands/beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a>
-s parametrom <em>fiscalReceiptType</em> = <a class="reference internal" href="../Commands/beginFiscalReceipt.html#fp-rt-correction"><span class="std std-ref">FP_RT_CORRECTION</span></a>).
+Následne je odporúčané vytvoriť opravný doklad.
 Následne po tom zase vytlačiť doklad od znova a tento odovzdať zákazníkovi.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>Opravný doklad sa urobí tak, že sa nahradia príkazy:</p>
+<ul class="simple">
+<li><p>príkaz <a class="reference internal" href="../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a> sa nahradí príkazom <a class="reference internal" href="../Commands/printRecItemCorrection.html#printrecitemcorrection"><span class="std std-ref">printRecItemCorrection</span></a>.</p></li>
+<li><p>príkaz <a class="reference internal" href="../Commands/printRecItemRefund.html#printrecitemrefund"><span class="std std-ref">printRecItemRefund</span></a> sa nahradí príkazom <a class="reference internal" href="../Commands/printRecItemRefundCorrection.html#printrecitemrefundcorrection"><span class="std std-ref">printRecItemRefundCorrection</span></a>.</p></li>
+<li><p>zľava vykonaná príkazom <a class="reference internal" href="../Commands/printRecItemAdjustment.html#printrecitemadjustment"><span class="std std-ref">printRecItemAdjustment</span></a> sa nahradí príkazom <a class="reference internal" href="../Commands/printRecItemRefundCorrection.html#printrecitemrefundcorrection"><span class="std std-ref">printRecItemRefundCorrection</span></a>.</p></li>
+<li><p>prirážka vykonaná príkazom <a class="reference internal" href="../Commands/printRecItemAdjustment.html#printrecitemadjustment"><span class="std std-ref">printRecItemAdjustment</span></a> sa nahradí príkazom <a class="reference internal" href="../Commands/printRecItemCorrection.html#printrecitemcorrection"><span class="std std-ref">printRecItemCorrection</span></a>.</p></li>
+<li><p>zľava vykonaná príkazom <a class="reference internal" href="../Commands/printRecPackageAdjustment.html#printrecpackageadjustment"><span class="std std-ref">printRecPackageAdjustment</span></a> sa nahradí sériou príkazov <a class="reference internal" href="../Commands/printRecItemRefundCorrection.html#printrecitemrefundcorrection"><span class="std std-ref">printRecItemRefundCorrection</span></a>, pre každú použitú daňovú hladinu.</p></li>
+<li><p>prirážka vykonaná príkazom <a class="reference internal" href="../Commands/printRecPackageAdjustment.html#printrecpackageadjustment"><span class="std std-ref">printRecPackageAdjustment</span></a> sa nahradí sériou príkazov <a class="reference internal" href="../Commands/printRecItemCorrection.html#printrecitemcorrection"><span class="std std-ref">printRecItemCorrection</span></a>, pre každú použitú daňovú hladinu.</p></li>
+</ul>
+</div>
 <p>Okrem registračných transakcií podlieha transakčnému riadeniu aj proces vykonania dennej
 Z uzávierky, ktorý obsahuje niekoľko podprocesov (tlač uzávierky, vymazanie denných sumárov a počítadiel).
 Tento proces sa od registračnej transakcie líši tým, že je vykonaný v rámci jediného príkazu
@@ -270,7 +281,7 @@ V prípade akéhokoľvek problému, ktorý počas procesu vykonania Z uzávierky
 nie je možné tento proces zrušiť a začať inú činnosť bez toho, aby došlo k dokončeniu tejto
 Z uzávierky. Pre viac informácii pozri:</p>
 <ul class="simple">
-<li><p>kapitolu <a class="reference internal" href="../ProblemSolving/FiscalPrinterRecovery.html"><span class="doc">Zotavenie fiškálnej tlačiarne [_new_]</span></a> a</p></li>
+<li><p>kapitolu <a class="reference internal" href="../ProblemSolving/FiscalPrinterRecovery.html"><span class="doc">Zotavenie fiškálnej tlačiarne</span></a> a</p></li>
 <li><p><a class="reference internal" href="../ProblemSolving/RecoverableProblems.html#recoverableproblems-zreport-example"><span class="std std-ref">príklad riešenia odstrániteľnej chyby pri tlači Z uzávierky</span></a>.</p></li>
 </ul>
 <div class="toctree-wrapper compound">

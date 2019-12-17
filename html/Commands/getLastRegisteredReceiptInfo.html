@@ -1,0 +1,565 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>getLastRegisteredReceiptInfo [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Hľadať" href="../search.html" />
+    <link rel="next" title="getNextLogRecord" href="getNextLogRecord.html" />
+    <link rel="prev" title="getInspectionRequest" href="getInspectionRequest.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="affirmInspectionRequest.html">affirmInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginFiscalReceipt.html">beginFiscalReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginNonFiscal.html">beginNonFiscal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginTraining.html">beginTraining <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cancelRest.html">cancelRest <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="clearDisplay.html">clearDisplay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cutPaper.html">cutPaper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deferFirmwareUpdateRequest.html">deferFirmwareUpdateRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="displayTextAt.html">displayTextAt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endFiscalReceipt.html">endFiscalReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="endNonFiscal.html">endNonFiscal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endTraining.html">endTraining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getCounter.html">getCounter <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getData.html">getData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getDate.html">getDate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFirmwareUpdateRequest.html">getFirmwareUpdateRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFontAttribute.html">getFontAttribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getHeaderLine.html">getHeaderLine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getInspectionRequest.html">getInspectionRequest</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">getLastRegisteredReceiptInfo <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getNextLogRecord.html">getNextLogRecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getProperty.html">getProperty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTotalizer.html">getTotalizer <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTrailerLine.html">getTrailerLine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTransactionStatus.html">getTransactionStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getVatEntry.html">getVatEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="obtainProgress.html">obtainProgress <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="openDrawer.html">openDrawer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printBarCode.html">printBarCode <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printDuplicateReceipt.html">printDuplicateReceipt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printNormal.html">printNormal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecCash.html">printRecCash <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItem.html">printRecItem <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemAdjustment.html">printRecItemAdjustment <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemAdjustmentVoid.html">printRecItemAdjustmentVoid <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemCorrection.html">printRecItemCorrection <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemRefund.html">printRecItemRefund <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemRefundCorrection.html">printRecItemRefundCorrection <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemRefundVoid.html">printRecItemRefundVoid <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemVoid.html">printRecItemVoid <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecMessage.html">printRecMessage <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecPackageAdjustment.html">printRecPackageAdjustment <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecPackageAdjustVoid.html">printRecPackageAdjustVoid <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecSubtotal.html">printRecSubtotal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecTotal.html">printRecTotal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecTotalChange.html">printRecTotalChange <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecVoid.html">printRecVoid <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printUnsentDataMsgReport.html">printUnsentDataMsgReport <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printXReport.html">printXReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printZReport.html">printZReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resetInspectionRequest.html">resetInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resetPrinter.html">resetPrinter <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setBitmap.html">setBitmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setCustomer.html">setCustomer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setDate.html">setDate <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setFiscalMode.html">setFiscalMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setFontAttribute.html">setFontAttribute <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setHeaderLines.html">setHeaderLines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setParagon.html">setParagon <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setPaymentType.html">setPaymentType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setPOSID.html">setPOSID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setProperty.html">setProperty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setStoreFiscalID.html">setStoreFiscalID <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setTrailerLines.html">setTrailerLines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setVatTable.html">setVatTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soundImmediate.html">soundImmediate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storeAllBitmaps.html">storeAllBitmaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updateFirmware.html">updateFirmware</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a> &raquo;</li>
+        
+      <li>getLastRegisteredReceiptInfo <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getlastregisteredreceiptinfo-new">
+<h1><span class="target" id="getlastregisteredreceiptinfo">getLastRegisteredReceiptInfo</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#getlastregisteredreceiptinfo-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p><strong>Formát príkazu</strong>:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 46%" />
+<col style="width: 13%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pole</p></th>
+<th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Dátový typ</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cmd ID</p></td>
+<td><p>gLRRI</p></td>
+<td><p>-</p></td>
+<td><p>identifikátor príkazu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Req/Rsp</p></td>
+<td><p>REQ</p></td>
+<td><p>-</p></td>
+<td><p>požiadavka</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Formát odpovede</strong>:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 47%" />
+<col style="width: 12%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pole</p></th>
+<th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Dátový typ</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cmd ID</p></td>
+<td><p>gLRRI</p></td>
+<td><p>-</p></td>
+<td><p>identifikátor príkazu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Req/Rsp</p></td>
+<td><p>RSP</p></td>
+<td><p>-</p></td>
+<td><p>odpoveď</p></td>
+</tr>
+<tr class="row-even"><td><p>Exception</p></td>
+<td><p><em>exceptionCode</em></p></td>
+<td><p><strong>INT32</strong></p></td>
+<td><p>návratový kód</p></td>
+</tr>
+<tr class="row-odd"><td><p>Param1</p></td>
+<td><p><a class="reference internal" href="#glrri-rcptcreatedatetime"><span class="std std-ref">rcptCreateDateTime</span></a></p></td>
+<td><p><strong>STRING</strong></p></td>
+<td><p>Dátum a čas vytvorenie dokladu</p></td>
+</tr>
+<tr class="row-even"><td><p>Param2</p></td>
+<td><p><a class="reference internal" href="#glrri-rcptmonthlynumber"><span class="std std-ref">rcptMonthlyNumber</span></a></p></td>
+<td><p><strong>INT32</strong></p></td>
+<td><p>Poradové číslo dokladu vrámci mesiaca</p></td>
+</tr>
+<tr class="row-odd"><td><p>Param3</p></td>
+<td><p><a class="reference internal" href="#glrri-taxauthregiststatus"><span class="std std-ref">taxAuthRegistStatus</span></a></p></td>
+<td><p><strong>INT32</strong></p></td>
+<td><p>stav registrácie dokladu na daňovom
+serveri <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Param4</p></td>
+<td><p><a class="reference internal" href="#glrri-uid"><span class="std std-ref">UID</span></a></p></td>
+<td><p><strong>STRING</strong></p></td>
+<td><p>hodnota <a class="reference internal" href="../Terminology.html#term-uid"><span class="xref std std-term">UID</span></a> získaná z
+<a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a> počas registrácie dokladu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Param5</p></td>
+<td><p><a class="reference internal" href="#glrri-okp"><span class="std std-ref">OKP</span></a></p></td>
+<td><p><strong>STRING</strong></p></td>
+<td><p>hodnota <a class="reference internal" href="../Terminology.html#term-okp"><span class="xref std std-term">OKP</span></a> vypočítaná počas
+registrácie dokladu</p></td>
+</tr>
+<tr class="row-even"><td><p>Param6</p></td>
+<td><p><a class="reference internal" href="#glrri-pkp"><span class="std std-ref">PKP</span></a></p></td>
+<td><p><strong>STRING</strong></p></td>
+<td><p>hodnota <a class="reference internal" href="../Terminology.html#term-pkp"><span class="xref std std-term">PKP</span></a> vypočítaná počas
+registrácie dokladu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Param7</p></td>
+<td><p><a class="reference internal" href="#glrri-ekasaerrorcode"><span class="std std-ref">eKasaErrorCode</span></a></p></td>
+<td><p><strong>INT32</strong></p></td>
+<td><p>číselný kód chyby zo servera
+<a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Param8</p></td>
+<td><p><a class="reference internal" href="#glrri-ekasaerrortext"><span class="std std-ref">eKasaErrorText</span></a></p></td>
+<td><p><strong>STRING</strong></p></td>
+<td><p>popisný text chyby zo servera
+<a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p id="glrri-rcptcreatedatetime"><strong>Parameter rcptCreateDateTime</strong></p>
+<blockquote>
+<div><p>Dátum a čas vytvorenie dokladu v <a class="reference internal" href="../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a>. Tento dátum a čas sa použil počas registrácie dokladu na serveri
+<a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a>. Dátum a čas je vrátený vo formáte <a class="reference internal" href="../BasicDescription/DateTime.html#datetimeformat"><span class="std std-ref">DDMMYYYYhhmmss</span></a>.</p>
+</div></blockquote>
+<p id="glrri-rcptmonthlynumber"><strong>Parameter rcptMonthlyNumber</strong></p>
+<blockquote>
+<div><p>Poradové číslo dokladu vrámci mesiaca.</p>
+</div></blockquote>
+<p id="glrri-taxauthregiststatus"><strong>Parameter taxAuthRegistStatus</strong></p>
+<blockquote>
+<div><p>Stav registrácie v systéme <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a>, ktorý môže nadobúdať jednu z nasledujúcich hodnôt:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 23%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Alias</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p><span class="target" id="fp-tars-registered">FP_TARS_REGISTERED</span></p></td>
+<td><p>Doklad bol úspešne zaregistrovaný do systému <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p><span class="target" id="fp-tars-reg-not-started">FP_TARS_REG_NOT_STARTED</span></p></td>
+<td><p>Registrácia dokladu v systéme <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a> nebola začatá.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+<td><p><span class="target" id="fp-tars-reg-in-progress">FP_TARS_REG_IN_PROGRESS</span></p></td>
+<td><p>Process registrácie dokladu v systéme <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a> alebo tlač údajov z tejto
+registrácie nebola dokončená</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+<td><p><span class="target" id="fp-tars-susp-offline">FP_TARS_SUSP_OFFLINE</span></p></td>
+<td><p>Doklad bol odpamätaný v <a class="reference internal" href="../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a> a do <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a> bude zaregistrovaný
+dodatočne. Dôvod odloženia - <a class="reference internal" href="../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> nie je pripojený do internetu</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+<td><p><span class="target" id="fp-tars-susp-no-access">FP_TARS_SUSP_NO_ACCESS</span></p></td>
+<td><p>Doklad bol odpamätaný v <a class="reference internal" href="../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a> a do <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a> bude zaregistrovaný
+dodatočne. Dôvod odloženia - komunikácia so serverom eKasa zlyhala</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">6</span></code></p></td>
+<td><p><span class="target" id="fp-tars-susp-timeout">FP_TARS_SUSP_TIMEOUT</span></p></td>
+<td><p>Doklad bol odpamätaný v <a class="reference internal" href="../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a> a do <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a> bude zaregistrovaný
+dodatočne. Dôvod odloženia - počas komunikácie bola prekročená medzná doba
+odozvy</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">7</span></code></p></td>
+<td><p><span class="target" id="fp-tars-rejected">FP_TARS_REJECTED</span></p></td>
+<td><p>Doklad bol zamietnutý serverom <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a>, dôvod zamietnutia je uvedený
+v parametroch <a class="reference internal" href="#glrri-ekasaerrorcode"><span class="std std-ref">eKasaErrorCode</span></a>
+a <a class="reference internal" href="#glrri-ekasaerrortext"><span class="std std-ref">eKasaErrorText</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
+<td><p><span class="target" id="fp-tars-unknown">FP_TARS_UNKNOWN</span></p></td>
+<td><p>Stav registrácie dokladu na serveri <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a> nie je známy kvôli chybe
+komunikácie s <a class="reference internal" href="../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a>, pre zistenie stavu registrácie a dokončenie celého
+procesu je nutné zavolať príkaz <a class="reference internal" href="endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>
+znova</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">9</span></code></p></td>
+<td><p><span class="target" id="fp-tars-internal-error">FP_TARS_INTERNAL_ERROR</span></p></td>
+<td><p>Počas komunikácie s <a class="reference internal" href="../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a> došlo k neočakávanej chybe, doklad je nutné
+zrušiť volaním príkazu <a class="reference internal" href="resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p id="glrri-uid"><strong>Parameter UID</strong></p>
+<blockquote>
+<div><p>Parameter predstavuje unikátny identifikátor pridelený dokladu po úspešnom zaevidovaní dokladu v systéme
+<a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a>. Parameter je reprezentovaný reťazcom dlhým 34 znakov.</p>
+<div class="admonition warning">
+<p class="admonition-title">Varovanie</p>
+<ul class="simple">
+<li><p>Parameter je vyplnený len v prípade ak došlo k úspešnej registrácii dokladu
+(<a class="reference internal" href="#glrri-taxauthregiststatus"><span class="std std-ref">taxAuthRegistStatus</span></a> = <a class="reference internal" href="#fp-tars-registered"><span class="std std-ref">FP_TARS_REGISTERED</span></a>), inak
+je prázdny <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p></li>
+</ul>
+</div>
+</div></blockquote>
+<p id="glrri-okp"><strong>Parameter OKP</strong></p>
+<blockquote>
+<div><p>Parameter predstavuje overovací kód podnikateľa vygenerovaný vo <a class="reference internal" href="../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> v čase vytvorenia dokladu. Parameter
+je reprezentovaný reťazcom dlhým 44 znakov.</p>
+<div class="admonition warning">
+<p class="admonition-title">Varovanie</p>
+<ul class="simple">
+<li><p>Parameter je vyplnený v prípadoch ak <a class="reference internal" href="#glrri-taxauthregiststatus"><span class="std std-ref">taxAuthRegistStatus</span></a> nadobúda jednu z hodnôt:
+<a class="reference internal" href="#fp-tars-registered"><span class="std std-ref">FP_TARS_REGISTERED</span></a>, <a class="reference internal" href="#fp-tars-susp-offline"><span class="std std-ref">FP_TARS_SUSP_OFFLINE</span></a>,
+<a class="reference internal" href="#fp-tars-susp-no-access"><span class="std std-ref">FP_TARS_SUSP_NO_ACCESS</span></a>, <a class="reference internal" href="#fp-tars-susp-timeout"><span class="std std-ref">FP_TARS_SUSP_TIMEOUT</span></a>,
+<a class="reference internal" href="#fp-tars-rejected"><span class="std std-ref">FP_TARS_REJECTED</span></a>, <a class="reference internal" href="#fp-tars-unknown"><span class="std std-ref">FP_TARS_UNKNOWN</span></a>
+a <a class="reference internal" href="#fp-tars-internal-error"><span class="std std-ref">FP_TARS_INTERNAL_ERROR</span></a>.
+V ostatných prípadoch je parameter prázdny <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p></li>
+</ul>
+</div>
+</div></blockquote>
+<p id="glrri-pkp"><strong>Parameter PKP</strong></p>
+<blockquote>
+<div><p>Parameter predstavuje podpisový kód podnikateľa vygenerovaný vo <a class="reference internal" href="../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> v čase vytvorenia dokladu.
+Ide o elektronický podpis vybraných údajov uvedených na doklade. Parameter je reprezentovaný reťazcom dlhým 344
+znakov.</p>
+<div class="admonition warning">
+<p class="admonition-title">Varovanie</p>
+<ul class="simple">
+<li><p>Parameter je vyplnený v prípadoch ak <a class="reference internal" href="#glrri-taxauthregiststatus"><span class="std std-ref">taxAuthRegistStatus</span></a> nadobúda jednu z hodnôt:
+<a class="reference internal" href="#fp-tars-registered"><span class="std std-ref">FP_TARS_REGISTERED</span></a>, <a class="reference internal" href="#fp-tars-susp-offline"><span class="std std-ref">FP_TARS_SUSP_OFFLINE</span></a>,
+<a class="reference internal" href="#fp-tars-susp-no-access"><span class="std std-ref">FP_TARS_SUSP_NO_ACCESS</span></a>, <a class="reference internal" href="#fp-tars-susp-timeout"><span class="std std-ref">FP_TARS_SUSP_TIMEOUT</span></a>,
+<a class="reference internal" href="#fp-tars-rejected"><span class="std std-ref">FP_TARS_REJECTED</span></a>, <a class="reference internal" href="#fp-tars-unknown"><span class="std std-ref">FP_TARS_UNKNOWN</span></a>
+a <a class="reference internal" href="#fp-tars-internal-error"><span class="std std-ref">FP_TARS_INTERNAL_ERROR</span></a>.
+V ostatných prípadoch je parameter prázdny <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p></li>
+</ul>
+</div>
+</div></blockquote>
+<p id="glrri-ekasaerrorcode"><strong>Parameter eKasaErrorCode</strong></p>
+<blockquote>
+<div><p>Parameter predstavuje číselný kód chyby prijatý zo servera v odpovedi typu „chyba“ počas registrácie dokladu.</p>
+<div class="admonition warning">
+<p class="admonition-title">Varovanie</p>
+<ul class="simple">
+<li><p>Parameter má význam len ak server <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a> zamietol požiadavku o registráciu dokladu
+(<a class="reference internal" href="#glrri-taxauthregiststatus"><span class="std std-ref">taxAuthRegistStatus</span></a> = <a class="reference internal" href="#fp-tars-rejected"><span class="std std-ref">FP_TARS_REJECTED</span></a>).
+V ostatných prípadoch je parameter vždy rovný hodnote <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+</ul>
+</div>
+</div></blockquote>
+<p id="glrri-ekasaerrortext"><strong>Parameter eKasaErrorText</strong></p>
+<blockquote>
+<div><p>Parameter predstavuje textový popis chyby prijatý zo servera v odpovedi typu „chyba“ počas registrácie dokladu.</p>
+<div class="admonition warning">
+<p class="admonition-title">Varovanie</p>
+<ul class="simple">
+<li><p>Parameter je vyplnený len ak server <a class="reference internal" href="../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a> zamietol požiadavku o registráciu dokladu
+(<a class="reference internal" href="#glrri-taxauthregiststatus"><span class="std std-ref">taxAuthRegistStatus</span></a> = <a class="reference internal" href="#fp-tars-rejected"><span class="std std-ref">FP_TARS_REJECTED</span></a>).
+V ostatných prípadoch je parameter vždy prázdny <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>.</p></li>
+</ul>
+</div>
+</div></blockquote>
+<p><strong>Návratové hodnoty</strong>:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 52%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Chyba</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-wrong-state"><span class="std std-ref">EFP_WRONG_STATE</span></a></p></td>
+<td><p>Aktuálny stav <a class="reference internal" href="../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> nedovoľuje vykonanie tohto príkazu.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Popis príkazu</strong>:</p>
+<blockquote>
+<div><p>Príkaz vráti informácie a stav registrácie posledného dokladu</p>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getNextLogRecord.html" class="btn btn-neutral float-right" title="getNextLogRecord" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getInspectionRequest.html" class="btn btn-neutral float-left" title="getInspectionRequest" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

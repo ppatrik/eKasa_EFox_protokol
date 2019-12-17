@@ -199,8 +199,8 @@
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 6%" />
-<col style="width: 16%" />
-<col style="width: 78%" />
+<col style="width: 17%" />
+<col style="width: 77%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Kód chyby</p></th>
@@ -253,6 +253,14 @@
 <td><p><span class="target" id="efp-bad-date">EFP_BAD_DATE</span></p></td>
 <td><p>Parameter dátumu bol poslaný nesprávne.</p></td>
 </tr>
+<tr class="row-odd"><td><p>220</p></td>
+<td><p><span class="target" id="efp-bad-ref-receipt">EFP_BAD_REF_RECEIPT</span></p></td>
+<td><p>Parameter ref. číslo dokladu nebol poslaný alebo bol nesprávny.</p></td>
+</tr>
+<tr class="row-even"><td><p>221</p></td>
+<td><p><span class="target" id="efp-unexpect-ref-receipt">EFP_UNEXPECT_REF_RECEIPT</span></p></td>
+<td><p>Parameter ref. číslo dokladu nie je povolený pre tento príkaz.</p></td>
+</tr>
 <tr class="row-odd"><td><p>222</p></td>
 <td><p><span class="target" id="efp-bad-spec-reg">EFP_BAD_SPEC_REG</span></p></td>
 <td><p>Parameter špeciálnej regulácie nebol poslaný alebo bol poslaný nesprávne.</p></td>
@@ -269,67 +277,72 @@
 <td><p><span class="target" id="efp-inspection-request">EFP_INSPECTION_REQUEST</span></p></td>
 <td><p>Je potrebné potvrdiť aktivovanú požiadavku na servisný zásah alebo servisný zásah priamo vykonať.</p></td>
 </tr>
-<tr class="row-odd"><td><p>231</p></td>
+<tr class="row-odd"><td><p>226</p></td>
+<td><p><span class="target" id="efp-tax-auth-reg-in-progress">EFP_TAX_AUTH_REG_IN_PROGRESS</span></p></td>
+<td><p>Začala registrácia dokladu na serveri <a class="reference internal" href="../../Terminology.html#term-ekasa"><span class="xref std std-term">eKasa</span></a> alebo tlač údajov z tejto registrácie, požadovaný príkaz sa teraz nedá vykonať.
+Je potrebné opäť zavolať príkaz <a class="reference internal" href="../../Commands/endFiscalReceipt.html#endfiscalreceipt"><span class="std std-ref">endFiscalReceipt</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>231</p></td>
 <td><p><span class="target" id="efp-fw-update-request">EFP_FW_UPDATE_REQUEST</span></p></td>
 <td><p>Bola aktivovaná požiadavka na aktualizáciu firmvéru.</p></td>
 </tr>
-<tr class="row-even"><td><p>232</p></td>
+<tr class="row-odd"><td><p>232</p></td>
 <td><p><span class="target" id="efp-invalid-fw-signature">EFP_INVALID_FW_SIGNATURE</span></p></td>
 <td><p>Neplatný podpis firmvéru.</p></td>
 </tr>
-<tr class="row-odd"><td><p>233</p></td>
+<tr class="row-even"><td><p>233</p></td>
 <td><p><span class="target" id="efp-wrong-fw">EFP_WRONG_FW</span></p></td>
 <td><p>Nesprávna verzia firmvéru.</p></td>
 </tr>
-<tr class="row-even"><td><p>234</p></td>
+<tr class="row-odd"><td><p>234</p></td>
 <td><p><span class="target" id="efp-empty-serial-num">EFP_EMPTY_SERIAL_NUM</span></p></td>
 <td><p>Nie je zadané sériové číslo.</p></td>
 </tr>
-<tr class="row-odd"><td><p>235</p></td>
+<tr class="row-even"><td><p>235</p></td>
 <td><p><span class="target" id="efp-no-certificate">EFP_NO_CERTIFICATE</span></p></td>
 <td><p>Žiadny podpisový certifikát.</p></td>
 </tr>
-<tr class="row-even"><td><p>236</p></td>
+<tr class="row-odd"><td><p>236</p></td>
 <td><p><span class="target" id="efp-invalid-certificate">EFP_INVALID_CERTIFICATE</span></p></td>
 <td><p>Platnosť certifikátu vypršala alebo certifikát ešte nezačal platiť.</p></td>
 </tr>
-<tr class="row-odd"><td><p>237</p></td>
+<tr class="row-even"><td><p>237</p></td>
 <td><p><span class="target" id="efp-missing-identity-data">EFP_MISSING_IDENTITY_DATA</span></p></td>
 <td><p>Chýbajúce identifikačné údaje podnikateľa.</p></td>
 </tr>
-<tr class="row-even"><td><p>301</p></td>
+<tr class="row-odd"><td><p>301</p></td>
 <td><p><span class="target" id="efp-illegal-command">EFP_ILLEGAL_COMMAND</span></p></td>
 <td><p>Nie sú splnené požadované podmienky pre vykonanie tohto príkazu.</p></td>
 </tr>
-<tr class="row-odd"><td><p>303</p></td>
+<tr class="row-even"><td><p>303</p></td>
 <td><p><span class="target" id="efp-already-fiscal">EFP_ALREADY_FISCAL</span></p></td>
 <td><p><a class="reference internal" href="../../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> je už v režime <a class="reference internal" href="../../ConnectingAndStates/Modes.html#fiscal"><span class="std std-ref">Fiscal</span></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p>304</p></td>
+<tr class="row-odd"><td><p>304</p></td>
 <td><p><span class="target" id="efp-toobig">EFP_TOOBIG</span></p></td>
 <td><p>V pamäti obrázkov nie je dostatok priestoru na uloženie obrázku.</p></td>
 </tr>
-<tr class="row-odd"><td><p>305</p></td>
+<tr class="row-even"><td><p>305</p></td>
 <td><p><span class="target" id="efp-not-fiscal">EFP_NOT_FISCAL</span></p></td>
 <td><p><a class="reference internal" href="../../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> nie je uvedený do prevádzky, operáciu nemožno vykonať pred uvedením do prevádzky.</p></td>
 </tr>
-<tr class="row-even"><td><p>401</p></td>
+<tr class="row-odd"><td><p>401</p></td>
 <td><p><span class="target" id="efp-data-type">EFP_DATA_TYPE</span></p></td>
 <td><p>Aspoň jeden z poslaných parametrov nespĺňa formálne požiadavky definované pre jeho dátový typ.</p></td>
 </tr>
-<tr class="row-odd"><td><p>403</p></td>
+<tr class="row-even"><td><p>403</p></td>
 <td><p><span class="target" id="efp-extra-field">EFP_EXTRA_FIELD</span></p></td>
 <td><p>V správe bolo poslané niektoré pole príkazu navyše.</p></td>
 </tr>
-<tr class="row-even"><td><p>404</p></td>
+<tr class="row-odd"><td><p>404</p></td>
 <td><p><span class="target" id="efp-missing-field">EFP_MISSING_FIELD</span></p></td>
 <td><p>V správe nebolo  poslané niektoré pole príkazu.</p></td>
 </tr>
-<tr class="row-odd"><td><p>405</p></td>
+<tr class="row-even"><td><p>405</p></td>
 <td><p><span class="target" id="efp-missing-prm">EFP_MISSING_PRM</span></p></td>
 <td><p>V správe nebol poslaný niektorý z povinných parametrov.</p></td>
 </tr>
-<tr class="row-even"><td><p>406</p></td>
+<tr class="row-odd"><td><p>406</p></td>
 <td><p><span class="target" id="efp-unknown-cmd">EFP_UNKNOWN_CMD</span></p></td>
 <td><p>Neznámy príkaz.</p></td>
 </tr>
@@ -339,8 +352,8 @@
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 4%" />
-<col style="width: 9%" />
-<col style="width: 87%" />
+<col style="width: 11%" />
+<col style="width: 85%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Kód chyby</p></th>
@@ -361,9 +374,33 @@
 <td><p><span class="target" id="efp-rec-empty">EFP_REC_EMPTY</span></p></td>
 <td><p>V tlačiarni chýba papier.</p></td>
 </tr>
-<tr class="row-odd"><td><p>321</p></td>
+<tr class="row-odd"><td><p>266</p></td>
+<td><p><span class="target" id="efp-max-dtmsg-items-exceeded">EFP_MAX_DTMSG_ITEMS_EXCEEDED</span></p></td>
+<td><p>Bol prekročený maximálny počet položiek v dátovej správe dokladu definovaný hodnotou property <a class="reference internal" href="../Properties/NumDataMsgItems.html#numdatamsgitems"><span class="std std-ref">NumDataMsgItems</span></a>. Doklad už nie je možné riadne dokončiť.</p></td>
+</tr>
+<tr class="row-even"><td><p>321</p></td>
 <td><p><span class="target" id="efp-cutter">EFP_CUTTER</span></p></td>
 <td><p>Strihač papiera je v zlom stave.</p></td>
+</tr>
+<tr class="row-odd"><td><p>601</p></td>
+<td><p><span class="target" id="efp-icm-comm-error">EFP_ICM_COMM_ERROR</span></p></td>
+<td><p>Nastala chyba komunikácie s <a class="reference internal" href="../../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>602</p></td>
+<td><p><span class="target" id="efp-icm-busy">EFP_ICM_BUSY</span></p></td>
+<td><p><a class="reference internal" href="../../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a> je zaneprázdnené, operáciu teraz nie je možné vykonať.</p></td>
+</tr>
+<tr class="row-odd"><td><p>603</p></td>
+<td><p><span class="target" id="efp-icm-operation-error">EFP_ICM_OPERATION_ERROR</span></p></td>
+<td><p>Pri práci s <a class="reference internal" href="../../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a> vznikla interná chyba.</p></td>
+</tr>
+<tr class="row-even"><td><p>604</p></td>
+<td><p><span class="target" id="efp-tax-auth-regist-rejected">EFP_TAX_AUTH_REGIST_REJECTED</span></p></td>
+<td><p>Doklad bol zamietnutý serverom <a class="reference internal" href="../../Terminology.html#term-ekasa"><span class="xref std std-term">eKASA</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>605</p></td>
+<td><p><span class="target" id="efp-duplicate-buffer-full">EFP_DUPLICATE_BUFFER_FULL</span></p></td>
+<td><p>Nedostatok miesta pre uloženie kópie dokladu. Bol dosiahnutý maximálny možný počet vytlačených riadkov na jeden doklad. Doklad už nie je možné riadne dokončiť.</p></td>
 </tr>
 <tr class="row-even"><td><p>901</p></td>
 <td><p><span class="target" id="efp-cover-open-warning">EFP_COVER_OPEN_WARNING</span></p></td>
@@ -416,18 +453,6 @@
 <tr class="row-odd"><td><p>297</p></td>
 <td><p><span class="target" id="efp-operation-error">EFP_OPERATION_ERROR</span></p></td>
 <td><p>Interná chyba. Pri vykonávaní príkazu nastala nešpecifikovaná chyba.</p></td>
-</tr>
-<tr class="row-even"><td><p>601</p></td>
-<td><p><span class="target" id="efp-icm-comm-error">EFP_ICM_COMM_ERROR</span></p></td>
-<td><p>Nastala chyba komunikácie s <a class="reference internal" href="../../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p>602</p></td>
-<td><p><span class="target" id="efp-icm-busy">EFP_ICM_BUSY</span></p></td>
-<td><p><a class="reference internal" href="../../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a> je zaneprázdnené, operáciu teraz nie je možné vykonať.</p></td>
-</tr>
-<tr class="row-even"><td><p>603</p></td>
-<td><p><span class="target" id="efp-icm-operation-error">EFP_ICM_OPERATION_ERROR</span></p></td>
-<td><p>Pri práci s <a class="reference internal" href="../../Terminology.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a> vznikla interná chyba.</p></td>
 </tr>
 </tbody>
 </table>

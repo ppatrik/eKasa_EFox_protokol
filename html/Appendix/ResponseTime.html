@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Typický a maximálny čas trvania vykonávania príkazov &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  <title>Typický a maximálny čas trvania vykonávania príkazov [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
   
 
   
@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Hľadať" href="../search.html" />
-    <link rel="prev" title="Zoznam použitých tlačiarní" href="PrinterType.html" /> 
+    <link rel="prev" title="Zoznam použitých tlačiarní [_new_]" href="PrinterType.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,8 +93,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Prílohy</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="PrinterType.html">Zoznam použitých tlačiarní</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Typický a maximálny čas trvania vykonávania príkazov</a><ul class="simple">
+<li class="toctree-l2"><a class="reference internal" href="PrinterType.html">Zoznam použitých tlačiarní <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Typický a maximálny čas trvania vykonávania príkazov <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -146,7 +146,7 @@
         
           <li><a href="index.html">Prílohy</a> &raquo;</li>
         
-      <li>Typický a maximálny čas trvania vykonávania príkazov</li>
+      <li>Typický a maximálny čas trvania vykonávania príkazov <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,8 +163,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="typicky-a-maximalny-cas-trvania-vykonavania-prikazov">
-<h1>Typický a maximálny čas trvania vykonávania príkazov<a class="headerlink" href="#typicky-a-maximalny-cas-trvania-vykonavania-prikazov" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+  <div class="section" id="typicky-a-maximalny-cas-trvania-vykonavania-prikazov-new">
+<h1>Typický a maximálny čas trvania vykonávania príkazov <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#typicky-a-maximalny-cas-trvania-vykonavania-prikazov-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p>V tabuľke (nižšie) sú napísané typické a maximálne časy pre vykonanie jednotlivých príkazov.
 V prípade, ak aplikácia nedostane odpoveď ani do času, ktorý je označený ako maximálny čas pre tento príkaz,
 je možné predpokladať, že došlo k strate spojenia, prípadne nastala nejaká interná chyba na zariadení.
@@ -172,7 +172,8 @@ V takomto prípade, je potrebné pokúsiť sa znovu nadviazať spojenie (príkaz
 prípadne vypnúť a zapnúť fiškálnu tlačiareň.</p>
 <p>Pre všetky príkazy, ktoré nie sú priamo vymenované v tabuľke, platí, že typický čas vykonania príkazu
 je do 100 milisekúnd a maximálny čas vykonania príkazu je 1 sekunda (pozri posledný riadok tabuľky).</p>
-<table class="docutils align-default">
+<blockquote>
+<div><table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -186,63 +187,58 @@ je do 100 milisekúnd a maximálny čas vykonania príkazu je 1 sekunda (pozri p
 </thead>
 <tbody>
 <tr class="row-even"><td><p>beginFiscalReceipt</p></td>
-<td><p>250ms [560ms M] [1s C]</p></td>
-<td><p>3s [6s M]</p></td>
+<td><p>250ms</p></td>
+<td><p>10s</p></td>
 </tr>
 <tr class="row-odd"><td><p>beginNonFiscal</p></td>
-<td><p>100ms [200ms M]</p></td>
-<td><p>2s [3s M]</p></td>
+<td><p>100ms</p></td>
+<td><p>2s</p></td>
 </tr>
 <tr class="row-even"><td><p>endFiscalReceipt*</p></td>
-<td><p>2s [&lt; 30s M]</p></td>
-<td><p>15s [60s M]</p></td>
+<td><p>8s</p></td>
+<td><p>25s</p></td>
 </tr>
 <tr class="row-odd"><td><p>endNonFiscal</p></td>
-<td><p>1s [1,5s M]</p></td>
-<td><p>15s [60s M]</p></td>
+<td><p>1s</p></td>
+<td><p>15s</p></td>
 </tr>
 <tr class="row-even"><td><p>printBarCode</p></td>
-<td><p>100ms [- M] [- C]</p></td>
-<td><p>2s [- M] [- C]</p></td>
+<td><p>100ms</p></td>
+<td><p>2s</p></td>
 </tr>
-<tr class="row-odd"><td><p>printDuplicateReceipt*</p></td>
-<td><p>3s/100r</p>
-<p>[4,5s/(1. 100r) + 4,5s/20r M]</p>
-<p>[6s/100r C]</p>
-</td>
-<td><p>9s/100r</p>
-<p>[10s/(1. 100r) + 13s/20r M]</p>
-</td>
+<tr class="row-odd"><td><p>printDuplicateReceipt</p></td>
+<td><p>3s/100r</p></td>
+<td><p>9s/100r</p></td>
 </tr>
 <tr class="row-even"><td><p>printNormal</p></td>
-<td><p>100ms [100ms M] [160ms C]</p></td>
-<td><p>2s [3s M]</p></td>
+<td><p>100ms</p></td>
+<td><p>2s</p></td>
 </tr>
 <tr class="row-odd"><td><p>printRecTotal*</p>
 <p>printRecTotalChange *</p>
 </td>
-<td><p>2s [&lt; 30s M]</p></td>
-<td><p>15s [60s M]</p></td>
+<td><p>2s</p></td>
+<td><p>15s</p></td>
 </tr>
 <tr class="row-even"><td><p>printRecVoid*</p></td>
-<td><p>1s [&lt; 5s M]</p></td>
-<td><p>5s [20s M]</p></td>
+<td><p>1s</p></td>
+<td><p>5s</p></td>
 </tr>
 <tr class="row-odd"><td><p>ostatné <strong>printRec…</strong> príkazy*</p></td>
-<td><p>100ms [&lt; 2,5s M] [&lt; 0,4s C]</p></td>
-<td><p>2s [8s M]</p></td>
+<td><p>100ms</p></td>
+<td><p>10s</p></td>
 </tr>
 <tr class="row-even"><td><p>printXReport</p></td>
-<td><p>2s [10s M] [3s C]</p></td>
-<td><p>15s [60s M]</p></td>
+<td><p>2s</p></td>
+<td><p>15s</p></td>
 </tr>
 <tr class="row-odd"><td><p>printZReport</p></td>
-<td><p>3,5s [10s M] [4s C]</p></td>
-<td><p>15s [60s M]</p></td>
+<td><p>3,5s</p></td>
+<td><p>15s</p></td>
 </tr>
 <tr class="row-even"><td><p>resetPrinter</p></td>
-<td><p>1,2s [2s M]</p></td>
-<td><p>10s [20s M]</p></td>
+<td><p>1,2s</p></td>
+<td><p>15s</p></td>
 </tr>
 <tr class="row-odd"><td><p>setFiscalMode</p></td>
 <td><p>1s</p></td>
@@ -259,23 +255,26 @@ je do 100 milisekúnd a maximálny čas vykonania príkazu je 1 sekunda (pozri p
 </tbody>
 </table>
 <p><strong>Legenda</strong>:</p>
-<ul>
-<li><p>znak * za identifikátorom príkazu, znamená, že k danému príkazu je podrobnejšie popísané v ďalšej časti,</p></li>
-<li><p>základný čas je napísaný priamo,</p></li>
-<li><p>v hranatých zátvorkách je uvedený čas pre rôzne typy tlačiarni, pričom:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>písmeno „M“ označuje čas maticové (ihličkové) tlačiarne),</p></li>
-<li><p>písmeno „C“ označuje čas pre tlačiareň Euro-50 (mini EFox),</p></li>
+<li><p>znak * za identifikátorom príkazu, znamená, že k danému príkazu je podrobnejšie popísané v ďalšej časti,</p></li>
+<li><p>základný čas je napísaný priamo,</p></li>
+<li><p>písmeno „r“ je označenie pre riadok; teda zápis „3s/100r“ znamená 3 sekundy na 100 riadkov,</p></li>
+<li><p>znak „&lt;“ pred hodnotou znamená, že typický čas pre daný príkaz je závislý od parametra, ktorý bude uvedený v detailnejšom popise daného príkazu pod tabuľkou. V prípade nižších hodnôt tohto parametra bývajú typické časy  vykonania daného príkazu nezriedka aj rádovo nižšie ako je hodnota uvedená za znakom „&lt;“,</p></li>
 </ul>
 </div></blockquote>
-</li>
-<li><p>písmeno „r“ je označenie pre riadok; teda zápis „3s/100r“ znamená 3 sekundy na 100 riadkov,</p></li>
-<li><p>označenie „1. 100r“ znamená „prvých 100 riadkov“, teda „10s/(1. 100r) + 13s/20r“ znamená 10 sekúnd na prvých 100 riadkov a 13 sekúnd na každých ďalších 20 riadkov.</p></li>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<ul class="simple">
+<li><p>Príkazy vykonávajúce tlač majú rozdielne trvanie pre rôzne typy tlačiarni,</p></li>
+<li><p>Typické časy vykonania jednotlivých príkazov sú väčšinou kratšie ako hodnoty zobrazené v tabuľke, hoci pred týmito hodnotami nie je uvedený znak „&lt;“.</p></li>
+<li><p>V prípade nastavenia extrémnych podmienok a stavov je za istých okolností možné pri niektorých príkazoch dosiahnuť aj časy dlhšie, ale tie by mali vznikať len vo výnimočných prípadoch, ktoré sa v bežnej praxi prakticky nevyskytujú. Aj z tohto dôvodu je do tabuľky zaradený aj druhý stĺpec, ktorý ohraničuje trvanie príkazu na jeho maximálny možný čas. Informácia o tomto čase dáva aplikácii možnosti zabrániť zbytočne dlhému čakaniu na odpoveď v prípadoch, keď je vysoko pravdepodobné, že by sa danej odpovede už nedočkala.</p></li>
 </ul>
+</div>
+</div></blockquote>
 <p><strong>endFiscalReceipt a printRec… príkazy</strong></p>
 <blockquote>
-<div><p>Pre fiškálne tlačiarne s maticovou (ihličkovou) tlačiarňou je typický čas vykonania
+<div><p>Pre fiškálne tlačiarne je typický čas vykonania
 príkazu značne závislý od aktuálneho počtu položiek, ktoré boli do fiškálnej tlačiarne
 z aplikácie poslané, ale ešte neboli vytlačené do momentu zavolania tohto príkazu.</p>
 <p>Čím viac poslaných nespracovaných položiek v transakcii existuje, tým je dlhší aj
@@ -283,31 +282,14 @@ z aplikácie poslané, ale ešte neboli vytlačené do momentu zavolania tohto p
 spracovaní položiek medzi aplikáciou a fiškálnou tlačiarňou, ani pri transakciách
 s počtom položiek menším ako 30).</p>
 </div></blockquote>
-<p><strong>príkaz printDuplicateReceipt</strong></p>
-<blockquote>
-<div><p>Typický čas vykonania tohto príkazu je závislý od počtu riadkov,
-ktoré sa majú prostredníctvom tohto príkazu vytlačiť.</p>
-<p>Pre termo (tepelné) verzie fiškálnej tlačiarne platí pravidlo,
-že typický čas vykonania príkazu je cca 3s na každých 100 tlačených riadkov
-(napr. ak originálny doklad má 330 riadkov potom typický čas vykonania tohto
-príkazu je: <span class="math notranslate nohighlight">\(330 / 100 * 3 = 9,9 s\)</span>).</p>
-<p>Pre maticové (ihličkové) verzie fiškálnej tlačiarne platí obdobné pravidlo,
-ale s inými časmi. Konkrétne je to 4,5s na prvých 100 riadkov + 4,5s na každých ďalších
-20 riadkov (napr. ak originálny doklad má 330 riadkov potom typický čas vykonania tohto
-príkazu je: <span class="math notranslate nohighlight">\(4,5s + (330 - 100) / 20 * 4,5s = 4,5 + 51,75 = 56,25s\)</span>).</p>
-</div></blockquote>
 <p><strong>príkaz storeAllBitmaps</strong></p>
 <blockquote>
-<div><p>Pre tento príkaz, typický čas príkazu je závislý od počtu kopírovaných bajtov.</p>
-<p>Pre typický čas príkazu platí vzťah 4s + 0,6s na každých 1000 bajtov, teda ak je
-potrebných naprogramovať obrázok vo internej pamäti hlavného modulu fiškálnej
-tlačiarne do internej pamäte tlačiarne, potom počet kopírovaných bajtov je daný
-vzťahom <a class="reference internal" href="../Values/Properties/BitmapMemorySize.html#bitmapmemorysize"><span class="std std-ref">BitmapMemorySize</span></a> – <a class="reference internal" href="../Values/Properties/BitmapMemoryFreeSpace.html#bitmapmemoryfreespace"><span class="std std-ref">BitmapMemoryFreeSpace</span></a>,
-ktorý definuje aktuálne zaplnenie pamäťového priestoru v internej pamäti fiškálnej tlačiarne
-vyhradeného pre grafické logá).</p>
-<p>Ak je pamäťový priestor obsadený na 98 564 bajtov, potom typický čas vykonania tohto
-príkazu bude: <span class="math notranslate nohighlight">\(4s + 98564/1000*0,6 = 4 + 59,14 = 63,14s\)</span>. Pre maximálny čas platí
-analogický postup podľa vzťahu uvedeného v zodpovedajúcom stĺpci tabuľky.</p>
+<div><p>Pre tento príkaz, je typický čas príkazu závislý od počtu kopírovaných bajtov.</p>
+<ul class="simple">
+<li><p>Pre typický čas príkazu platí vzťah 4s + 0,6s na každých 1000 bajtov. Teda ak je potrebné naprogramovať obrázok z internej pamäte <a class="reference internal" href="../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> do internej pamäte tlačiarne, potom počet kopírovaných bajtov je daný vzťahom <a class="reference internal" href="../Values/Properties/BitmapMemorySize.html#bitmapmemorysize"><span class="std std-ref">BitmapMemorySize</span></a> – <a class="reference internal" href="../Values/Properties/BitmapMemoryFreeSpace.html#bitmapmemoryfreespace"><span class="std std-ref">BitmapMemoryFreeSpace</span></a>, ktorý definuje aktuálne zaplnenie pamäťového priestoru internej pamäte <a class="reference internal" href="../Terminology.html#term-fp"><span class="xref std std-term">FP</span></a> vyhradeného pre grafické logá.</p></li>
+<li><p>Pre maximálny čas platí analogický postup podľa vzťahu uvedeného v zodpovedajúcom stĺpci tabuľky.</p></li>
+<li><p>Príklad výpočtu pre prípad, ak je v pamäťovom priestore uložených 98 564 bajtov: <span class="math notranslate nohighlight">\(4s + 98564/1000*0,6 = 4 + 59,14 = 63,14s\)</span>.</p></li>
+</ul>
 </div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
@@ -322,7 +304,7 @@ analogický postup podľa vzťahu uvedeného v zodpovedajúcom stĺpci tabuľky.
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="PrinterType.html" class="btn btn-neutral float-left" title="Zoznam použitých tlačiarní" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="PrinterType.html" class="btn btn-neutral float-left" title="Zoznam použitých tlačiarní [_new_]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
