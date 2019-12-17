@@ -85,7 +85,7 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology/index.html">Terminológia</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Popis protokolu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Overview.html">Prehľad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ProtocolFeatures.html">Črty protokolu</a></li>
@@ -97,11 +97,11 @@
 <li class="toctree-l2"><a class="reference internal" href="DateTime.html">Dátum a čas vo fiškálnej tlačiarni</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenia a stavy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -171,7 +171,7 @@
   <div class="section" id="komunikacny-ramec">
 <h1>Komunikačný rámec<a class="headerlink" href="#komunikacny-ramec" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p>Komunikačný protokol stanovuje predpis komunikácie medzi aplikáciou
-(„front-end“ registračný program bežiaci na strane <a class="reference internal" href="../Terminology.html#term-pc"><span class="xref std std-term">PC</span></a>) a zariadením
+(„front-end“ registračný program bežiaci na strane <a class="reference internal" href="../Terminology/Shortcuts.html#term-pc"><span class="xref std std-term">PC</span></a>) a zariadením
 fiškálnej tlačiarne („back-end“).</p>
 <p>Zariadenie poskytuje služby pre aplikáciu, ktorá ich požaduje vyslaním správy
 obsahujúcej požiadavku na požadovanú službu. Žiadosť je pre zariadenie príkazom,
@@ -185,7 +185,7 @@ transportná vrstva rozpojí, znamená to, že spojenie so zariadením sa preru�
 a pre ďalšie pokračovanie spolupráce je potrebné ho znovu obnoviť.</p>
 <div class="align-center figure align-default" id="id1">
 <img alt="../_images/Communication.png" src="../_images/Communication.png" />
-<p class="caption"><span class="caption-text">Obrázok č. 4: Spracovanie príkazov</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento obrázok">¶</a></p>
+<p class="caption"><span class="caption-number">Obr. 4 </span><span class="caption-text">Spracovanie príkazov</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento obrázok">¶</a></p>
 </div>
 <p>Usporiadanie správy pre požiadavku a odpoveď je vzájomne podobné.
 Pozostáva z niekoľkých znakových polí vzájomne oddelených znakom
@@ -262,8 +262,7 @@ Pri neúspešnom vykonaní požiadavky je hodnota <em>exception</em> rôzna od 0
         &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
 
     </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
 

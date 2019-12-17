@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sumárne hodnoty &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  <title>Sumárne hodnoty [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
   
 
   
@@ -85,16 +85,16 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Terminology.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Terminology/index.html">Terminológia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../BasicDescription/index.html">Popis protokolu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenie a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenia a stavy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Konštanty a premenné</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Exceptions/index.html">Návratové hodnoty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastností (properties) fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastnosti (properties) fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Akumulátory fiškálnej tlačiarne</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Sumárne hodnoty</a><ul class="simple">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Sumárne hodnoty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="Counters.html">Počítadlá <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
@@ -102,7 +102,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -154,7 +154,7 @@
         
           <li><a href="index.html">Akumulátory fiškálnej tlačiarne</a> &raquo;</li>
         
-      <li>Sumárne hodnoty</li>
+      <li>Sumárne hodnoty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -171,216 +171,158 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1><span class="target" id="sumarne-hodnoty">Sumárne hodnoty</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+  <div class="section" id="sumarne-hodnoty-new">
+<h1><span class="target" id="sumarne-hodnoty">Sumárne hodnoty</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#sumarne-hodnoty-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p><strong>Sumárne hodnoty zviazané s daňovými skupinami</strong></p>
 <blockquote>
-<div><table class="docutils align-default">
+<div><table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 41%" />
-<col style="width: 59%" />
+<col style="width: 26%" />
+<col style="width: 74%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>názov pre doklad/deň</p></th>
-<th class="head"><p>popis</p></th>
+<tr class="row-odd"><th class="head"><p>Názov pre doklad/deň</p></th>
+<th class="head"><p>Popis</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="target" id="recgrosstotal">RecGrossTotal</span></p>
-<p><span class="target" id="daygrosstotal">DayGrossTotal</span></p>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><span class="target" id="recgrosstotal">RecGrossTotal</span></div>
+<div class="line"><span class="target" id="daygrosstotal">DayGrossTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota hrubého obratu</div>
-<div class="line">(obrat vrátane DPH)</div>
+<div class="line">hodnota hrubého obratu (obrat vrátane DPH)</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="recnettotal">RecNetTotal</span></p>
-<p><span class="target" id="daynettotal">DayNetTotal</span></p>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><span class="target" id="recnettotal">RecNetTotal</span></div>
+<div class="line"><span class="target" id="daynettotal">DayNetTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota čistého obratu</div>
-<div class="line">(obrat bez DPH)</div>
+<div class="line">hodnota čistého obratu (obrat bez DPH) (obrat bez DPH)</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="recvattotal">RecVatTotal</span></p>
-<p><span class="target" id="dayvattotal">DayVatTotal</span></p>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><span class="target" id="recvattotal">RecVatTotal</span></div>
+<div class="line"><span class="target" id="dayvattotal">DayVatTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota dane</div>
-<div class="line">(DPH)</div>
+<div class="line">hodnota dane (DPH)</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="recdiscounttotal">RecDiscountTotal</span></p>
-<p><span class="target" id="daydiscounttotal">DayDiscountTotal</span></p>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><span class="target" id="recdiscounttotal">RecDiscountTotal</span></div>
+<div class="line"><span class="target" id="daydiscounttotal">DayDiscountTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota zliav uplatnených na individuálne</div>
-<div class="line">položky príkazom <a class="reference internal" href="../../Commands/printRecItemAdjustment.html#printrecitemadjustment"><span class="std std-ref">printRecItemAdjustment</span></a></div>
+<div class="line">hodnota zliav uplatnených na individuálne položky príkazom <a class="reference internal" href="../../Commands/printRecItemAdjustment.html#printrecitemadjustment"><span class="std std-ref">printRecItemAdjustment</span></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="recdiscountvoidtotal">RecDiscountVoidTotal</span></p>
-<p><span class="target" id="daydiscountvoidtotal">DayDiscountVoidTotal</span></p>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><span class="target" id="recitemtotal">RecItemTotal</span></div>
+<div class="line"><span class="target" id="dayitemtotal">DayItemTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota stornovaných zliav uplatnených na</div>
-<div class="line">individuálne položky príkazom
-<a class="reference internal" href="../../Commands/printRecItemAdjustmentVoid.html#printrecitemadjustmentvoid"><span class="std std-ref">printRecItemAdjustmentVoid</span></a></div>
+<div class="line">hodnota predaných položiek príkazom <a class="reference internal" href="../../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="recitemtotal">RecItemTotal</span></p>
-<p><span class="target" id="dayitemtotal">DayItemTotal</span></p>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><span class="target" id="recrefundtotal">RecRefundTotal</span></div>
+<div class="line"><span class="target" id="dayrefundtotal">DayRefundTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota predaných položiek príkazom
-<a class="reference internal" href="../../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a></div>
+<div class="line">hodnota refundovaných položiek príkazom <a class="reference internal" href="../../Commands/printRecItemRefund.html#printrecitemrefund"><span class="std std-ref">printRecItemRefund</span></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="recitemvoidtotal">RecItemVoidTotal</span></p>
-<p><span class="target" id="dayitemvoidtotal">DayItemVoidTotal</span></p>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><span class="target" id="recsubtotaldiscounttotal">RecSubtotalDiscountTotal</span></div>
+<div class="line"><span class="target" id="daysubtotaldiscounttotal">DaySubtotalDiscountTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota stornovaných položiek príkazom
-<a class="reference internal" href="../../Commands/printRecItemVoid.html#printrecitemvoid"><span class="std std-ref">printRecItemVoid</span></a></div>
+<div class="line">hodnota zliav uplatnených na skupinu položiek príkazom <a class="reference internal" href="../../Commands/printRecPackageAdjustment.html#printrecpackageadjustment"><span class="std std-ref">printRecPackageAdjustment</span></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="recrefundtotal">RecRefundTotal</span></p>
-<p><span class="target" id="dayrefundtotal">DayRefundTotal</span></p>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><span class="target" id="recsubtotalsurchargetotal">RecSubtotalSurchargeTotal</span></div>
+<div class="line"><span class="target" id="daysubtotalsurchargetotal">DaySubtotalSurchargeTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota refundovaných položiek</div>
-<div class="line">príkazom <a class="reference internal" href="../../Commands/printRecItemRefund.html#printrecitemrefund"><span class="std std-ref">printRecItemRefund</span></a></div>
+<div class="line">hodnota prirážok uplatnených na skupinu položiek príkazom <a class="reference internal" href="../../Commands/printRecPackageAdjustment.html#printrecpackageadjustment"><span class="std std-ref">printRecPackageAdjustment</span></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="recrefundvoidtotal">RecRefundVoidTotal</span></p>
-<p><span class="target" id="dayrefundvoidtotal">DayRefundVoidTotal</span></p>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><span class="target" id="recsurchargetotal">RecSurchargeTotal</span></div>
+<div class="line"><span class="target" id="daysurchargetotal">DaySurchargeTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota storna refundovaných položiek</div>
-<div class="line">príkazom <a class="reference internal" href="../../Commands/printRecItemRefundVoid.html#printrecitemrefundvoid"><span class="std std-ref">printRecItemRefundVoid</span></a></div>
+<div class="line">hodnota prirážok uplatnených na individuálne položky príkazom <a class="reference internal" href="../../Commands/printRecItemAdjustment.html#printrecitemadjustment"><span class="std std-ref">printRecItemAdjustment</span></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="recsubtotaldiscounttotal">RecSubtotalDiscountTotal</span></p>
-<p><span class="target" id="daysubtotaldiscounttotal">DaySubtotalDiscountTotal</span></p>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><span class="target" id="recinvoicetotal">RecInvoiceTotal</span></div>
+<div class="line"><span class="target" id="dayinvoicetotal">DayInvoiceTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota zliav uplatnených na skupinu položiek</div>
-<div class="line">príkazom
-<a class="reference internal" href="../../Commands/printRecPackageAdjustment.html#printrecpackageadjustment"><span class="std std-ref">printRecPackageAdjustment</span></a></div>
+<div class="line">hodnota uhradených faktúr príkazom <a class="reference internal" href="../../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="recsubtotaldiscountvoidtotal">RecSubtotalDiscountVoidTotal</span></p>
-<p><span class="target" id="daysubtotaldiscountvoidtotal">DaySubtotalDiscountVoidTotal</span></p>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><span class="target" id="recinvoicerefundtotal">RecInvoiceRefundTotal</span></div>
+<div class="line"><span class="target" id="dayinvoicerefundtotal">DayInvoiceRefundTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota stornovaných zliav uplatnených na skupinu</div>
-<div class="line">položiek príkazom
-<a class="reference internal" href="../../Commands/printRecPackageAdjustVoid.html#printrecpackageadjustvoid"><span class="std std-ref">printRecPackageAdjustVoid</span></a></div>
+<div class="line">hodnota refundovaných resp. vrátených uhradených faktúr príkazom <a class="reference internal" href="../../Commands/printRecItemRefund.html#printrecitemrefund"><span class="std std-ref">printRecItemRefund</span></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="recsubtotalsurchargetotal">RecSubtotalSurchargeTotal</span></p>
-<p><span class="target" id="daysubtotalsurchargetotal">DaySubtotalSurchargeTotal</span></p>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><span class="target" id="recitemcorrectiontotal">RecItemCorrectionTotal</span></div>
+<div class="line"><span class="target" id="dayitemcorrectiontotal">DayItemCorrectionTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota prirážok uplatnených na skupinu položiek</div>
-<div class="line">príkazom
-<a class="reference internal" href="../../Commands/printRecPackageAdjustment.html#printrecpackageadjustment"><span class="std std-ref">printRecPackageAdjustment</span></a></div>
+<div class="line">hodnota opráv kladných položiek príkazom <a class="reference internal" href="../../Commands/printRecItemCorrection.html#printrecitemcorrection"><span class="std std-ref">printRecItemCorrection</span></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="recsubtotalsurchargevoidtotal">RecSubtotalSurchargeVoidTotal</span></p>
-<p><span class="target" id="daysubtotalsurchargevoidtotal">DaySubtotalSurchargeVoidTotal</span></p>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><span class="target" id="recrefundcorrectiontotal">RecRefundCorrectionTotal</span></div>
+<div class="line"><span class="target" id="dayrefundcorrectiontotal">DayRefundCorrectionTotal</span></div>
+</div>
 </td>
 <td><div class="line-block">
-<div class="line">hodnota stornovaných prirážok uplatnených na</div>
-<div class="line">skupinu položiek príkazom
-<a class="reference internal" href="../../Commands/printRecPackageAdjustVoid.html#printrecpackageadjustvoid"><span class="std std-ref">printRecPackageAdjustVoid</span></a></div>
+<div class="line">hodnota opráv záporných položiek príkazom <a class="reference internal" href="../../Commands/printRecItemRefundCorrection.html#printrecitemrefundcorrection"><span class="std std-ref">printRecItemRefundCorrection</span></a></div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="recsurchargetotal">RecSurchargeTotal</span></p>
-<p><span class="target" id="daysurchargetotal">DaySurchargeTotal</span></p>
-</td>
-<td><div class="line-block">
-<div class="line">hodnota prirážok uplatnených na individuálne</div>
-<div class="line">položky príkazom
-<a class="reference internal" href="../../Commands/printRecItemAdjustment.html#printrecitemadjustment"><span class="std std-ref">printRecItemAdjustment</span></a></div>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><span class="target" id="recsinglepurposevouchertotal">RecSinglePurposeVoucherTotal</span></div>
+<div class="line"><span class="target" id="daysinglepurposevouchertotal">DaySinglePurposeVoucherTotal</span></div>
 </div>
 </td>
-</tr>
-<tr class="row-even"><td><p><span class="target" id="recsurchargevoidtotal">RecSurchargeVoidTotal</span></p>
-<p><span class="target" id="daysurchargevoidtotal">DaySurchargeVoidTotal</span></p>
-</td>
 <td><div class="line-block">
-<div class="line">hodnota stornovaných prirážok uplatnených</div>
-<div class="line">na individuálne položky príkazom</div>
-<div class="line"><a class="reference internal" href="../../Commands/printRecItemAdjustmentVoid.html#printrecitemadjustmentvoid"><span class="std std-ref">printRecItemAdjustmentVoid</span></a></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p><span class="target" id="recinvoicetotal">RecInvoiceTotal</span></p>
-<p><span class="target" id="dayinvoicetotal">DayInvoiceTotal</span></p>
-</td>
-<td><div class="line-block">
-<div class="line">hodnota uhradených faktúr príkazom
-<a class="reference internal" href="../../Commands/printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p><span class="target" id="recinvoicevoidtotal">RecInvoiceVoidTotal</span></p>
-<p><span class="target" id="dayinvoicevoidtotal">DayInvoiceVoidTotal</span></p>
-</td>
-<td><div class="line-block">
-<div class="line">hodnota stornovaných uhradených faktúr</div>
-<div class="line">príkazom <a class="reference internal" href="../../Commands/printRecItemVoid.html#printrecitemvoid"><span class="std std-ref">printRecItemVoid</span></a></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p><span class="target" id="recinvoicerefundtotal">RecInvoiceRefundTotal</span></p>
-<p><span class="target" id="dayinvoicerefundtotal">DayInvoiceRefundTotal</span></p>
-</td>
-<td><div class="line-block">
-<div class="line">hodnota refundovaných resp. vrátených uhradených</div>
-<div class="line">faktúr príkazom
-<a class="reference internal" href="../../Commands/printRecItemRefund.html#printrecitemrefund"><span class="std std-ref">printRecItemRefund</span></a></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p><span class="target" id="recinvoicerefundvoidtotal">RecInvoiceRefundVoidTotal</span></p>
-<p><span class="target" id="dayinvoicerefundvoidtotal">DayInvoiceRefundVoidTotal</span></p>
-</td>
-<td><div class="line-block">
-<div class="line">hodnota storna refundovaných resp. vrátených</div>
-<div class="line">uhradených faktúr príkazom
-<a class="reference internal" href="../../Commands/printRecItemRefundVoid.html#printrecitemrefundvoid"><span class="std std-ref">printRecItemRefundVoid</span></a></div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p><span class="target" id="recitemcorrectiontotal">RecItemCorrectionTotal</span></p>
-<p><span class="target" id="dayitemcorrectiontotal">DayItemCorrectionTotal</span></p>
-</td>
-<td><div class="line-block">
-<div class="line">hodnota opráv kladných položiek príkazom
-<a class="reference internal" href="../../Commands/printRecItemCorrection.html#printrecitemcorrection"><span class="std std-ref">printRecItemCorrection</span></a></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p><span class="target" id="recrefundcorrectiontotal">RecRefundCorrectionTotal</span></p>
-<p><span class="target" id="dayrefundcorrectiontotal">DayRefundCorrectionTotal</span></p>
-</td>
-<td><div class="line-block">
-<div class="line">počet opráv záporných položiek príkazom
-<a class="reference internal" href="../../Commands/printRecItemRefundCorrection.html#printrecitemrefundcorrection"><span class="std std-ref">printRecItemRefundCorrection</span></a></div>
+<div class="line">hodnota výmien jednoúčelových poukazov príkazom <a class="reference internal" href="../../Commands/printRecItemSinglePurposeVoucher.html#printrecitemsinglepurposevoucher"><span class="std std-ref">printRecItemSinglePurposeVoucher</span></a></div>
 </div>
 </td>
 </tr>
@@ -402,55 +344,60 @@ na získanie príslušnej hodnoty z fiškálnej tlačiarne.</p>
 </div></blockquote>
 <p><strong>Sumárne hodnoty nesúvisiace s daňovými skupinami</strong>:</p>
 <blockquote>
-<div><table class="docutils align-default">
+<div><table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 27%" />
 <col style="width: 73%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><span class="target" id="currenttotal">CurrentTotal</span></p></td>
-<td><p>hodnota aktuálnej sumy dokladu <a class="footnote-reference brackets" href="#id3" id="id2">1</a></p></td>
+<thead>
+<tr class="row-odd"><th class="head"><p>Názov</p></th>
+<th class="head"><p>Popis</p></th>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="dailytotal">DailyTotal</span></p></td>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="target" id="currenttotal">CurrentTotal</span></p></td>
+<td><p>hodnota aktuálnej sumy dokladu <a class="footnote-reference brackets" href="#id2" id="id1">1</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="target" id="dailytotal">DailyTotal</span></p></td>
 <td><p>hodnota dennej sumy (zhodná s <a class="reference external" href="DayGrossTotal">DayGrossTotal[0]</a>)</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="grandtotal">GrandTotal</span></p></td>
+<tr class="row-even"><td><p><span class="target" id="grandtotal">GrandTotal</span></p></td>
 <td><p>hodnota ‚Grand Total‘ (suma počítaná od začiatku prevádzky)</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="dailyvoidtotal">DailyVoidTotal</span></p></td>
+<tr class="row-odd"><td><p><span class="target" id="dailyvoidtotal">DailyVoidTotal</span></p></td>
 <td><p>hodnota stornovaných účteniek v aktuálnom dni</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="accpaymenttotal">AccPaymentTotal</span></p></td>
+<tr class="row-even"><td><p><span class="target" id="accpaymenttotal">AccPaymentTotal</span></p></td>
 <td><p>celková hodnota platieb a výdavkov v aktuálnej transakcii</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="trainingtotal">TrainingTotal</span></p></td>
+<tr class="row-odd"><td><p><span class="target" id="trainingtotal">TrainingTotal</span></p></td>
 <td><p>hodnota dennej sumy tréningových účteniek</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="trainingvoidtotal">TrainingVoidTotal</span></p></td>
+<tr class="row-even"><td><p><span class="target" id="trainingvoidtotal">TrainingVoidTotal</span></p></td>
 <td><p>hodnota dennej sumy stornovaných tréningových účteniek</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="cashintotal">CashInTotal</span>[<em>i</em>]</p></td>
+<tr class="row-odd"><td><p><span class="target" id="cashintotal">CashInTotal</span>[<em>i</em>]</p></td>
 <td><p>hodnota vkladov v aktuálnom dni</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="cashouttotal">CashOutTotal</span>[<em>i</em>]</p></td>
+<tr class="row-even"><td><p><span class="target" id="cashouttotal">CashOutTotal</span>[<em>i</em>]</p></td>
 <td><p>hodnota výberov v aktuálnom dni</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="reccashintotal">RecCashInTotal</span></p></td>
+<tr class="row-odd"><td><p><span class="target" id="reccashintotal">RecCashInTotal</span></p></td>
 <td><p>hodnota vkladov v aktuálnom doklade</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="reccashouttotal">RecCashOutTotal</span></p></td>
+<tr class="row-even"><td><p><span class="target" id="reccashouttotal">RecCashOutTotal</span></p></td>
 <td><p>hodnota výberov v aktuálnom doklade</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="recpaymenttotal">RecPaymentTotal</span>[<em>i</em>]</p></td>
+<tr class="row-odd"><td><p><span class="target" id="recpaymenttotal">RecPaymentTotal</span>[<em>i</em>]</p></td>
 <td><p>hodnota platieb v aktuálnej transakcii</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="daypaymenttotal">DayPaymentTotal</span>[<em>i</em>]</p></td>
+<tr class="row-even"><td><p><span class="target" id="daypaymenttotal">DayPaymentTotal</span>[<em>i</em>]</p></td>
 <td><p>hodnota platieb v aktuálnom dni</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="target" id="recchangetotal">RecChangeTotal</span>[<em>i</em>]</p></td>
+<tr class="row-odd"><td><p><span class="target" id="recchangetotal">RecChangeTotal</span>[<em>i</em>]</p></td>
 <td><p>hodnota výdavkov v aktuálnej transakcii</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="target" id="daychangetotal">DayChangeTotal</span>[<em>i</em>]</p></td>
+<tr class="row-even"><td><p><span class="target" id="daychangetotal">DayChangeTotal</span>[<em>i</em>]</p></td>
 <td><p>hodnota výdavkov v aktuálnom dni</p></td>
 </tr>
 </tbody>
@@ -470,7 +417,7 @@ s indexovým zápisom poľa: „[<em>i</em>]“</p>
 </div></blockquote>
 </div>
 <dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><div class="line-block">
 <div class="line">ak <a class="reference internal" href="../Properties/VatIncluded.html#vatincluded"><span class="std std-ref">VatIncluded</span></a> je <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, potom
 <a class="reference internal" href="#currenttotal"><span class="std std-ref">CurrentTotal</span></a> = <a class="reference internal" href="#recgrosstotal"><span class="std std-ref">RecGrossTotal</span></a>,</div>
@@ -485,31 +432,54 @@ s indexovým zápisom poľa: „[<em>i</em>]“</p>
 resp. pre vklad a výber v aktuálnom obchodnom dni) týkajúcich sa
 jednotlivých typov platieb, ktorých reálne využitie je možné len
 v prípade, ak <a class="reference internal" href="../Properties/PaymentsRegistration.html#paymentsregistration"><span class="std std-ref">PaymentsRegistration</span></a> = <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>.</p>
-<table class="docutils align-default">
+<table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
+<col style="width: 30%" />
+<col style="width: 70%" />
 </colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Názov</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
 <tbody>
-<tr class="row-odd"><td><p>RecPaymentTotal[<em>i</em>]</p>
-<p>DayPaymentTotal[<em>i</em>]</p>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">RecPaymentTotal[<em>i</em>]</div>
+<div class="line">DayPaymentTotal[<em>i</em>]</div>
+</div>
 </td>
-<td><p>hodnota sumy pre platbu <em>i</em></p>
-<p>(pre: účtenku/deň)</p>
-</td>
-</tr>
-<tr class="row-even"><td><p>RecChangeTotal[<em>i</em>]</p>
-<p>DayChangeTotal[<em>i</em>]</p>
-</td>
-<td><p>hodnota sumy pre výdavky typom platby <em>i</em></p>
-<p>(pre: účtenku/deň)</p>
+<td><div class="line-block">
+<div class="line">hodnota sumy pre platbu <em>i</em> (pre: účtenku/deň)</div>
+</div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>CashInTotal[<em>i</em>]</p></td>
-<td><p>celková hodnota vkladu typom platby <em>i</em></p></td>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">RecChangeTotal[<em>i</em>]</div>
+<div class="line">DayChangeTotal[<em>i</em>]</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">hodnota sumy pre výdavky typom platby <em>i</em> (pre: účtenku/deň)</div>
+</div>
+</td>
 </tr>
-<tr class="row-even"><td><p>CashOutTotal[<em>i</em>]</p></td>
-<td><p>celková hodnota výberu typom platby <em>i</em></p></td>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">CashInTotal[<em>i</em>]</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">celková hodnota vkladu typom platby <em>i</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">CashOutTotal[<em>i</em>]</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">celková hodnota výberu typom platby <em>i</em></div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -542,8 +512,7 @@ v prípade, ak <a class="reference internal" href="../Properties/PaymentsRegistr
         &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
 
     </p>
-  </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  </div> 
 
 </footer>
 

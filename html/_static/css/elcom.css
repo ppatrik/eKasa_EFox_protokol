@@ -7,3 +7,7 @@
 table th p {
     margin-bottom: 2px;
 }
+
+span.caption-number:after {
+    content: ": ";
+ }

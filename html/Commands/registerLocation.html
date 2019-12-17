@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>registerLocation [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Hľadať" href="../search.html" />
+    <link rel="next" title="resetInspectionRequest" href="resetInspectionRequest.html" />
+    <link rel="prev" title="printZReport [_new_]" href="printZReport.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology/index.html">Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">Vytvorenie spojenia a stavy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="affirmInspectionRequest.html">affirmInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginFiscalReceipt.html">beginFiscalReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginNonFiscal.html">beginNonFiscal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginTraining.html">beginTraining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cancelRest.html">cancelRest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clearDisplay.html">clearDisplay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cutPaper.html">cutPaper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deferFirmwareUpdateRequest.html">deferFirmwareUpdateRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="displayTextAt.html">displayTextAt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endFiscalReceipt.html">endFiscalReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="endNonFiscal.html">endNonFiscal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="endTraining.html">endTraining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getCounter.html">getCounter <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getData.html">getData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getDate.html">getDate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFirmwareUpdateRequest.html">getFirmwareUpdateRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFontAttribute.html">getFontAttribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getHeaderLine.html">getHeaderLine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getInspectionRequest.html">getInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getLastRegisteredLocationInfo.html">getLastRegisteredLocationInfo <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getLastRegisteredReceiptInfo.html">getLastRegisteredReceiptInfo <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getNextLogRecord.html">getNextLogRecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getProperty.html">getProperty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTotalizer.html">getTotalizer <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTrailerLine.html">getTrailerLine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTransactionStatus.html">getTransactionStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getVatEntry.html">getVatEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="obtainProgress.html">obtainProgress <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="openDrawer.html">openDrawer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printBarCode.html">printBarCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printDuplicateReceipt.html">printDuplicateReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printNormal.html">printNormal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecCash.html">printRecCash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItem.html">printRecItem <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemAdjustment.html">printRecItemAdjustment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemCorrection.html">printRecItemCorrection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemRefund.html">printRecItemRefund</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemRefundCorrection.html">printRecItemRefundCorrection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemSinglePurposeVoucher.html">printRecItemSinglePurposeVoucher <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecMessage.html">printRecMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecPackageAdjustment.html">printRecPackageAdjustment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecSubtotal.html">printRecSubtotal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecTotal.html">printRecTotal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecTotalChange.html">printRecTotalChange <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecVoid.html">printRecVoid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printUnsentDataMsgReport.html">printUnsentDataMsgReport <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printXReport.html">printXReport <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printZReport.html">printZReport <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">registerLocation <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="resetInspectionRequest.html">resetInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resetPrinter.html">resetPrinter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setBitmap.html">setBitmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setCustomer.html">setCustomer <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setDate.html">setDate <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setFiscalMode.html">setFiscalMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setFontAttribute.html">setFontAttribute <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setHeaderLines.html">setHeaderLines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setParagon.html">setParagon <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setPaymentType.html">setPaymentType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setPOSID.html">setPOSID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setProperty.html">setProperty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setTrailerLines.html">setTrailerLines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setVatTable.html">setVatTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soundImmediate.html">soundImmediate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storeAllBitmaps.html">storeAllBitmaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updateFirmware.html">updateFirmware</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a> &raquo;</li>
+        
+      <li>registerLocation <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="registerlocation-new">
+<h1><span class="target" id="registerlocation">registerLocation</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#registerlocation-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p><strong>Formát príkazu</strong>:</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 47%" />
+<col style="width: 13%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pole</p></th>
+<th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Dátový typ</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cmd ID</p></td>
+<td><p>rL</p></td>
+<td><p>-</p></td>
+<td><p>identifikátor príkazu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Req/Rsp</p></td>
+<td><p>REQ</p></td>
+<td><p>-</p></td>
+<td><p>požiadavka</p></td>
+</tr>
+<tr class="row-even"><td><p>Param1</p></td>
+<td><p><a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a></p></td>
+<td><p><strong>INT32</strong></p></td>
+<td><p>Typ polohy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Param2</p></td>
+<td><p><a class="reference internal" href="#rl-addrstreetname"><span class="std std-ref">addrStreetName</span></a></p></td>
+<td><p><strong>STRING[100]</strong></p></td>
+<td><p>Ulica</p></td>
+</tr>
+<tr class="row-even"><td><p>Param3</p></td>
+<td><p><a class="reference internal" href="#rl-addrbuildingnumber"><span class="std std-ref">addrBuildingNumber</span></a></p></td>
+<td><p><strong>STRING[20]</strong></p></td>
+<td><p>Orientačné číslo</p></td>
+</tr>
+<tr class="row-odd"><td><p>Param4</p></td>
+<td><p><a class="reference internal" href="#rl-addrpropertyregnumber"><span class="std std-ref">addrPropertyRegNumber</span></a></p></td>
+<td><p><strong>STRING[9]</strong></p></td>
+<td><p>Súpisné číslo</p></td>
+</tr>
+<tr class="row-even"><td><p>Param5</p></td>
+<td><p><a class="reference internal" href="#rl-addrmunicipality"><span class="std std-ref">addrMunicipality</span></a></p></td>
+<td><p><strong>STRING[100]</strong></p></td>
+<td><p>Obec/mesto</p></td>
+</tr>
+<tr class="row-odd"><td><p>Param6</p></td>
+<td><p><a class="reference internal" href="#rl-addrpostalcode"><span class="std std-ref">addrPostalCode</span></a></p></td>
+<td><p><strong>STRING[5]</strong></p></td>
+<td><p>Poštové smerové číslo</p></td>
+</tr>
+<tr class="row-even"><td><p>Param7</p></td>
+<td><p><a class="reference internal" href="#rl-otherdescription"><span class="std std-ref">otherDescription</span></a></p></td>
+<td><p><strong>STRING[255]</strong></p></td>
+<td><p>Iné</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p id="rl-locationtype"><strong>Parameter locationType</strong>:</p>
+<blockquote>
+<div><p>Parameter určuje typ polohy a tiež položky, ktoré budú posielané počas registrácie polohy na server finančnej správy.</p>
+<p>Môže nadobúdať jednu z nasledujúcich hodnôt:</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Poloha pokladnice definovaná fyzickou adresou</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p>Iný spôsob definovania umiestnenia pokladnice</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p id="rl-addrstreetname"><strong>Parameter addrStreetName</strong></p>
+<blockquote>
+<div><p>Názov ulice. Ak obec nemá názov ulice, udáva sa tu názov obce.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>maximálna dĺžka reťazca je 100 znakov</p></li>
+<li><p>parameter je použitý pre polohu definovanú fyzickou adresou (<a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> = <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
+<li><p>parameter je povinný (jeho dĺžka musí byť &gt; <code class="docutils literal notranslate"><span class="pre">0</span></code>) ak <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> nadobúda hodnotu <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p>parameter musí byť zadaný ako <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec) ak <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> nadobúda hodnotu <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
+<li><p>parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec).</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="rl-addrbuildingnumber"><strong>Parameter addrBuildingNumber</strong></p>
+<blockquote>
+<div><p>Orientačné číslo.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>maximálna dĺžka reťazca je 20 znakov</p></li>
+<li><p>parameter je použitý pre polohu definovanú fyzickou adresou (<a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> = <code class="docutils literal notranslate"><span class="pre">1</span></code>),
+nie je však povinný, môže byť preto zadaný ako <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec)</p></li>
+<li><p>parameter musí byť zadaný ako <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec) ak <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> nadobúda hodnotu <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
+<li><p>parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec).</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="rl-addrpropertyregnumber"><strong>Parameter addrPropertyRegNumber</strong></p>
+<blockquote>
+<div><p>Súpisné číslo.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>maximálna dĺžka reťazca je 9 znakov</p></li>
+<li><p>parameter je použitý pre polohu definovanú fyzickou adresou (<a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> = <code class="docutils literal notranslate"><span class="pre">1</span></code>),
+nie je však povinný, môže byť preto zadaný ako <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec)</p></li>
+<li><p>Ak parameter nie je prázdny (jeho dĺžka je &gt; <code class="docutils literal notranslate"><span class="pre">0</span></code>), potom musí obsahovať len znaky číslic <code class="docutils literal notranslate"><span class="pre">0</span></code> až <code class="docutils literal notranslate"><span class="pre">9</span></code>
+a jeho výsledná číselná hodnota musí byť z rozsahu <code class="docutils literal notranslate"><span class="pre">1</span></code> až <code class="docutils literal notranslate"><span class="pre">999999999</span></code></p></li>
+<li><p>parameter musí byť zadaný ako <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec) ak <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> nadobúda hodnotu <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
+<li><p>parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec).</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="rl-addrmunicipality"><strong>Parameter addrMunicipality</strong></p>
+<blockquote>
+<div><p>Názov obce. Obcou je územnosprávna jednotka charakterizovaná súvislým domovým osídlením a vlastným názvom. Obcou je aj mesto.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>maximálna dĺžka reťazca je 100 znakov</p></li>
+<li><p>parameter je použitý pre polohu definovanú fyzickou adresou (<a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> = <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
+<li><p>parameter je povinný (jeho dĺžka musí byť &gt; <code class="docutils literal notranslate"><span class="pre">0</span></code>) ak <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> nadobúda hodnotu <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p>parameter musí byť zadaný ako <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec) ak <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> nadobúda hodnotu <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
+<li><p>parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec).</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="rl-addrpostalcode"><strong>Parameter addrPostalCode</strong></p>
+<blockquote>
+<div><p>Poštové smerové číslo - kód, ktorý ustanovili poštové autority za účelom doručovania pošty.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>maximálna dĺžka reťazca je 5 znakov</p></li>
+<li><p>parameter je použitý pre polohu definovanú fyzickou adresou (<a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> = <code class="docutils literal notranslate"><span class="pre">1</span></code>),
+nie je však povinný, môže byť preto zadaný ako <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec)</p></li>
+<li><p>Ak parameter nie je prázdny (jeho dĺžka je &gt; <code class="docutils literal notranslate"><span class="pre">0</span></code>), potom musí obsahovať len znaky číslic a dĺžka reťazca musí byť
+presne 5 znakov</p></li>
+<li><p>parameter musí byť zadaný ako <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec) ak <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> nadobúda hodnotu <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
+<li><p>parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec).</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="rl-otherdescription"><strong>Parameter otherDescription</strong></p>
+<blockquote>
+<div><p>Iný spôsob definovania umiestnenia prenosnej pokladnice, na ktorej podnikateľ v danom čase prijíma tržbu.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>maximálna dĺžka reťazca je 255 znakov</p></li>
+<li><p>parameter je použitý pre iný spôsob definovania umiestnenia pokladnice (<a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> = <code class="docutils literal notranslate"><span class="pre">2</span></code>)</p></li>
+<li><p>parameter je povinný (jeho dĺžka musí byť &gt; <code class="docutils literal notranslate"><span class="pre">0</span></code>) ak <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> nadobúda hodnotu <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
+<li><p>parameter musí byť zadaný ako <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec) ak <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> nadobúda hodnotu <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p>parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec).</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Formát odpovede</strong>:</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 30%" />
+<col style="width: 22%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pole</p></th>
+<th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Dátový typ</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cmd ID</p></td>
+<td><p>rL</p></td>
+<td><p>-</p></td>
+<td><p>identifikátor príkazu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Req/Rsp</p></td>
+<td><p>RSP</p></td>
+<td><p>-</p></td>
+<td><p>odpoveď</p></td>
+</tr>
+<tr class="row-even"><td><p>Exception</p></td>
+<td><p><em>exceptionCode</em></p></td>
+<td><p><strong>INT32</strong></p></td>
+<td><p>návratový kód</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Návratové hodnoty</strong>:</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Chyba</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#e-illegal"><span class="std std-ref">E_ILLEGAL</span></a></p></td>
+<td><p>Pre niektorý z parametrov bola poslaná neplatná hodnota,
+alebo bol nastavený jeden z parametrov, ktorý pre daný typ
+polohy alebo v danom stave nemôže byť nastavený.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-illegal-command"><span class="std std-ref">EFP_ILLEGAL_COMMAND</span></a></p></td>
+<td><p>Príkaz je možné vykonať len pre prenosný typ pokladnice.
+Typ pokladnice je možné zistiť prečítaním vlastnosti
+<a class="reference internal" href="../Values/Properties/PortableCashRegister.html#portablecashregister"><span class="std std-ref">PortableCashRegister</span></a>
+pomocou príkazu <a class="reference internal" href="getProperty.html#getproperty"><span class="std std-ref">getProperty</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-wrong-state"><span class="std std-ref">EFP_WRONG_STATE</span></a></p></td>
+<td><p>Aktuálny stav <a class="reference internal" href="../Terminology/Shortcuts.html#term-fp"><span class="xref std std-term">FP</span></a> nedovoľuje vykonanie tohto príkazu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-clock-error"><span class="std std-ref">EFP_CLOCK_ERROR</span></a></p></td>
+<td><p><a class="reference internal" href="../Terminology/Shortcuts.html#term-fp"><span class="xref std std-term">FP</span></a> detegoval chybu obvodu reálneho času.
+Pozri <a class="reference internal" href="#rl-overeniestavureg"><span class="std std-ref">Overenie stavu registrácie</span></a>!</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-icm-comm-error"><span class="std std-ref">EFP_ICM_COMM_ERROR</span></a></p></td>
+<td><p>Nastala chyba komunikácie s <a class="reference internal" href="../Terminology/Shortcuts.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a>.
+Pozri <a class="reference internal" href="#rl-overeniestavureg"><span class="std std-ref">Overenie stavu registrácie</span></a>!</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-icm-busy"><span class="std std-ref">EFP_ICM_BUSY</span></a></p></td>
+<td><p><a class="reference internal" href="../Terminology/Shortcuts.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a> je zaneprázdnené, operáciu teraz nie je možné vykonať.
+Pozri <a class="reference internal" href="#rl-overeniestavureg"><span class="std std-ref">Overenie stavu registrácie</span></a>!</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-icm-operation-error"><span class="std std-ref">EFP_ICM_OPERATION_ERROR</span></a></p></td>
+<td><p>Pri práci s <a class="reference internal" href="../Terminology/Shortcuts.html#term-chdu"><span class="xref std std-term">ChDÚ</span></a> vznikla interná chyba.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-tax-auth-regist-rejected"><span class="std std-ref">EFP_TAX_AUTH_REGIST_REJECTED</span></a></p></td>
+<td><p>Požiadavka na registráciu dokladu alebo polohy bola zamietnutá
+serverom daňovej správy. Registrácia polohy nebola úspešná.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<blockquote id="rl-overeniestavureg">
+<div><div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p><strong>Overenie stavu registrácie polohy do systému eKasa</strong></p>
+<p>Pre návratové hodnoty pri ktorých je v popise uvedený text „Pozri Overenie stavu registrácie!“ je potrebné vykonať
+príkaz <a class="reference internal" href="getLastRegisteredLocationInfo.html#getlastregisteredlocationinfo"><span class="std std-ref">getLastRegisteredLocationInfo</span></a>, ktorého parameter
+<a class="reference internal" href="getLastRegisteredLocationInfo.html#glrli-taxauthregiststatus"><span class="std std-ref">taxAuthRegistStatus</span></a> udáva stav registrácie a platí, že:</p>
+<blockquote>
+<div><ul>
+<li><p>ak parameter <a class="reference internal" href="getLastRegisteredLocationInfo.html#glrli-taxauthregiststatus"><span class="std std-ref">taxAuthRegistStatus</span></a> nadobúda hodnoty:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="getLastRegisteredLocationInfo.html#glrli-taxauthregiststatus"><span class="std std-ref">FP_TARS_REG_IN_PROGRESS</span></a></p></li>
+<li><p><a class="reference internal" href="getLastRegisteredLocationInfo.html#glrli-taxauthregiststatus"><span class="std std-ref">FP_TARS_UNKNOWN</span></a></p></li>
+</ul>
+</div></blockquote>
+<p>potom bude potrebné pre dokončenie procesu znovu zavolať príkaz <a class="reference internal" href="#registerlocation"><span class="std std-ref">registerLocation</span></a></p>
+</li>
+<li><p>ak parameter <a class="reference internal" href="getLastRegisteredLocationInfo.html#glrli-taxauthregiststatus"><span class="std std-ref">taxAuthRegistStatus</span></a> nadobúda iné hodnoty, nie je
+pre ukončenie registrácie polohy vykonať žiadnu ďalšiu činnosť</p></li>
+</ul>
+</div></blockquote>
+<p>Iný spôsob ako zistiť nutnosť opakovať príkaz <a class="reference internal" href="#registerlocation"><span class="std std-ref">registerLocation</span></a> je následovný:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ak príkaz <a class="reference internal" href="#registerlocation"><span class="std std-ref">registerLocation</span></a> skončí chybou</p></li>
+<li><p>je potrebné vykonať príkaz <a class="reference internal" href="resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a></p></li>
+<li><p>ak príkaz <a class="reference internal" href="resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a> vráti chybu <a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-location-reg-in-progress"><span class="std std-ref">EFP_LOCATION_REG_IN_PROGRESS</span></a>,
+je nutné opakovať príkaz <a class="reference internal" href="#registerlocation"><span class="std std-ref">registerLocation</span></a>.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Varovanie</p>
+<p>Pre opakované volanie príkazu <a class="reference internal" href="#registerlocation"><span class="std std-ref">registerLocation</span></a> je nutné, aby jeho všetky parametre
+s výnimkou <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> boli poslané ako <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdne reťazce).
+Parameter <a class="reference internal" href="#rl-locationtype"><span class="std std-ref">locationType</span></a> môže byť v takomto prípade ľubovoľný.</p>
+</div>
+</div></blockquote>
+<p><strong>Popis príkazu</strong>:</p>
+<blockquote>
+<div><p>Príkaz vykoná registráciu aktuálnej polohy <a class="reference internal" href="../Terminology/Shortcuts.html#term-fp"><span class="xref std std-term">FP</span></a> do systému <a class="reference internal" href="../Terminology/Shortcuts.html#term-ekasa"><span class="xref std std-term">eKasa</span></a>. Príkaz negeneruje tlačový výstup,
+jeho jediným prejavom je odpoveď o výsledku operácie prostredníctvom komunikačného protokolu.</p>
+<p>Príkaz je možné vykonať len pre prenosný typ pokladnice. Typ pokladnice je možné zistiť prečítaním vlastnosti <a class="reference internal" href="../Values/Properties/PortableCashRegister.html#portablecashregister"><span class="std std-ref">PortableCashRegister</span></a>
+pomocou príkazu <a class="reference internal" href="getProperty.html#getproperty"><span class="std std-ref">getProperty</span></a>.</p>
+<p>Príkaz je povolený len ak <a class="reference internal" href="../Values/Properties/PrinterState.html#printerstate"><span class="std std-ref">PrinterState</span></a> = <a class="reference internal" href="../Values/Properties/PrinterState.html#fp-ps-monitor"><span class="std std-ref">FP_PS_MONITOR</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<ul class="simple">
+<li><p>Tento príkaz je neprerušiteľný, čo znamená, že ak sa tento príkaz začne vykonávať, potom už musí byť dokončený.</p></li>
+<li><p>Pre ukončenie tohto príkazu je pre niektoré typy chýb potrebné postupovať podľa <a class="reference internal" href="#rl-overeniestavureg"><span class="std std-ref">postupu pre overenie stavu registrácie do systému eKasa</span></a>.</p></li>
+</ul>
+</div>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="resetInspectionRequest.html" class="btn btn-neutral float-right" title="resetInspectionRequest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="printZReport.html" class="btn btn-neutral float-left" title="printZReport [_new_]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
