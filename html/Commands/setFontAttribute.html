@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<html class="writer-html5" lang="sk" >
 <head>
   <meta charset="utf-8">
   
@@ -12,34 +11,36 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Hľadať" href="../search.html" />
     <link rel="next" title="setHeaderLines" href="setHeaderLines.html" />
-    <link rel="prev" title="setFiscalMode" href="setFiscalMode.html" /> 
+    <link rel="prev" title="setFiscalMode [_new_]" href="setFiscalMode.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -53,7 +54,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Protokol eKasa fiškálnej tlačiarne EFox
           
 
           
@@ -76,6 +77,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -91,7 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Príkazy fiškálnej tlačiarne</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="affirmInspectionRequest.html">affirmInspectionRequest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="beginFiscalReceipt.html">beginFiscalReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="beginNonFiscal.html">beginNonFiscal</a></li>
@@ -101,8 +103,8 @@
 <li class="toctree-l2"><a class="reference internal" href="cutPaper.html">cutPaper</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deferFirmwareUpdateRequest.html">deferFirmwareUpdateRequest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="displayTextAt.html">displayTextAt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="endFiscalReceipt.html">endFiscalReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="endNonFiscal.html">endNonFiscal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="endFiscalReceipt.html">endFiscalReceipt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endNonFiscal.html">endNonFiscal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endTraining.html">endTraining</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getCounter.html">getCounter <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="getData.html">getData</a></li>
@@ -111,47 +113,47 @@
 <li class="toctree-l2"><a class="reference internal" href="getFontAttribute.html">getFontAttribute</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getHeaderLine.html">getHeaderLine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getInspectionRequest.html">getInspectionRequest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getLastRegisteredLocationInfo.html">getLastRegisteredLocationInfo <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="getLastRegisteredReceiptInfo.html">getLastRegisteredReceiptInfo <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getLastRegisteredLocationInfo.html">getLastRegisteredLocationInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getLastRegisteredReceiptInfo.html">getLastRegisteredReceiptInfo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getNextLogRecord.html">getNextLogRecord</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getProperty.html">getProperty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="getTotalizer.html">getTotalizer <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTotalizer.html">getTotalizer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getTrailerLine.html">getTrailerLine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getTransactionStatus.html">getTransactionStatus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getVatEntry.html">getVatEntry</a></li>
-<li class="toctree-l2"><a class="reference internal" href="obtainProgress.html">obtainProgress <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="obtainProgress.html">obtainProgress</a></li>
 <li class="toctree-l2"><a class="reference internal" href="openDrawer.html">openDrawer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printBarCode.html">printBarCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="printDuplicateReceipt.html">printDuplicateReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printDuplicateReceipt.html">printDuplicateReceipt</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printNormal.html">printNormal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecCash.html">printRecCash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="printRecItem.html">printRecItem <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItem.html">printRecItem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecItemAdjustment.html">printRecItemAdjustment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecItemCorrection.html">printRecItemCorrection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecItemRefund.html">printRecItemRefund</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecItemRefundCorrection.html">printRecItemRefundCorrection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="printRecItemSinglePurposeVoucher.html">printRecItemSinglePurposeVoucher <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemSinglePurposeVoucher.html">printRecItemSinglePurposeVoucher</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecMessage.html">printRecMessage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecPackageAdjustment.html">printRecPackageAdjustment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecSubtotal.html">printRecSubtotal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="printRecTotal.html">printRecTotal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="printRecTotalChange.html">printRecTotalChange <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecTotal.html">printRecTotal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecTotalChange.html">printRecTotalChange</a></li>
 <li class="toctree-l2"><a class="reference internal" href="printRecVoid.html">printRecVoid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="printUnsentDataMsgReport.html">printUnsentDataMsgReport <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="printXReport.html">printXReport <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="printZReport.html">printZReport <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printUnsentDataMsgReport.html">printUnsentDataMsgReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printXReport.html">printXReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printZReport.html">printZReport</a></li>
 <li class="toctree-l2"><a class="reference internal" href="registerLocation.html">registerLocation <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="resetInspectionRequest.html">resetInspectionRequest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="resetPrinter.html">resetPrinter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setBitmap.html">setBitmap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setCustomer.html">setCustomer <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="setDate.html">setDate <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="setFiscalMode.html">setFiscalMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setCustomer.html">setCustomer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setDate.html">setDate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setFiscalMode.html">setFiscalMode <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">setFontAttribute <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="setHeaderLines.html">setHeaderLines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setParagon.html">setParagon <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setParagon.html">setParagon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setPaymentType.html">setPaymentType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setPOSID.html">setPOSID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setProperty.html">setProperty</a></li>
@@ -169,6 +171,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -207,9 +210,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a> &raquo;</li>
+          <li><a href="index.html">Príkazy fiškálnej tlačiarne</a> &raquo;</li>
         
       <li>setFontAttribute <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
     
@@ -299,7 +302,7 @@ rovnaké charakteristiky z hľadiska ich formátovania pre tlač.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
 <td><p><span class="target" id="fp-fag-transaction-id">FP_FAG_TRANSACTION_ID</span></p></td>
-<td><p>identifikátor transakcie na doklade <a class="reference internal" href="../Terminology/Shortcuts.html#term-rt"><span class="xref std std-term">RT</span></a></p></td>
+<td><p>identifikátor transakcie na doklade <a class="reference internal" href="../Terminology/Shortcuts.html#term-RT"><span class="xref std std-term">RT</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
 <td><p><span class="target" id="fp-fag-item">FP_FAG_ITEM</span></p></td>
@@ -321,59 +324,55 @@ rovnaké charakteristiky z hľadiska ich formátovania pre tlač.</p>
 <td><p><span class="target" id="fp-fag-message">FP_FAG_MESSAGE</span></p></td>
 <td><p>riadky účtu tlačené príkazom <a class="reference internal" href="printRecMessage.html#printrecmessage"><span class="std std-ref">printRecMessage</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
-<td><p><span class="target" id="fp-fag-void">FP_FAG_VOID</span></p></td>
-<td><p>riadky účtu tlačené jedným z príkazov <strong>printRec…Void</strong></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">11</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">11</span></code></p></td>
 <td><p><span class="target" id="fp-fag-subtotal">FP_FAG_SUBTOTAL</span></p></td>
 <td><p>riadky účtu tlačené príkazom <a class="reference internal" href="printRecSubtotal.html#printrecsubtotal"><span class="std std-ref">printRecSubtotal</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">12</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">12</span></code></p></td>
 <td><p><span class="target" id="fp-fag-rec-void">FP_FAG_REC_VOID</span></p></td>
 <td><p>riadky účtu tlačené príkazom <a class="reference internal" href="printRecVoid.html#printrecvoid"><span class="std std-ref">printRecVoid</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">13</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">13</span></code></p></td>
 <td><p><span class="target" id="fp-fag-payment">FP_FAG_PAYMENT</span></p></td>
 <td><p>riadky účtu tlačené príkazom <a class="reference internal" href="printRecTotal.html#printrectotal"><span class="std std-ref">printRecTotal</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">14</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">14</span></code></p></td>
 <td><p><span class="target" id="fp-fag-change">FP_FAG_CHANGE</span></p></td>
-<td><p>výdavok na doklade <a class="reference internal" href="../Terminology/Shortcuts.html#term-rt"><span class="xref std std-term">RT</span></a>, alebo riadky účtu tlačené príkazom <a class="reference internal" href="printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a></p></td>
+<td><p>výdavok na doklade <a class="reference internal" href="../Terminology/Shortcuts.html#term-RT"><span class="xref std std-term">RT</span></a>, alebo riadky účtu tlačené príkazom <a class="reference internal" href="printRecTotalChange.html#printrectotalchange"><span class="std std-ref">printRecTotalChange</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">15</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">15</span></code></p></td>
 <td><p><span class="target" id="fp-fag-vat-summary">FP_FAG_VAT_SUMMARY</span></p></td>
-<td><p>daňový sumár na doklade <a class="reference internal" href="../Terminology/Shortcuts.html#term-rt"><span class="xref std std-term">RT</span></a></p></td>
+<td><p>daňový sumár na doklade <a class="reference internal" href="../Terminology/Shortcuts.html#term-RT"><span class="xref std std-term">RT</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">16</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">16</span></code></p></td>
 <td><p><span class="target" id="fp-fag-total">FP_FAG_TOTAL</span></p></td>
-<td><p>výsledná hodnota nákupu na doklade <a class="reference internal" href="../Terminology/Shortcuts.html#term-rt"><span class="xref std std-term">RT</span></a></p></td>
+<td><p>výsledná hodnota nákupu na doklade <a class="reference internal" href="../Terminology/Shortcuts.html#term-RT"><span class="xref std std-term">RT</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">17</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">17</span></code></p></td>
 <td><p><span class="target" id="fp-fag-date-time">FP_FAG_DATE_TIME</span></p></td>
 <td><p>dátum a čas na doklade</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">18</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">18</span></code></p></td>
 <td><p><span class="target" id="fp-fag-trailer">FP_FAG_TRAILER</span></p></td>
 <td><p>riadky pätičky dokladu</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">19</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">19</span></code></p></td>
 <td><p><span class="target" id="fp-fag-cash-in-out">FP_FAG_CASH_IN_OUT</span></p></td>
 <td><p>vklad/výber tlačený príkazom <a class="reference internal" href="printRecCash.html#printreccash"><span class="std std-ref">printRecCash</span></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">21</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">21</span></code></p></td>
 <td><p><span class="target" id="fp-fag-nonfiscal-line">FP_FAG_NONFISCAL_LINE</span></p></td>
 <td><p>riadky nefiškálneho dokumentu tlačené príkazom <a class="reference internal" href="printNormal.html#printnormal"><span class="std std-ref">printNormal</span></a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">23</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">23</span></code></p></td>
 <td><p><span class="target" id="fp-fag-correction">FP_FAG_CORRECTION</span></p></td>
 <td><p>riadky účtu tlačené jedným z príkazov <strong>printRec…Correction</strong></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">24</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">24</span></code></p></td>
 <td><p><span class="target" id="fp-fag-identity-data">FP_FAG_IDENTITY_DATA</span></p></td>
 <td><p>riadky identifikačných údajov</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">25</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">25</span></code></p></td>
 <td><p><span class="target" id="fp-fag-single-purpose-voucher">FP_FAG_SINGLE_PURPOSE_VOUCHER</span></p></td>
 <td><p>riadky účtu tlačené príkazom <a class="reference internal" href="printRecItemSinglePurposeVoucher.html#printrecitemsinglepurposevoucher"><span class="std std-ref">printRecItemSinglePurposeVoucher</span></a></p></td>
 </tr>
@@ -595,7 +594,7 @@ Podrobnosti pre podporované parametre sú v prílohe: <a class="reference inter
 <p>Zmena fontu a jeho atribútov pre jednotlivé skupiny riadkov nie je žiadnym spôsobom
 obmedzovaná. Riadky, pre ktoré nie je definovaná žiadna skupina (teda riadky, ktoré
 nepatria do žiadnej z vyššie vymenovaných skupín) sú formátované a tlačené podľa
-vnútorného nastavenia <a class="reference internal" href="../Terminology/Shortcuts.html#term-fp"><span class="xref std std-term">FP</span></a> a aplikácia nemôže toto nastavenie ovplyvniť.</p>
+vnútorného nastavenia <a class="reference internal" href="../Terminology/Shortcuts.html#term-FP"><span class="xref std std-term">FP</span></a> a aplikácia nemôže toto nastavenie ovplyvniť.</p>
 <div class="admonition warning">
 <p class="admonition-title">Varovanie</p>
 <p>Ak je nastavená dvojitá šírka znakov, potom počet znakov, ktoré je možné vytlačiť
@@ -603,7 +602,7 @@ v jednom riadku pre vybraný font je len polovičný v porovnaní s hodnotami
 <a class="reference internal" href="../Values/Properties/FontALineLength.html#fontalinelength"><span class="std std-ref">FontALineLength</span></a> resp. <a class="reference internal" href="../Values/Properties/FontBLineLength.html#fontblinelength"><span class="std std-ref">FontBLineLength</span></a>.
 Tieto zostávajú nezmenené bez ohľadu na nastavenie atribútov pre fonty.</p>
 </div>
-<p>Pre všetky skupiny riadkov je po každej strate spojenia medzi <a class="reference internal" href="../Terminology/Shortcuts.html#term-fp"><span class="xref std std-term">FP</span></a> a aplikáciou,
+<p>Pre všetky skupiny riadkov je po každej strate spojenia medzi <a class="reference internal" href="../Terminology/Shortcuts.html#term-FP"><span class="xref std std-term">FP</span></a> a aplikáciou,
 ako aj po zavolaní príkazu <a class="reference internal" href="resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a> nastavená default
 hodnota <a class="reference internal" href="#sfa-fontattribute"><span class="std std-ref">fontAttribute</span></a> na hodnotu <a class="reference internal" href="#fp-fa-default">FP_FA_DEFAULT</a>
 (pre termo tlačiarne), resp. na hodnotu <a class="reference internal" href="#fp-fa-alt-font">FP_FA_ALT_FONT</a> (pre maticové tlačiarne).</p>
@@ -630,7 +629,7 @@ ignorovaná.</p>
         <a href="setHeaderLines.html" class="btn btn-neutral float-right" title="setHeaderLines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="setFiscalMode.html" class="btn btn-neutral float-left" title="setFiscalMode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="setFiscalMode.html" class="btn btn-neutral float-left" title="setFiscalMode [_new_]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -639,7 +638,8 @@ ignorovaná.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+        
+        &copy; Autorské právo 2019, ELCOM, spol. s ručením obmedzeným, Prešov
 
     </p>
   </div> 
@@ -653,7 +653,6 @@ ignorovaná.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="sk" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="sk" > <!--<![endif]-->
+<html class="writer-html5" lang="sk" >
 <head>
   <meta charset="utf-8">
   
@@ -12,30 +11,32 @@
   
 
   
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script type="text/javascript" src="../_static/translations.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Hľadať" href="../search.html" />
     <link rel="next" title="Poskytovanie služieb" href="ServicesProviding.html" />
@@ -53,7 +54,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Protokol eKasa fiškálnej tlačiarne EFox
           
 
           
@@ -76,6 +77,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -99,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ServicesProviding.html">Poskytovanie služieb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="States.html">Stavy komunikácie</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Timing.html">Časovanie</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PrinterStates.html">Stavy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrinterStates.html">Stavy fiškálnej tlačiarne</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Modes.html">Režimy (módy)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Commissioning.html">Uvedenie do prevádzky</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Update/index.html">Aktualizácia firmvéru</a></li>
@@ -108,7 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">Pravidlá</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Values/index.html">Konštanty a premenné</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">Prílohy</a></li>
 </ul>
@@ -116,6 +118,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -154,7 +157,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">Vytvorenie spojenia a stavy</a> &raquo;</li>
         
@@ -186,7 +189,7 @@
 <li><p>nastaviť formát tlače, pozri: „<a class="reference internal" href="../Printing/PrintFormattingSettings.html#nastavenia-formatu-tlace"><span class="std std-ref">Nastavenia formátu tlače</span></a>“</p></li>
 <li><p>nastaviť režim cien bez dane, pozri: property <a class="reference internal" href="../Values/Properties/VatIncluded.html#vatincluded"><span class="std std-ref">VatIncluded</span></a></p></li>
 <li><p>nastaviť grafické logo, pozri property <a class="reference internal" href="../Values/Properties/HeaderBitmap.html#headerbitmap"><span class="std std-ref">HeaderBitmap</span></a> a <a class="reference internal" href="../Values/Properties/TrailerBitmap.html#trailerbitmap"><span class="std std-ref">TrailerBitmap</span></a></p></li>
-<li><p>nastaviť meno pokladníka a číslo <a class="reference internal" href="../Terminology/Shortcuts.html#term-pos"><span class="xref std std-term">POS</span></a> systému, pozri príkaz <a class="reference internal" href="../Commands/setPOSID.html#setposid"><span class="std std-ref">setPOSID</span></a></p></li>
+<li><p>nastaviť meno pokladníka a číslo <a class="reference internal" href="../Terminology/Shortcuts.html#term-POS"><span class="xref std std-term">POS</span></a> systému, pozri príkaz <a class="reference internal" href="../Commands/setPOSID.html#setposid"><span class="std std-ref">setPOSID</span></a></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Poznámka</p>
@@ -217,7 +220,8 @@ ale aj po príkaze <a class="reference internal" href="../Commands/resetPrinter.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+        
+        &copy; Autorské právo 2019, ELCOM, spol. s ručením obmedzeným, Prešov
 
     </p>
   </div> 
@@ -231,7 +235,6 @@ ale aj po príkaze <a class="reference internal" href="../Commands/resetPrinter.
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
