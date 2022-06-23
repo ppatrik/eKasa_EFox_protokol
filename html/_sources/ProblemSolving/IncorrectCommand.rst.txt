@@ -1,0 +1,25 @@
+Chyby v dôsledku poslania nesprávneho príkazu, alebo nesprávnych parametrov
+===========================================================================
+
+Riešenie chýb tejto kategórie je:
+
+* poslanie správneho príkazu (možno poslať len ten príkaz, ktorý je prístupný
+  v danom stave, pri splnení všetkých podmienok z jeho popisu), alebo
+* poslanie správnych hodnôt parametrov tohto príkazu.
+
+Ak je príkaz vykonateľný v danom stave a hodnoty jeho parametrov sú z množiny,
+ktorá nebráni vykonaniu tohto príkazu, potom príkaz môže skončiť s chybou len vtedy,
+ak vznikne chyba z inej kategórie.
+
+.. note::
+
+    Niektoré príkazy (ako je napríklad :ref:`printRecTotal <printRecTotal>`) môžu
+    ale spôsobiť chybu, z ktorej sa nie je možné zostaviť opakovaným zaslaním príkazu.
+
+    Ako príklad je možné uviesť stav, keď aplikácia pošle inú celkovú hodnotu nákupu,
+    ako je hodnota vypočítaná vo fiškálnej tlačiarni. V takomto prípade je potrebné
+    doklad prerušiť pomocou príkazu :ref:`resetPrinter <resetPrinter>` a celý doklad
+    zopakovať od začiatku.
+
+.. toctree::
+    :maxdepth: 2

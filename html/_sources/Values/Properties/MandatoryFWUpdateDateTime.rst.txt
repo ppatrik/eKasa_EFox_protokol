@@ -1,0 +1,38 @@
+_`MandatoryFirmwareUpdateDateTime` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **MandatoryFirmwareUpdateDateTime**
+    typ                      DATETIME
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Dátum a čas dokedy je nutné vykonať aktualizáciu firmvéru :term:`FP` a/alebo :term:`ChDÚ`.
+
+  * hodnota ``""`` (prázdny reťazec) znamená, že nie je dostupná aktualizácia firmvéru
+  * hodnota ``"00000000000000"`` znamená, že je dostupná aktualizácia firmvéru, ktorá
+    bola manuálne nahratá cez vstavaný web server.
+
+    .. warning::
+        Do vykonania aktualizácie firmvéru alebo zmazania aktualizačného balíčka
+        cez vstavaný web server bude činnosť :term:`FP` obmedzená
+
+  * iná hodnota znamená, že na internete je dostupná nová verzia firmvéru. Hodnota
+    je vo formáte :ref:`DDMMYYYYhhmmss <DateTimeFormat>` a definuje čas
+    dokedy je nutné vykonať túto aktualizáciu firmvéru.
+
+    .. warning::
+        Ak do definovaného dátumu a času nedôjde k aktualizácii firmvéru bude činnosť
+        :term:`FP` obmedzená
+
+.. toctree::
+    :maxdepth: 3

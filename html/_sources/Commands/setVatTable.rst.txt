@@ -1,0 +1,206 @@
+setVatTable
+-----------
+
+.. note::
+    Tento komunikačný príkaz nie je v aktuálnej verzii :term:`FP` využívaný.
+
+..
+  **Formát príkazu**:
+
+    .. value of {tableCmdReqFormat} is defined in config.py
+    .. tabularcolumns:: {tableCmdReqFormat}
+
+    .. table::
+        :class: longtable
+
+        ======== ================================================== =============== ====================
+        Pole     Hodnota                                            Dátový typ      Popis
+        ======== ================================================== =============== ====================
+        Cmd ID   sVT                                                \-              identifikátor príkazu
+        Req/Rsp  REQ                                                \-              požiadavka
+        Param1   :ref:`vatGroup1 <sVT_vatGroup>`                    **STRING**      nastavenie 1. daňovej skupiny
+        Param2   :ref:`vatGroup2 <sVT_vatGroup>`                    **STRING**      nastavenie 2. daňovej skupiny
+        …        …                                                  …               …
+        ParamN   :ref:`vatGroupN <sVT_vatGroup>`                    **STRING**      nastavenie N. daňovej skupiny
+        ======== ================================================== =============== ====================
+
+  .. _sVT_vatGroup:
+
+  **Parametre vatGroup1 až vatGroupN**:
+
+    Parametre predstavujú nastavenie jednotlivých daňových skupín.
+
+      * Každý parameter predstavuje nastavenie jednej daňovej skupiny.
+      * Počet parametrov je N = :ref:`NumVatRates <NumVatRates>`.
+      * V príkaze musí byť zaslaných všetkých ``1`` až N = :ref:`NumVatRates <NumVatRates>` parametrov :ref:`vatGroup <sVT_vatGroup>`, pričom platí, že aspoň jeden z parametrov nie je prázdny (``""``).
+      * Daňové skupiny, ktoré nebudú mať nastavené parametre, budú vo :term:`FP` označené ako neaktívne a dané daňové skupiny nebude možné využiť pri predaji.
+      * Každý z parametrov obsahuje štruktúru údajov oddelených bodkočiarkou v nasledujúcej forme:
+
+          ``"vatID;vatFlag;vatRate"``
+
+          kde:
+
+            .. value of {tableVATstructure} is defined in config.py
+            .. tabularcolumns:: {tableVATstructure}
+
+            .. table::
+                :class: longtable
+
+                ======================================= =============== ====================
+                Údaj                                    Dátový typ      Popis
+                ======================================= =============== ====================
+                :ref:`vatID <sVT_vatGroup_vatID>`       **INT32**       označenie daňovej skupiny (1 až :ref:`NumVatRates <NumVatRates>`)
+                :ref:`vatFlag <sVT_vatGroup_vatFlag>`   **INT32**       typ daňovej skupiny
+                :ref:`vatRate <sVT_vatGroup_vatRate>`   **INT32**       hodnota daňovej sadzby pre danú daňovú skupinu
+                ======================================= =============== ====================
+
+  .. _sVT_vatGroup_vatID:
+
+  **Parameter vatID**:
+
+    Je prvým údajom zo štruktúry parametra :ref:`vatGroup <sVT_vatGroup>`, ktorý udáva označenie daňovej skupiny.
+
+    Vzťah medzi parametrom :ref:`vatID <sVT_vatGroup_vatID>` a označením príslušnej daňovej skupiny na vytlačenom doklade je nasledovný:
+
+    .. value of {tableValueNote} is defined in config.py
+    .. tabularcolumns:: {tableValueNote}
+
+    .. table::
+        :class: longtable
+
+        ======= ==============================================
+        vatID   Označenie daňovej skupiny na fiškálnom doklade
+        ======= ==============================================
+        ``1``   A
+        ``2``   B
+        ``3``   C
+        ``4``   D
+        ``5``   E
+        ``6``   F
+        ``7``   G
+        ======= ==============================================
+
+  .. _sVT_vatGroup_vatFlag:
+
+  **Parameter vatFlag**:
+
+    Je druhým údajom zo štruktúry parametra :ref:`vatGroup <sVT_vatGroup>`, ktorý udáva typ daňovej skupiny.
+
+    Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+    .. value of {tableValueAliasNote} is defined in config.py
+    .. tabularcolumns:: {tableValueAliasNote}
+
+    .. table::
+        :class: longtable
+
+        ========= ============================= ===============================================
+        Hodnota   Alias                         Popis
+        ========= ============================= ===============================================
+        ``1``     _`FP_VF_NORMAL`               normálna daňová skupina
+        ``2``     _`FP_VF_NONTAXABLE`           nezdaniteľná daňová skupina, položky predané v tejto daňovej skupine nepodliehajú dani
+        ``3``     _`FP_VF_CONTAINER`            daňová skupina určená pre vratné obaly (fľaše, prepravky…)
+        ``5``     _`FP_VF_SIMPINVOICE`          daňová skupina určená pre položky účtované v úhrade faktúr
+        ========= ============================= ===============================================
+
+    .. note::
+      * Ak je :ref:`vatFlag <sVT_vatGroup_vatFlag>` = :ref:`FP_VF_CONTAINER <FP_VF_CONTAINER>`, potom všetky položky, ktoré budú v predaji priradené k tejto daňovej skupine, budú považované ako zálohované vratné obaly a budú sa na nich vzťahovať pravidlá, ktoré sú na takéto tovary predpísané.
+
+  .. _sVT_vatGroup_vatRate:
+
+  **Parameter vatRate**:
+
+    Je tretím údajom zo štruktúry parametra :ref:`vatGroup <sVT_vatGroup>`, ktorý udáva hodnotu daňovej sadzby pre danú daňovú skupinu.
+
+    .. note::
+      * Hodnota :ref:`vatRate <sVT_vatGroup_vatRate>` je ignorovaná ak má daňová skupina nastavený parameter :ref:`vatFlag <sVT_vatGroup_vatFlag>`:
+
+          * :ref:`FP_VF_NONTAXABLE <FP_VF_NONTAXABLE>`
+          * :ref:`FP_VF_SIMPINVOICE <FP_VF_SIMPINVOICE>`
+
+  **Formát odpovede**:
+
+    .. value of {tableCmdRespFormat} is defined in config.py
+    .. tabularcolumns:: {tableCmdRespFormat}
+
+    .. table::
+        :class: longtable
+
+        ========= =================== ============== ====================
+        Pole      Hodnota             Dátový typ     Popis
+        ========= =================== ============== ====================
+        Cmd ID    sVT                 \-             identifikátor príkazu
+        Req/Rsp   RSP                 \-             odpoveď
+        Exception *exceptionCode*     **INT32**      návratový kód
+        ========= =================== ============== ====================
+
+  .. _sVT_RESULTS:
+
+  **Návratové hodnoty**:
+
+    .. value of {tableErrorcodeNote} is defined in config.py
+    .. tabularcolumns:: {tableErrorcodeNote}
+
+    .. table::
+        :class: longtable
+
+        ======================================================= =======================================
+        Chyba                                                   Popis
+        ======================================================= =======================================
+        :ref:`E_ILLEGAL <E_ILLEGAL>`                            Parameter :ref:`vatFlag <sVT_vatGroup_vatFlag>` bol poslaný nesprávne, alebo boli poslané dve daňové skupiny s rovnakým číslom, alebo nebola poslaná žiadna daňová skupina.
+        :ref:`EFP_BAD_VAT <EFP_BAD_VAT>`                        Parameter :ref:`vatID <sVT_vatGroup_vatID>` nie je z množiny dovolených hodnôt (je mimo rozsah ``1`` až :ref:`NumVatRates <NumVatRates>`).
+        :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+        :ref:`EFP_DAY_END_REQUIRED <EFP_DAY_END_REQUIRED>`      Pred vykonaním príkazu je potrebné vykonať dennú uzávierku príkazom :ref:`printZReport <printZReport>`.
+        :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+        :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+        ======================================================= =======================================
+
+  **Popis príkazu**:
+
+    Príkaz nastaví daňové sadzby a ostatné hodnoty týkajúce sa daňových skupín do :term:`FP`.
+
+      * Príkaz je možné vykonať len ak je :ref:`DayOpened <DayOpened>` = ``FALSE``.
+      * Poradie nastavovanej daňovej skupiny nie je dané poradovým číslom parametra :ref:`vatGroup <sVT_vatGroup>`, ale je dané hodnotou parametra :ref:`vatID <sVT_vatGroup_vatID>` obsiahnutého v štruktúre parametra :ref:`vatGroup <sVT_vatGroup>`.
+      * Aby bola daňová skupina aktívna, je potrebné poslať neprázdny parameter :ref:`vatGroup <sVT_vatGroup>`\[i\] s príslušne nastavenou hodnotou parametra :ref:`vatID <sVT_vatGroup_vatID>` obsiahnutého v štruktúre parametra :ref:`vatGroup <sVT_vatGroup>`.
+      * Daňové skupiny, ktoré nebudú mať nastavené parametre, budú vo :term:`FP` označené ako neaktívne a dané daňové skupiny nebude možné využiť pri predaji.
+      * Po master resete sa daňové skupiny nastavia na neaktívne.
+
+  **Účinky príkazu**:
+
+    * Ak :ref:`FiscalState <FiscalState>` = :ref:`FP_FS_FISCAL <FP_FS_FISCAL>` dôjde k aktualizácii premennej :ref:`DTSettingLimit <DTSettingLimit>`.
+
+  **Príklad:**
+
+    Chceme nastaviť daňové skupiny tak, aby mali sadzby ``10%``, ``19%`` a ďalšiu daňovú skupinu pre výkup vratných obalov.
+
+    1. možnosť vyplnenia parametrov :ref:`vatGroup <sVT_vatGroup>`:
+
+        * :ref:`vatGroup <sVT_vatGroup>`\[1\] = ``"1;1;19"``
+        * :ref:`vatGroup <sVT_vatGroup>`\[2\] = ``"2;1;10"``
+        * :ref:`vatGroup <sVT_vatGroup>`\[3\] = ``"3;3;0"``
+        * :ref:`vatGroup <sVT_vatGroup>`\[4\] = ``""``
+        * :ref:`vatGroup <sVT_vatGroup>`\[5\] = ``""``
+        * :ref:`vatGroup <sVT_vatGroup>`\[6\] = ``""``
+        * :ref:`vatGroup <sVT_vatGroup>`\[7\] = ``""``
+
+        .. note::
+            Označenie daňových hladín bude: A, B, C
+
+
+    2. možnosť vyplnenia parametrov :ref:`vatGroup <sVT_vatGroup>`:
+
+        * :ref:`vatGroup <sVT_vatGroup>`\[1\] = ``""``
+        * :ref:`vatGroup <sVT_vatGroup>`\[2\] = ``"3;1;19"``
+        * :ref:`vatGroup <sVT_vatGroup>`\[3\] = ``""``
+        * :ref:`vatGroup <sVT_vatGroup>`\[4\] = ``"5;1;10"``
+        * :ref:`vatGroup <sVT_vatGroup>`\[5\] = ``""``
+        * :ref:`vatGroup <sVT_vatGroup>`\[6\] = ``"7;3;0"``
+        * :ref:`vatGroup <sVT_vatGroup>`\[7\] = ``""``
+
+        .. note::
+            Označenie daňových hladín bude: C, E, G
+
+    Rozdiel medzi 1. a 2. možnosťou uvedenou v príklade je ten, že jednotlivé daňové skupiny budú pri výpisoch na účtenkách označené rôznymi písmenami.
+
+.. toctree::
+    :maxdepth: 2

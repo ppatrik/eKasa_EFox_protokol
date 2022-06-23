@@ -1,0 +1,23 @@
+_`ErrorString`
+^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ErrorString**
+    typ                      STRING
+    prednastavená hodnota    ``""``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  * Obsahuje textový popis aktuálnej chyby, ktorá bola zaznamenaná na :term:`FP`, či už po vyvolaní príkazu, alebo následkom HW poruchy.
+  * V prípade, že :term:`FP` nie je v chybovom stave, obsahuje property prázdny reťazec.
+
+.. toctree::
+    :maxdepth: 3

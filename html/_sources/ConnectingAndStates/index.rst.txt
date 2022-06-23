@@ -1,0 +1,15 @@
+Vytvorenie spojenia a stavy ``[_new_]``
+***************************************
+
+.. toctree::
+    :maxdepth: 3
+
+    Connection
+    ServicesProviding
+    States
+    Timing
+    PrinterStates
+    Modes
+    Commissioning
+    Update/index
+    SendingDataMessages

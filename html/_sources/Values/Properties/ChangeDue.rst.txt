@@ -1,0 +1,27 @@
+_`ChangeDue`
+^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ChangeDue**
+    typ                      STRING
+    prednastavená hodnota    ``"VYDAŤ"``
+    prístup                  read-write
+    ======================== =======================================
+
+**Popis**:
+
+  Táto property obsahuje text, ktorý je tlačený ako popis pre finančnú hodnotu, ktorú je potrebné vydať vo forme fyzických peňazí (bankoviek alebo mincí) po zaplatení hodnoty nákupu, pretože zákazník zaplatil vyššou hodnotou než aká bola potrebná pre doplatenie zostávajúcej hodnoty nákupu.
+
+  .. note::
+      * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`).
+
+  Pri programovaní tejto property príkazom :ref:`setProperty <setProperty>` nie sú žiadne dodatočné chybové kódy, ako kódy už popísané v popise príkazu :ref:`setProperty <setProperty>`. Takisto neexistujú žiadne obmedzenia pre nastavenie tejto property ako obmedzenia spomenuté v popise príkazu :ref:`setProperty <setProperty>`.
+
+.. toctree::
+    :maxdepth: 3

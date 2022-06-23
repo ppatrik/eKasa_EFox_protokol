@@ -1,0 +1,140 @@
+Zoznam návratových hodnôt ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _ExceptionCodes:
+
+  .. value of {tableErrorAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========== ========================= ===========================================
+      Kód chyby  Alias                     Popis
+      ========== ========================= ===========================================
+      0          _`EFP_OK`                 Operácia skončila úspešne
+      ========== ========================= ===========================================
+
+.. _ExceptionCategory1_TABLE:
+
+:ref:`Kategória 1 <ExceptionCategory1>`:
+
+  .. value of {tableErrorAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========== =============================== ===========================================
+      Kód chyby  Alias                           Popis
+      ========== =============================== ===========================================
+      106        _`E_ILLEGAL`                    Bola poslaná nesprávna hodnota jedného z parametrov.
+      108        _`E_OFFLINE`                    :term:`FP` je v režime :ref:`OffLine <OffLine>`.
+      109        _`E_NOEXIST`                    Špecifikovaný objekt alebo údaj neexistuje.
+      207        _`EFP_WRONG_STATE`              Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      213        _`EFP_BAD_QUANTITY`             Parameter množstva bol poslaný nesprávne.
+      214        _`EFP_BAD_AMOUNT`               Jeden z finančných parametrov bol poslaný nesprávne.
+      215        _`EFP_BAD_DESCRIPTION`          Popisný parameter bol poslaný nesprávne.
+      216        _`EFP_REC_TOTAL_OVERFLOW`       Príkaz by spôsobil prekročenie maximálnej hodnoty jedného nákupu. V prípade dokladu výmeny jednoúčelového poukazu je max. hodnota = ``0``.
+      217        _`EFP_BAD_VAT`                  Parameter označenia daňovej skupiny bol poslaný nesprávne (napr. je mimo rozsah 1 až :ref:`NumVatRates <NumVatRates>`).
+      218        _`EFP_BAD_PRICE`                Parameter jednotkovej ceny bol poslaný nesprávne.
+      219        _`EFP_BAD_DATE`                 Parameter dátumu bol poslaný v nesprávnom formáte.
+      220        _`EFP_BAD_REF_RECEIPT`          Parameter ref. číslo dokladu nebol poslaný.
+      221        _`EFP_UNEXPECT_REF_RECEIPT`     Parameter ref. číslo dokladu nie je povolený pre tento príkaz.
+      222        _`EFP_BAD_SPEC_REG`             Parameter špeciálnej regulácie nebol poslaný alebo bol poslaný nesprávne.
+      223        _`EFP_UNEXPECT_SPEC_REG`        Parameter špeciálnej regulácie nie je povolený v tomto stave (nie je povolený v režime faktúry a pre inú ako nezdaniteľnú daňovú hladinu).
+      224        _`EFP_DAY_END_REQUIRED`         Pred vykonaním príkazu je potrebné vykonať dennú uzávierku.
+      225        _`EFP_INSPECTION_REQUEST`       Je potrebné potvrdiť aktivovanú požiadavku na servisný zásah, alebo servisný zásah priamo vykonať.
+      226        _`EFP_TAX_AUTH_REG_IN_PROGRESS` Začala registrácia dokladu na serveri :term:`eKasa` alebo tlač údajov z tejto registrácie, požadovaný príkaz sa teraz nedá vykonať.
+                                                 Je potrebné opäť zavolať príkaz :ref:`endFiscalReceipt <endFiscalReceipt>`.
+      227        _`EFP_LOCATION_REG_IN_PROGRESS` Začala registrácia polohy na serveri :term:`eKasa`, požadovaný príkaz sa teraz nedá vykonať.
+                                                 Je potrebné opäť zavolať príkaz :ref:`registerLocation <registerLocation>`.
+      228        _`EFP_LOCATION_NOT_SET`         Pre prenosnú pokladnicu nebola na serveri :term:`eKasa` zaregistrovaná poloha predaja.
+      229        _`EFP_BAD_PAYMENT`              Parameter označenia typu platby bol poslaný nesprávne (napr. je mimo rozsah 1 až :ref:`NumPayments <NumPayments>`).
+      230        _`EFP_BAD_CHANGE_TYPE`          Zvolený typ výdavku :ref:`ChangeType <ChangeType>` nie je povolený.
+      231        _`EFP_FW_UPDATE_REQUEST`        Bola aktivovaná požiadavka na aktualizáciu firmvéru.
+      232        _`EFP_INVALID_FW_SIGNATURE`     Neplatný podpis firmvéru.
+      233        _`EFP_WRONG_FW`                 Nesprávna verzia firmvéru.
+      234        _`EFP_EMPTY_SERIAL_NUM`         Nie je zadané sériové číslo.
+      235        _`EFP_NO_CERTIFICATE`           Žiadny podpisový certifikát.
+      236        _`EFP_INVALID_CERTIFICATE`      Platnosť certifikátu vypršala, alebo certifikát ešte nezačal platiť.
+      237        _`EFP_MISSING_IDENTITY_DATA`    Chýbajúce identifikačné údaje podnikateľa.
+      239        _`EFP_FW_DOWNLOADING`           Táto chyba bola odstránená a nie je v eKasa verzii využívaná.
+      240        _`EFP_ICM_BLOCKED`              :term:`ChDÚ` je zablokované, operáciu teraz nie je možné vykonať.
+      241        _`EFP_PSTORAGE_WRN_LIMIT1`      :term:`ChDÚ` je zaplnené na viac ako 80%, je potrebné opakovať volanie príkazu.
+                                                 Aktuálnu hodnotu zaplnenia :term:`ChDÚ` v % je možné zistiť prečítaním vlastnosti
+                                                 :ref:`ProtectedStorageUsage <ProtectedStorageUsage>` pomocou príkazu :ref:`getProperty <getProperty>`.
+      242        _`EFP_PSTORAGE_WRN_LIMIT2`      :term:`ChDÚ` je takmer plné (zaplnené na viac ako 95%). Zanedlho dôjde k zaplneniu :term:`ChDÚ` a bude nutná jeho výmena.
+                                                 Zvážte preto výmenu :term:`ChDÚ` čo najskôr. Je potrebné opakovať volanie príkazu.
+                                                 Aktuálnu hodnotu zaplnenia :term:`ChDÚ` v % je možné zistiť prečítaním vlastnosti
+                                                 :ref:`ProtectedStorageUsage <ProtectedStorageUsage>` pomocou príkazu :ref:`getProperty <getProperty>`.
+      268        _`EFP_NOT_PAYABLE_AMOUNT`       Nevyplatiteľná suma platby, alebo výdavku v hotovosti, suma nie je zaokrúhlená
+      301        _`EFP_ILLEGAL_COMMAND`          Nie sú splnené požadované podmienky pre vykonanie tohto príkazu.
+      303        _`EFP_ALREADY_FISCAL`           :term:`FP` je už v režime :ref:`Fiscal <Fiscal>`.
+      304        _`EFP_TOOBIG`                   V pamäti obrázkov nie je dostatok priestoru na uloženie obrázku.
+      305        _`EFP_NOT_FISCAL`               :term:`FP` nie je uvedený do prevádzky, operáciu nemožno vykonať pred uvedením do prevádzky.
+      401        _`EFP_DATA_TYPE`                Aspoň jeden z poslaných parametrov nespĺňa formálne požiadavky definované pre jeho dátový typ.
+      403        _`EFP_EXTRA_FIELD`              V správe bolo poslané niektoré pole príkazu navyše.
+      404        _`EFP_MISSING_FIELD`            V správe nebolo  poslané niektoré pole príkazu.
+      405        _`EFP_MISSING_PRM`              V správe nebol poslaný niektorý z povinných parametrov.
+      406        _`EFP_UNKNOWN_CMD`              Neznámy príkaz.
+      407        _`EFP_NETWORK`                  FP nemá prístup na internet alebo server neodpovedá
+      408        _`EFP_MANDATORY_FW_UPDATE`      Je nutné vykonať aktualizáciu SW
+      409        _`EFP_FW_UPDATE_NEED_FISCAL`    Aktualizácia firmvéru z internetu vyžaduje uvedenie do prevádzky
+      ========== =============================== ===========================================
+
+.. _ExceptionCategory2_TABLE:
+
+:ref:`Kategória 2 <ExceptionCategory2>`:
+
+  .. value of {tableErrorAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========== =============================== ===========================================
+      Kód chyby  Alias                           Popis
+      ========== =============================== ===========================================
+      111        _`E_FAILURE`                    Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bol tlačený doklad riadne dokončený. Pre pokračovanie v činnosti musí aplikácia zavolať príkaz :ref:`resetPrinter <resetPrinter>`, potom môže tlač prerušeného dokladu zopakovať.
+      201        _`EFP_COVER_OPEN`               Kryt tlačiarne je otvorený.
+      203        _`EFP_REC_EMPTY`                V tlačiarni chýba papier.
+      266        _`EFP_MAX_DTMSG_ITEMS_EXCEEDED` Bol prekročený maximálny počet položiek v dátovej správe dokladu definovaný hodnotou property :ref:`NumDataMsgItems <NumDataMsgItems>`. Doklad už nie je možné riadne dokončiť.
+      267        _`EFP_MAX_PAYMENT_CNT_EXCEEDED` Bol prekročený maximálny počet platieb alebo výdavkov na doklade. Maximálny počet platieb vrátane výdavkov na jednom doklade je ``256``. Doklad už nie je možné riadne dokončiť.
+      321        _`EFP_CUTTER`                   Strihač papiera je v zlom stave.
+      601        _`EFP_ICM_COMM_ERROR`           Nastala chyba komunikácie s :term:`ChDÚ`.
+      602        _`EFP_ICM_BUSY`                 :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+      603        _`EFP_ICM_OPERATION_ERROR`      Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      604        _`EFP_TAX_AUTH_REGIST_REJECTED` Požiadavka na registráciu dokladu alebo polohy bola zamietnutá serverom daňovej správy.
+      605        _`EFP_DUPLICATE_BUFFER_FULL`    Nedostatok miesta pre uloženie kópie dokladu. Bol dosiahnutý maximálny možný počet vytlačených riadkov na jeden doklad. Doklad už nie je možné riadne dokončiť.
+      606        _`EFP_ICM_JRN_DOC_UNFINISHED`   Interná chyba :term:`ChDÚ` - dokument žurnálu nie je uzavretý.
+      901        _`EFP_COVER_OPEN_WARNING`       Fiškálny doklad je platný a započítaný do dennej uzávierky, ale vplyvom otvorenia krytu tlačiarne mohlo dôjsť k nedotlačeniu niektorých riadkov za povinnými údajmi.
+      902        _`EFP_CUTTER_WARNING`           Strihač papiera je v zlom stave, ale doklad bol kompletne vytlačený.
+      903        _`EFP_REC_EMPTY_WARNING`        Fiškálny doklad je platný a započítaný do dennej uzávierky, ale vplyvom vonkajšieho zásahu, alebo konca pásky mohlo dôjsť k nedotlačeniu niektorých riadkov za povinnými údajmi.
+      ========== =============================== ===========================================
+
+.. _ExceptionCategory3_TABLE:
+
+:ref:`Kategória 3 <ExceptionCategory3>`:
+
+  .. value of {tableErrorAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========== ========================== ==========================================
+      Kód chyby  Alias                      Popis
+      ========== ========================== ==========================================
+      209        _`EFP_CLOCK_ERROR`         :term:`FP` detegoval chybu obvodu reálneho času.
+      291        _`EFP_DSP_DISCONNECTED`    Displej je odpojený.
+      292        _`EFP_PRN_DISCONNECTED`    Tlačiareň je odpojená.
+      294        _`EFP_DSP_INTERNAL_ERROR`  Pri práci s displejom vznikla interná chyba.
+      295        _`EFP_PRN_INTERNAL_ERROR`  Pri práci s tlačiarňou vznikla interná chyba.
+      297        _`EFP_OPERATION_ERROR`     Interná chyba. Pri vykonávaní príkazu nastala nešpecifikovaná chyba.
+      298        _`EFP_ICM_CHANGED`         :term:`ChDÚ` je vymenené.
+      299        _`EFP_PSTORAGE_FULL`       :term:`ChDÚ` je plné a je nutná jeho výmena, kontaktujte servis.
+      ========== ========================== ==========================================
+
+.. toctree::
+    :maxdepth: 3

@@ -1,71 +1,35 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="sk" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Počítadlá &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/elcom.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7.3.2. Počítadlá [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/elcom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/language_data.js"></script>
         <script src="../../_static/translations.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Hľadať" href="../../search.html" />
-    <link rel="next" title="Príkazy fiškálnej tlačiarne" href="../../Commands/index.html" />
-    <link rel="prev" title="Sumárne hodnoty" href="Totals.html" /> 
+    <link rel="next" title="8. Príkazy fiškálnej tlačiarne [_new_]" href="../../Commands/index.html" />
+    <link rel="prev" title="7.3.1. Sumárne hodnoty [_new_]" href="Totals.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Protokol eKasa fiškálnej tlačiarne EFox
-          
-
-          
+            <a href="../../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -73,117 +37,66 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">Úvod</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Terminology/index.html">Terminológia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../BasicDescription/index.html">Popis protokolu</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">Vytvorenie spojenia a stavy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Rules/index.html">Pravidlá</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Printing/index.html">Tlač vo fiškálnej tlačiarni</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Konštanty a premenné</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../Exceptions/index.html">Návratové hodnoty</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">Vlastnosti (properties) fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Akumulátory fiškálnej tlačiarne</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="Totals.html">Sumárne hodnoty</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Počítadlá</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="../../Introduction.html">1. Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Terminology/index.html">2. Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BasicDescription/index.html">3. Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ConnectingAndStates/index.html">4. Vytvorenie spojenia a stavy <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Rules/index.html">5. Pravidlá <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Printing/index.html">6. Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">7. Konštanty a premenné</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Exceptions/index.html">7.1. Návratové hodnoty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Properties/index.html">7.2. Vlastnosti (properties) fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">7.3. Akumulátory fiškálnej tlačiarne</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Totals.html">7.3.1. Sumárne hodnoty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.3.2. Počítadlá <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">Príkazy fiškálnej tlačiarne</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ProblemSolving/index.html">Riešenie chybových stavov</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Appendix/index.html">Prílohy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Commands/index.html">8. Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ProblemSolving/index.html">9. Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Appendix/index.html">10. Prílohy</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="../index.html">Konštanty a premenné</a> &raquo;</li>
-        
-          <li><a href="index.html">Akumulátory fiškálnej tlačiarne</a> &raquo;</li>
-        
-      <li>Počítadlá</li>
-    
-    
+          <li><a href="../index.html"><span class="section-number">7. </span>Konštanty a premenné</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">7.3. </span>Akumulátory fiškálnej tlačiarne</a> &raquo;</li>
+      <li><span class="section-number">7.3.2. </span>Počítadlá <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
       <li class="wy-breadcrumbs-aside">
-        
-            
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="id1">
-<h1><span class="target" id="pocitadla">Počítadlá</span><a class="headerlink" href="#id1" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+             
+  <div class="section" id="pocitadla-new">
+<h1><span class="section-number">7.3.2. </span><span class="target" id="pocitadla">Počítadlá</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#pocitadla-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
 <p><strong>Počítadlá operácií v nákupe</strong>:</p>
 <blockquote>
 <div><p>V nasledujúcej tabuľke sú uvedené všetky počítadlá fiškálnej tlačiarne
 pre fiškálnu účtenku a pre obchodný deň spolu s ich vysvetlením.</p>
 <table class="longtable docutils align-default">
 <colgroup>
-<col style="width: 27%" />
-<col style="width: 73%" />
+<col style="width: 28%" />
+<col style="width: 72%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Názov</p></th>
@@ -331,23 +244,42 @@ pre fiškálnu účtenku a pre obchodný deň spolu s ich vysvetlením.</p>
 </div>
 </td>
 </tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><span class="target" id="recadvancepaymentdeductcount">RecAdvancePaymentDeductCount</span>,</div>
+<div class="line"><span class="target" id="dayadvancepaymentdeductcount">DayAdvancePaymentDeductCount</span></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">počet odpočítaní záloh príkazom <a class="reference internal" href="../../Commands/printRecAdvancePaymentDeduct.html#printrecadvancepaymentdeduct"><span class="std std-ref">printRecAdvancePaymentDeduct</span></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><span class="target" id="recroundingcount">RecRoundingCount</span>,</div>
+<div class="line"><span class="target" id="dayroundingcount">DayRoundingCount</span></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">počet zaokrúhlení</div>
+</div>
+</td>
+</tr>
 </tbody>
 </table>
-<p>Počítadlá, ktoré majú v tabuľke označenie „[<em>i</em>]“ sú evidované ako sumárne (suma pre všetky
-daňové skupiny), tak aj pre jednotlivé daňové skupiny samostatne.</p>
-<p>V prípade odkazovania sa na počítadlo pre konkrétnu daňovú skupinu (v texte tohto dokumentu)
-sa vybrané počítadlo označí ešte indexom daňovej skupiny.</p>
-<p><strong>Napríklad</strong>:</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<ul>
+<li><p>Počítadlá, ktoré evidujú sumy v jednotlivých daňových skupinách sú uvedené
+s indexovým zápisom poľa („[<em>i</em>]“).</p></li>
+<li><p>Suma pre jednotlivé daňové skupiny samostatne: [<em>i</em>] = &lt;<code class="docutils literal notranslate"><span class="pre">1</span></code>, <a class="reference internal" href="../Properties/NumVatRates.html#numvatrates"><span class="std std-ref">NumVatRates</span></a>&gt;).</p></li>
+<li><p>Celková suma pre všetky daňové skupiny je:</p>
 <blockquote>
-<div><p><a class="reference internal" href="#dayrefundcount"><span class="std std-ref">DayRefundCount[3]</span></a> označuje počet refundovaných položiek pre
-3. daňovú skupinu v aktuálnom dni <a class="reference internal" href="#dayrefundcount"><span class="std std-ref">DayRefundCount[0]</span></a>, alebo
-<a class="reference internal" href="#dayrefundcount"><span class="std std-ref">DayRefundCount</span></a> (bez indexu) označuje celkový počet
-refundovaných položiek v aktuálnom dni.</p>
+<div><p><span class="math notranslate nohighlight">\(counter[0] = \displaystyle\sum_{i = 1}^{NumVatRates} counter[i]\)</span></p>
 </div></blockquote>
-<p>Zároveň platí, že:</p>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(DayRefundCount[0] = \displaystyle\sum_{i=1}^{NumVatRates} DayRefundCount[i]\)</span></p>
-</div></blockquote>
+</li>
+<li><p>V texte tohto dokumentu sa rozumie, že counter = counter[0].</p></li>
+</ul>
+</div>
 <p>Všetky hore vymenované počítadlá a ich súvis s daňovými skupinami je viac zrejmý z popisu
 príkazu <a class="reference internal" href="../../Commands/getCounter.html#getcounter"><span class="std std-ref">getCounter</span></a>, ktorým je zároveň možné požiadať fiškálnu tlačiareň
 o vrátenie jedného z vyššie vymenovaných počítadiel.</p>
@@ -410,10 +342,7 @@ o vrátenie jedného z vyššie vymenovaných počítadiel.</p>
 </div></blockquote>
 <p><strong>Počítadlá týkajúce sa platieb</strong>:</p>
 <blockquote>
-<div><p>Nasleduje zoznam dvojíc počítadiel (pre transakciu, obchodný deň, vklad a výber v aktuálnom
-obchodnom dni) týkajúcich sa jednotlivých typov platieb, ktorých reálne využitie je možné
-len v prípade, ak <a class="reference internal" href="../Properties/PaymentsRegistration.html#paymentsregistration"><span class="std std-ref">PaymentsRegistration</span></a> = <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>.</p>
-<table class="longtable docutils align-default">
+<div><table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 30%" />
 <col style="width: 70%" />
@@ -424,27 +353,40 @@ len v prípade, ak <a class="reference internal" href="../Properties/PaymentsReg
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>TransPaymentCount[<em>i</em>]</p></td>
-<td><p>počet platieb v transakcii pre typ platby „<em>i</em>“</p></td>
-</tr>
-<tr class="row-odd"><td><p>TransChangeCount[<em>i</em>]</p></td>
-<td><p>počet výdavkov v transakcii pre typ platby „<em>i</em>“</p></td>
-</tr>
-<tr class="row-even"><td><p>PaymentCount[<em>i</em>]</p></td>
-<td><p>počet platieb počas dňa pre typ platby „<em>i</em>“</p></td>
-</tr>
-<tr class="row-odd"><td><p>ChangeCount[<em>i</em>]</p></td>
-<td><p>počet výdavkov počas dňa pre typ platby „<em>i</em>“</p></td>
-</tr>
 <tr class="row-even"><td><p>CashInCount[<em>i</em>]</p></td>
-<td><p>počet vkladov pre typ platby „<em>i</em>“</p></td>
+<td><p>počet vkladov v aktuálnom dni</p></td>
 </tr>
 <tr class="row-odd"><td><p>CashOutCount[<em>i</em>]</p></td>
-<td><p>počet výberov pre typ platby „<em>i</em>“</p></td>
+<td><p>počet výberov v aktuálnom dni</p></td>
+</tr>
+<tr class="row-even"><td><p>TransPaymentCount[<em>i</em>]</p></td>
+<td><p>počet platieb v transakcii</p></td>
+</tr>
+<tr class="row-odd"><td><p>PaymentCount[<em>i</em>]</p></td>
+<td><p>počet platieb v aktuálnom dni</p></td>
+</tr>
+<tr class="row-even"><td><p>TransChangeCount[<em>i</em>]</p></td>
+<td><p>počet výdavkov v transakcii</p></td>
+</tr>
+<tr class="row-odd"><td><p>ChangeCount[<em>i</em>]</p></td>
+<td><p>počet výdavkov v aktuálnom dni</p></td>
 </tr>
 </tbody>
 </table>
-<p>Pričom index <em>i</em> je v rozsahu 1 až <a class="reference internal" href="../Properties/NumPayments.html#numpayments"><span class="std std-ref">NumPayments</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<ul>
+<li><p>Počítadlá evidujú sumy v jednotlivých typoch platieb sú uvedené
+s indexovým zápisom poľa („[<em>i</em>]“).</p></li>
+<li><p>Suma pre jednotlivé typy platieb samostatne: [<em>i</em>] = &lt;<code class="docutils literal notranslate"><span class="pre">1</span></code>, <a class="reference internal" href="../Properties/NumPayments.html#numpayments"><span class="std std-ref">NumPayments</span></a>&gt;).</p></li>
+<li><p>Celková hodsuma pre všetky typy platieb je:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(counter[0] = \displaystyle\sum_{i = 1}^{NumPayments} counter[i]\)</span></p>
+</div></blockquote>
+</li>
+<li><p>V texte tohto dokumentu sa rozumie, že counter = counter[0].</p></li>
+</ul>
+</div>
 </div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
@@ -452,50 +394,30 @@ len v prípade, ak <a class="reference internal" href="../Properties/PaymentsReg
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../Commands/index.html" class="btn btn-neutral float-right" title="Príkazy fiškálnej tlačiarne" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="Totals.html" class="btn btn-neutral float-left" title="Sumárne hodnoty" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Totals.html" class="btn btn-neutral float-left" title="7.3.1. Sumárne hodnoty [_new_]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../Commands/index.html" class="btn btn-neutral float-right" title="8. Príkazy fiškálnej tlačiarne [_new_]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Autorské právo 2019, ELCOM, spol. s ručením obmedzeným, Prešov
+    <p>&#169; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov.</p>
+  </div>
 
-    </p>
-  </div> 
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

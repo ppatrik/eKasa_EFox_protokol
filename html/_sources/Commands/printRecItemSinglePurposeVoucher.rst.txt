@@ -1,0 +1,190 @@
+_`printRecItemSinglePurposeVoucher` ``[_new_]``
+-----------------------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== =================================================== =============== ====================
+      Pole     Hodnota                                             Dátový typ      Popis
+      ======== =================================================== =============== ====================
+      Cmd ID   pRISPV                                              \-              identifikátor príkazu
+      Req/Rsp  REQ                                                 \-              požiadavka
+      Param1   :ref:`amount <pRISPV_amount>`                       **CURRENCY**    výsledná suma poukazu
+      Param2   :ref:`vatID <pRISPV_vatID>`                         **INT32**       identifikátor daňovej skupiny
+      Param3   :ref:`voucherID <pRISPV_voucherID>`                 **STRING\[50]** identifikátor poukazu
+      Param4   :ref:`specialRegulation <pRISPV_specialRegulation>` **INT32**       identifikátor špeciálnej regulácie
+      Param5   :ref:`preLine <pRISPV_preLine>`                     **STRING**      text tlačený pred týmto príkazom
+      Param6   :ref:`postLine <pRISPV_postLine>`                   **STRING**      text tlačený za týmto príkazom
+      ======== =================================================== =============== ====================
+
+.. _pRISPV_amount:
+
+**Parameter amount**:
+
+  Hodnota jednoúčelového poukazu.
+
+.. _pRISPV_vatID:
+
+**Parameter vatID**:
+
+  Identifikátor daňovej skupiny naprogramovanej vo :term:`FP`, ku ktorej je položka priradená.
+
+    * Môže nadobúdať hodnoty v rozsahu :ref:`vatID <gVE_vatID>` = ``1`` až :ref:`NumVatRates <NumVatRates>`.
+    * parameter musí korešpondovať s parametrom  :ref:`vatID <gVE_vatID>` príkazu :ref:`getVatEntry <getVatEntry>`, ktorý musí odkazovať na daňovú skupinu, ktorej príznak :ref:`vatFlag <gVE_RSP_vatFlag>` je rôzny od :ref:`FP_VF_SIMPINVOICE <FP_VF_SIMPINVOICE>` a od :ref:`FP_VF_CONTAINER <FP_VF_CONTAINER>`.
+
+.. _pRISPV_voucherID:
+
+**Parameter voucherID**:
+
+  Číslo jednoúčelového poukazu. Nepovinný parameter, ktorý musí byť zadaný. Ak poukaz nemá žiadny identifikátor/číslo, je potrebné použiť ``""`` (prázdny reťazec).
+
+.. _pRISPV_specialRegulation:
+
+**Parameter specialRegulation**
+
+  Identifikátor špeciálnej regulácie bližšie určuje dôvod priradenia k nezdaniteľnej daňovej hladine (:ref:`FP_VF_NONTAXABLE <FP_VF_NONTAXABLE>`).
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueNote} is defined in config.py
+  .. tabularcolumns:: {tableValueNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ===============================================
+      Hodnota   Popis
+      ========= ===============================================
+      ``0``     bez uvedenia dôvodu
+      ``1``     prenesenie daňovej povinnosti
+      ``2``     oslobodené od dane
+      ``3``     cestovné kancelárie
+      ``4``     použitý tovar
+      ``5``     umelecké diela
+      ``6``     zberateľské predmety a starožitnosti
+      ========= ===============================================
+
+  .. warning::
+    * :ref:`specialRegulation <pRISPV_specialRegulation>` = jednej z hodnôt uvedených v tabuľke vyššie
+
+        * ak parameter :ref:`vatID <pRISPV_vatID>` odkazuje na nezdaniteľnú daňovú hladinu :ref:`FP_VF_NONTAXABLE <FP_VF_NONTAXABLE>`
+
+    * :ref:`specialRegulation <pRISPV_specialRegulation>` = ``""`` (prázdny reťazec)
+
+        * ak parameter :ref:`vatID <pRISPV_vatID>` odkazuje na inú daňovú hladinu ako nezdaniteľnú :ref:`FP_VF_NONTAXABLE <FP_VF_NONTAXABLE>`
+
+.. _pRISPV_preLine:
+
+**Parameter preLine**:
+
+  Text tlačený pred týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+.. _pRISPV_postLine:
+
+**Parameter postLine**:
+
+  Text tlačený za týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    pRISPV              \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      =================================================================== =======================================
+      Chyba                                                               Popis
+      =================================================================== =======================================
+      :ref:`EFP_BAD_AMOUNT <EFP_BAD_AMOUNT>`                              Parameter :ref:`amount <pRISPV_amount>` je <= ``0``, alebo nie je násobkom ``0.01``.
+      :ref:`EFP_BAD_VAT <EFP_BAD_VAT>`                                    Parameter :ref:`vatID <pRISPV_vatID>` bol poslaný nesprávne.
+      :ref:`EFP_BAD_SPEC_REG <EFP_BAD_SPEC_REG>`                          Parameter :ref:`specialRegulation <pRISPV_specialRegulation>` nebol poslaný alebo bol poslaný nesprávne.
+      :ref:`EFP_UNEXPECT_SPEC_REG <EFP_UNEXPECT_SPEC_REG>`                Parameter :ref:`specialRegulation <pRISPV_specialRegulation>` nie je povolený v tomto stave.
+      :ref:`EFP_REC_TOTAL_OVERFLOW <EFP_REC_TOTAL_OVERFLOW>`              Príkaz by spôsobil prekročenie maximálnej hodnoty jedného nákupu.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                            Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                                V tlačiarni chýba papier.
+      :ref:`E_FAILURE <E_FAILURE>`                                        Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bola transakčná účtenka riadne dokončená. Pre ďalšie zmysluplné pokračovanie v činnosti musí aplikácia zavolať príkaz :ref:`resetPrinter <resetPrinter>` a transakciu môže zopakovať.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`                  Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`                  Tlačiareň je odpojená.
+      :ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>`              Pri práci s displejom vznikla interná chyba.
+      :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`              Pri práci s tlačiarňou vznikla interná chyba.
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`                      Nastala chyba komunikácie s :term:`ChDÚ`.
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                                  :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`            Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      =================================================================== =======================================
+
+**Popis príkazu**:
+
+  Príkaz zabezpečí vytlačenie informácií o poukaze
+
+    * Všetky číselné hodnoty sa posielajú ako kladné a ich príspevok k sumárnym hodnotám a počítadlám je vždy kladný.
+
+  .. warning::
+      Príkaz je možné volať len ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_SINGLE_PURPOSE_VOUCHER <FP_RT_SINGLE_PURPOSE_VOUCHER>`
+
+**Príklad**:
+
+  Nech je potrebné zaznamenať výmenu jednoúčelového poukazu v hodnote ``100 Eur``, ktorého číslo je 123456789 za tovar v rovnakej sume, pričom tovar je v daňovej hladine 1.
+
+    * Transakciu začneme príkazom :ref:`beginFiscalReceipt <beginFiscalReceipt>` s parametrom :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SINGLE_PURPOSE_VOUCHER <FP_RT_SINGLE_PURPOSE_VOUCHER>`.
+    * Pridáme položku tovaru pomocou príkazu :ref:`printRecItem <printRecItem>`.
+    * Zaregistrujeme jednoúčelový poukaz príkazom :ref:`printRecItemSinglePurposeVoucher <printRecItemSinglePurposeVoucher>` s nasledujúcimi parametrami:
+
+        * :ref:`amount <pRISPV_amount>` = ``100.00``
+        * :ref:`vatID <pRISPV_vatID>` = ``1``
+        * :ref:`voucherID <pRISPV_voucherID>` = ``123456789``
+        * :ref:`specialRegulation <pRISPV_specialRegulation>` = ``""``
+        * :ref:`preLine <pRISPV_preLine>` = ``""``
+        * :ref:`postLine <pRISPV_postLine>` = ``""``
+
+        .. note::
+            * Hodnota parametra :ref:`vatID <pRISPV_vatID>` musí byť v rovnakej daňovej hladine ako tovar, za ktorý sa poukaz zamieňa.
+
+    * Ukončíme registráciu príkazom :ref:`printRecTotal <printRecTotal>` s nasledujúcimi parametrami:
+
+        * :ref:`total <pRT_total>` = ``0``
+        * :ref:`payment <pRT_payment>` = ``""``
+        * :ref:`paymentID <pRT_paymentID>` = :ref:`FP_PEPT_CASH <FP_PEPT_CASH>`
+        * :ref:`preLine <pRT_preLine>` = ``""``
+        * :ref:`postLine <pRT_postLine>` = ``""``
+
+    * Na záver odoslanie dokladu na server finančnej správy a dotlačenie dokladu vykonáme príkazom :ref:`endFiscalReceipt <endFiscalReceipt>`
+
+**Účinky príkazu**:
+
+  * :ref:`RecSinglePurposeVoucherTotal <RecSinglePurposeVoucherTotal>`\[:ref:`vatID <pRISPV_vatID>`\] = :ref:`RecSinglePurposeVoucherTotal <RecSinglePurposeVoucherTotal>`\[:ref:`vatID <pRISPV_vatID>`\] + :ref:`amount <pRISPV_amount>`
+  * :ref:`RecSinglePurposeVoucherCount <RecSinglePurposeVoucherCount>`\[:ref:`vatID <pRISPV_vatID>`\] = :ref:`RecSinglePurposeVoucherCount <RecSinglePurposeVoucherCount>`\[:ref:`vatID <pRISPV_vatID>`\] + ``1``
+  * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` - :ref:`amount <pRISPV_amount>`
+  * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRISPV_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRISPV_vatID>`\] - :ref:`amount <pRISPV_amount>`
+  * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRISPV_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRISPV_vatID>`\] - :ref:`amount <pRISPV_amount>`
+
+
+.. toctree::
+    :maxdepth: 2

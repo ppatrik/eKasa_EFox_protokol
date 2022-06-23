@@ -1,0 +1,32 @@
+_`Riešenie chybových stavov`
+****************************
+
+Problémové stavy fiškálnej tlačiarne vznikajú buď ako:
+
+* reakcia príkaz, alebo
+
+* nezávisle na zavolanom príkaze.
+
+V prípade, ak chyba, alebo varovanie vzniknú ako následok zavolania príkazu,
+kódy týchto problémov sú vrátené do aplikácie synchrónne (buď pred vykonaním
+príkazu, počas jeho vykonávania, alebo po vykonaní príkazu).
+
+Ak problémový stav vznikne asynchrónne (nezávisle na vykonávaných príkazoch),
+potom je kód daného problému vrátený pri prvom možnom príkaze, ktorého vykonaniu
+tento problém bráni.
+
+Fiškálna tlačiareň okrem vrátenia kódu problému, ktorý spôsobil nevykonanie príkazu,
+nastaví aj property :ref:`ErrorString <ErrorString>`, v ktorom (ak je to potrebné a možné)
+môže byť problémový stav popísaný podrobnejšie a tiež property :ref:`ErrorExtension <ErrorExtension>`,
+ktorý obsahuje interný kód chyby, ktorý je zaznamenávaný pre servisné a interné účely.
+
+Obsah týchto property ostáva nezmenený až do najbližšieho úspešne vykonaného príkazu,
+prípadne je prepísaný problémom od nasledujúceho príkazu.
+
+.. toctree::
+    :maxdepth: 3
+
+    IncorrectCommand
+    FiscalPrinterRecovery
+    RecoverableProblems
+    InternalErrors

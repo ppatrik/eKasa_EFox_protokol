@@ -1,0 +1,88 @@
+_`setParagon` ``[_new_]``
+-------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   sPA                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`parNum <sPA_parNum>`                         **INT32**       poradové číslo paragónu
+      Param2   :ref:`parDate <sPA_parDate>`                       **DATETIME**    dátum a čas vyhotovenia paragónu
+      ======== ================================================== =============== ====================
+
+.. _sPA_parNum:
+
+**Parameter parNum**:
+
+  Poradové číslo paragónu.
+
+.. _sPA_parDate:
+
+**Parameter parDate**:
+
+  Dátum a čas vyhotovenia paragónu vo formáte :ref:`DDMMYYYYhhmm <DateTimeFormat>`.
+
+  .. warning::
+    Dátum a čas vyhotovenia paragónu nesmie byť:
+
+      * starší ako ``01.04.2019``
+      * novší ako aktuálny dátum a čas
+
+    Dôvodom tohto limitu je, aby server finančnej správy doklad akceptoval a vo :term:`FP` nevznikali neodoslané doklady.
+
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    sPA                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ======================================================= =======================================
+      Chyba                                                   Popis
+      ======================================================= =======================================
+      | :ref:`E_ILLEGAL <E_ILLEGAL>`                          | Jeden z parametrov
+                                                              |   - :ref:`parNum <sPA_parNum>`
+                                                              |   - :ref:`parDate <sPA_parDate>`
+                                                              | nie je z množiny dovolených hodnôt.
+      :ref:`EFP_BAD_DATE <EFP_BAD_DATE>`                      Parameter dátumu bol poslaný v nesprávnom formáte.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+      ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Nastaví informácie potrebné pre vystavenie paragónu.
+
+  .. note::
+      * Túto operáciu je možné vykonať len ak je :term:`FP` v stave :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_FISCAL_RECEIPT <FP_PS_FISCAL_RECEIPT>`.
+      * Údaje sú platné len do ukončenia, alebo zrušenia dokladu.
+
+.. toctree::
+    :maxdepth: 2

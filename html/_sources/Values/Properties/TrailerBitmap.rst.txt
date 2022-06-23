@@ -1,0 +1,28 @@
+_`TrailerBitmap`
+^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **TrailerBitmap**
+    typ                      INT32
+    prednastavená hodnota    ``0``
+    prístup                  read-write
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje číslo obrázku, ktorý sa vytlačí po nasledujúcom/aktuálnom dokumente, ako grafické logo.
+  V prípade, že nastavené číslo obrázku neexistuje, alebo je to číslo ``0``, potom k tlači daného obrázku nedôjde.
+
+  Pri programovaní tejto property príkazom :ref:`setProperty <setProperty>` nie sú žiadne dodatočné chybové kódy, ako kódy už popísané v popise príkazu :ref:`setProperty <setProperty>`. Takisto neexistujú žiadne obmedzenia pre nastavenie tejto property ako obmedzenia spomenuté v popise príkazu :ref:`setProperty <setProperty>`.
+
+  .. note::
+    Po každej strate spojenia medzi :term:`FP` a aplikáciou sa property nastaví na svoju default hodnotu.
+
+.. toctree::
+    :maxdepth: 3

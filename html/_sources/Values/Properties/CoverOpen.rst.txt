@@ -1,0 +1,23 @@
+_`CoverOpen`
+^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **CoverOpen**
+    typ                      BOOLEAN
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  * Ak je nastavené na ``TRUE``, potom :term:`FP` signalizuje, že tlačiareň má otvorený kryt.
+  * Ak tlačiareň nedisponuje senzorom pre rozoznávanie otvoreného krytu, potom property obsahuje stále hodnotu ``FALSE``.
+
+.. toctree::
+    :maxdepth: 3

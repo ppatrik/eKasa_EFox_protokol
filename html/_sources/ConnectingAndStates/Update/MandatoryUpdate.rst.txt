@@ -1,0 +1,29 @@
+Povinnosť aktualizácie firmvéru ``[_new_]``
+-------------------------------------------
+
+Aktualizáciu dostupnú na internete je nutné vykonať do ``31`` dní od oznámenia tejto
+udalosti aplikácii. Aplikácia si môže zistiť dátum a čas povinnej aktualizácie,
+teda najneskorší dátum a čas dokedy je nutné vykonať aktualizáciu firmvéru prečítaním
+vlastnosti :ref:`MandatoryFirmwareUpdateDateTime <MandatoryFirmwareUpdateDateTime>`.
+
+Spôsoby ako aplikácia zistí dostupnosť aktualizácie sú uvedené
+v časti :ref:`Informovanie aplikácie o dostupnosti aktualizácie <updateAvailability>`.
+
+Do dátumu a času povinného vykonania aktualizácie firmvéru je možné odkladať aktualizáciu
+príkazom :ref:`deferFirmwareUpdateRequest <deferFirmwareUpdateRequest>`.
+
+.. warning::
+    Po uplynutí tohoto dátumu a času bude činnosť :term:`FP` obmedzená, pre pokračovanie
+    v bežnej činnosti bude nutné vykonať aktualizáciu firmvéru. :term:`FP` bude
+    v takejto situácii odpovedať na príkazy :ref:`beginFiscalReceipt <beginFiscalReceipt>`,
+    :ref:`beginNonFiscal <beginNonFiscal>` ale aj :ref:`deferFirmwareUpdateRequest <deferFirmwareUpdateRequest>`
+    chybovým kódom :ref:`EFP_MANDATORY_FW_UPDATE <EFP_MANDATORY_FW_UPDATE>`.
+
+.. note::
+    Aktualizačný balíček manuálne nahratý cez vstavaný web server sa tiež prezentuje
+    ako povinná aktualizácia, túto je však nutné vyriešiť okamžite.
+    Riešením je vykonanie aktualizácie, alebo vymazanie cez vstavaný web server
+    v záložke „Aktualizácia systému“.
+
+.. toctree::
+    :maxdepth: 3

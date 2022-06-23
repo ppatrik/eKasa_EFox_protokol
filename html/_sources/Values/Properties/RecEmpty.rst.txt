@@ -1,0 +1,24 @@
+_`RecEmpty`
+^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **RecEmpty**
+    typ                      BOOLEAN
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  * Ak je nastavené na ``TRUE``, potom :term:`FP` signalizuje, že v tlačiarni účteniek chýba papier.
+  * Ak ``FALSE`` potom v tlačiarni je prítomný papier.
+  * Ak tlačiareň účteniek nedisponuje senzorom pre rozoznávanie prítomnosti papierovej pásky, potom property obsahuje stále hodnotu ``FALSE``.
+
+.. toctree::
+    :maxdepth: 3

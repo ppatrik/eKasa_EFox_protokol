@@ -1,0 +1,132 @@
+_`getLastRegisteredLocationInfo`
+--------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ==================================================== =============== =======================================
+      Pole     Hodnota                                              Dátový typ      Popis
+      ======== ==================================================== =============== =======================================
+      Cmd ID   gLRLI                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                  \-              požiadavka
+      ======== ==================================================== =============== =======================================
+
+  **Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= ======================================================= =============== ======================================
+      Pole      Hodnota                                                 Dátový typ      Popis
+      ========= ======================================================= =============== ======================================
+      Cmd ID    gLRLI                                                   \-              identifikátor príkazu
+      Req/Rsp   RSP                                                     \-              odpoveď
+      Exception *exceptionCode*                                         **INT32**       návratový kód
+      Param1    :ref:`createDateTime <gLRLI_createDateTime>`            **DATETIME**    Dátum a čas vytvorenie požiadavky
+      Param2    :ref:`taxAuthRegistStatus <gLRLI_taxAuthRegistStatus>`  **INT32**       stav registrácie polohy na daňovom
+                                                                                        serveri :term:`eKasa`
+      Param3    :ref:`eKasaErrorCode <gLRLI_eKasaErrorCode>`            **INT32**       číselný kód chyby zo servera
+                                                                                        :term:`eKasa`
+      Param4    :ref:`eKasaErrorText <gLRLI_eKasaErrorText>`            **STRING**      popisný text chyby zo servera
+                                                                                        :term:`eKasa`
+      ========= ======================================================= =============== ======================================
+
+.. _gLRLI_createDateTime:
+
+**Parameter createDateTime**
+
+  Dátum a čas vytvorenia požiadavky v :term:`FP`. Tento dátum a čas sa použil počas registrácie polohy na serveri :term:`eKasa`.
+  Dátum a čas je vrátený vo formáte :ref:`DDMMYYYYhhmmss <DateTimeFormat>`.
+
+  .. warning::
+    * V prípade ak stav registrácie :ref:`taxAuthRegistStatus <gLRLI_taxAuthRegistStatus>` =
+      :ref:`FP_TARS_REG_NOT_STARTED <FP_TARS_REG_NOT_STARTED>` je tento parameter prázdny ``""``.
+
+.. _gLRLI_taxAuthRegistStatus:
+
+**Parameter taxAuthRegistStatus**
+
+  Stav registrácie v systéme :term:`eKasa`, ktorý môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= =========================== ===============================================================================
+      Hodnota   Alias                       Popis
+      ========= =========================== ===============================================================================
+      ``1``     _`FP_TARS_REGISTERED`       Poloha bola úspešne zaregistrovaná do systému :term:`eKasa`
+      ``2``     _`FP_TARS_REG_NOT_STARTED`  Registrácia polohy v systéme :term:`eKasa` nebola začatá
+      ``3``     _`FP_TARS_REG_IN_PROGRESS`  Registrácia polohy v systéme :term:`eKasa` nebola dokončená, pre dokončenie procesu
+                                            registrácie je nutné zavolať príkaz :ref:`registerLocation <registerLocation>` znova
+      ``4``     _`FP_TARS_SUSP_OFFLINE`     Požiadavka na registráciu polohy bola odpamätaná v :term:`ChDÚ` a do
+                                            :term:`eKasa` bude zaregistrovaná dodatočne.
+                                            Dôvod odloženia - :term:`FP` nie je pripojený do internetu
+      ``5``     _`FP_TARS_SUSP_NO_ACCESS`   Požiadavka na registráciu polohy bola odpamätaná v :term:`ChDÚ` a do
+                                            :term:`eKasa` bude zaregistrovaná dodatočne.
+                                            Dôvod odloženia - komunikácia so serverom eKasa zlyhala
+      ``6``     _`FP_TARS_SUSP_TIMEOUT`     Požiadavka na registráciu polohy bola odpamätaná v :term:`ChDÚ` a do
+                                            :term:`eKasa` bude zaregistrovaná dodatočne.
+                                            Dôvod odloženia - počas komunikácie bola prekročená medzná doba odozvy
+      ``7``     _`FP_TARS_REJECTED`         Požiadavka na registráciu polohy bola zamietnutá serverom :term:`eKasa`,
+                                            dôvod zamietnutia je uvedený v parametroch :ref:`eKasaErrorCode <gLRLI_eKasaErrorCode>`
+                                            a :ref:`eKasaErrorText <gLRLI_eKasaErrorText>`
+      ``8``     _`FP_TARS_UNKNOWN`          Stav registrácie polohy na serveri :term:`eKasa` nie je známy kvôli chybe
+                                            komunikácie s :term:`ChDÚ`, pre dokončenie procesu registrácie je nutné zavolať
+                                            príkaz :ref:`registerLocation <registerLocation>` znova
+      ``9``     _`FP_TARS_INTERNAL_ERROR`   Počas komunikácie s :term:`ChDÚ` došlo k neočakávanej chybe, registrácia polohy
+                                            nebola úspešná
+      ========= =========================== ===============================================================================
+
+.. _gLRLI_eKasaErrorCode:
+
+**Parameter eKasaErrorCode**
+
+  Parameter predstavuje číselný kód chyby prijatý zo servera v odpovedi typu "chyba" počas registrácie polohy.
+
+  .. warning::
+    * Parameter má význam len ak server :term:`eKasa` zamietol požiadavku o registráciu polohy
+      (:ref:`taxAuthRegistStatus <gLRLI_taxAuthRegistStatus>` = `FP_TARS_REJECTED`_).
+      V ostatných prípadoch je parameter vždy rovný hodnote ``0``.
+
+.. _gLRLI_eKasaErrorText:
+
+**Parameter eKasaErrorText**
+
+  Parameter predstavuje textový popis chyby prijatý zo servera v odpovedi typu "chyba" počas registrácie polohy.
+
+  .. warning::
+    * Parameter je vyplnený len ak server :term:`eKasa` zamietol požiadavku o registráciu polohy
+      (:ref:`taxAuthRegistStatus <gLRLI_taxAuthRegistStatus>` = `FP_TARS_REJECTED`_).
+      V ostatných prípadoch je parameter vždy prázdny ``""``.
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      =================================================================== =============================================================
+      Chyba                                                               Popis
+      =================================================================== =============================================================
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                            Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      =================================================================== =============================================================
+
+**Popis príkazu**:
+
+  Príkaz vráti informácie a stav poslednej registrácie polohy.
+
+.. toctree::
+    :maxdepth: 2

@@ -1,0 +1,12 @@
+_`Nastavenia formátu tlače`
+===========================
+
+Pri každom spojení (príkaz :ref:`connect <connect>`), ako aj po príkaze
+:ref:`resetPrinter <resetPrinter>` je potrebné nastaviť formát tlače.
+Tieto príkazy totižto spôsobia vymazanie nastavení formátovania tlače.
+
+Teda je potrebné nastaviť:
+
+* property :ref:`FormatProfile <FormatProfile>`,
+* grafické logo (:ref:`HeaderBitmap <HeaderBitmap>` a :ref:`TrailerBitmap <TrailerBitmap>`),
+* atribúty tlačových fontov (príkaz :ref:`setFontAttribute <setFontAttribute>`).

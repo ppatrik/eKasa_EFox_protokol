@@ -1,0 +1,238 @@
+_`registerLocation` ``[_new_]``
+-------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ======================================================== ================ =======================================
+      Pole     Hodnota                                                  Dátový typ       Popis
+      ======== ======================================================== ================ =======================================
+      Cmd ID   rL                                                       \-               identifikátor príkazu
+      Req/Rsp  REQ                                                      \-               požiadavka
+      Param1   :ref:`locationType <rL_locationType>`                    **INT32**        Typ polohy
+      Param2   :ref:`addrStreetName <rL_addrStreetName>`                **STRING\[100]** Ulica
+      Param3   :ref:`addrBuildingNumber <rL_addrBuildingNumber>`        **STRING\[20]**  Orientačné číslo
+      Param4   :ref:`addrPropertyRegNumber <rL_addrPropertyRegNumber>`  **STRING\[9]**   Súpisné číslo
+      Param5   :ref:`addrMunicipality <rL_addrMunicipality>`            **STRING\[100]** Obec/mesto
+      Param6   :ref:`addrPostalCode <rL_addrPostalCode>`                **STRING\[5]**   Poštové smerové číslo
+      Param7   :ref:`otherDescription <rL_otherDescription>`            **STRING\[255]** Iné
+      ======== ======================================================== ================ =======================================
+
+.. _rL_locationType:
+
+**Parameter locationType**:
+
+  Parameter určuje typ polohy a tiež položky, ktoré budú posielané počas registrácie polohy na server finančnej správy.
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+    .. value of {tableValueNote} is defined in config.py
+    .. tabularcolumns:: {tableValueNote}
+
+    .. table::
+        :class: longtable
+
+        ========= ===============================================
+        Hodnota   Popis
+        ========= ===============================================
+        ``1``     Poloha pokladnice definovaná fyzickou adresou
+        ``2``     Iný spôsob definovania umiestnenia pokladnice
+        ========= ===============================================
+
+    .. note:
+
+      * ak typ polohy je ``1``, potom počas registrácie polohy sa na server pošle požiadavka s vyplnenými položkami
+        :ref:`addrStreetName <rL_addrStreetName>`,  :ref:`addrBuildingNumber <rL_addrBuildingNumber>`,
+        :ref:`addrPropertyRegNumber <rL_addrPropertyRegNumber>`, :ref:`addrMunicipality <rL_addrMunicipality>`,
+        :ref:`addrPostalCode <rL_addrPostalCode>`
+      * ak typ polohy je ``2``, potom počas registrácie polohy sa na server pošle požiadavka s vyplnenou položkou
+        :ref:`otherDescription <rL_otherDescription>`
+
+.. _rL_addrStreetName:
+
+**Parameter addrStreetName**
+
+  Názov ulice. Ak obec nemá názov ulice, udáva sa tu názov obce.
+
+    * maximálna dĺžka reťazca je 100 znakov
+    * parameter je použitý pre polohu definovanú fyzickou adresou (:ref:`locationType <rL_locationType>` = ``1``)
+    * parameter je povinný (jeho dĺžka musí byť > ``0``) ak :ref:`locationType <rL_locationType>` nadobúda hodnotu ``1``
+    * parameter musí byť zadaný ako ``""`` (prázdny reťazec) ak :ref:`locationType <rL_locationType>` nadobúda hodnotu ``2``
+    * parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+.. _rL_addrBuildingNumber:
+
+**Parameter addrBuildingNumber**
+
+  Orientačné číslo.
+
+    * maximálna dĺžka reťazca je 20 znakov
+    * parameter je použitý pre polohu definovanú fyzickou adresou (:ref:`locationType <rL_locationType>` = ``1``),
+      nie je však povinný, môže byť preto zadaný ako ``""`` (prázdny reťazec)
+    * parameter musí byť zadaný ako ``""`` (prázdny reťazec) ak :ref:`locationType <rL_locationType>` nadobúda hodnotu ``2``
+    * parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+.. _rL_addrPropertyRegNumber:
+
+**Parameter addrPropertyRegNumber**
+
+  Súpisné číslo.
+
+    * maximálna dĺžka reťazca je 9 znakov
+    * parameter je použitý pre polohu definovanú fyzickou adresou (:ref:`locationType <rL_locationType>` = ``1``),
+      nie je však povinný, môže byť preto zadaný ako ``""`` (prázdny reťazec)
+    * Ak parameter nie je prázdny (jeho dĺžka je > ``0``), potom musí obsahovať len znaky číslic ``0`` až ``9``
+      a jeho výsledná číselná hodnota musí byť z rozsahu ``1`` až ``999999999``
+    * parameter musí byť zadaný ako ``""`` (prázdny reťazec) ak :ref:`locationType <rL_locationType>` nadobúda hodnotu ``2``
+    * parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+.. _rL_addrMunicipality:
+
+**Parameter addrMunicipality**
+
+  Názov obce. Obcou je územnosprávna jednotka charakterizovaná súvislým domovým osídlením a vlastným názvom. Obcou je aj mesto.
+
+    * maximálna dĺžka reťazca je 100 znakov
+    * parameter je použitý pre polohu definovanú fyzickou adresou (:ref:`locationType <rL_locationType>` = ``1``)
+    * parameter je povinný (jeho dĺžka musí byť > ``0``) ak :ref:`locationType <rL_locationType>` nadobúda hodnotu ``1``
+    * parameter musí byť zadaný ako ``""`` (prázdny reťazec) ak :ref:`locationType <rL_locationType>` nadobúda hodnotu ``2``
+    * parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+.. _rL_addrPostalCode:
+
+**Parameter addrPostalCode**
+
+  Poštové smerové číslo - kód, ktorý ustanovili poštové autority za účelom doručovania pošty.
+
+    * maximálna dĺžka reťazca je 5 znakov
+    * parameter je použitý pre polohu definovanú fyzickou adresou (:ref:`locationType <rL_locationType>` = ``1``),
+      nie je však povinný, môže byť preto zadaný ako ``""`` (prázdny reťazec)
+    * Ak parameter nie je prázdny (jeho dĺžka je > ``0``), potom musí obsahovať len znaky číslic a dĺžka reťazca musí byť
+      presne 5 znakov
+    * parameter musí byť zadaný ako ``""`` (prázdny reťazec) ak :ref:`locationType <rL_locationType>` nadobúda hodnotu ``2``
+    * parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+.. _rL_otherDescription:
+
+**Parameter otherDescription**
+
+  Iný spôsob definovania umiestnenia prenosnej pokladnice, na ktorej podnikateľ v danom čase prijíma tržbu.
+
+    * maximálna dĺžka reťazca je 255 znakov
+    * parameter je použitý pre iný spôsob definovania umiestnenia pokladnice (:ref:`locationType <rL_locationType>` = ``2``)
+    * parameter je povinný (jeho dĺžka musí byť > ``0``) ak :ref:`locationType <rL_locationType>` nadobúda hodnotu ``2``
+    * parameter musí byť zadaný ako ``""`` (prázdny reťazec) ak :ref:`locationType <rL_locationType>` nadobúda hodnotu ``1``
+    * parameter musí byť vždy zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    rL                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      =================================================================== =============================================================
+      Chyba                                                               Popis
+      =================================================================== =============================================================
+      :ref:`EFP_EMPTY_SERIAL_NUM <EFP_EMPTY_SERIAL_NUM>`                  Nie je zadané sériové číslo.
+      :ref:`EFP_NO_CERTIFICATE <EFP_NO_CERTIFICATE>`                      Nie je dostupný podpisový certifikát.
+      :ref:`EFP_INVALID_CERTIFICATE <EFP_INVALID_CERTIFICATE>`            Platnosť certifikátu vypršala, alebo certifikát ešte nezačal platiť.
+      :ref:`EFP_MISSING_IDENTITY_DATA <EFP_MISSING_IDENTITY_DATA>`        Chýbajúce identifikačné údaje podnikateľa.
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                                        Pre niektorý z parametrov bola poslaná neplatná hodnota,
+                                                                          alebo bol nastavený jeden z parametrov, ktorý pre daný typ
+                                                                          polohy alebo v danom stave nemôže byť nastavený.
+      :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`                    Príkaz je možné vykonať len pre prenosný typ pokladnice.
+                                                                          Typ pokladnice je možné zistiť prečítaním vlastnosti
+                                                                          :ref:`PortableCashRegister <PortableCashRegister>`
+                                                                          pomocou príkazu :ref:`getProperty <getProperty>`.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                            Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_CLOCK_ERROR <EFP_CLOCK_ERROR>`                            :term:`FP` detegoval chybu obvodu reálneho času.
+                                                                          Pozri :ref:`Overenie stavu registrácie <rL_OverenieStavuReg>`!
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`                      Nastala chyba komunikácie s :term:`ChDÚ`.
+                                                                          Pozri :ref:`Overenie stavu registrácie <rL_OverenieStavuReg>`!
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                                  :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+                                                                          Pozri :ref:`Overenie stavu registrácie <rL_OverenieStavuReg>`!
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`            Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      :ref:`EFP_ICM_JRN_DOC_UNFINISHED <EFP_ICM_JRN_DOC_UNFINISHED>`      Interná chyba :term:`ChDÚ` - dokument žurnálu nie je uzavretý.
+      :ref:`EFP_TAX_AUTH_REGIST_REJECTED <EFP_TAX_AUTH_REGIST_REJECTED>`  Požiadavka na registráciu dokladu alebo polohy bola zamietnutá
+                                                                          serverom daňovej správy. Registrácia polohy nebola úspešná.
+      :ref:`EFP_ICM_BLOCKED <EFP_ICM_BLOCKED>`                            :term:`ChDÚ` je zablokované, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_PSTORAGE_WRN_LIMIT1 <EFP_PSTORAGE_WRN_LIMIT1>`            :term:`ChDÚ` je zaplnené na viac ako 80%, je potrebné opakovať volanie príkazu.
+                                                                          Aktuálnu hodnotu zaplnenia :term:`ChDÚ` v % je možné zistiť prečítaním vlastnosti
+                                                                          :ref:`ProtectedStorageUsage <ProtectedStorageUsage>` pomocou príkazu :ref:`getProperty <getProperty>`.
+      :ref:`EFP_PSTORAGE_WRN_LIMIT2 <EFP_PSTORAGE_WRN_LIMIT2>`            :term:`ChDÚ` je takmer plné (zaplnené na viac ako 95%). Je potrebné opakovať volanie príkazu.
+                                                                          Aktuálnu hodnotu zaplnenia :term:`ChDÚ` v % je možné zistiť prečítaním vlastnosti
+                                                                          :ref:`ProtectedStorageUsage <ProtectedStorageUsage>` pomocou príkazu :ref:`getProperty <getProperty>`.
+      :ref:`EFP_ICM_CHANGED <EFP_ICM_CHANGED>`                            :term:`ChDÚ` je vymenené.
+      :ref:`EFP_PSTORAGE_FULL <EFP_PSTORAGE_FULL>`                        :term:`ChDÚ` je plné a je nutná jeho výmena, kontaktujte servis.
+      =================================================================== =============================================================
+
+.. _rL_OverenieStavuReg:
+
+  .. note::
+      **Overenie stavu registrácie polohy do systému eKasa**
+
+      Pre návratové hodnoty pri ktorých je v popise uvedený text "Pozri Overenie stavu registrácie!" je potrebné vykonať
+      príkaz :ref:`getLastRegisteredLocationInfo <getLastRegisteredLocationInfo>`, ktorého parameter
+      :ref:`taxAuthRegistStatus <gLRLI_taxAuthRegistStatus>` udáva stav registrácie a platí, že:
+
+        * ak parameter :ref:`taxAuthRegistStatus <gLRLI_taxAuthRegistStatus>` nadobúda hodnoty:
+
+            * :ref:`FP_TARS_REG_IN_PROGRESS <gLRLI_taxAuthRegistStatus>`
+            * :ref:`FP_TARS_UNKNOWN <gLRLI_taxAuthRegistStatus>`
+
+          potom bude potrebné pre dokončenie procesu znovu zavolať príkaz :ref:`registerLocation <registerLocation>`
+
+        * ak parameter :ref:`taxAuthRegistStatus <gLRLI_taxAuthRegistStatus>` nadobúda iné hodnoty, nie je
+          pre ukončenie registrácie polohy vykonať žiadnu ďalšiu činnosť
+
+      Iný spôsob ako zistiť nutnosť opakovať príkaz :ref:`registerLocation <registerLocation>` je následovný:
+
+        * ak príkaz :ref:`registerLocation <registerLocation>` skončí chybou
+        * je potrebné vykonať príkaz :ref:`resetPrinter <resetPrinter>`
+        * ak príkaz :ref:`resetPrinter <resetPrinter>` vráti chybu :ref:`EFP_LOCATION_REG_IN_PROGRESS <EFP_LOCATION_REG_IN_PROGRESS>`,
+          je nutné opakovať príkaz :ref:`registerLocation <registerLocation>`.
+
+  .. warning::
+    Pre opakované volanie príkazu :ref:`registerLocation <registerLocation>` je nutné, aby jeho všetky parametre
+    s výnimkou :ref:`locationType <rL_locationType>` boli poslané ako ``""`` (prázdne reťazce).
+    Parameter :ref:`locationType <rL_locationType>` môže byť v takomto prípade ľubovoľný.
+
+**Popis príkazu**:
+
+  Príkaz vykoná registráciu aktuálnej polohy :term:`FP` do systému :term:`eKasa`. Príkaz negeneruje tlačový výstup,
+  jeho jediným prejavom je odpoveď o výsledku operácie prostredníctvom komunikačného protokolu.
+
+  Príkaz je možné vykonať len pre prenosný typ pokladnice. Typ pokladnice je možné zistiť prečítaním vlastnosti :ref:`PortableCashRegister <PortableCashRegister>`
+  pomocou príkazu :ref:`getProperty <getProperty>`.
+
+  Príkaz je povolený len ak :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+
+  .. note::
+      * Tento príkaz je neprerušiteľný, čo znamená, že ak sa tento príkaz začne vykonávať, potom už musí byť dokončený.
+      * Pre ukončenie tohto príkazu je pre niektoré typy chýb potrebné postupovať podľa :ref:`postupu pre overenie stavu registrácie do systému eKasa <rL_OverenieStavuReg>`.
+
+.. toctree::
+    :maxdepth: 2

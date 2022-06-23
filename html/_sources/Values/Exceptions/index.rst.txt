@@ -1,0 +1,11 @@
+Návratové hodnoty
+-----------------
+
+.. toctree::
+    :maxdepth: 3
+
+    Categorisation
+    InvalidCommands
+    ResolvableErrors
+    InternalErrors
+    ExceptionValues

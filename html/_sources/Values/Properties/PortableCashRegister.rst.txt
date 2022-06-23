@@ -1,0 +1,28 @@
+_`PortableCashRegister`
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **PortableCashRegister**
+    typ                      BOOLEAN
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  * Ak je nastavené na ``TRUE``, potom :term:`FP` signalizuje, že registračná pokladnica je typu **prenosná**.
+  * Ak je nastavené na ``FALSE``, potom :term:`FP` signalizuje, že registračná pokladnica je typu **štandartná**.
+
+  .. note::
+    * typ pokladnice je získaný z identifikačných údajov nahraných do :term:`FP` cez web server
+    * v pokladnici typu **prenosná** je oproti pokladnici **štandartná** možné registrovať polohu predaja
+      pomocou príkazu :ref:`registerLocation <registerLocation>`.
+
+.. toctree::
+    :maxdepth: 3

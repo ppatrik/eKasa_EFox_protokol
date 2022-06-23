@@ -1,0 +1,20 @@
+Zaokrúhlenie platieb a výdavkov v hotovosti ``[_new_]``
+-------------------------------------------------------
+
+Na Slovensku od 1.7.2022 platí legislatívna úprava, ktorá predpisuje zaokrúhlenie
+platieb v hotovosti.
+
+Zaokrúhľuje sa až výsledná cena nákupu platená v hotovosti na 5 eurocentov.
+Celkový zvyšok nezaokrúhlenej ceny platenej v hotovosti, ktorý je nižší ako polovica
+hodnoty 5 eurocentov, sa zaokrúhľuje nadol a celkový zvyšok nezaokrúhlenej ceny
+platenej v hotovosti, ktorý je rovný alebo vyšší ako polovica hodnoty 5 eurocentov,
+sa zaokrúhľuje nahor. Cena platená v hotovosti vo výške 1 eurocent alebo 2 eurocenty
+sa zaokrúhľuje na 5 eurocentov.
+
+DPH sa však bude počítať z nezaokrúhlenej hodnoty, teda zaokrúhlenie platby v hotovosti
+nebude mať vplyv na výpočet dane.
+
+
+
+.. toctree::
+    :maxdepth: 2

@@ -1,0 +1,25 @@
+_`TrainingModeActive`
+^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **TrainingModeActive**
+    typ                      BOOLEAN
+    prednastavená hodnota    ``FALSE``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje aktuálny stav :term:`FP` týkajúci sa tréningového režimu. Tréningový režim umožňuje všetky operácie nákupu s tým rozdielom, že jeho tlačový výstup je označený textami, ktoré identifikujú tento režim. V tomto režime nedochádza k aktualizácii sumárnych hodnôt a počítadiel tlačených na doklade dennej uzávierky.
+
+  * Hodnota ``TRUE`` znamená, že :term:`FP` je v tréningovom režime.
+  * Hodnota ``FALSE`` znamená, že nie je :term:`FP` v tréningovom režime.
+
+.. toctree::
+    :maxdepth: 3

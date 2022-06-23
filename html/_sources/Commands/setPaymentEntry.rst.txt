@@ -1,0 +1,111 @@
+_`setPaymentEntry` ``[_new_]``
+------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   sPE                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`paymentID <sPE_paymentID>`                   **INT32**       identifikátor platby
+      Param2   :ref:`paymentName <sPE_paymentName>`               **STRING[30]**  názov platby
+      Param3   :ref:`paymentType <sPE_paymentType>`               **INT32**       typ platby
+      ======== ================================================== =============== ====================
+
+.. _sPE_paymentID:
+
+**Parameter paymentID**:
+
+  Identifikátor platby.
+
+    * Môže nadobúdať hodnoty z rozsahu <1, :ref:`NumPayments <NumPayments>`>.
+
+.. _sPE_paymentName:
+
+**Parameter paymentName**:
+
+  Názov platby.
+
+  .. note::
+    * Maximálna dĺžka parametra je 30 znakov, znaky nad tento limit budú ignorované.
+    * Môže nadobúdať aj hodnotu ``""`` (prázdny reťazec) v prípade, ak
+      :ref:`paymentType <sPE_paymentType>` = :ref:`FP_PEPT_UNUSED <FP_PEPT_UNUSED>`
+
+.. _sPE_paymentType:
+
+**Parameter paymentType**:
+
+  Typ platby.
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ======== =============================== ===============================================
+      Hodnota  Alias                           Popis
+      ======== =============================== ===============================================
+      ``1``    _`FP_PEPT_UNUSED`               platba nie je použitá
+      ``2``    _`FP_PEPT_OTHER`                iné
+      ``3``    _`FP_PEPT_CASH`                 hotovosť
+      ``4``    _`FP_PEPT_PAYMENT_CARD`         platobná karta
+      ``5``    _`FP_PEPT_CHECK`                šek
+      ======== =============================== ===============================================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    sPT                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ======================================================= =======================================
+      Chyba                                                   Popis
+      ======================================================= =======================================
+      | :ref:`E_ILLEGAL <E_ILLEGAL>`                          | Jeden z parametrov
+                                                              |   - :ref:`paymentType <sPE_paymentType>`
+                                                              |   - :ref:`paymentName <sPE_paymentName>` (v prípade, že :ref:`paymentType <sPE_paymentType>` != :ref:`FP_PEPT_UNUSED <FP_PEPT_UNUSED>` a :ref:`paymentName <sPE_paymentName>` = ``""`` (prázdny reťazec))
+                                                              | nie je z množiny dovolených hodnôt.
+      :ref:`EFP_BAD_PAYMENT <EFP_BAD_PAYMENT>`                Parameter :ref:`paymentID <sPE_paymentID>` nie je z množiny dovolených hodnôt.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+      ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz slúži na naprogramovanie platby do :term:`FP`. Platba je určená parametrom
+  :ref:`paymentID <sPE_paymentID>`, ktorý je možné použiť:
+
+    * v parametri :ref:`paymentID <pRT_paymentID>` príkazu :ref:`printRecTotal <printRecTotal>`
+    * v parametri :ref:`paymentID <pRTC_paymentID>` príkazu :ref:`printRecTotalChange <printRecTotalChange>`
+    * v parametri :ref:`paymentID <pRC_paymentID>` príkazu :ref:`printRecCash <printRecCash>`
+
+.. toctree::
+    :maxdepth: 2

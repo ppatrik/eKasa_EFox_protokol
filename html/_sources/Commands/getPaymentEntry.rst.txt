@@ -1,0 +1,89 @@
+_`getPaymentEntry` ``[_new_]``
+------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   gPE                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`paymentID <gPE_paymentID>`                   **INT32**       identifikátor platby
+      ======== ================================================== =============== ====================
+
+.. _gPE_paymentID:
+
+**Parameter paymentID**:
+
+  Identifikátor naprogramovanej platby.
+
+  Môže nadobúdať hodnoty v rozsahu :ref:`paymentID <gPE_paymentID>` = ``1`` až :ref:`NumPayments <NumPayments>`.
+
+.. _gPE_RSPformat:
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= ===================================================== =============== ====================
+      Pole      Hodnota                                               Dátový typ      Popis
+      ========= ===================================================== =============== ====================
+      Cmd ID    gPE                                                   \-              identifikátor príkazu
+      Req/Rsp   RSP                                                   \-              odpoveď
+      Exception *exceptionCode*                                       **INT32**       návratový kód
+      Param1    :ref:`paymentID <gPE_RSP_paymentID>`                  **INT32**       identifikátor platby
+      Param2    :ref:`paymentName <gPE_RSP_paymentName>`              **STRING[30]**  názov platby
+      Param3    :ref:`paymentType <gPE_RSP_paymentType>`              **INT32**       typ platby
+      ========= ===================================================== =============== ====================
+
+.. _gPE_RSP_paymentID:
+
+**Výstupný parameter paymentID**:
+
+  Identifikátor naprogramovanej platby je zhodný so vstupným parametrom :ref:`paymentID <gPE_paymentID>`.
+
+.. _gPE_RSP_paymentName:
+
+**Výstupný parameter paymentName**:
+
+  Názov naprogramovanej platby.
+
+.. _gPE_RSP_paymentType:
+
+**Výstupný parameter paymentType**:
+
+  Typ naprogramovanej platby.
+
+  Môže nadobúdať jednu z hodnôt uvedených v parametri :ref:`paymentType <sPE_paymentType>`
+  príkazu :ref:`setPaymentEntry <setPaymentEntry>`.
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ======================================================= =======================================
+      Chyba                                                   Popis
+      ======================================================= =======================================
+      :ref:`EFP_BAD_PAYMENT <EFP_BAD_PAYMENT>`                Parameter :ref:`paymentID <gPE_paymentID>` bol poslaný nesprávne.
+      ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz zabezpečí vrátenie údajov o naprogramovanej platbe.
+
+.. toctree::
+    :maxdepth: 2

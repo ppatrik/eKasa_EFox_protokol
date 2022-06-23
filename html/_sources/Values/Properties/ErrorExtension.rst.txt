@@ -1,0 +1,22 @@
+_`ErrorExtension`
+^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ErrorExtension**
+    typ                      INT32
+    prednastavená hodnota    ``0``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje interný kód aktuálnej chyby, ktorá bola zaznamenaná na :term:`FP`.
+
+.. toctree::
+    :maxdepth: 3

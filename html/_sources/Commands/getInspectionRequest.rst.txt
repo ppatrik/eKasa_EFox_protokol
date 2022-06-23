@@ -1,0 +1,156 @@
+_`getInspectionRequest`
+-----------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ======================================================== =============== ====================
+      Pole     Hodnota                                                  Dátový typ      Popis
+      ======== ======================================================== =============== ====================
+      Cmd ID   gIR                                                      \-              identifikátor príkazu
+      Req/Rsp  REQ                                                      \-              požiadavka
+      Param1   :ref:`inspectionRequestType <gIR_inspectionRequestType>` **INT32**       typ požiadavky na servisný zásah
+      ======== ======================================================== =============== ====================
+
+.. _gIR_inspectionRequestType:
+
+**Parameter inspectionRequestType**:
+
+  Udáva aký typ požiadavky na servisný zásah sa bude zisťovať.
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ============================= ===============================================
+      Hodnota   Alias                         Popis
+      ========= ============================= ===============================================
+      ``0``     _`FP_INSPRQ_FIRED`            akákoľvek nepotvrdená aktivovaná požiadavka s najvyššou prioritou
+      ``1``     _`FP_INSPRQ_BACK_BAT_LOW`     požiadavka na kontrolu záložnej batérie
+      ``2``     _`FP_INSPRQ_SCHEDULED`        požiadavka na vykonanie plánovanej údržby zariadenia
+      ========= ============================= ===============================================
+
+.. _gIR_RSPformat:
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= ======================================================= =============== ====================
+      Pole      Hodnota                                                 Dátový typ      Popis
+      ========= ======================================================= =============== ====================
+      Cmd ID    gHL                                                     \-              identifikátor príkazu
+      Req/Rsp   RSP                                                     \-              odpoveď
+      Exception *exceptionCode*                                         **INT32**       návratový kód
+      Param1    :ref:`inspectionRequestID <gIR_OutputParamDescription>` **INT32**       typ požiadavky na servisný zásah
+      Param2    :ref:`monitoredValue <gIR_OutputParamDescription>`      **VARIANT**     monitorovaná (zistená) hodnota pre daný typ požiadavky na servisný zásah, ktorá sa porovnáva s medznou hodnotou *limitValue*
+      Param3    :ref:`limitValue <gIR_OutputParamDescription>`          **VARIANT**     medzná hodnota, pri ktorej sa aktivuje daný typ požiadavky na servisný zásah (prekročenie hodnoty *limitValue* hodnotou *monitoredValue* aktivuje daný typ požiadavky)
+      Param4    :ref:`description <gIR_OutputParamDescription>`         **STRING**      popis daného typu požiadavky na servisný zásah
+      Param5    :ref:`message <gIR_OutputParamDescription>`             **STRING**      rozširujúci oznam podrobnejšie charakterizujúci túto požiadavku na servisný zásah
+      Param6    :ref:`isFired <gIR_OutputParamDescription>`             **BOOLEAN**     * ``TRUE`` - požiadavka aktívna
+                                                                                        * ``FALSE`` - požiadavka neaktívna
+      ========= ======================================================= =============== ====================
+
+.. _gIR_OutputParamDescription:
+
+**Popis výstupných parametrov**:
+
+  * Ak je v príkaze vstupný parameter :ref:`inspectionRequestType <gIR_inspectionRequestType>` = :ref:`FP_INSPRQ_FIRED <FP_INSPRQ_FIRED>`, tak výstupný parameter :ref:`inspectionRequestID <gIR_RSPformat>` hovorí o tom, aká požiadavka na servisný zásah je aktívna a môže nadobúdať tieto hodnoty:
+
+      .. value of {tableValueAliasNote} is defined in config.py
+      .. tabularcolumns:: {tableValueAliasNote}
+
+      .. table::
+          :class: longtable
+
+          ========= ============================= ===============================================
+          Hodnota   Alias                         Popis
+          ========= ============================= ===============================================
+          ``0``     _`FP_INSPRQ_NO_ACTIVE`        žiadna požiadavka nie je aktívna
+          ``1``     `FP_INSPRQ_BACK_BAT_LOW`_     požiadavka na kontrolu záložnej batérie
+          ``2``     `FP_INSPRQ_SCHEDULED`_        požiadavka na vykonanie plánovanej údržby zariadenia
+          ========= ============================= ===============================================
+
+  * Ak je vstupný parameter :ref:`inspectionRequestType <gIR_inspectionRequestType>` = `FP_INSPRQ_BACK_BAT_LOW`_, alebo `FP_INSPRQ_SCHEDULED`_ (teda je rôzny od :ref:`FP_INSPRQ_FIRED <FP_INSPRQ_FIRED>`), tak potom  vždy je výstupný parameter :ref:`inspectionRequestID <gIR_RSPformat>` = :ref:`inspectionRequestType <gIR_inspectionRequestType>` (v takomto prípade dochádza k zisťovaniu stavu konkrétneho typu požiadavky na servisný zásah) a zostávajúce výstupné parametre príkazu :ref:`getInspectionRequest <getInspectionRequest>` popisujú stav konkrétneho typu požiadavky na servisný zásah. Parameter :ref:`isFired <gIR_RSPformat>` je ``TRUE`` alebo ``FALSE``, vždy podľa toho, v akom stave je tento typ požiadavky na servisný zásah.
+
+  * Ak je výstupný parameter :ref:`inspectionRequestID <gIR_RSPformat>` = `FP_INSPRQ_BACK_BAT_LOW`_, potom parametre :ref:`monitoredValue <gIR_RSPformat>` a :ref:`limitValue <gIR_RSPformat>` sú typu **INT32** a obsahujú hodnotu počtu zostávajúcich dní.
+
+  * Ak je výstupný parameter :ref:`inspectionRequestID <gIR_RSPformat>` = `FP_INSPRQ_SCHEDULED`_, potom parametre :ref:`monitoredValue <gIR_RSPformat>` a :ref:`limitValue <gIR_RSPformat>` sú typu **DATETIME** a obsahujú hodnotu dátumu vo formáte :ref:`DDMMYYYYhhmm <DateTimeFormat>`.
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ================================================= =======================================
+      Chyba                                             Popis
+      ================================================= =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                      Parameter :ref:`inspectionRequestType <gIR_inspectionRequestType>` nie je z množiny dovolených hodnôt.
+      :ref:`EFP_OPERATION_ERROR <EFP_OPERATION_ERROR>`  Interná chyba. Pri vykonávaní príkazu nastala nešpecifikovaná chyba.
+      ================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz vráti informácie o špecifikovanej požiadavke na servisný zásah.
+
+    * Je možné zisťovať informáciu o konkrétnej požiadavke na servisný zásah
+
+        :ref:`inspectionRequestType <gIR_inspectionRequestType>` je rôzny od :ref:`FP_INSPRQ_FIRED <FP_INSPRQ_FIRED>`
+
+    * Je možné zisťovať informáciu o zatiaľ nepotvrdenej aktivovanej požiadavke na servisný zásah s najvyššou prioritou, ak taká existuje
+
+        :ref:`inspectionRequestType <gIR_inspectionRequestType>` = :ref:`FP_INSPRQ_FIRED <FP_INSPRQ_FIRED>`
+
+  V prípade súbežného vzniku viacerých aktivovaných nepotvrdených požiadaviek je priorita nasledovná:
+
+    * `FP_INSPRQ_BACK_BAT_LOW`_ – najvyššia
+    * `FP_INSPRQ_SCHEDULED`_ – najnižšia
+
+  a pre neobmedzenú prácu s :term:`FP` je potrebné postupne potvrdiť všetky aktivované požiadavky príkazom :ref:`affirmInspectionRequest <affirmInspectionRequest>`.
+
+  V parametroch odpovede príkazu sú poskytnuté informácie, ktoré aplikácia môže poskytnúť obsluhe pokladničného systému. V prípade, že hodnota výstupného parametra :ref:`isFired <gIR_RSPformat>` = ``TRUE``, potom požiadavka na servisný zásah daná výstupným parametrom :ref:`inspectionRequestID <gIR_RSPformat>` je aktivovaná a majiteľ :term:`FP`, by mal kontaktovať servisnú organizáciu s požiadavkou na daný servisný zásah (tento stav vzniká ak :ref:`monitoredValue <gIR_RSPformat>` prekročí :ref:`limitValue <gIR_RSPformat>`).
+
+  .. note::
+
+    * Ak je výstupný parameter :ref:`isFired <gIR_RSPformat>` = ``FALSE``, nedochádza k blokovaniu tlače nových dokladov a povinná údržba sa v danom čase nevyžaduje. Preto texty vo výstupných parametroch :ref:`description <gIR_RSPformat>` a :ref:`message <gIR_RSPformat>` nie je potrebné použiť pre komunikáciu s obsluhou aplikácie.
+
+    * Ak nastanú vo vnútri :term:`FP` také zmeny, ktoré by sa mali odraziť aj v zmene hodnôt výstupných parametrov :ref:`message <gIR_RSPformat>` a :ref:`isFired <gIR_RSPformat>` vracaných v odpovedi, potom tieto zmeny sa prejavia až po vypnutí a znovu zapnutí :term:`FP`.
+
+**Príklad**:
+
+  Nech nie je aktivovaná žiadna požiadavka na servisný zásah.
+
+  * V prípade zavolania príkazu s parametrom :ref:`inspectionRequestType <gIR_inspectionRequestType>` = :ref:`FP_INSPRQ_FIRED <FP_INSPRQ_FIRED>`, tento vráti nasledujúce hodnoty:
+
+      * :ref:`inspectionRequestID <gIR_RSPformat>` = :ref:`FP_INSPRQ_NO_ACTIVE <FP_INSPRQ_NO_ACTIVE>`
+      * ostatné parametre budú prázdne, alebo ich je možno ignorovať
+
+  * V prípade zavolania príkazu s parametrom napr. :ref:`inspectionRequestType <gIR_inspectionRequestType>` = `FP_INSPRQ_SCHEDULED`_, tento vráti nasledujúce hodnoty (hodnoty :ref:`limitValue <gIR_RSPformat>` a :ref:`monitoredValue <gIR_RSPformat>` sú pre tento príklad vymyslené):
+
+      * :ref:`inspectionRequestID <gIR_RSPformat>` = `FP_INSPRQ_SCHEDULED`_
+      * :ref:`limitValue <gIR_RSPformat>` = ``"25032010"``
+      * :ref:`monitoredValue <gIR_RSPformat>` = ``"01022010"``
+      * :ref:`description <gIR_RSPformat>` = ``"Fiškálna tlačiareň si vyžaduje plánovanú kontrolu"``
+      * :ref:`message <gIR_RSPformat>` = ``"Volajte servisnú organizáciu"``
+      * :ref:`isFired <gIR_RSPformat>` = ``FALSE``
+
+    Parameter :ref:`monitoredValue <gIR_RSPformat>` v tomto prípade obsahuje aktuálny dátum. Keďže je 1. februára a kontrola :term:`FP` bola naplánovaná až na deň po 25. marci, parameter :ref:`isFired <gIR_RSPformat>` = ``FALSE``, a teda v tomto prípade texty v parametroch :ref:`description <gIR_RSPformat>` a :ref:`message <gIR_RSPformat>` nie sú určené pre oznam obsluhe aplikácie, pretože požiadavka na servisný zásah zatiaľ nebola aktivovaná.
+
+.. toctree::
+    :maxdepth: 2

@@ -1,0 +1,61 @@
+Úvod k servisným oznamom
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Fiškálna tlačiareň informuje obsluhu pokladničného systému o požiadavke na servisný zásah
+v prípade, ak:
+
+1. bol zaznamenaný stav poklesu kapacity záložnej batérie pod hraničnú hodnotu,
+2. nastal čas, keď je majiteľ fiškálnej tlačiarne povinný požiadať servisnú organizáciu,
+   aby vykonala plánovanú údržbu zariadenia.
+
+(Podrobnosti pre jednotlivé servisné udalosti sú napísané na konci sekcie.)
+
+Ak dôjde k aktivovaniu aspoň jednej z požiadaviek na servisný zásah, obsluha (aplikácia) musí
+potvrdiť, že bola o tejto skutočnosti informovaná. Aplikácia toto potvrdenie realizuje zaslaním
+príkazu :ref:`affirmInspectionRequest <affirmInspectionRequest>`, ktorým uvedie fiškálnu tlačiareň
+do štandardného stavu bez obmedzenia vydávať doklady. V prípade nepotvrdenia spracovania
+servisného oznámenia môže byť činnosť fiškálnej tlačiarne obmedzená.
+
+Ak nastanú viaceré servisné udalosti súbežne, aplikácia musí potvrdiť každú z nich samostatne.
+
+Aplikácia by oznam mala zobraziť aj majiteľovi pokladnice, alebo obsluhe. Nevylučuje sa ale ani možnosť,
+že aplikácia priamo kontaktuje servisnú organizáciu a naplánuje servisnú prehliadku.
+
+Z pohľadu požiadavky na servisný zásah, existujú 3 ohraničené časové obdobia pre každý typ požiadavky
+na servisný zásah:
+
+1. požiadavka na servisný zásah nie je aktivovaná,
+2. požiadavka na servisný zásah sa aktivovala,
+3. uplynul čas určený na vyriešenie servisnej požiadavky.
+
+V prvom prípade nie je potrebné nič robiť. Všetko je v poriadku.
+
+V druhom prípade by o tejto skutočnosti mal byť informovaný majiteľ fiškálnej tlačiarne,
+alebo iná osoba zodpovedná za prevádzku, kde sa fiškálna tlačiareň používa. zároveň by
+majiteľ, resp. prevádzkar, mal potvrdiť že bol o požiadavke na servisnú kontrou informovaný.
+Pokiaľ sa nezrealizuje servisný zásah, je potrebné/vhodné, aby obsluha požiadavku na servisný
+zásah pravidelne potvrdzovala (vždy po zapnutí fiškálnej tlačiarne pred tlačou prvého dokladu).
+
+V treťom prípade, teda ak už uplynul čas na vykonanie servisného zásahu, môže nastať úplné
+zablokovanie tlače dokladov. To môže nastať len ak ide o kritický problém, napríklad
+ak je riziko straty dát pre vybitú záložnú batériu.
+
+**Pokles kapacity batérie**:
+
+    Aktivovanie požiadavky na tento typ servisného zásahu nastáva 30 dní pred úplným zablokovaním fiškálnej
+    tlačiarne z dôvodu potreby výmeny záložnej batérie.
+
+    Na vyriešenie problému je potrebné vykonať servisný zásah, aby bolo možné preveriť stavu záložnej batérie
+    a jej prípadnú výmenu.
+
+    Majiteľ fiškálnej tlačiarne má čas 30 dní (od výskytu hlásenia problému), na to, aby si zabezpečil
+    vykonanie servisného zásahu.
+
+**Nastal čas pre servisnú kontrolu**:
+
+    Aktivovanie požiadavky na tento typ servisného zásahu nastáva v deň dátumu, na ktorý servisná
+    organizácia naplánovala údržbu fiškálnej tlačiarne. Oznam o tejto požiadavke trvá až do skutočného
+    vykonania servisnej prehliadky.
+
+.. toctree::
+    :maxdepth: 3

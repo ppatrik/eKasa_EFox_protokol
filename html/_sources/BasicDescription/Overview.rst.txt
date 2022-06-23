@@ -1,0 +1,58 @@
+Prehľad
+=======
+
+:term:`Fiškálna tlačiareň` predstavuje zariadenie, ktoré ovláda :term:`Aplikácia`.
+Aplikácia a fiškálna tlačiareň spolu tvoria jeden logický celok registrujúci
+maloobchodný predaj. Fiškálna tlačiareň svojou výbavou umožňuje aplikácii
+naplniť zákonné požiadavky kladené na on-line registračné pokladnice.
+Ich spolupráca sa podrobuje pravidlám vyjadreným v komunikačnom protokole.
+Protokol definuje vnútorné usporiadanie vymieňaných správ,
+predpisuje správne postupnosti vysielania týchto
+správ a stanovuje účinky posielaných správ.
+
+.. figure:: ../Images/DeploymentSimpleView.png
+    :figclass: align-center
+
+    Spolupráca aplikácie a fiškálnej tlačiarne
+
+Fiškálna tlačiareň poskytuje pre aplikáciu funkcie registračnej pokladnice
+na registrovanie obratov vo svojej fiškálnej jednotke, súvisiace tlačenie
+dokladov a zobrazovanie obratov na zákazníckom displeji.
+
+.. figure:: ../Images/FiscalPrinterComponents.png
+    :figclass: align-center
+
+    Komponenty Fiškálnej tlačiarne
+
+Ako je znázornené na predchádzajúcom obrázku, fiškálna tlačiareň
+obsahuje sadu niekoľkých vnútorných zariadení resp. komponentov.
+
+Existencia nasledujúcich vymenovaných komponentov vyplýva z požiadaviek zákona:
+
+* :term:`Fiškálna jednotka`: jej úlohou je zabezpečovať výpočty, kumulovať hodnoty
+  v akumulátoroch a správa vnútornej pamäte.
+
+* Obvod reálneho času (:term:`RTC`), udržuje aktuálny dátum a čas vo fiškálnej
+  tlačiarni, pričom v rámci definovaných pravidiel je možné tento aktuálny
+  dátum a čas zmeniť.
+
+* Tlačiareň, tlačový mechanizmus prípadne tlačový stojan (Printer, Printer Stand),
+  je použitá na tlač dokladov, pričom nie je pre aplikáciu prístupná zvonku priamo
+  svojim rozhraním, ale len prostredníctvom príkazov fiškálnej tlačiarne.
+
+* Displej resp. zobrazovacie zariadenie (Display), slúži na zobrazovanie informácií
+  pre zákazníka počas účtovania, prípadne aj na iné účely (mimo účtovania).
+
+Fiškálna tlačiareň obsahuje z praktických dôvodov aj nasledujúce komponenty:
+
+* Konektor pre peňažnú zásuvku (Drawer), slúži na pripojenie a ovládanie peňažnej zásuvky.
+
+* Mini klávesnica (Keyboard), slúži prevažne na manipuláciu s fiškálnou tlačiarňou
+  v režime bez pripojenia k aplikácii, prípadne na manuálne potvrdzovanie hlásení (oznamov)
+  vyplývajúcich zo zákona priamo na fiškálnej tlačiarni.
+
+* Tónový indikátor resp. "pípak" (Tone Indicator), slúži na generovanie zvukových znamení
+  pre potreby aplikácie.
+
+.. toctree::
+    :maxdepth: 2

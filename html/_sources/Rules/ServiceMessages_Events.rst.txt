@@ -1,0 +1,36 @@
+Informovanie aplikácie o požiadavke na servisný zásah
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Aplikácia sa o výskyte servisnej udalosti môže dozvedieť dvomi spôsobmi.
+
+Prvý a odporúčaný spôsob je, že aplikácia (na začiatku dňa) aktívne zistí stav
+servisných požiadaviek. Na aktívne zistenie výskytu servisnej udalosti
+slúži príkaz :ref:`getInspectionRequest <getInspectionRequest>`.
+
+Ak nastala potreba servisnej kontroly, v odpovedi príkazu :ref:`getInspectionRequest <getInspectionRequest>`
+sú vrátené aj ďalšie doplňujúce informácie o danej požiadavke na servisný zásah.
+
+Je odporúčané, aby aplikácia vykonávala kontrolu aktívne, no nie je to nevyhnutné.
+
+V takomto prípade je pri prvom zavolaní príkazu **begin…** po zapnutí fiškálnej tlačiarne vráti
+tento príkaz chybový návratový kód :ref:`EFP_INSPECTION_REQUEST <EFP_INSPECTION_REQUEST>`.
+Týmto spôsobom informuje fiškálna tlačiareň aplikáciu, že je požadovaný servisný zásah.
+
+Aplikácia by si v tomto prípade mala následne zistiť (príkazom :ref:`getInspectionRequest <getInspectionRequest>`
+všetky aktivované požiadavky na servisný zásah.
+
+V oboch prípadoch by aplikácia mala informovať o výskyte servisných udalostí majiteľa,
+obsluhu pokladničného systému, alebo servisnú organizáciu.
+
+Po výskyte servisnej udalosti je potrebné (pre ďalšiu činnosť fiškálnej tlačiarne bez obmedzení)
+potrebné potvrdiť všetky aktivované požiadavky na servisný zásah príkazom
+:ref:`affirmInspectionRequest <affirmInspectionRequest>`. Po potvrdení výskytu servisných udalostí
+je zrušené obmedzenie tlače dokumentov až do najbližšieho vypnutia fiškálnej tlačiarne.
+
+Po každom ďalšom vypnutí a zapnutí bude fiškálna tlačiareň opätovne požadovať potvrdenie výskytu
+servisných udalostí, až kým nedôjde k servisnému zásahu. Po servisnom zásahu sa vyrieši dôvod
+servisnej udalosti a už nebude potrebné potvrdenie výskytu servisnej udalosti, až do výskytu
+novej požiadavky/nového dôvodu na servisný zásah.
+
+.. toctree::
+    :maxdepth: 3

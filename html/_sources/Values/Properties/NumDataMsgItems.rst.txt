@@ -1,0 +1,72 @@
+_`NumDataMsgItems`
+^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **NumDataMsgItems**
+    typ                      INT32
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje maximálnu hodnotu počtu položiek, ktoré môže obsahovať jedna dátová správa.
+  Dátová správa sa zostavuje z údajov vytlačených na doklade, ktorý začal príkazom
+  :ref:`beginFiscalReceipt <beginFiscalReceipt>` a registruje sa na serveri :term:`eKasa`
+  pri ukončení dokladu príkazom :ref:`endFiscalReceipt <endFiscalReceipt>`.
+
+  .. note::
+    Obmedzenie maximálneho počtu položiek dátovej správy vyplýva z technického riešenia
+    :term:`FP <FP>`.
+
+  Počet položiek dátovej správy sa v otvorenom doklade postupne navyšuje každou
+  zaregistrovanou položkou predaja, vrátenia, opravy, zľavy alebo prirážky.
+
+  .. warning::
+    Prekročenie maximálneho počtu položiek dátovej správy spôsobí chybu
+    :ref:`EFP_MAX_DTMSG_ITEMS_EXCEEDED <EFP_MAX_DTMSG_ITEMS_EXCEEDED>` a v predaji už ďalej
+    nie je možné pokračovať, je nutné zavolať príkaz :ref:`resetPrinter <resetPrinter>`.
+
+  Aby sa :term:`aplikácia <Aplikácia>` mohla vyhnúť problému s prekročením maximálneho počtu položiek dátovej
+  správy v nákupe, musí počítať koľko položiek dátovej správy bude volaním príkazov :term:`FP <FP>` použitých pre vystavenie
+  konkrétneho pokladničného dokladu.
+
+    * Príkazy, ktoré spôsobia navýšenie počtu položiek dátovej správy o ``1`` sú:
+
+        * :ref:`printRecItem <printRecItem>`
+        * :ref:`printRecItemRefund <printRecItemRefund>`
+        * :ref:`printRecItemCorrection <printRecItemCorrection>`
+        * :ref:`printRecItemRefundCorrection <printRecItemRefundCorrection>`
+        * :ref:`printRecItemAdjustment <printRecItemAdjustment>`
+
+    * Príkazy, ktoré spôsobia navýšenie počtu položiek dátovej správy o \<``1``, :ref:`NumVatRates <NumVatRates>`\> sú:
+
+        * :ref:`printRecPackageAdjustment <printRecPackageAdjustment>`
+
+      Tieto príkazy, aplikujú zľavu/prirážku na skupinu
+      položiek, pričom modifikácia hodnoty v každej daňovej skupine spôsobí navýšenie
+      počtu položiek dátovej správy o ``1``.
+
+      To znamená, že počet položiek, o ktorý sa navýši celkový počet položiek dátovej
+      správy závisí od počtu daňových skupín, na ktoré sa aplikuje nenulová zľava alebo
+      prirážka (uvedené v parametri **vatAdjustment** príkazu) v čase zavolania jedného
+      z týchto príkazov.
+
+      **Príklad**:
+
+        V aktuálnom doklade sú zaregistrované dve položky:
+
+          * jedna položka patrí do daňovej skupiny ``1``
+          * druhá položka patrí do daňovej skupiny ``2``
+
+        a po aplikovaní príkazu, ktorý v parametri **vatAdjustment** obsahuje nenulovú modifikáciu hodnoty pre
+        daňové skupiny ``1`` a ``2`` bude k celkovému počtu položiek dátovej správy pripočítaná hodnota ``2``.
+
+.. toctree::
+    :maxdepth: 3

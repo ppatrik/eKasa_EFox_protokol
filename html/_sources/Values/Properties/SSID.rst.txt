@@ -1,0 +1,26 @@
+_`SSID` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **SSID**
+    typ                      STRING
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje identifikátor (názov) zvolenej WiFi siete.
+
+.. note::
+   Ak nie je možné túto informáciu získať, alebo nie je v zariadení nastavená
+   žiadna WiFi sieť, bude obsahovať prázdny reťazec.
+
+.. toctree::
+    :maxdepth: 3

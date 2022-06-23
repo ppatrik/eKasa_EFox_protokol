@@ -1,0 +1,43 @@
+Formátovanie textového výstupu
+==============================
+
+Formu tlačový výstup fiškálnych dokumentov a niektorých nefiškálnych
+dokumentov je možné meniť, resp. upraviť podľa určených pravidiel.
+
+Jedinú výnimku tvorí finančná uzávierka (vrátane prehľadovej).
+Pre tento výpis nie je možné upraviť formát tlačenej podoby.
+
+**Formátovanie nefiškálnych dokladov**:
+
+  Pri tlači nefiškálnej účtenky je jediné obmedzenie pre aplikáciu
+  a to je počet vytlačených znakov na riadok, ako aj použitie neproporcionálneho
+  písma pre tlač (to je ale pre tlač špecifických výstupov skôr výhodné, ako obmedzenie).
+
+  Formátovať riadky nefiškálnej účtenky možno v nasledujúcich úrovniach:
+
+  * nastavením fontu riadku a jeho atribútov príkazom :ref:`setFontAttribute <setFontAttribute>`
+    s parametrom :ref:`group <sFA_group>` = :ref:`FP_FAG_NONFISCAL_LINE <FP_FAG_NONFISCAL_LINE>`,
+    kde parameter :ref:`fontAttribute <sFA_fontAttribute>` bude obsahovať hodnotu požadovaného
+    fontu a jeho atribútov,
+
+  * obsahom riadku, kde vhodným usporiadaním znakov a medzier je možné vytvárať stĺpce prípadne iné útvary.
+
+**Formátovanie fiškálneho dokumentu**:
+
+  Tlači fiškálnej účtenky podlieha prísnejším pravidlám. Aplikácia nemá také bohaté možnosti
+  formátovania, pretože obsah tejto účtenky musí zobrazovať skutočné finančné operácie,
+  za ktorých správnosť zodpovedá fiškálna tlačiareň.
+
+  Formátovať riadky fiškálnej účtenky možno v nasledujúcich úrovniach:
+
+  * nastavením formátu zvolenej skupiny riadkov príkazom :ref:`setFontAttribute <setFontAttribute>`
+    s parametrom :ref:`group <sFA_group>`, ktorý zodpovedá niektorej skupine riadkov z obsahu fiškálnej
+    účtenky, pričom parameter :ref:`fontAttribute <sFA_fontAttribute>` bude obsahovať hodnotu požadovaného,
+    fontu a jeho atribútov
+
+  * nastavením jedného z formátovacích profilov pomocou :ref:`FormatProfile <FormatProfile>`.
+
+  Formáty tlače finančných dokladov sú popísané v :doc:`ReceiptFormatProfiles`
+
+.. toctree::
+    :maxdepth: 2

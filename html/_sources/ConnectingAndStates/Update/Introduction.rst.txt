@@ -1,0 +1,56 @@
+Úvod k aktualizácii firmvéru ``[_new_]``
+----------------------------------------
+
+:term:`FP` podporuje :term:`OTA` aktualizáciu firmvéru prostredníctvom
+aktualizačného balíčka.
+
+Existencia aktualizačného balíčka je zisťovaná na internete v pravidelných intervaloch.
+K jeho stiahnutiu dochádza počas procesu aktualizácie firmvéru.
+Aktualizačný balíček je však možné nahrať do :term:`FP` aj manuálne cez vstavaný web
+server v záložke "Aktualizácia systému".
+
+Zariadenie fiškálnej tlačiarne interne pozostáva z dvoch zariadení:
+
+* :term:`FP` a
+* :term:`ChDÚ`.
+
+Preto aj aktualizačný balíček obsahuje dva súbory so softvérom,
+jeden pre :term:`FP` a druhý pre :term:`ChDÚ`, pričom aktualizácia
+softvéru môže byť dostupná len pre jedno z týchto zariadení.
+
+.. _updateIntro_ServerUpdate:
+
+**Aktualizácia firmvéru z internetu**
+
+    Ak je dostupná aktualizácia na internete, aplikácia musí potvrdiť,
+    že bola o tejto skutočnosti informovaná, alebo vykonať aktualizáciu.
+    Aplikácia toto potvrdenie realizuje zaslaním príkazu
+    :ref:`deferFirmwareUpdateRequest <deferFirmwareUpdateRequest>`, ktorým uvedie :term:`FP`
+    do štandardného stavu (teda bez obmedzenia vydávať doklady). Parametrom
+    :ref:`deferTime <dFUR_deferTime>` je možné aktualizáciu, ako aj informáciu o jej dostupnosti,
+    odložiť na stanovený čas. Po uplynutí stanoveného času bude zase aplikácia
+    informovaná o dostupnosti aktualizácie, až do jej vykonania, alebo ďalšieho odloženia.
+
+    .. warning::
+        Ak aplikácia nepotvrdí oznámenie o dostupnosti aktualizácie, môže byť činnosť
+        :term:`FP` obmedzená.
+
+.. _updateIntro_LocalUpdate:
+
+**Aktualizácia firmvéru manuálne nahratým balíčkom**
+
+    Aktualizačný balíček manuálne nahratý cez vstavaný web server nie je možné odložiť
+    príkazom :ref:`deferFirmwareUpdateRequest <deferFirmwareUpdateRequest>`.
+    Je možné len vykonať aktualizáciu alebo tento aktualizačný balíček vymazať
+    cez vstavaný web server v záložke „Aktualizácia systému“.
+
+    .. warning::
+        Do vykonania aktualizácie alebo zmazania aktualizačného balíčka bude činnosť
+        :term:`FP` obmedzená.
+
+    .. note::
+        Aktualizácia firmvéru manuálne nahratým balíčkom sa vykonáva len v špecifických
+        prípadoch a zvyknú ju vykonávať servisní technici.
+
+.. toctree::
+    :maxdepth: 3

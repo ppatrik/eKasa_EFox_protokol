@@ -1,0 +1,100 @@
+_`setProperty` ``[_new_]``
+--------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== ================= ====================
+      Pole     Hodnota                                            Dátový typ        Popis
+      ======== ================================================== ================= ====================
+      Cmd ID   sP                                                 \-                identifikátor príkazu
+      Req/Rsp  REQ                                                \-                požiadavka
+      Param1   :ref:`propertyID <sP_propertyID>`                  **INT32**         identifikátor vlastnosti
+      Param2   :ref:`data <sPI_data>`                             **VARIANT**       hodnota vlastnosti
+      ======== ================================================== ================= ====================
+
+.. _sP_propertyID:
+
+**Parameter propertyID**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueNote} is defined in config.py
+  .. tabularcolumns:: {tableValueNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ================================
+      Hodnota   Názov property
+      ========= ================================
+      ``6``     :ref:`VatIncluded <VatIncluded>`
+      ``21``    :ref:`ChangeDue <ChangeDue>`
+      ``22``    :ref:`FormatProfile <FormatProfile>`
+      ``23``    :ref:`CurrSymbol <CurrSymbol>`
+      ``24``    :ref:`CurrSymbolPosition <CurrSymbolPosition>`
+      ``28``    :ref:`HeaderBitmap <HeaderBitmap>`
+      ``29``    :ref:`TrailerBitmap <TrailerBitmap>`
+      ``34``    :ref:`VatSummaryPrinting <VatSummaryPrinting>`
+      ``37``    :ref:`ChangeType <ChangeType>`
+      ``38``    :ref:`TransactionIDPrinting <TransactionIDPrinting>`
+      ``71``    :ref:`AutomaticDrawerOpening <AutomaticDrawerOpening>`
+      ========= ================================
+
+.. _sPI_data:
+
+**Parameter data**:
+
+  Hodnota, ktorá má byť nastavená. Pre každú vlastnosť je iný typ a rozsah.
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    sP                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ===================================================== =======================================
+      Chyba                                                 Popis
+      ===================================================== =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                          Parameter :ref:`propertyID <sP_propertyID>` nie je z množiny dovolených hodnôt.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`    Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`    Tlačiareň je odpojená.
+      ===================================================== =======================================
+
+**Popis príkazu**:
+
+  Nastaví vlastnosť (property) na požadovanú hodnotu, ak je to možné.
+
+  Obmedzenia nastavenia property sú dané pri popisoch samotných vlastností.
+
+  .. note::
+    Najčastejšie príčina chýb je pokus o nastavenie vlastnosti, ktorá je len na čítanie,
+    alebo pokusom o nastavenie v nevhodnom okamihu (napr. počas otvoreného dňa nie je možné
+    meniť :ref:`CurrSymbol <CurrSymbol>` a je potrebné :ref:`vykonať uzávierku <printZReport>`).
+
+.. toctree::
+    :maxdepth: 2
+

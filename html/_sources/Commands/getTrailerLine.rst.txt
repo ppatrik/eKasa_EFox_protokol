@@ -1,0 +1,65 @@
+_`getTrailerLine`
+-----------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   gTL                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`lineNumber <gTL_lineNumber>`                 **INT32**       poradové číslo požadovaného riadku pätičky fiškálneho dokladu v rozsahu <``1``, :ref:`NumTrailerLines <NumTrailerLines>`>
+      ======== ================================================== =============== ====================
+
+.. _gTL_lineNumber:
+
+**Parameter lineNumber**:
+
+  Poradové číslo požadovaného riadku pätičky fiškálneho dokladu.
+
+  Môže nadobúdať hodnoty v rozsahu <``1``, :ref:`NumTrailerLines <NumTrailerLines>`>.
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    gTL                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      Param1    *lineNumber*        **INT32**      poradové číslo požadovaného riadku pätičky fiškálneho dokladu
+      Param2    *lineText*          **STRING**     text požadovaného riadku pätičky
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ================================= =======================================
+      Chyba                             Popis
+      ================================= =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`      Parameter :ref:`lineNumber <gTL_lineNumber>` nie je z množiny dovolených hodnôt.
+      ================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz vráti požadovaný riadok pätičky, ktorý je možné nastaviť príkazom :ref:`setTrailerLines <setTrailerLines>`.
+
+.. toctree::
+    :maxdepth: 2

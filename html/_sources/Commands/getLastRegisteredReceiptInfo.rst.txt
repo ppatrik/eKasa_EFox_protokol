@@ -1,0 +1,187 @@
+_`getLastRegisteredReceiptInfo`
+-------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ==================================================== =============== =======================================
+      Pole     Hodnota                                              Dátový typ      Popis
+      ======== ==================================================== =============== =======================================
+      Cmd ID   gLRRI                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                  \-              požiadavka
+      ======== ==================================================== =============== =======================================
+
+  **Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= ======================================================= =============== ======================================
+      Pole      Hodnota                                                 Dátový typ      Popis
+      ========= ======================================================= =============== ======================================
+      Cmd ID    gLRRI                                                   \-              identifikátor príkazu
+      Req/Rsp   RSP                                                     \-              odpoveď
+      Exception *exceptionCode*                                         **INT32**       návratový kód
+      Param1    :ref:`rcptCreateDateTime <gLRRI_rcptCreateDateTime>`    **DATETIME**    Dátum a čas vytvorenie dokladu
+      Param2    :ref:`rcptMonthlyNumber <gLRRI_rcptMonthlyNumber>`      **INT32**       Poradové číslo dokladu vrámci mesiaca
+      Param3    :ref:`taxAuthRegistStatus <gLRRI_taxAuthRegistStatus>`  **INT32**       stav registrácie dokladu na daňovom
+                                                                                        serveri :term:`eKasa`
+      Param4    :ref:`UID <gLRRI_UID>`                                  **STRING**      hodnota :term:`UID` získaná z
+                                                                                        :term:`eKasa` počas registrácie dokladu
+      Param5    :ref:`OKP <gLRRI_OKP>`                                  **STRING**      hodnota :term:`OKP` vypočítaná počas
+                                                                                        registrácie dokladu
+      Param6    :ref:`PKP <gLRRI_PKP>`                                  **STRING**      hodnota :term:`PKP` vypočítaná počas
+                                                                                        registrácie dokladu
+      Param7    :ref:`eKasaErrorCode <gLRRI_eKasaErrorCode>`            **INT32**       číselný kód chyby zo servera
+                                                                                        :term:`eKasa`
+      Param8    :ref:`eKasaErrorText <gLRRI_eKasaErrorText>`            **STRING**      popisný text chyby zo servera
+                                                                                        :term:`eKasa`
+      ========= ======================================================= =============== ======================================
+
+.. _gLRRI_rcptCreateDateTime:
+
+**Parameter rcptCreateDateTime**
+
+  Dátum a čas vytvorenie dokladu v :term:`FP`. Tento dátum a čas sa použil počas registrácie dokladu na serveri
+  :term:`eKasa`. Dátum a čas je vrátený vo formáte :ref:`DDMMYYYYhhmmss <DateTimeFormat>`.
+
+  .. warning::
+    * V prípade ak stav registrácie :ref:`taxAuthRegistStatus <gLRRI_taxAuthRegistStatus>` = `FP_TARS_REG_NOT_STARTED`_)
+      je tento parameter prázdny ``""``.
+
+.. _gLRRI_rcptMonthlyNumber:
+
+**Parameter rcptMonthlyNumber**
+
+  Poradové číslo dokladu v rámci mesiaca.
+
+  .. warning::
+    * V prípade ak stav registrácie :ref:`taxAuthRegistStatus <gLRRI_taxAuthRegistStatus>` = `FP_TARS_REG_NOT_STARTED`_)
+      nadobúda tento parameter hodnotu ``0``.
+
+.. _gLRRI_taxAuthRegistStatus:
+
+**Parameter taxAuthRegistStatus**
+
+  Stav registrácie v systéme :term:`eKasa`, ktorý môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= =========================== ===============================================================================
+      Hodnota   Alias                       Popis
+      ========= =========================== ===============================================================================
+      ``1``     _`FP_TARS_REGISTERED`       Doklad bol úspešne zaregistrovaný do systému :term:`eKasa`
+      ``2``     _`FP_TARS_REG_NOT_STARTED`  Registrácia dokladu v systéme :term:`eKasa` nebola začatá.
+      ``3``     _`FP_TARS_REG_IN_PROGRESS`  Process registrácie dokladu v systéme :term:`eKasa` alebo tlač údajov z tejto
+                                            registrácie nebola dokončená
+      ``4``     _`FP_TARS_SUSP_OFFLINE`     Doklad bol odpamätaný v :term:`ChDÚ` a do :term:`eKasa` bude zaregistrovaný
+                                            dodatočne. Dôvod odloženia - :term:`FP` nie je pripojený do internetu
+      ``5``     _`FP_TARS_SUSP_NO_ACCESS`   Doklad bol odpamätaný v :term:`ChDÚ` a do :term:`eKasa` bude zaregistrovaný
+                                            dodatočne. Dôvod odloženia - komunikácia so serverom eKasa zlyhala
+      ``6``     _`FP_TARS_SUSP_TIMEOUT`     Doklad bol odpamätaný v :term:`ChDÚ` a do :term:`eKasa` bude zaregistrovaný
+                                            dodatočne. Dôvod odloženia - počas komunikácie bola prekročená medzná doba
+                                            odozvy
+      ``7``     _`FP_TARS_REJECTED`         Doklad bol zamietnutý serverom :term:`eKasa`, dôvod zamietnutia je uvedený
+                                            v parametroch :ref:`eKasaErrorCode <gLRRI_eKasaErrorCode>`
+                                            a :ref:`eKasaErrorText <gLRRI_eKasaErrorText>`
+      ``8``     _`FP_TARS_UNKNOWN`          Stav registrácie dokladu na serveri :term:`eKasa` nie je známy kvôli chybe
+                                            komunikácie s :term:`ChDÚ`, pre zistenie stavu registrácie a dokončenie celého
+                                            procesu je nutné zavolať príkaz :ref:`endFiscalReceipt <endFiscalReceipt>`
+                                            znova
+      ``9``     _`FP_TARS_INTERNAL_ERROR`   Počas komunikácie s :term:`ChDÚ` došlo k neočakávanej chybe, doklad je nutné
+                                            zrušiť volaním príkazu :ref:`resetPrinter <resetPrinter>`
+      ========= =========================== ===============================================================================
+
+.. _gLRRI_UID:
+
+**Parameter UID**
+
+  Parameter predstavuje unikátny identifikátor pridelený dokladu po úspešnom zaevidovaní dokladu v systéme
+  :term:`eKasa`. Parameter je reprezentovaný reťazcom dlhým 34 znakov.
+
+  .. warning::
+    * Parameter je vyplnený len v prípade ak došlo k úspešnej registrácii dokladu
+      (:ref:`taxAuthRegistStatus <gLRRI_taxAuthRegistStatus>` = `FP_TARS_REGISTERED`_), inak
+      je prázdny ``""``.
+
+.. _gLRRI_OKP:
+
+**Parameter OKP**
+
+  Parameter predstavuje overovací kód podnikateľa vygenerovaný vo :term:`FP` v čase vytvorenia dokladu. Parameter
+  je reprezentovaný reťazcom dlhým 44 znakov.
+
+  .. warning::
+    * Parameter je vyplnený v prípadoch ak :ref:`taxAuthRegistStatus <gLRRI_taxAuthRegistStatus>` nadobúda jednu z hodnôt:
+      `FP_TARS_REGISTERED`_, `FP_TARS_SUSP_OFFLINE`_, `FP_TARS_SUSP_NO_ACCESS`_, `FP_TARS_SUSP_TIMEOUT`_,
+      `FP_TARS_REJECTED`_, `FP_TARS_UNKNOWN`_ a `FP_TARS_INTERNAL_ERROR`_.
+      V ostatných prípadoch je parameter prázdny ``""``.
+
+.. _gLRRI_PKP:
+
+**Parameter PKP**
+
+  Parameter predstavuje podpisový kód podnikateľa vygenerovaný vo :term:`FP` v čase vytvorenia dokladu.
+  Ide o elektronický podpis vybraných údajov uvedených na doklade. Parameter je reprezentovaný reťazcom dlhým 344
+  znakov.
+
+  .. warning::
+    * Parameter je vyplnený v prípadoch ak :ref:`taxAuthRegistStatus <gLRRI_taxAuthRegistStatus>` nadobúda jednu z hodnôt:
+      `FP_TARS_REGISTERED`_, `FP_TARS_SUSP_OFFLINE`_, `FP_TARS_SUSP_NO_ACCESS`_, `FP_TARS_SUSP_TIMEOUT`_,
+      `FP_TARS_REJECTED`_, `FP_TARS_UNKNOWN`_ a `FP_TARS_INTERNAL_ERROR`_.
+      V ostatných prípadoch je parameter prázdny ``""``.
+
+.. _gLRRI_eKasaErrorCode:
+
+**Parameter eKasaErrorCode**
+
+  Parameter predstavuje číselný kód chyby prijatý zo servera v odpovedi typu "chyba" počas registrácie dokladu.
+
+  .. warning::
+    * Parameter má význam len ak server :term:`eKasa` zamietol požiadavku o registráciu dokladu
+      (:ref:`taxAuthRegistStatus <gLRRI_taxAuthRegistStatus>` = `FP_TARS_REJECTED`_).
+      V ostatných prípadoch je parameter vždy rovný hodnote ``0``.
+
+.. _gLRRI_eKasaErrorText:
+
+**Parameter eKasaErrorText**
+
+  Parameter predstavuje textový popis chyby prijatý zo servera v odpovedi typu "chyba" počas registrácie dokladu.
+
+  .. warning::
+    * Parameter je vyplnený len ak server :term:`eKasa` zamietol požiadavku o registráciu dokladu
+      (:ref:`taxAuthRegistStatus <gLRRI_taxAuthRegistStatus>` = `FP_TARS_REJECTED`_).
+      V ostatných prípadoch je parameter vždy prázdny ``""``.
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      =================================================================== =============================================================
+      Chyba                                                               Popis
+      =================================================================== =============================================================
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                            Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      =================================================================== =============================================================
+
+**Popis príkazu**:
+
+  Príkaz vráti informácie a stav registrácie posledného dokladu
+
+.. toctree::
+    :maxdepth: 2

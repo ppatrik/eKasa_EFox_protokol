@@ -1,0 +1,24 @@
+_`BuildDateTime`
+^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **BuildDateTime**
+    typ                      DATETIME
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Dátum a čas buildu vo formáte :ref:`YYYYMMDD hhmmss <DateTimeFormat>`
+
+  Ako oddeľovač medzi dátumom a časom je medzera.
+
+.. toctree::
+    :maxdepth: 3

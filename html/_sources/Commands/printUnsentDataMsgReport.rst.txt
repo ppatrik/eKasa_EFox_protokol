@@ -1,0 +1,150 @@
+_`printUnsentDataMsgReport` ``[_new_]``
+---------------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   pUDMR                                              \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`intervalType <pUDMR_intervalType>`           **INT32**       typ ohraničenia intervalu
+      Param2   :ref:`printoutType <pUDMR_printoutType>`           **INT32**       typ tlačového výstupu
+      Param3   :ref:`startInterval <pUDMR_startInterval>`         **VARIANT**     začiatok intervalu z ktorého bude tlačený výpis
+      Param4   :ref:`endInterval <pUDMR_endInterval>`             **VARIANT**     koniec intervalu z ktorého bude tlačený výpis
+      ======== ================================================== =============== ====================
+
+.. _pUDMR_intervalType:
+
+**Parameter intervalType**:
+
+  Typ ohraničenia intervalu môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ============================= ===============================================
+      Hodnota   Alias                         Popis
+      ========= ============================= ===============================================
+      ``1``     _`FP_IT_PURR_DATE`            parametre :ref:`startInterval <pUDMR_startInterval>`, :ref:`endInterval <pUDMR_endInterval>` budú obsahovať dátum
+      ========= ============================= ===============================================
+
+.. _pUDMR_printoutType:
+
+**Parameter printoutType**:
+
+  Typ tlačového výstupu môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ============================= ===============================================
+      Hodnota   Alias                         Popis
+      ========= ============================= ===============================================
+      ``1``     _`FP_PT_PURR_DETAILED`        tlačový výstup obsahujúci celý obsah neodoslaných dokladov
+      ========= ============================= ===============================================
+
+.. _pUDMR_startInterval:
+
+**Parameter startInterval**:
+
+  Začiatok intervalu z ktorého bude tlačený výpis a môže nadobúdať jednu z nasledujúcich hodnôt:
+
+    * Ak :ref:`intervalType <pUDMR_intervalType>` = `FP_IT_PURR_DATE`_, potom parameter :ref:`startInterval <pUDMR_startInterval>` je typu **DATETIME** a udáva dátum a čas začiatku intervalu vo formáte :ref:`DDMMYYYYhhmm <DateTimeFormat>` (hodnota sekúnd bude nastavená na ``0``).
+
+.. _pUDMR_endInterval:
+
+**Parameter endInterval**:
+
+  Koniec intervalu z ktorého bude tlačený výpis a môže nadobúdať jednu z nasledujúcich hodnôt:
+
+    * Ak :ref:`intervalType <pUDMR_intervalType>` = `FP_IT_PURR_DATE`_, potom parameter :ref:`endInterval <pUDMR_endInterval>` je typu **DATETIME** a udáva dátum a čas konca intervalu vo formáte :ref:`DDMMYYYYhhmm <DateTimeFormat>` (hodnota sekúnd bude nastavená na ``0``).
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    pUDMR                \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ========================================================= =======================================
+      Chyba                                                     Popis
+      ========================================================= =======================================
+      | :ref:`E_ILLEGAL <E_ILLEGAL>`                            | Jeden z parametrov
+                                                                |   - :ref:`intervalType <pUDMR_intervalType>`
+                                                                |   - :ref:`printoutType <pUDMR_printoutType>`
+                                                                | nie je z množiny dovolených hodnôt, alebo
+                                                                | parametre
+                                                                |   - :ref:`startInterval <pUDMR_startInterval>`
+                                                                |   - :ref:`endInterval <pUDMR_endInterval>`
+                                                                | sú nesprávne.
+      :ref:`EFP_BAD_DATE <EFP_BAD_DATE>`                        Parameter dátumu bol poslaný v nesprávnom formáte.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                  Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu, alebo je :term:`FP` v tréningovom režime.
+      :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                      V tlačiarni chýba papier.
+      :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                    Kryt tlačiarne je otvorený.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`        Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`        Tlačiareň je odpojená.
+      :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`    Pri práci s tlačiarňou vznikla interná chyba.
+      :ref:`EFP_CUTTER <EFP_CUTTER>`                            Strihač papiera je v zlom stave.
+      :ref:`EFP_CUTTER_WARNING <EFP_CUTTER_WARNING>`            Strihač papiera je v zlom stave, ale doklad bol kompletne vytlačený.
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`            Nastala chyba komunikácie s :term:`ChDÚ`.
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                        :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`  Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      ========================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz slúži na spustenie tlače neodoslaných dátových správ nachádzajúcich sa v zadanom intervale. Neodoslané dátové správy prislúchajú pokladničným dokladom, ktoré neboli odoslané na server finančnej správy.
+
+    * Vykonanie príkazu znamená, že táto uzávierka bola úspešne začatá a vykonáva sa na pozadí (:term:`FP` prejde zo stavu :ref:`FP_PS_MONITOR <FP_PS_MONITOR>` do stavu :ref:`FP_PS_REPORT <FP_PS_REPORT>`).
+    * Priebeh vykonávania tejto uzávierky môže aplikácia zisťovať príkazom :ref:`obtainProgress <obtainProgress>`, ktorého odpoveďou je v prípade bezchybného priebehu aj informácia o tom, koľko percent z oprácie je už realizované.
+
+      * Ak nie je známy počet neodoslaných dátových správ ktoré sa budú tlačiť, tak príkaz :ref:`obtainProgress <obtainProgress>` bude udávať priebeh realizácie len v dvoch hodnotách:
+
+        * ``1%`` - tlač neodoslaných dátových správ začala a prebieha
+        * ``100%`` - tlač neodoslaných dátových správ skončila
+
+      * Ak je známy počet neodoslaných dátových správ ktoré sa budú tlačiť, tak príkaz :ref:`obtainProgress <obtainProgress>` bude udávať priebeh realizácie v celom itervale .
+
+    * Po ukončení tlače uzávierky neodoslaných dátových správ prejde :term:`FP` automaticky zo stavu :ref:`FP_PS_REPORT <FP_PS_REPORT>` do stavu :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+    * Tlač uzávierky neodoslaných dátových správ je možné zrušiť príkazom :ref:`cancelRest <cancelRest>`, čím dôjde k prerušeniu tlače a následne :term:`FP` prejde zo stavu :ref:`FP_PS_REPORT <FP_PS_REPORT>` do stavu :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`. Po vykonaní príkazu :ref:`obtainProgress <obtainProgress>` v tomto stave bude vrátená hodnota ``100%`` aj napriek tomu, že došlo k zrušeniu tlače uzávierky pred jej ukončením.
+    * Počet vykonaní tejto uzávierky je ľubovoľný a slúži na zistenie zoznamu neodoslaných dátových správ.
+    * Zoznam neodoslaných dátových správ sa môže líšiť medzi dvoma vykonaniami tejto uzávierky a to preto, lebo medzi jednotlivými uzávierkami neodoslaných dátových správ mohlo dôjsť k prenosu niektorej z neodoslaných dátových správ.
+
+**Účinky príkazu**:
+
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_REPORT <FP_PS_REPORT>` počas tlače uzávierky
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_MONITOR <FP_PS_MONITOR>` po ukončení tlače uzávierky, alebo jej zrušení
+  * :ref:`NonfiscalRecCount <NonfiscalRecCount>` = :ref:`NonfiscalRecCount <NonfiscalRecCount>` + ``1``
+
+.. toctree::
+    :maxdepth: 2

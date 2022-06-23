@@ -1,0 +1,32 @@
+_`Zoznam použitých tlačiarní`
+=============================
+
+V tejto kapitole budú popísané charakteristiky tlačiarní, ktoré je možné pripojiť k fiškálnemu modulu EFox firmy Elcom.
+
+  .. value of {tablePrinterUsedList} is defined in config.py
+  .. tabularcolumns:: {tablePrinterUsedList}
+
+  .. table::
+      :class: longtable
+
+      +----------------------+---------------+------------+-----------+-------------+------------+
+      | |                    | | Počet       | | Max.     | |         | | Tlač      | |          |
+      | | Typ                | | znakov      | | šírka    | | Strihač | | čiarových | | Počet    |
+      | | tlačiarne          | | na riadok   | | obrázku  | | papiera | | kódov     | | zásuviek |
+      | |                    | | font A / B  | | v bodoch | |         | |           | |          |
+      +======================+===============+============+===========+=============+============+
+      | EPSON TM88           |  **42** / 56  |    512     |   Áno     |    Áno      |     2      |
+      +----------------------+---------------+------------+-----------+-------------+------------+
+      | | Bixolon SRP 350    | | **42** / 56 | |   512    | |  Áno    | |   Áno     | |    2     |
+      | | (Samsung)          |               |            |           |             |            |
+      +----------------------+---------------+------------+-----------+-------------+------------+
+      | | Elcom LKT 20       | | **42** / 56 | |   512    | |  Áno    | |   Áno     | |    2     |
+      | | Elcom LKT 200      |               |            |           |             |            |
+      +----------------------+---------------+------------+-----------+-------------+------------+
+
+  .. note::
+
+    * V stĺpci **Počet znakov na riadok font A / B** je tučným vyznačený počet znakov pre predvolený typ fontu a teda aj predvolený font.
+
+.. toctree::
+    :maxdepth: 2

@@ -1,0 +1,22 @@
+_`ProductModelDescription`
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ProductModelDescription**
+    typ                      STRING
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje typ produktového modelu fiškálnej tlačiarne.
+
+.. toctree::
+    :maxdepth: 3

@@ -1,0 +1,41 @@
+_`soundImmediate`
+-----------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ==================================================== =============== ====================
+      Pole     Hodnota                                              Dátový typ      Popis
+      ======== ==================================================== =============== ====================
+      Cmd ID   sI                                                   \-              identifikátor príkazu
+      Req/Rsp  REQ                                                  \-              požiadavka
+      ======== ==================================================== =============== ====================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    sI                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      výsledok vykonávania operácie
+      ========= =================== ============== ====================
+
+**Popis príkazu**:
+
+  Spustí zvukovú signalizáciu - pípnutie.
+
+.. toctree::
+    :maxdepth: 2
+

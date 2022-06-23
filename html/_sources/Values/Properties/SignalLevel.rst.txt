@@ -1,0 +1,37 @@
+_`SignalLevel` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **SignalLevel**
+    typ                      INT32
+    prednastavená hodnota    ``0``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje úroveň signálu pripojenej WiFi siete.
+
+  Možné hodnoty tejto property sú:
+
+  .. value of {tableValueNote} is defined in config.py
+  .. tabularcolumns:: {tableValueNote}
+
+  .. table::
+      :class: longtable
+
+      ================ =========================================
+      Hodnota          Popis
+      ================ =========================================
+      ``0`` - ``100``  úroveň signálu v %
+      ``-1``           nepodarilo sa získať informáciu o signále, alebo nie je pripojenie na žiadnu WiFi sieť
+      ================ =========================================
+
+.. toctree::
+    :maxdepth: 3

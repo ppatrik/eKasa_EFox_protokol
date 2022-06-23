@@ -1,0 +1,22 @@
+_`ProtocolVersion`
+^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ProtocolVersion**
+    typ                      STRING
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje verziu komunikačného protokolu fiškálnej tlačiarne.
+
+.. toctree::
+    :maxdepth: 3

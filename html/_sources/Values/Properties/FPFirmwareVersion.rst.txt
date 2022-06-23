@@ -1,0 +1,22 @@
+_`FPFirmwareVersion`
+^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **FPFirmwareVersion**
+    typ                      STRING
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje verziu firmvéru :term:`FP`.
+
+.. toctree::
+    :maxdepth: 3

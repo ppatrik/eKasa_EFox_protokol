@@ -1,0 +1,23 @@
+_`LicenceCount` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **LicenceCount**
+    typ                      INT32
+    prednastavená hodnota    ``10``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje počet licencií, ktoré :term:`FP` pozná.
+  Bližšie informácie k jednotlivým licenciám je potom možné prečítať pomocou príkazu :ref:`getLicenceData <getLicenceData>`.
+
+.. toctree::
+    :maxdepth: 3

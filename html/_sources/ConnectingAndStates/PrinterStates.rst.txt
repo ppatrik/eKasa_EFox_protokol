@@ -1,0 +1,151 @@
+_`Stavy fiškálnej tlačiarne`
+============================
+
+Fiškálna tlačiareň pri vykonávaní požadovaných príkazov prechádza cez viditeľné stavy,
+ktoré predurčujú následné povolené príkazy a tým aj povolené správy vysielané
+z aplikácie. Tieto stavy odzrkadľujú stavy fiškálnej jednotky.
+
+Stav `MONITOR`_ označuje východzí stav pri registrácii tovaru. V stave `FISCAL_RECEIPT`_
+sa registruje predaj/vrátenie/oprava jednotlivých položiek. Do stavu `FISCAL_RECEIPT_TOTAL`_
+sa prechádza po prvej platbe a zotrváva sa v ňom, pokiaľ sa celkom nezaplatí čiastka
+rovná celkovej hodnote transakcie. `FISCAL_RECEIPT_ENDING`_ umožňuje dotlačenie účtenky.
+`NONFISCAL`_ stav umožňuje tlačiť nefiškálne doklady. V stave `REPORT`_ sa vykonáva tlač
+výkazov (uzávierok) a v stave `LOCKED`_ je zariadenie v prípade výskytu nejakého problému.
+
+.. figure:: ../Images/SimpleStateDiagram.png
+    :figclass: align-center
+
+    Zjednodušený stavový diagram fiškálnej tlačiarne
+
+.. pre spravne zobrazenie v PDF je potrebne prejst na novu stanu
+
+.. raw:: latex
+
+    \newpage
+
+.. figure:: ../Images/DeviceStateDiagram.png
+    :figclass: align-center
+
+    Úplný stavový diagram fiškálnej tlačiarne
+
+.. pre spravne zobrazenie v PDF je potrebne prejst na novu stanu
+
+.. raw:: latex
+
+    \newpage
+
+**Popis jednotlivých stavov**:
+
+_`MONITOR`
+
+    je neutrálnym stavom, je to východzí bod fiškálnej tlačiarne. Po úspešnom otvorení služieb
+    by fiškálna tlačiareň mala byť v tomto stave, za predpokladu, že nedošlo k nejakému problému.
+
+    Ak :ref:`TrainingModeActive <TrainingModeActive>` = ``TRUE``, potom sa fiškálna tlačiareň používa
+    len na tréningové účely.
+
+    V prípade, ak sa začne nákup, teda nastane prechod do stavu `FISCAL_RECEIPT`_, potom všetky
+    príkazy pre tlač fiškálnych dokladov sú prístupné (hoci bez výsledného efektu). Tento pod-stav
+    je začatý príkazom :ref:`beginTraining <beginTraining>` a ukončený príkazom
+    :ref:`endTraining <endTraining>`, kedy dôjde k nastaveniu
+    :ref:`TrainingModeActive <TrainingModeActive>` na ``FALSE``.
+
+_`FISCAL_RECEIPT`
+
+    Fiškálna tlačiareň práve spracováva fiškálnu účtenku (položky účtenky). Existujú tri
+    modifikácie tohto stavu a to podľa parametra :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` príkazu
+    :ref:`beginFiscalReceipt <beginFiscalReceipt>`, ktorým jediným je možné vstúpiť do tohto stavu.
+
+    Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_SALES <FP_RT_SALES>`,
+    :ref:`FP_RT_REFUND <FP_RT_REFUND>`, alebo
+    :ref:`FP_RT_SIMPLE_INVOICE <FP_RT_SIMPLE_INVOICE>`, potom aplikácia začala nákup, alebo
+    úhradu faktúry a je možné zavolať všetky príkazy **printRec…**, okrem príkazu
+    :ref:`printRecCash <printRecCash>`.
+
+    Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_CASH_IN <FP_RT_CASH_IN>`,
+    alebo :ref:`FP_RT_CASH_OUT <FP_RT_CASH_OUT>` potom aplikácia začala vklad/výber
+    hotovosti a je možné zavolať len príkazy :ref:`printRecCash <printRecCash>`,
+    :ref:`printRecMessage <printRecMessage>` a príkaz
+    :ref:`printRecVoid <printRecVoid>` (pre prípad anulácie dokladu).
+
+    Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_SINGLE_PURPOSE_VOUCHER <FP_RT_SINGLE_PURPOSE_VOUCHER>`
+    potom aplikácia začala doklad výmeny jednoúčelovéhon poukazu a je možné volať príkazy
+    :ref:`printRecItemSinglePurposeVoucher <printRecItemSinglePurposeVoucher>` a :ref:`printRecItem <printRecItem>`.
+    Pre zmenu stavu je možné zavolať príkazy :ref:`printRecTotal <printRecTotal>` (pre ukončovanie dokladu)
+    a :ref:`printRecVoid <printRecVoid>` (pre prípad anulácie dokladu).
+
+    Ak :ref:`TrainingModeActive <TrainingModeActive>` = ``TRUE``, potom sa fiškálna tlačiareň
+    používa len na tréningové účely.
+    Pre odlíšenie od normálneho stavu, je účtenka tlačená v tréningovom režime označená špeciálnym textom.
+
+_`FISCAL_RECEIPT_TOTAL`
+
+    Fiškálna tlačiareň už akceptovala najmenej jednu platbu alebo výdavok, ale celá suma nákupu ešte
+    nebola úplne uhradená. Zo stavu `FISCAL_RECEIPT`_ sa do tohto stavu vstúpi pomocou príkazu
+    :ref:`printRecTotal <printRecTotal>`, alebo :ref:`printRecTotalChange <printRecTotalChange>`.
+    Pokiaľ nedôjde k úplnému uhradeniu sumy registračnej transakcie, potom fiškálna tlačiareň ostáva
+    v tomto stave.
+    Tento stav možno opustiť len pomocou príkazov :ref:`printRecTotal <printRecTotal>`,
+    :ref:`printRecTotalChange <printRecTotalChange>`, alebo :ref:`printRecVoid <printRecVoid>`.
+    Príkazy :ref:`printRecTotal <printRecTotal>` a :ref:`printRecTotalChange <printRecTotalChange>`
+    sa nesmú navzájom kombinovať v jednej a tej istej registračnej transakcii.
+
+    Ak :ref:`TrainingModeActive <TrainingModeActive>` = ``TRUE``, potom sa :term:`FP` používa len na tréningové účely.
+
+_`FISCAL_RECEIPT_ENDING`
+
+    Fiškálna tlačiareň už dokončila fiškálny doklad (úspešne alebo neúspešne). Zo stavov
+    `FISCAL_RECEIPT`_, alebo `FISCAL_RECEIPT_TOTAL`_ sa do tohto stavu vstúpi pomocou
+    príkazov :ref:`printRecTotal <printRecTotal>`, :ref:`printRecTotalChange <printRecTotalChange>`,
+    :ref:`printRecVoid <printRecVoid>`, alebo :ref:`printRecCash <printRecCash>` (platí pre doklad vkladu/výberu).
+    Tento stav možno opustiť len pomocou príkazu :ref:`endFiscalReceipt <endFiscalReceipt>`, keď sa
+    fiškálna tlačiareň vracia do stavu `MONITOR`_.
+
+    Ak :ref:`TrainingModeActive <TrainingModeActive>` = ``TRUE``, potom sa fiškálna tlačiareň používa
+    len na tréningové účely a na konci nákupu nedochádza k aktualizovaniu súm a počítadiel dennej uzávierky.
+    Ale aj účtenky v tréningovom režime sú evidované v zmysle zákona.
+
+_`NONFISCAL`
+
+    Fiškálna tlačiareň práve spracováva nefiškálny doklad. V tomto stave akceptuje príkazy
+    :ref:`printNormal <printNormal>` . Fiškálna tlačiareň zabezpečí, že nefiškálny doklad
+    je odlíšiteľný od fiškálneho. Zo stavu `MONITOR`_ sa do tohto stavu vstúpi pomocou príkazu
+    :ref:`beginNonFiscal <beginNonFiscal>`. Tento stav možno opustiť pomocou príkazu
+    :ref:`endNonFiscal <endNonFiscal>`, keď sa fiškálna tlačiareň vracia do stavu `MONITOR`_
+
+_`REPORT`
+
+    Fiškálna tlačiareň práve spracováva jednu z podporovaných druhov uzávierok.
+    Zo stavu `MONITOR`_ sa do tohto stavu vstúpi pomocou jedného z príkazov
+    tlače uzávierky (:ref:`printXReport <printXReport>`, alebo
+    :ref:`printZReport <printZReport>`). Keď sa skončí tlač uzávierky, fiškálna tlačiareň
+    sa automaticky vracia do stavu `MONITOR`_.
+
+_`LOCKED`
+
+    Fiškálna tlačiareň nie je schopná normálnej prevádzky kvôli nejakému problému.
+    V tomto stave fiškálna tlačiareň akceptuje len príkazy pre prijímanie dát (**get…**).
+    Fiškálna tlačiareň nemôže opustiť tento stav bez zásahu servisného technika.
+
+_`PROGRESS`
+
+    Fiškálna tlačiareň práve spracováva asynchrónny príkaz, ktorý sa vykonáva na pozadí.
+    Ak sa asynchrónne vykonávaný príkaz skončí, tak sa fiškálna tlačiareň automaticky vracia
+    do stavu `MONITOR`_.
+
+    V tomto stave sú prístupné len príkazy:
+
+      * :ref:`obtainProgress <obtainProgress>`
+      * :ref:`cancelRest <cancelRest>`
+      * :ref:`resetPrinter <resetPrinter>` (v prípade vzniku chyby)
+
+Aplikácia po otvorení služieb fiškálnej tlačiarne príkazom **connect** musí tiež monitorovať
+jej aktuálny stav. V štandardnej situácii je :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+To signalizuje, že vo fiškálnej tlačiarni nezostala žiadna prerušená aktivita. Ak fiškálna tlačiareň
+nie je v stave `MONITOR`_, daný stav signalizuje, že vo fiškálnej tlačiarni ostala nejaká prerušená
+aktivita. V takejto situácii, musí aplikácia vnútiť fiškálnej tlačiarni prechod do stavu
+`MONITOR`_ zavolaním príkazu :ref:`resetPrinter <resetPrinter>`. To znamená, že nastal výpadok napájania,
+alebo aplikácia zanechala fiškálnu tlačiareň v inom stave ako `MONITOR`_.
+
+.. toctree::
+    :maxdepth: 3

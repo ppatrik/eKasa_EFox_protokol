@@ -1,0 +1,25 @@
+_`InternetAccess` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **InternetAccess**
+    typ                      BOOLEAN
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje informáciu o dostupnosti internetu (WAN siete) na :term:`FP`.
+
+  * Ak je nastavené na ``TRUE``, potom :term:`FP` má prístup na internet.
+  * Ak je nastavené na ``FALSE``, potom :term:`FP` nemá prístup na internet.
+
+.. toctree::
+    :maxdepth: 3

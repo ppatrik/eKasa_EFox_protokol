@@ -1,0 +1,25 @@
+_`UniqueNum`
+^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **UniqueNum**
+    typ                      STRING\[17\]
+    prednastavená hodnota    ``""``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Jedná sa o jedinečný kód pokladnice pridelený daňovým úradom na žiadosť podanú majiteľom fiškálnej tlačiarne (pokladnice).
+
+  .. note::
+    Reťazec obsahujúci kód pokladnice môže obsahovať len číslice.
+
+.. toctree::
+    :maxdepth: 3

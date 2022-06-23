@@ -1,0 +1,28 @@
+_`ChangeType` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ChangeType**
+    typ                      INT32
+    prednastavená hodnota    ``1``
+    prístup                  read-write
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje hodnotu identifikátora typu platby, ktorou bude realizovaná operácia
+  výdavku po prevýšení platenej sumy v príkaze :ref:`printRecTotal <printRecTotal>`.
+
+  .. warning::
+      * V príkaze :ref:`printRecTotalChange <printRecTotalChange>` sa táto property
+        neuplatňuje a typ výdavku je daný identifikátor typu platby v parametri
+        :ref:`paymentID <pRTC_paymentID>`.
+
+.. toctree::
+    :maxdepth: 3

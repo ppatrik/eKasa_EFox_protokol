@@ -1,0 +1,25 @@
+_`AutomaticDrawerOpening`
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **AutomaticDrawerOpening**
+    typ                      BOOLEAN
+    prednastavená hodnota    ``TRUE``
+    prístup                  read-write
+    ======================== =======================================
+
+**Popis**:
+
+  * Ak je nastavené na ``FALSE``, potom :term:`FP` signalizuje, že otváranie zásuviek je plne pod kontrolou aplikácie a :term:`FP` nemôže automaticky (bez vedomia aplikácie) otvoriť žiadnu zo zásuviek.
+  * Ak je nastavené na ``TRUE``, potom :term:`FP` otvára zásuvku automaticky v procese platieb a pri vklade/výbere hotovosti na základe vlastných pravidiel (aplikácia sa o otváranie zásuvky nemusí starať).
+
+  Pri programovaní tejto property príkazom :ref:`setProperty <setProperty>` nie sú žiadne dodatočné chybové kódy, ako kódy už popísané v popise príkazu :ref:`setProperty <setProperty>`. Takisto neexistujú žiadne obmedzenia pre nastavenie tejto property ako obmedzenia spomenuté v popise príkazu :ref:`setProperty <setProperty>`.
+
+.. toctree::
+    :maxdepth: 3

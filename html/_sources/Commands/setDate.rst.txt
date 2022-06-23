@@ -1,0 +1,67 @@
+_`setDate`
+----------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   sD                                                 \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`date <sD_date>`                              **DATETIME**    dátum a čas
+      ======== ================================================== =============== ====================
+
+.. _sD_date:
+
+**Parameter setDate**:
+
+  Dátum a čas vo formáte :ref:`DDMMYYYYhhmmss <DateTimeFormat>`.
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    sD                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ======================================================= =======================================
+      Chyba                                                   Popis
+      ======================================================= =======================================
+      :ref:`EFP_BAD_DATE <EFP_BAD_DATE>`                      Parameter :ref:`date <sD_date>` bol poslaný v nesprávnom formáte, alebo je snaha zmeniť dátum a čas pod hodnotu v premennej :ref:`DTSettingLimit <DTSettingLimit>`.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+      :ref:`EFP_CLOCK_ERROR <EFP_CLOCK_ERROR>`                Na :term:`FP` bola detegovaná chyba obvodu reálneho času.
+      ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Nastaví dátum a čas do obvodu reálneho času vo :term:`FP`.
+
+  * Pri nastavovaní dátumu a času nie je možné ísť pod hranicu danú hodnotou premennej :ref:`DTSettingLimit <DTSettingLimit>`.
+
+.. toctree::
+    :maxdepth: 2

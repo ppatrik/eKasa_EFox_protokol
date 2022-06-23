@@ -1,0 +1,173 @@
+_`Sumárne hodnoty` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Sumárne hodnoty zviazané s daňovými skupinami**
+
+  Sumárne hodnoty udávajú sumár v daňových skupinách pre transakciu ako aj obchodný deň.
+
+  .. value of {tableTitleNote} is defined in config.py
+  .. tabularcolumns:: {tableTitleNote}
+
+  .. table::
+      :class: longtable
+
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | Názov pre doklad/deň                        | Popis                                                                                                     |
+      +=============================================+===========================================================================================================+
+      | | _`RecGrossTotal`\[*i*\]                   | | hodnota hrubého obratu (obrat vrátane DPH)                                                              |
+      | | _`DayGrossTotal`\[*i*\]                   |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecNetTotal`\[*i*\]                     | | hodnota čistého obratu (obrat bez DPH) (obrat bez DPH)                                                  |
+      | | _`DayNetTotal`\[*i*\]                     |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecVatTotal`\[*i*\]                     | | hodnota dane (DPH)                                                                                      |
+      | | _`DayVatTotal`\[*i*\]                     |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecDiscountTotal`\[*i*\]                | | hodnota zliav uplatnených na individuálne položky príkazom |printRecItemAdjustment|                     |
+      | | _`DayDiscountTotal`\[*i*\]                |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecItemTotal`\[*i*\]                    | | hodnota predaných položiek príkazom |printRecItem|                                                      |
+      | | _`DayItemTotal`\[*i*\]                    |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecRefundTotal`\[*i*\]                  | | hodnota refundovaných položiek príkazom |printRecItemRefund|                                            |
+      | | _`DayRefundTotal`\[*i*\]                  |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecSubtotalDiscountTotal`\[*i*\]        | | hodnota zliav uplatnených na skupinu položiek príkazom |printRecPackageAdjustment|                      |
+      | | _`DaySubtotalDiscountTotal`\[*i*\]        |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecSubtotalSurchargeTotal`\[*i*\]       | | hodnota prirážok uplatnených na skupinu položiek príkazom |printRecPackageAdjustment|                   |
+      | | _`DaySubtotalSurchargeTotal`\[*i*\]       |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecSurchargeTotal`\[*i*\]               | | hodnota prirážok uplatnených na individuálne položky príkazom |printRecItemAdjustment|                  |
+      | | _`DaySurchargeTotal`\[*i*\]               |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecInvoiceTotal`\[*i*\]                 | | hodnota uhradených faktúr príkazom |printRecItem|                                                       |
+      | | _`DayInvoiceTotal`\[*i*\]                 |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecInvoiceRefundTotal`\[*i*\]           | | hodnota refundovaných resp. vrátených uhradených faktúr príkazom |printRecItemRefund|                   |
+      | | _`DayInvoiceRefundTotal`\[*i*\]           |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecItemCorrectionTotal`\[*i*\]          | | hodnota opráv kladných položiek príkazom |printRecItemCorrection|                                       |
+      | | _`DayItemCorrectionTotal`\[*i*\]          |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecRefundCorrectionTotal`\[*i*\]        | | hodnota opráv záporných položiek príkazom |printRecItemRefundCorrection|                                |
+      | | _`DayRefundCorrectionTotal`\[*i*\]        |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecSinglePurposeVoucherTotal`\[*i*\]    | | hodnota výmien jednoúčelových poukazov príkazom |printRecItemSinglePurposeVoucher|                      |
+      | | _`DaySinglePurposeVoucherTotal`\[*i*\]    |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+      | | _`RecAdvancePaymentDeductTotal`\[*i*\]    | | hodnota odpočítaných záloh príkazom |printRecAdvancePaymentDeduct|                                      |
+      | | _`DayAdvancePaymentDeductTotal`\[*i*\]    |                                                                                                           |
+      +---------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+
+  .. note::
+      * Hodnoty evidujú sumy v jednotlivých daňových skupinách sú uvedené
+        s indexovým zápisom poľa ("\[*i*\]").
+      * Hodnota pre jednotlivé daňové skupiny samostatne: \[*i*\] = <``1``, :ref:`NumVatRates <NumVatRates>`>).
+      * Celková hodnota súčtu pre všetky daňové skupiny je:
+
+          :math:`value[0] = \displaystyle\sum_{i = 1}^{NumVatRates} value[i]`
+
+      * V texte tohto dokumentu sa rozumie, že value = value[0].
+
+  Všetky vyššie vymenované sumárne hodnoty a ich súvis s daňovými skupinami je viac zrejmý
+  z popisu príkazu :ref:`getTotalizer <getTotalizer>`. Tento príkaz je možné zároveň použiť
+  na získanie príslušnej hodnoty z fiškálnej tlačiarne.
+
+**Sumárne hodnoty nesúvisiace s daňovými skupinami**:
+
+  .. value of {tableTitleNote} is defined in config.py
+  .. tabularcolumns:: {tableTitleNote}
+
+  .. table::
+      :class: longtable
+
+      ========================= =========================
+      Názov                     Popis
+      ========================= =========================
+      _`CurrentTotal`           hodnota aktuálnej sumy dokladu [#]_
+      _`DailyTotal`             hodnota dennej sumy (zhodná s :ref:`DayGrossTotal[0] <DayGrossTotal>`)
+      _`GrandTotal`             hodnota 'Grand Total' (suma počítaná od začiatku prevádzky)
+      _`DailyVoidTotal`         hodnota stornovaných účteniek v aktuálnom dni
+      _`AccPaymentTotal`        celková hodnota platieb a výdavkov v aktuálnej transakcii
+      _`TrainingTotal`          hodnota dennej sumy tréningových účteniek
+      _`TrainingVoidTotal`      hodnota dennej sumy stornovaných tréningových účteniek
+      `CashInTotal`\[*i*\]      hodnota vkladov v aktuálnom dni
+      `CashOutTotal`\[*i*\]     hodnota výberov v aktuálnom dni
+      _`RecCashInTotal`         hodnota vkladov v aktuálnej transakcii
+      _`RecCashOutTotal`        hodnota výberov v aktuálnej transakcii
+      `RecPaymentTotal`\[*i*\]  hodnota platieb v aktuálnej transakcii
+      `DayPaymentTotal`\[*i*\]  hodnota platieb v aktuálnom dni
+      `RecChangeTotal`\[*i*\]   hodnota výdavkov v aktuálnej transakcii
+      `DayChangeTotal`\[*i*\]   hodnota výdavkov v aktuálnom dni
+      _`RecRoundingTotal`       hodnota zaokrúhlenia v aktuálnej transakcii
+      _`DayRoundingTotal`       hodnota zaokrúhlenia v aktuálnom dni
+      ========================= =========================
+
+  Hodnoty, ktoré sa neviažu na daňové skupiny je možné prečítať pomocou príkazu :ref:`getData <getData>`.
+
+  .. note::
+      * Hodnoty, ktoré evidujú sumy v jednotlivých typoch platieb sú uvedené
+        s indexovým zápisom poľa ("\[*i*\]").
+      * Hodnota pre jednotlivé typy platieb samostatne: \[*i*\] = <``1``, :ref:`NumPayments <NumPayments>`>).
+      * Celková hodnota súčtu pre všetky typy platieb je:
+
+          :math:`value[0] = \displaystyle\sum_{i = 1}^{NumPayments} value[i]`
+
+      * V texte tohto dokumentu sa rozumie, že value = value[0].
+
+.. [#]
+    | ak :ref:`VatIncluded <VatIncluded>` je ``TRUE``, potom
+      :ref:`CurrentTotal <CurrentTotal>` = :ref:`RecGrossTotal <RecGrossTotal>`,
+    | ak :ref:`VatIncluded <VatIncluded>` je ``FALSE``, potom
+      :ref:`CurrentTotal <CurrentTotal>`  = :ref:`RecNetTotal <RecNetTotal>`
+
+**Sumárne hodnoty týkajúce sa evidencie platieb**:
+
+  .. value of {tableTitleNote} is defined in config.py
+  .. tabularcolumns:: {tableTitleNote}
+
+  .. table::
+      :class: longtable
+
+      ========================= =========================
+      Názov                     Popis
+      ========================= =========================
+      _`CashInTotal`\[*i*\]     hodnota vkladov v aktuálnom dni
+      _`CashOutTotal`\[*i*\]    hodnota výberov v aktuálnom dni
+      _`RecPaymentTotal`\[*i*\] hodnota platieb v aktuálnej transakcii
+      _`DayPaymentTotal`\[*i*\] hodnota platieb v aktuálnom dni
+      _`RecChangeTotal`\[*i*\]  hodnota výdavkov v aktuálnej transakcii
+      _`DayChangeTotal`\[*i*\]  hodnota výdavkov v aktuálnom dni
+      ========================= =========================
+
+  .. note::
+      * Hodnoty evidujú sumy v jednotlivých typoch platieb sú uvedené
+        s indexovým zápisom poľa ("\[*i*\]").
+      * Hodnota pre jednotlivé typy platieb samostatne: \[*i*\] = <``1``, :ref:`NumPayments <NumPayments>`>).
+      * Celková hodnota súčtu pre všetky typy platieb je:
+
+          :math:`value[0] = \displaystyle\sum_{i = 1}^{NumPayments} value[i]`
+
+      * V texte tohto dokumentu sa rozumie, že value = value[0].
+
+  Tieto hodnoty je možné prečítať pomocou príkazu :ref:`getData <getData>`.
+
+.. |printRecItemAdjustment| replace:: :ref:`printRecItemAdjustment <printRecItemAdjustment>`
+
+.. |printRecItem| replace:: :ref:`printRecItem <printRecItem>`
+
+.. |printRecItemRefund| replace:: :ref:`printRecItemRefund <printRecItemRefund>`
+
+.. |printRecPackageAdjustment| replace:: :ref:`printRecPackageAdjustment <printRecPackageAdjustment>`
+
+.. |printRecItemCorrection| replace:: :ref:`printRecItemCorrection <printRecItemCorrection>`
+
+.. |printRecItemRefundCorrection| replace:: :ref:`printRecItemRefundCorrection <printRecItemRefundCorrection>`
+
+.. |printRecItemSinglePurposeVoucher| replace:: :ref:`printRecItemSinglePurposeVoucher <printRecItemSinglePurposeVoucher>`
+
+.. |printRecAdvancePaymentDeduct| replace:: :ref:`printRecAdvancePaymentDeduct <printRecAdvancePaymentDeduct>`
+
+.. toctree::
+    :maxdepth: 3

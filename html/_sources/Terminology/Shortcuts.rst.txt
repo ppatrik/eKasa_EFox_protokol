@@ -1,0 +1,81 @@
+Skratky
+=======
+
+.. glossary::
+
+    DIČ
+        daňové identifikačné číslo
+
+    DKP
+        daňový kód pokladnice (staré označenie)
+
+    DPH
+        daň z pridanej hodnoty
+
+    eKasa
+        systém registrácie predajov a iných predpísaných operácií v informačnom systéme finančnej správy SR
+
+    ERP
+        elektronická registračná pokladnica; teda pokladnica, ktorá ešte nebola pripojená
+        na internet a **neodosielala** účtenky na server daňovej správy
+
+    FP
+        :term:`Fiscal Printer`
+
+    ChDÚ
+        :term:`Chránené dátové úložisko`
+
+    ICM
+        Interný komunikačný modul, zabezpečujúci komunikáciu so servermi dáňovej správy.
+
+    IČ DPH
+        identifikačné číslo pre daň z pridanej hodnoty
+
+    KP
+        kód pokladnice - nové označenie, ktoré nahrádza staré označenie DKP
+
+    MRS
+        *master reset* - vymazanie dát v zariadení (nemaže trvalo uložené informácie,
+        len zálohované údaje z prevádzkovej pamäte)
+
+    OKP
+        overovací kód podnikateľa; je tlačený na dokladoch, ktoré sú posielané na eKasa server
+
+    ORP
+        on-line registračná pokladnica; teda pokladnica, ktorá už je pripojená
+        na internet a **odosiela** účtenky na server daňovej správy
+
+    OTA
+        over the air, alebo "vzduchom"; najčastejšie používane pre aktualizácia, ktoré
+        sú vykonávané bez pripojenia káblov ku zariadeniu
+
+    PC
+        Personal Computer, osobný počítač. Môže ale označovať aj iné obdobné zariadenia
+        ako napríklad mobil, alebo tablet, prípadne aj serverové riešenie.
+
+    PKP
+        Podpisový kód podnikateľa vygenerovaný EFOX-om v čase vytvorenia dokladu. Ide o elektronický podpis vybraných údajov uvedených na doklade.
+        Uvádza sa na predajných dokladoch ktoré v čase vystavenia ešte neboli zaregistrované v systéme eKasa.
+
+    POS
+        Skratka pre miesto predajného miesta, z angličtiny: *Point Of Sale*, resp. *Point of Service*.
+
+        Je to spoločné označenie pre spojenie fiškálnej tlačiarne a aplikácie.
+
+    RT
+        Registračná transakcia (Registration Transaction); finančná transakcia (realizovaná)
+        na fiškálnej tlačiarni, ktorá má za následok zmenu hodnôt dennej uzávierky.
+
+    RTC
+        Obvod reálneho času (Real Time Clock), ktorý zabezpečuje uchovávanie aktuálneho dátumu a času
+        aj v čase, keď je fiškálna tlačiareň vypnutá.
+
+    UID
+        Unikátny identifikátor účtenky. Tento identifikátor je pridelený účtenkám, ktoré boli zaslané
+        na server daňovej správy.
+
+    VAT
+        Value Added Tax, daň z pridanej hodnoty
+
+.. toctree::
+    :maxdepth: 2

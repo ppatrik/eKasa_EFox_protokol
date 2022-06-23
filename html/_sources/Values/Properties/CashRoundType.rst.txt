@@ -1,0 +1,44 @@
+_`CashRoundType` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **CashRoundType**
+    typ                      INT32
+    prednastavená hodnota    ``2``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  * Obsahuje spôsob zaokrúhlenia platby, alebo výdavku v hotovosti.
+
+  Možné hodnoty tejto property sú:
+
+  .. value of {tableValueNote} is defined in config.py
+  .. tabularcolumns:: {tableValueNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ========================
+      Hodnota   Popis
+      ========= ========================
+      ``0``     vždy nadol
+      ``1``     vždy nahor
+      ``2``     od 5 hore
+      ``3``     štvrtinovo
+      ``4``     osminovo
+      ========= ========================
+
+  .. note::
+
+    * V prípade zaokrúhľovania hotovosti (na 5 eurocentov) platného od 1.7.2022 má byť táto vlastnosť nastavená na hodnotu ``3``.
+
+.. toctree::
+    :maxdepth: 3

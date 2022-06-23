@@ -1,0 +1,69 @@
+_`printXReport`
+---------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   pXR                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      ======== ================================================== =============== ====================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    pXR                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ======================================================= =======================================
+      Chyba                                                   Popis
+      ======================================================= =======================================
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu, alebo je :term:`FP` v tréningovom režime.
+      :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                    V tlačiarni chýba papier.
+      :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                  Kryt tlačiarne je otvorený.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`      Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`      Tlačiareň je odpojená.
+      :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`  Pri práci s tlačiarňou vznikla interná chyba.
+      :ref:`EFP_CUTTER <EFP_CUTTER>`                          Strihač papiera je v zlom stave.
+      :ref:`EFP_CUTTER_WARNING <EFP_CUTTER_WARNING>`          Strihač papiera je v zlom stave, ale doklad bol kompletne vytlačený.
+      ======================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz vytlačí uzávierku všetkých fiškálnych aktivít od poslednej Z dennej uzávierky bez zmazania jej registrov a počítadiel.
+
+  Počet vykonaní tejto uzávierky je ľubovoľný a zvyčajne slúži na priebežné získanie informácií o predaji.
+
+**Účinky príkazu**:
+
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_REPORT <FP_PS_REPORT>` počas tlače uzávierky
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_MONITOR <FP_PS_MONITOR>` po ukončení tlače uzávierky
+  * :ref:`NonfiscalRecCount <NonfiscalRecCount>` = :ref:`NonfiscalRecCount <NonfiscalRecCount>` + ``1``
+
+.. toctree::
+    :maxdepth: 2

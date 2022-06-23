@@ -1,0 +1,52 @@
+_`VatIncluded`
+^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **VatIncluded**
+    typ                      BOOLEAN
+    prednastavená hodnota    ``TRUE``
+    prístup                  read-write
+    ======================== =======================================
+
+**Popis**:
+
+  * Ak je nastavené na ``TRUE``, potom :term:`FP` signalizuje, že ceny položiek, ktoré sú posielané do :term:`FP` v príkazoch  **printRecItem…**, **printRecPackage…**, sú posielané vrátane DPH.
+  * Ak je nastavené na ``FALSE``, potom ceny položiek sú posielané bez DPH.
+
+  .. note::
+
+    * V prípade príkazu :ref:`printRecTotal <printRecTotal>` sa, bez ohľadu na nastavenie tohto property, parameter :ref:`payment <pRT_payment>` posiela vrátane DPH, to isté platí pre parameter :ref:`change <pRTC_change>` v príkaze :ref:`printRecTotalChange <printRecTotalChange>`.
+    * Nákup, ktorý bude realizovaný s cenami bez DPH bude označený identifikačným nadpisom.
+
+Pri programovaní tejto property príkazom setProperty môžu byť týmto príkazom aplikácii vrátené aj nasledujúce dodatočné chybové kódy:
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+    :class: longtable
+
+    ======================================================= =======================================
+    Chyba                                                   Popis
+    ======================================================= =======================================
+    :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                | Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+                                                            | Chyba nastane ak je :term:`FP` v niektorom nasledujúcich stavov nákupu:
+                                                            |   - :ref:`FISCAL_RECEIPT <FISCAL_RECEIPT>`
+                                                            |   - :ref:`FISCAL_RECEIPT_TOTAL <FISCAL_RECEIPT_TOTAL>`
+                                                            |   - :ref:`FISCAL_RECEIPT_ENDING <FISCAL_RECEIPT_ENDING>`
+    ======================================================= =======================================
+
+.. warning::
+
+   Po strate spojenia medzi FP a Aplikáciou sa VatIncluded nastaví na svoju default hodnotu ``TRUE``.
+
+.. toctree::
+    :maxdepth: 3

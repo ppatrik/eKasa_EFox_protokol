@@ -1,0 +1,37 @@
+_`FiscalState`
+^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **FiscalState**
+    typ                      INT32
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Možné hodnoty tejto property sú:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ====================== ===================
+      Hodnota   Názov                  Popis
+      ========= ====================== ===================
+      ``1``     _`FP_FS_PREFISCAL`     :term:`FP` ešte nebol uvedený do prevádzky
+      ``2``     _`FP_FS_FISCAL`        :term:`FP` je uvedený do prevádzky
+      ========= ====================== ===================
+
+  Ak je nastavené na :ref:`FP_FS_FISCAL <FP_FS_FISCAL>`, potom :term:`FP` signalizuje, že :term:`FP` je uvedený do normálnej typickej prevádzky a je pripravený tlačiť pokladničné doklady.
+
+.. toctree::
+    :maxdepth: 3

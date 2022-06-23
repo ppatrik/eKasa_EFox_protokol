@@ -1,0 +1,205 @@
+_`getData` ``[_new_]``
+----------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   gD                                                 \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`dataItem <gD_dataItem>`                      **INT32**       špecifikuje požadované dáta
+      Param2   :ref:`optArg <gD_optArg>`                          **INT32**       rozširujúca informácia pre niektoré požadované dáta
+      ======== ================================================== =============== ====================
+
+.. _gD_dataItem:
+
+**Parameter dataItem**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  **Dáta**
+
+    .. value of {tableValueAliasNote} is defined in config.py
+    .. tabularcolumns:: {tableValueAliasNote}
+
+    .. table::
+        :class: longtable
+
+        ========= ============================= ===============================================
+        Hodnota   Alias                         Dáta v odpovedi príkazu
+        ========= ============================= ===============================================
+        ``31``    _`FP_GD_FP_FIRMWARE`          číslo distribuovaného firmvéru :term:`FP` (:ref:`FPFirmwareVersion <FPFirmwareVersion>`)
+        ``34``    _`FP_GD_POSID`                identifikátor :term:`POS` systému/aplikácie
+        ``35``    _`FP_GD_CASHIERID`            identifikátor operátora :term:`POS` systému
+        ``36``    _`FP_GD_ICM_FIRMWARE`         číslo distribuovaného firmvéru :term:`ChDÚ` (:ref:`ICMFirmwareVersion <ICMFirmwareVersion>`)
+        ========= ============================= ===============================================
+
+  **Sumárne hodnoty**
+
+    .. value of {tableValueAliasNote} is defined in config.py
+    .. tabularcolumns:: {tableValueAliasNote}
+
+    .. table::
+        :class: longtable
+
+        ========= ============================= ===============================================
+        Hodnota   Alias                         Sumárne hodnoty v odpovedi príkazu
+        ========= ============================= ===============================================
+        ``1``     _`FP_GD_CURRENT_TOTAL`        :ref:`CurrentTotal <CurrentTotal>`
+        ``2``     _`FP_GD_DAILY_TOTAL`          :ref:`DailyTotal <DailyTotal>`
+        ``3``     _`FP_GD_GRAND_TOTAL`          :ref:`GrandTotal <GrandTotal>`
+        ``4``     _`FP_GD_DAILY_VOID_TOTAL`     :ref:`DailyVoidTotal <DailyVoidTotal>`
+        ``5``     _`FP_GD_ACC_PAYMENT`          :ref:`AccPaymentTotal <AccPaymentTotal>`
+        ``6``     _`FP_GD_TRAINING_TOTAL`       :ref:`TrainingTotal <TrainingTotal>`
+        ``7``     _`FP_GD_TRAINING_VOID_TOTAL`  :ref:`TrainingVoidTotal <TrainingVoidTotal>`
+        ``8``     _`FP_GD_CASH_IN_TOTAL`        :ref:`CashInTotal <CashInTotal>` + :ref:`optArg <gD_optArg>`
+        ``9``     _`FP_GD_CASH_OUT_TOTAL`       :ref:`CashOutTotal <CashOutTotal>` + :ref:`optArg <gD_optArg>`
+        ``10``    _`FP_GD_REC_PAYMENT_TOTAL`    :ref:`RecPaymentTotal <RecPaymentTotal>` + :ref:`optArg <gD_optArg>`
+        ``11``    _`FP_GD_DAY_PAYMENT_TOTAL`    :ref:`DayPaymentTotal <DayPaymentTotal>` + :ref:`optArg <gD_optArg>`
+        ``12``    _`FP_GD_REC_CHANGE_TOTAL`     :ref:`RecChangeTotal <RecChangeTotal>` + :ref:`optArg <gD_optArg>`
+        ``13``    _`FP_GD_DAY_CHANGE_TOTAL`     :ref:`DayChangeTotal <DayChangeTotal>` + :ref:`optArg <gD_optArg>`
+        ``14``    _`FP_GD_REC_CASH_IN_TOTAL`    :ref:`RecCashInTotal <RecCashInTotal>`
+        ``15``    _`FP_GD_REC_CASH_OUT_TOTAL`   :ref:`RecCashOutTotal <RecCashOutTotal>`
+        ``16``    _`FP_GD_REC_ROUNDING_TOTAL`   :ref:`RecRoundingTotal <RecRoundingTotal>`
+        ``17``    _`FP_GD_DAY_ROUNDING_TOTAL`   :ref:`DayRoundingTotal <DayRoundingTotal>`
+        ========= ============================= ===============================================
+
+    .. note::
+        * :ref:`optArg <gD_optArg>` môže nadobúdať hodnotu v rozsahu <``1``, :ref:`NumPayments <NumPayments>`>.
+
+  **Počítadlá**
+
+    .. value of {tableValueAliasNote} is defined in config.py
+    .. tabularcolumns:: {tableValueAliasNote}
+
+    .. table::
+        :class: longtable
+
+        ========= ============================= ===============================================
+        Hodnota   Alias                         Počítadlo v odpovedi príkazu
+        ========= ============================= ===============================================
+        ``41``    _`FP_GD_CASH_IN_CNT`          :ref:`CashInCount <CashInCount>` + :ref:`optArg <gD_optArg>`
+        ``42``    _`FP_GD_CASH_OUT_CNT`         :ref:`CashOutCount <CashOutCount>` + :ref:`optArg <gD_optArg>`
+        ``45``    _`FP_GD_NONFISCAL_REC_CNT`    :ref:`NonfiscalRecCount <NonfiscalRecCount>`
+        ``46``    _`FP_GD_FISCAL_REC_CNT`       :ref:`FiscalRecCount <FiscalRecCount>`
+        ``47``    _`FP_GD_FISCAL_REC_VOID_CNT`  :ref:`FiscalRecVoidCount <FiscalRecVoidCount>`
+        ``48``    _`FP_GD_TRAINING_CNT`         :ref:`TrainingCount <TrainingCount>`
+        ``49``    _`FP_GD_TRAINING_VOID_CNT`    :ref:`TrainingVoidCount <TrainingVoidCount>`
+        ``50``    _`FP_GD_SIMP_INVOICE`         :ref:`SimpInvoiceCount <SimpInvoiceCount>`
+        ``61``    _`FP_GD_REC_PAYMENT_CNT`      :ref:`TransPaymentCount <TransPaymentCount>` + :ref:`optArg <gD_optArg>`
+        ``62``    _`FP_GD_DAY_PAYMENT_CNT`      :ref:`PaymentCount <PaymentCount>` + :ref:`optArg <gD_optArg>`
+        ``63``    _`FP_GD_REC_CHANGE_CNT`       :ref:`TransChangeCount <TransChangeCount>` + :ref:`optArg <gD_optArg>`
+        ``64``    _`FP_GD_DAY_CHANGE_CNT`       :ref:`ChangeCount <ChangeCount>` + :ref:`optArg <gD_optArg>`
+        ``65``    _`FP_GD_Z_REPORT_CNT`         :ref:`ZReportCount <ChangeCount>`
+        ``66``    _`FP_GD_REC_ROUNDING_CNT`     :ref:`RecRoundingCount <RecRoundingCount>`
+        ``67``    _`FP_GD_DAY_ROUNDING_CNT`     :ref:`DayRoundingCount <DayRoundingCount>`
+        ========= ============================= ===============================================
+
+    .. note::
+        * :ref:`optArg <gD_optArg>` môže nadobúdať hodnotu v rozsahu <``1``, :ref:`NumPayments <NumPayments>`>.
+
+  **Názvy platieb**
+
+    .. value of {tableValueAliasNote} is defined in config.py
+    .. tabularcolumns:: {tableValueAliasNote}
+
+    .. table::
+        :class: longtable
+
+        ========= ============================= ===============================================
+        Hodnota   Alias                         Názov platby v odpovedi príkazu
+        ========= ============================= ===============================================
+        ``26``    _`FP_GD_TENDER`               Skupina dát pre názvy naprogramovaných platieb bola odstránená a nie je v eKasa verzii využívaná. Pre vyčítanie naprogramovaných platieb slúži príkaz :ref:`getPaymentEntry <getPaymentEntry>`.
+        ========= ============================= ===============================================
+
+.. _gD_optArg:
+
+**Parameter optArg**:
+
+  Rozširujúca informácia pre niektoré požadované dáta:
+
+  * V prípade platieb
+
+      * Môže nadobúdať hodnoty v rozsahu <``0``, :ref:`NumPayments <NumPayments>`>.
+      * Hodnota ``0`` (alebo parameter je prázdny) znamená sumárnu hodnotu:
+
+          :math:`value[0] = \displaystyle\sum_{i=1}^{NumPayments} value[i]`
+
+      * Hodnoty v rozsahu <``1``, :ref:`NumPayments <NumPayments>`> znamenajú údaj
+        pre naprogramovaný typ platby príkazom :ref:`setPaymentEntry <setPaymentEntry>`.
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    gD                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      Param1    *data*              **VARIANT**    požadovaná hodnota
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ========================================================= =======================================
+      Chyba                                                     Popis
+      ========================================================= =======================================
+      | :ref:`E_ILLEGAL <E_ILLEGAL>`                            | Jeden z parametrov
+                                                                |   - :ref:`dataItem <gD_dataItem>`
+                                                                |   - :ref:`optArg <gD_optArg>`
+                                                                | nie je z množiny dovolených hodnôt.
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`            Nastala chyba komunikácie s :term:`ChDÚ`.
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                        :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`  Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      ========================================================= =======================================
+
+**Popis príkazu**:
+
+  Vráti požadované informáciu, ktorá bola špecifikovaná vstupnými parametrami.
+
+    * Pre bližšie informácie o počítadlách pozri kapitolu :doc:`/Values/Accumulators/Counters`.
+
+    * Pre bližšie informácie o sumárnych hodnotách pozri kapitolu :doc:`/Values/Accumulators/Totals`.
+
+**Príklad**:
+
+  * Nech :ref:`dataItem <gD_dataItem>` = :ref:`FP_GD_DAY_PAYMENT_TOTAL <FP_GD_DAY_PAYMENT_TOTAL>` a :ref:`optArg <gD_optArg>` = ``1``
+
+      potom príkaz vráti aktuálnu celkovú dennú hodnotu pre 1. naprogramovaný
+      typ platby t.j. :ref:`DayPaymentTotal <DayPaymentTotal>`\[``1``\]
+      resp. hodnotu koľko bolo zaplatené 1. typom platby v aktuálnom dni.
+
+  * Nech :ref:`dataItem <gD_dataItem>` = :ref:`FP_GD_REC_PAYMENT_CNT <FP_GD_REC_PAYMENT_CNT>` a :ref:`optArg <gD_optArg>` = ``2``
+
+      potom príkaz vráti hodnotu počítadla pre 2. naprogramovaný typ platby
+      v aktuálnom doklade t.j. :ref:`RecPaymentCount <RecPaymentCount>`\[``2``\]
+      resp. hodnotu koľkokrát bol 2. typ platby použitý v aktuálnom doklade.
+
+  * Nech :ref:`dataItem <gD_dataItem>` = :ref:`FP_GD_CASH_IN_TOTAL <FP_GD_CASH_IN_TOTAL>` a :ref:`optArg <gD_optArg>` = ``0`` alebo prázdny
+
+      potom príkaz vráti aktuálnu hodnotu vkladov v aktuálnom dni t.j. :ref:`CashInTotal <CashInTotal>`
+      resp. sumu všetkých vkladov v aktuálnom dni.
+
+  * Analogicky aj pre ostatné sumárne hodnoty/počítadlá v tabuľkách vyššie.
+
+.. toctree::
+    :maxdepth: 2

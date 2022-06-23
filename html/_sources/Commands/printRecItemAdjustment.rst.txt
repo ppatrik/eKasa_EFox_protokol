@@ -1,0 +1,217 @@
+_`printRecItemAdjustment` ``[_new_]``
+-------------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   pRIA                                               \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`adjustmentType <pRIA_adjustmentType>`        **INT32**       typ operácie
+      Param2   :ref:`description <pRIA_description>`              **STRING**      popisný text príkazu
+      Param3   :ref:`amount <pRIA_amount>`                        **CURRENCY**    hodnota operácie
+      Param4   :ref:`vatID <pRIA_vatID>`                          **INT32**       identifikátor daňovej skupiny
+      Param5   :ref:`specialRegulation <pRIA_specialRegulation>`  **INT32**       identifikátor špeciálnej regulácie
+      Param6   :ref:`preLine <pRIA_preLine>`                      **STRING**      text tlačený pred týmto príkazom
+      Param7   :ref:`postLine <pRIA_postLine>`                    **STRING**      text tlačený za týmto príkazom
+      ======== ================================================== =============== ====================
+
+.. _pRIA_adjustmentType:
+
+**Parameter adjustmentType**:
+
+  Typ operácie môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ============================= ===============================================
+      Hodnota   Alias                         Popis
+      ========= ============================= ===============================================
+      ``1``     _`FP_AT_AMOUNT_DISCOUNT`      hodnotová zľava
+      ``2``     _`FP_AT_AMOUNT_SURCHARGE`     hodnotová prirážka
+      ========= ============================= ===============================================
+
+.. _pRIA_description:
+
+**Parameter description**:
+
+  Popisný text príkazu.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) znakov.
+
+.. _pRIA_amount:
+
+**Parameter amount**:
+
+  Hodnota operácie.
+
+.. _pRIA_vatID:
+
+**Parameter vatID**:
+
+  Identifikátor daňovej skupiny naprogramovanej vo :term:`FP`, ku ktorej je operácia priradená.
+
+    * Môže nadobúdať hodnoty v rozsahu :ref:`vatID <gVE_vatID>` = ``1`` až :ref:`NumVatRates <NumVatRates>`.
+
+.. _pRIA_specialRegulation:
+
+**Parameter specialRegulation**
+
+  Identifikátor špeciálnej regulácie bližšie určuje dôvod priradenia k nezdaniteľnej daňovej hladine (:ref:`FP_VF_NONTAXABLE <FP_VF_NONTAXABLE>`).
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueNote} is defined in config.py
+  .. tabularcolumns:: {tableValueNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ===============================================
+      Hodnota   Popis
+      ========= ===============================================
+      ``0``     bez uvedenia dôvodu
+      ``1``     prenesenie daňovej povinnosti
+      ``2``     oslobodené od dane
+      ``3``     cestovné kancelárie
+      ``4``     použitý tovar
+      ``5``     umelecké diela
+      ``6``     zberateľské predmety a starožitnosti
+      ========= ===============================================
+
+  .. warning::
+    * :ref:`specialRegulation <pRIA_specialRegulation>` = jednej z hodnôt uvedených v tabuľke vyššie
+
+        * ak parameter :ref:`vatID <pRIA_vatID>` odkazuje na nezdaniteľnú daňovú hladinu :ref:`FP_VF_NONTAXABLE <FP_VF_NONTAXABLE>`
+
+    * :ref:`specialRegulation <pRIA_specialRegulation>` = ``""`` (prázdny reťazec)
+
+        * ak parameter :ref:`vatID <pRIA_vatID>` odkazuje na inú daňovú hladinu ako nezdaniteľnú :ref:`FP_VF_NONTAXABLE <FP_VF_NONTAXABLE>`
+        * ak sa jedná o doklad faktúry :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SIMPLE_INVOICE <FP_RT_SIMPLE_INVOICE>`
+
+.. _pRIA_preLine:
+
+**Parameter preLine**:
+
+  Text tlačený pred týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+.. _pRIA_postLine:
+
+**Parameter postLine**:
+
+  Text tlačený za týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    pRIA                \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      =================================================================== =======================================
+      Chyba                                                               Popis
+      =================================================================== =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                                        Parameter :ref:`adjustmentType <pRIA_adjustmentType>` nie je z množiny dovolených hodnôt.
+      :ref:`EFP_BAD_AMOUNT <EFP_BAD_AMOUNT>`                              Parameter :ref:`amount <pRIA_amount>` je <= ``0``, alebo nie je násobkom ``0.01``.
+      :ref:`EFP_BAD_VAT <EFP_BAD_VAT>`                                    Parameter :ref:`vatID <pRIA_vatID>` bol poslaný nesprávne.
+      :ref:`EFP_BAD_SPEC_REG <EFP_BAD_SPEC_REG>`                          Parameter :ref:`specialRegulation <pRIA_specialRegulation>` nebol poslaný alebo bol poslaný nesprávne.
+      :ref:`EFP_UNEXPECT_SPEC_REG <EFP_UNEXPECT_SPEC_REG>`                Parameter :ref:`specialRegulation <pRIA_specialRegulation>` nie je povolený v tomto stave.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                            Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`                    :term:`FP` je v procese realizácie účtenky vkladu/výberu hotovosti, alebo práve prebieha tlač účtenky vrátenia, alebo tlač úhrady faktúr.
+      :ref:`EFP_REC_TOTAL_OVERFLOW <EFP_REC_TOTAL_OVERFLOW>`              Príkaz by spôsobil prekročenie maximálnej hodnoty jedného nákupu.
+      :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                                V tlačiarni chýba papier.
+      :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                              Kryt tlačiarne je otvorený.
+      :ref:`EFP_MAX_DTMSG_ITEMS_EXCEEDED <EFP_MAX_DTMSG_ITEMS_EXCEEDED>`  Bol prekročený maximálny počet položiek v dátovej správe dokladu definovaný hodnotou property :ref:`NumDataMsgItems <NumDataMsgItems>`.
+      :ref:`EFP_DUPLICATE_BUFFER_FULL <EFP_DUPLICATE_BUFFER_FULL>`        Nedostatok miesta pre uloženie kópie dokladu.
+      :ref:`E_FAILURE <E_FAILURE>`                                        Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bola transakčná účtenka riadne dokončená. Pre ďalšie zmysluplné pokračovanie v činnosti musí aplikácia zavolať príkaz :ref:`resetPrinter <resetPrinter>` a transakciu môže zopakovať.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`                  Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`                  Tlačiareň je odpojená.
+      :ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>`              Pri práci s displejom vznikla interná chyba.
+      :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`              Pri práci s tlačiarňou vznikla interná chyba.
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`                      Nastala chyba komunikácie s :term:`ChDÚ`.
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                                  :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`            Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      =================================================================== =======================================
+
+**Popis príkazu**:
+
+  Príkaz je určený na aplikovanie zľavy alebo prirážky na položku predanú príkazom :ref:`printRecItem <printRecItem>` v aktuálnom nákupe.
+
+    * Spolu s hodnotou operácie bude na účtenke vytlačený aj text označujúci operáciu zľavy alebo prirážky.
+    * Všetky hodnoty parametrov sa posielajú ako kladné, ich príspevok je daný parametrom :ref:`adjustmentType <pRIA_adjustmentType>`.
+    * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_REFUND <FP_RT_REFUND>`, potom je tento príkaz zakázaný.
+
+**Účinky príkazu**:
+
+  * Ak :ref:`adjustmentType <pRIA_adjustmentType>` = `FP_AT_AMOUNT_DISCOUNT`_ a :ref:`VatIncluded <VatIncluded>` = ``TRUE`` (ceny s DPH)
+
+      * :ref:`RecDiscountTotal <RecDiscountTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecDiscountTotal <RecDiscountTotal>`\[:ref:`vatID <pRIA_vatID>`\] + :ref:`amount <pRIA_amount>`
+      * :ref:`RecDiscountCount <RecDiscountCount>` = :ref:`RecDiscountCount <RecDiscountCount>` + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` - :ref:`amount <pRIA_amount>`
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIA_vatID>`\] - :ref:`amount <pRIA_amount>`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`VAT_GROSS <VAT_GROSS>`\(:ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIA_vatID>`\], :ref:`vatID <pRIA_vatID>`\)
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIA_vatID>`\] - :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIA_vatID>`\]
+
+  * Ak :ref:`adjustmentType <pRIA_adjustmentType>` = `FP_AT_AMOUNT_SURCHARGE`_ a :ref:`VatIncluded <VatIncluded>` = ``TRUE`` (ceny s DPH)
+
+      * :ref:`RecSurchargeTotal <RecSurchargeTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecSurchargeTotal <RecSurchargeTotal>`\[:ref:`vatID <pRIA_vatID>`\] + :ref:`amount <pRIA_amount>`
+      * :ref:`RecSurchargeCount <RecSurchargeCount>` = :ref:`RecSurchargeCount <RecSurchargeCount>` + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` + :ref:`amount <pRIA_amount>`
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIA_vatID>`\] + :ref:`amount <pRIA_amount>`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`VAT_GROSS <VAT_GROSS>`\(:ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIA_vatID>`\], :ref:`vatID <pRIA_vatID>`\)
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIA_vatID>`\] - :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIA_vatID>`\]
+
+  * Ak :ref:`FiscalReceiptType <FiscalReceiptType>` = `FP_AT_AMOUNT_DISCOUNT`_ a :ref:`VatIncluded <VatIncluded>` = ``FALSE`` (ceny bez DPH)
+
+      * :ref:`RecDiscountTotal <RecDiscountTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecDiscountTotal <RecDiscountTotal>`\[:ref:`vatID <pRIA_vatID>`\] + :ref:`amount <pRIA_amount>`
+      * :ref:`RecDiscountCount <RecDiscountCount>` = :ref:`RecDiscountCount <RecDiscountCount>` + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` - :ref:`amount <pRIA_amount>`
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIA_vatID>`\] - :ref:`amount <pRIA_amount>`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`VAT_NET <VAT_NET>`\(:ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIA_vatID>`\], :ref:`vatID <pRIA_vatID>`\)
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIA_vatID>`\] + :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIA_vatID>`\]
+
+  * Ak :ref:`adjustmentType <pRIA_adjustmentType>` = `FP_AT_AMOUNT_SURCHARGE`_ a :ref:`VatIncluded <VatIncluded>` = ``FALSE`` (ceny bez DPH)
+
+      * :ref:`RecSurchargeTotal <RecSurchargeTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecSurchargeTotal <RecSurchargeTotal>`\[:ref:`vatID <pRIA_vatID>`\] + :ref:`amount <pRIA_amount>`
+      * :ref:`RecSurchargeCount <RecSurchargeCount>` = :ref:`RecSurchargeCount <RecSurchargeCount>` + ``1``
+      * :ref:`CurrentTotal <CurrentTotal>` = :ref:`CurrentTotal <CurrentTotal>` + :ref:`amount <pRIA_amount>`
+      * :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIA_vatID>`\] + :ref:`amount <pRIA_amount>`
+      * :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`VAT_NET <VAT_NET>`\(:ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIA_vatID>`\], :ref:`vatID <pRIA_vatID>`\)
+      * :ref:`RecGrossTotal <RecGrossTotal>`\[:ref:`vatID <pRIA_vatID>`\] = :ref:`RecNetTotal <RecNetTotal>`\[:ref:`vatID <pRIA_vatID>`\] + :ref:`RecVatTotal <RecVatTotal>`\[:ref:`vatID <pRIA_vatID>`\]
+
+.. toctree::
+    :maxdepth: 2

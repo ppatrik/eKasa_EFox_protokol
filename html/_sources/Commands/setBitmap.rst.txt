@@ -1,0 +1,173 @@
+_`setBitmap`
+------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ==================================================== =============== ====================
+      Pole     Hodnota                                              Dátový typ      Popis
+      ======== ==================================================== =============== ====================
+      Cmd ID   sB                                                   \-              identifikátor príkazu
+      Req/Rsp  REQ                                                  \-              požiadavka
+      Param1   :ref:`bitmapNumber <sB_bitmapNumber>`                **INT32**       číslo obrázku
+      Param2   :ref:`lineNumber <sB_lineNumber>`                    **INT32**       riadok v obrázku
+      Param3   :ref:`data <sB_data>`                                **STRING**      dáta
+      ======== ==================================================== =============== ====================
+
+.. _sB_bitmapNumber:
+
+**Parameter bitmapNumber**:
+
+  Poradové číslo obrázku v rozsahu <``1``, ``8``>.
+
+.. _sB_lineNumber:
+
+**Parameter lineNumber**:
+
+  Číslo riadku nastavovaného obrázku. Riadky sú číslované od hodnoty ``1``, pričom hodnota
+  ``1`` znamená prvý riadok obrázku z hora.
+
+  Hodnota ``0`` má špeciálny význam. Ak je hodnota ``0``, potom sa
+  parametrom :ref:`data <sB_data>` nastavuje rozmer obrázku.
+
+  Rozsah: <``0``, ``512``>
+
+.. _sB_data:
+
+**Parameter data**:
+
+  Pre :ref:`lineNumber <sB_lineNumber>` = ``0``:
+
+    dáta obsahujú rozmery obrázku vo formáte: "*šírka;výška*", pričom:
+
+      * *šírka* je typu **INT32** a je v rozsahu <``0``, :ref:`BitmapWidth <BitmapWidth>`> a
+      * *výška* je typu **INT32** a je v rozsahu <``0``, ``512``>.
+
+  Pre :ref:`lineNumber <sB_lineNumber>` > ``0``:
+
+    Každý riadok obrázku je prenášaný ako binárne dáta kódované v BASE16 kódovaní, pričom
+    hodnota ``0`` označuje neaktívny bod (bielu farbu) a hodnota ``1`` tlačený bod (čiernu farbu).
+    Pričom bit s najvyššou logickou hodnotou je tlačený vľavo a bit s najnižšou hodnotou vpravo.
+
+    V jednom bajte je zakódovaných 8 bodov (pixelov), no jeden bajt sa prenáša ako dva znaky
+    v šestnástkovej sústave. Počet bodov v riadku obrázku je v pamäti :term:`FP` je zarovnaný na jeden
+    bajt, teda na 8 bodov.
+
+    *Príklad*:
+
+      Body obrázku ``00111111`` (logicky tlačené body) sa zapíšu ako ``3F``.
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    sB                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      výsledok vykonávania operácie
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ================================================== =======================================
+      Chyba                                              Popis
+      ================================================== =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                       Parametre :ref:`bitmapNumber <sB_bitmapNumber>`, :ref:`lineNumber <sB_lineNumber>`, rozmery obrázku sú mimo svoj definovaný rozsah.
+      :ref:`EFP_TOOBIG <EFP_TOOBIG>`                     Nie je dostatok priestoru na uloženie obrázku.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>` Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>` Tlačiareň je odpojená.
+      :ref:`EFP_OPERATION_ERROR <EFP_OPERATION_ERROR>`   Interná chyba. Pri vykonávaní príkazu nastala nešpecifikovaná chyba.
+      ================================================== =======================================
+
+**Popis príkazu**:
+
+  Príkaz slúži na naprogramovanie obrázkov do FP. Obrázky je možné následne použiť ako grafické logo
+  na jednotlivých tlačených dokumentoch.
+
+  Pred programovaním obrázku je potrebné najprv nastaviť rozmery (*šírku* a *výšku*) a až potom
+  poslať obsah obrázku po jednotlivých riadkoch, pričom počet riadkov je rovný nastavenej výške obrázku.
+
+  V prípade, ak už predtým existoval obrázok s poradovým číslom :ref:`bitmapNumber <sB_bitmapNumber>`,
+  tak bude zmazaný a v pamäti obrázkov sa alokuje nový prázdny priestor podľa nastavených rozmerov
+  nového obrázku.
+
+  .. note::
+    Pre vymazanie obrázku a uvoľnenie obsadeného priestoru je potrebné poslať obrázok s nulovým rozmerom,
+    teda *šírka* = ``0`` a *výška* = ``0``.
+
+  Po nastavení rozmerov obrázku je potrebné poslať jednotlivé riadky obrázku. V opačnom prípade bude
+  obrázok prázdny (biely).
+
+  .. note::
+    Je odporúčané posielať riadky po sebe, nie je to ale nevyhnutné. Pozri príklad prenosu obrázky BMP,
+    ktorý obsahuje riadky v opačnom poradí, teda prvý uložený riadok je najnižší riadok v obrázku.
+    (pozri príklad)
+
+  Maximálna šírka obrázku je závislá od použitej tlačiarne a pohybuje sa v rozmedzí od ``200`` do ``512``
+  bodov pre jednotlivé typy použitých tlačiarní.
+
+  .. warning::
+    Aby bolo možné obrázky tlačiť na tlačiarni, je potrebné zavolať príkaz
+    :ref:`storeAllBitmaps <storeAllBitmaps>`, ktorý skopíruje všetky *aktuálne*
+    naprogramované obrázky z pamäte FP do pamäte samotnej tlačiarne.
+
+    Okrem toho je potrebné použiť aj nastavenie :ref:`HeaderBitmap <HeaderBitmap>`
+    a/alebo :ref:`TrailerBitmap <TrailerBitmap>`, ideálne priamo pred tlačou
+    každého dokladu, kde má byť logo vytlačené.
+
+    Ak sa tento príkaz nepoužije, potom budú všetky obrázky, ktoré ešte
+    neboli skopírované, tlačené v pôvodnej podobe, teda tak ako vyzerali
+    pred ich naprogramovaním.
+
+  Ak by nový obrázok už nevošiel do priestoru vyhradeného pre uchovávanie obrázkov,
+  potom príkaz skončí s chybou :ref:`EFP_TOOBIG <EFP_TOOBIG>`.
+
+  Celkovú dostupnú veľkosť pre obrázky je možné zistiť pomocou vlastnosti (property)
+  :ref:`BitmapMemorySize <BitmapMemorySize>`. Na zistenie voľného priestoru slúži
+  vlastnosť :ref:`BitmapMemoryFreeSpace <BitmapMemoryFreeSpace>`.
+
+  .. note::
+    Maximálnu šírku obrázku je možné zistiť pomocou vlastnosti (property)
+    :ref:`BitmapWidth <BitmapWidth>`. Maximálna výška je ``512`` riadkov.
+
+    Podrobnosti pre podporované tlačiarne sú v prílohe: :doc:`/Appendix/PrinterType`.
+
+.. warning::
+  Po master resete, ako aj po aktualizácii firmvéru dochádza k zmazaniu všetkých nastavených
+  obrázkov z pamäte FP.
+
+**Príklad**:
+
+  Naprogramovanie obrázku č. 1 s rozmermi: *šírka* = ``10`` a *výška* = ``5`` bodov.
+  Obsahom obrázku je rámček.
+
+  .. code-block:: text
+      :linenos:
+
+      sB\tREQ\t1\t0\t10;5
+      sB\tREQ\t1\t5\tFFC0
+      sB\tREQ\t1\t4\t8040
+      sB\tREQ\t1\t3\t8040
+      sB\tREQ\t1\t2\t8040
+      sB\tREQ\t1\t1\tFFC0
+
+.. toctree::
+    :maxdepth: 2
+

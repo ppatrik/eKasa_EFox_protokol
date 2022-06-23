@@ -1,0 +1,219 @@
+_`setFontAttribute` ``[_new_]``
+-------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ==================================================== =============== ====================
+      Pole     Hodnota                                              Dátový typ      Popis
+      ======== ==================================================== =============== ====================
+      Cmd ID   sFA                                                  \-              identifikátor príkazu
+      Req/Rsp  REQ                                                  \-              požiadavka
+      Param1   :ref:`group <sFA_group>`                             **INT32**       kód skupiny riadkov
+      Param2   :ref:`optArg <sFA_optArg>`                           **INT32**       rozširujúci parameter
+      Param3   :ref:`fontAttribute <sFA_fontAttribute>`             **INT32**       nastavenie tlačového fontu
+      ======== ==================================================== =============== ====================
+
+.. _sFA_group:
+
+**Parameter group**:
+
+  Tento parameter určuje riadok, alebo skupinu riadkov, ktoré spolu súvisia, prípadne majú
+  rovnaké charakteristiky z hľadiska ich formátovania pre tlač.
+
+  Povolené hodnoty sú:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ================================== ===============================================
+      Hodnota   Alias                              Popis
+      ========= ================================== ===============================================
+      ``1``     _`FP_FAG_HEADER`                   riadky hlavičky dokladu
+      ``4``     _`FP_FAG_TRANSACTION_ID`           identifikátor transakcie na doklade :term:`RT`
+      ``5``     _`FP_FAG_ITEM`                     riadky účtu tlačené príkazom :ref:`printRecItem <printRecItem>`
+      ``6``     _`FP_FAG_REFUND`                   riadky účtu tlačené príkazom :ref:`printRecItemRefund <printRecItemRefund>`
+      ``7``     _`FP_FAG_ADJUSTMENT`               riadky účtu tlačené príkazom :ref:`printRecItemAdjustment <printRecItemAdjustment>`
+      ``8``     _`FP_FAG_PACKAGE`                  riadky účtu tlačené príkazom :ref:`printRecPackageAdjustment <printRecPackageAdjustment>`
+      ``9``     _`FP_FAG_MESSAGE`                  riadky účtu tlačené príkazom :ref:`printRecMessage <printRecMessage>`
+      ``11``    _`FP_FAG_SUBTOTAL`                 riadky účtu tlačené príkazom :ref:`printRecSubtotal <printRecSubtotal>`
+      ``12``    _`FP_FAG_REC_VOID`                 riadky účtu tlačené príkazom :ref:`printRecVoid <printRecVoid>`
+      ``13``    _`FP_FAG_PAYMENT`                  riadky účtu tlačené príkazom :ref:`printRecTotal <printRecTotal>`
+      ``14``    _`FP_FAG_CHANGE`                   výdavok na doklade :term:`RT`, alebo riadky účtu tlačené príkazom :ref:`printRecTotalChange <printRecTotalChange>`
+      ``15``    _`FP_FAG_VAT_SUMMARY`              daňový sumár na doklade :term:`RT`
+      ``16``    _`FP_FAG_TOTAL`                    výsledná hodnota nákupu na doklade :term:`RT`
+      ``17``    _`FP_FAG_DATE_TIME`                dátum a čas na doklade
+      ``18``    _`FP_FAG_TRAILER`                  riadky pätičky dokladu
+      ``19``    _`FP_FAG_CASH_IN_OUT`              vklad/výber tlačený príkazom :ref:`printRecCash <printRecCash>`
+      ``21``    _`FP_FAG_NONFISCAL_LINE`           riadky nefiškálneho dokumentu tlačené príkazom :ref:`printNormal <printNormal>`
+      ``23``    _`FP_FAG_CORRECTION`               riadky účtu tlačené jedným z príkazov **printRec...Correction**
+      ``24``    _`FP_FAG_IDENTITY_DATA`            riadky identifikačných údajov
+      ``25``    _`FP_FAG_SINGLE_PURPOSE_VOUCHER`   riadky účtu tlačené príkazom :ref:`printRecItemSinglePurposeVoucher <printRecItemSinglePurposeVoucher>`
+      ``26``    _`FP_FAG_ADVANCE_PAYMENT_DEDUCT`   riadky účtu tlačené príkazom :ref:`printRecAdvancePaymentDeduct <printRecAdvancePaymentDeduct>`
+      ========= ================================== ===============================================
+
+..
+  Tento popis je zrejme zbytočný a navyše sa aj opakuje (významom)
+  Nie všetky skupiny riadkov sú priamo s konkrétnym príkazom. Tlač niektorých skupín
+  riadkov nastáva automaticky pri definovanej zmene stavu :term:`FP` a teda niektoré skupiny
+  riadkov nie sú tlačené v priamej súvislosti s požiadavkou vykonať konkrétny príkaz.
+
+.. _sFA_optArg:
+
+**Parameter optArg**:
+
+  Tento parametre sa využíva ak parameter :ref:`group <sFA_group>` je nastavený na hodnotu
+  `FP_FAG_HEADER`_, `FP_FAG_TRAILER`_, alebo `FP_FAG_IDENTITY_DATA`_.
+
+  V takomto prípade môže byť hodnota tohto parametra v rozsahu:
+
+  * \<``1``, :ref:`NumHeaderLines <NumHeaderLines>`\> ak :ref:`group <sFA_group>` = `FP_FAG_HEADER`_,
+  * \<``1``, :ref:`NumTrailerLines <NumTrailerLines>`\> ak :ref:`group <sFA_group>` = `FP_FAG_TRAILER`_.
+  * \<``1``, ``10``\> ak :ref:`group <sFA_group>` = `FP_FAG_IDENTITY_DATA`_.
+
+  Povolené hodnoty sú:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ======== ============================ =================================================
+      Hodnota   Alias                         Popis
+      ======== ============================ =================================================
+      ``1``    _`FP_IDDATA_CORPNAME`        riadky obsahujúce obchodné meno subjektu
+      ``2``    _`FP_IDDATA_CORPADDR`        riadky obsahujúce adresa sídla subjektu
+      ``3``    _`FP_IDDATA_UNITNAME`        riadky obsahujúce meno predajného miesta
+      ``4``    _`FP_IDDATA_UNITADDR`        riadky obsahujúce adresa predajného miesta
+      ``5``    _`FP_IDDATA_DIC`             riadok obsahujúci DIČ
+      ``6``    _`FP_IDDATA_ICDPH`           riadok obsahujúci IČ DPH
+      ``7``    _`FP_IDDATA_ICO`             riadok obsahujúci IČO
+      ``8``    _`FP_IDDATA_ECRCODE`         riadok obsahujúci kód pokladnice
+      ``9``    _`FP_IDDATA_UNIT_LABEL`      riadok obsahujúci popisný text pre predajné miesto (text "Predajné miesto:")
+      ``10``   _`FP_IDDATA_PORTABLE_LABEL`  riadok obsahujúci popisný text pre prenosnú pokladnicu (text "Prenosná pokladnica e-kasa klient")
+      ======== ============================ =================================================
+
+.. _sFA_fontAttribute:
+
+**Parameter fontAttribute**:
+
+  Riadok tlačený na tlačiarni môže byť naformátovaný 64 spôsobmi, ktoré sú dané kombináciou
+  dvoch fontov a ich atribútov:
+
+  * druh fontu "A", alebo "B" (štandardný font je závislý na type tlačiarne, pozri prílohu :doc:`/Appendix/PrinterType`),
+  * atribút šírky znakov (štandardná, alebo dvojnásobná šírka),
+  * atribút výšky znakov (štandardná, alebo dvojnásobná výška),
+  * atribút hrúbky znakov (štandardná hrúbka, alebo "tučné" písmo),
+  * atribút podčiarknutia znakov,
+  * atribút farby znakov (štandardná, alebo alternatívna farba).
+
+  .. note::
+    Aby bolo možné zabezpečiť viacfarebnú tlač je potrebné splniť potrebné požiadavky:
+
+      * Pre termo (tepelnú) tlačiareň je nutné použiť špeciálny termo papier a tlačiareň musí podporovať režim farebnej tlače.
+
+  Na základe vybratého fontu a jeho atribútov, môže parameter :ref:`fontAttribute <sFA_fontAttribute>` nadobúdať jednu
+  zo 64 hodnôt (od ``0`` do ``63``), ktoré je možné vytvoriť pomocou operácie **OR**
+  nasledujúcich konštánt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ============================= ===============================================
+      Hodnota   Alias                         Popis
+      ========= ============================= ===============================================
+      ``0``     _`FP_FA_DEFAULT`              základná výška, šírka, hrúbka a farba znakov, bez podčiarknutia (font A)
+      ``1``     _`FP_FA_ALT_FONT`             alternatívny font (font B)
+      ``2``     _`FP_FA_DOUBLE_WIDTH`         dvojitá šírka znakov riadku
+      ``4``     _`FP_FA_DOUBLE_HEIGHT`        dvojitá výška znakov riadku
+      ``8``     _`FP_FA_BOLD`                 bold forma znakov riadku
+      ``16``    _`FP_FA_UNDERLINE`            podčiarknutie znakov riadku
+      ``32``    _`FP_FA_ALT_COLOUR`           alternatívna farba znakov riadku
+      ========= ============================= ===============================================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    sFA                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      výsledok vykonávania operácie
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ================================================== =======================================
+      Chyba                                              Popis
+      ================================================== =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                       Aspoň jeden z parametrov :ref:`group <sFA_group>`, :ref:`optArg <sFA_optArg>`, alebo :ref:`fontAttribute <sFA_fontAttribute>` nie je v dovolenom rozsahu.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>` Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>` Tlačiareň je odpojená.
+      ================================================== =======================================
+
+**Popis príkazu**:
+
+  Príkaz nastaví font a jeho atribúty pre skupinu riadkov definovanú parametrom :ref:`group <sFA_group>`
+  a parametrom :ref:`optArg <sFA_optArg>`. Parametre :ref:`optArg <sFA_optArg>` je použitý len pre
+  vybrané hodnoty parametra :ref:`group <sFA_group>`.
+
+  Tlač riadkov sa riadi nastavím fontu a jeho atribútov. Všetky riadky typu, pre ktorý bolo zmenené
+  nastavenie budú tlačené s týmto nastavením.
+
+  .. note::
+    Nastavenie parametrov tlače sa vymaže pri každom príkaze :ref:`connect <connect>`
+    a :ref:`resetPrinter <resetPrinter>`.
+
+  .. warning::
+    V prípade, ak použitá tlačiareň nepodporuje tento príkaz, odpoveď bude vždy OK.
+    Podrobnosti pre podporované parametre sú v prílohe: :doc:`/Appendix/PrinterType`
+
+  Zmena fontu a jeho atribútov pre jednotlivé skupiny riadkov nie je žiadnym spôsobom
+  obmedzovaná. Riadky, pre ktoré nie je definovaná žiadna skupina (teda riadky, ktoré
+  nepatria do žiadnej z vyššie vymenovaných skupín) sú formátované a tlačené podľa
+  vnútorného nastavenia :term:`FP` a aplikácia nemôže toto nastavenie ovplyvniť.
+
+  .. warning::
+    Ak je nastavená dvojitá šírka znakov, potom počet znakov, ktoré je možné vytlačiť
+    v jednom riadku pre vybraný font je len polovičný v porovnaní s hodnotami
+    :ref:`FontALineLength <FontALineLength>` resp. :ref:`FontBLineLength <FontBLineLength>`.
+    Tieto zostávajú nezmenené bez ohľadu na nastavenie atribútov pre fonty.
+
+  Pre všetky skupiny riadkov je po každej strate spojenia medzi :term:`FP` a aplikáciou,
+  ako aj po zavolaní príkazu :ref:`resetPrinter <resetPrinter>` nastavená default
+  hodnota :ref:`fontAttribute <sFA_fontAttribute>` na hodnotu `FP_FA_DEFAULT`_
+  (pre termo tlačiarne), resp. na hodnotu `FP_FA_ALT_FONT`_ (pre maticové tlačiarne).
+
+  .. warning::
+    V prípade požiadavky nastavenia atribútu fontu pre skupiny riadkov `FP_FAG_ITEM`_,
+    `FP_FAG_REFUND`_, `FP_FAG_CORRECTION`_, `FP_FAG_ADJUSTMENT`_, `FP_FAG_PACKAGE`_,
+    alebo `FP_FAG_VAT_SUMMARY`_ na hodnotu `FP_FA_DOUBLE_WIDTH`_, je táto požiadavka
+    ignorovaná.
+
+.. toctree::
+    :maxdepth: 2
+

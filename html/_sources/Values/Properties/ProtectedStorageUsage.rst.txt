@@ -1,0 +1,40 @@
+_`ProtectedStorageUsage` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ProtectedStorageUsage**
+    typ                      INT32
+    prednastavená hodnota    ``0``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje aktuálnu hodnotu zaplnenia :term:`ChDÚ` v %.
+
+  Možné hodnoty tejto property sú:
+
+  .. value of {tableValueNote} is defined in config.py
+  .. tabularcolumns:: {tableValueNote}
+
+  .. table::
+      :class: longtable
+
+      ================ =========================================
+      Hodnota          Popis
+      ================ =========================================
+      ``0`` - ``100``  stav zaplnenia :term:`ChDÚ` v %
+      ================ =========================================
+
+  .. note::
+    * pri zaplnení :term:`ChDÚ` na 100% dôjde k zablokovaniu registrácie dokladov a polôh a pre ďalšie
+      pokračovanie v činnosti je nutné vykonať výmenu :term:`ChDÚ` zariadenia na tlačiarni
+
+.. toctree::
+    :maxdepth: 3

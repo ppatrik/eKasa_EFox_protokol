@@ -1,0 +1,26 @@
+_`ICMIPv4Address` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ICMIPv4Address**
+    typ                      STRING
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje infromáciu o pridelenej IP adrese modulu :term:`ChDÚ`.
+
+.. note::
+   Ak nie je možné túto informáciu získať bude obsahovať prázdny reťazec.
+   Ak nebola pridelená žiadna IP adresa bude obsahovať 0.0.0.0.
+
+.. toctree::
+    :maxdepth: 3

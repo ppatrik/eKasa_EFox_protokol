@@ -1,0 +1,97 @@
+_`printRecSubtotal`
+-------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   pRS                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`amount <pRS_amount>`                         **CURRENCY**    hodnota medzisúčtu vypočítaná aplikáciou
+      Param2   :ref:`postLine <pRS_postLine>`                     **STRING**      text tlačený za týmto príkazom
+      ======== ================================================== =============== ====================
+
+.. _pRS_amount:
+
+**Parameter amount**:
+
+  Hodnota medzisúčtu vypočítaná aplikáciou.
+
+.. _pRS_postLine:
+
+**Parameter postLine**:
+
+  Text tlačený za týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`, :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    pRS                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ============================================================= =======================================
+      Chyba                                                         Popis
+      ============================================================= =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                                  Došlo k nezhode medzisúčtu nákupu medzi aplikáciou a :term:`FP` (účtenka je automaticky zrušená a :term:`FP` prejde do stavu :ref:`FISCAL_RECEIPT_ENDING <FISCAL_RECEIPT_ENDING>`).
+      :ref:`EFP_BAD_AMOUNT <EFP_BAD_AMOUNT>`                        Parameter :ref:`amount <pRS_amount>` nie je násobkom ``0.01``.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                      Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`              :term:`FP` je v procese realizácie účtenky vkladu/výberu hotovosti.
+      :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                          V tlačiarni chýba papier.
+      :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                        Kryt tlačiarne je otvorený.
+      :ref:`EFP_DUPLICATE_BUFFER_FULL <EFP_DUPLICATE_BUFFER_FULL>`  Nedostatok miesta pre uloženie kópie dokladu.
+      :ref:`E_FAILURE <E_FAILURE>`                                  Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bola transakčná účtenka riadne dokončená. Pre ďalšie zmysluplné pokračovanie v činnosti musí aplikácia zavolať príkaz :ref:`resetPrinter <resetPrinter>` a transakciu môže zopakovať.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`            Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`            Tlačiareň je odpojená.
+      :ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>`        Pri práci s displejom vznikla interná chyba.
+      :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`        Pri práci s tlačiarňou vznikla interná chyba.
+      ============================================================= =======================================
+
+**Popis príkazu**:
+
+  Skontroluje a vytlačí aktuálnu hodnotu medzisúčtu.
+
+    * V prípade nezhody medzisúčtu účtenky medzi hodnotou poslanou aplikáciou (parameter :ref:`amount <pRS_amount>` tohto príkazu) a hodnotou vypočítanou vo :term:`FP` (hodnota akumulátora :ref:`CurrentTotal <CurrentTotal>`) sa nákup automaticky zruší a stav :term:`FP` sa zmení na :ref:`FISCAL_RECEIPT_ENDING <FISCAL_RECEIPT_ENDING>`.
+    * Hodnota akumulátora :ref:`CurrentTotal <CurrentTotal>`) je závislá na property :ref:`VatIncluded <VatIncluded>`) a platí, že:
+
+        * ak sa transakcia vykonáva s cenami vrátane DPH, potom :ref:`CurrentTotal <CurrentTotal>`) = :ref:`RecGrossTotal <RecGrossTotal>`) a v parametri :ref:`amount <pRS_amount>` je potrebné poslať sumárnu hodnotu s DPH
+        * ak sa transakcia vykonáva s cenami bez DPH, potom :ref:`CurrentTotal <CurrentTotal>`) = :ref:`RecNetTotal <RecNetTotal>`) a v parametri :ref:`amount <pRS_amount>` je potrebné poslať sumárnu hodnotu bez DPH
+
+**Účinky príkazu**:
+
+  * :ref:`RecSubtotalCount <RecSubtotalCount>` = :ref:`RecSubtotalCount <RecSubtotalCount>` + ``1``
+
+  * Ak parameter :ref:`amount <pRS_amount>` sa nerovná :ref:`CurrentTotal <CurrentTotal>`:
+
+      * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_FISCAL_RECEIPT_ENDING <FP_PS_FISCAL_RECEIPT_ENDING>`
+      * registračná transakcia sa posunie do stavu :ref:`FP_TS_ABORTED <FP_TS_ABORTED>`
+
+.. toctree::
+    :maxdepth: 2

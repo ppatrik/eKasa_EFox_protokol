@@ -1,0 +1,171 @@
+_`beginFiscalReceipt` ``[_new_]``
+---------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ======================================================== =============== ====================
+      Pole     Hodnota                                                  Dátový typ      Popis
+      ======== ======================================================== =============== ====================
+      Cmd ID   bFR                                                      \-              identifikátor príkazu
+      Req/Rsp  REQ                                                      \-              požiadavka
+      Param1   :ref:`fiscalReceiptType <bFR_fiscalReceiptType>`         **INT32**       definuje typ dokladu
+      Param2   :ref:`fiscalReceiptSettings <bFR_fiscalReceiptSettings>` **INT32**       definuje nastavenia dokladu
+      Param3   :ref:`transactionID <bFR_transactionID>`                 **STRING[32]**  identifikátor transakcie
+      ======== ======================================================== =============== ====================
+
+.. _bFR_fiscalReceiptType:
+
+**Parameter fiscalReceiptType**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ======== =============================== ===============================================
+      Hodnota  Alias                           Popis
+      ======== =============================== ===============================================
+      ``1``    _`FP_RT_SALES`                  pokladničný doklad predaja
+      ``2``    _`FP_RT_REFUND`                 pokladničný doklad vrátenia (pokladničný doklad vrátených tovarov a služieb)
+      ``3``    _`FP_RT_CASH_IN`                doklad vkladu hotovosti
+      ``4``    _`FP_RT_CASH_OUT`               doklad výberu hotovosti
+      ``5``    _`FP_RT_SIMPLE_INVOICE`         pokladničný doklad úhrady faktúry
+      ``6``    _`FP_RT_SINGLE_PURPOSE_VOUCHER` pokladničný doklad výmeny jednoúčelového poukazu
+      ======== =============================== ===============================================
+
+.. _bFR_fiscalReceiptSettings:
+
+**Parameter fiscalReceiptSettings**:
+
+  Definuje nastavenia dokladu pomocou bitového poľa, kde význam bitov je nasledovný:
+
+  .. value of {tableValueNote} is defined in config.py
+  .. tabularcolumns:: {tableValueNote}
+
+  .. table::
+      :class: longtable
+
+      ========= =========
+      Bit       Popis
+      ========= =========
+      0         | _`FP_RS_PRINTED_FORM`
+                | Definuje originálnu formu dokladu.
+                | ``0``: Bude vytvorená elektronická podoba dokladu. Vytvorená elektronická podoba dokladu musí byť zo zákona zaslaná zákazníkovi. O zaslanie sa musí postarať obluha :term:`FP`.
+                | ``1``: Bude vytlačená papierová podoba dokladu.
+      1 - 31    (rezervované)
+      ========= =========
+
+  .. warning::
+    :term:`FP` v tejto verzii stále pracuje len s tlačenou podobou dokladu.
+
+.. _bFR_transactionID:
+
+**Parameter transactionID**:
+
+  Jedná sa o identifikátor transakcie v ktorom nesmie byť prekročený definovaný maximálny počet znakov a tiež všetky poslané znaky tohto parametra musia byť vytlačiteľné a v rozsahu znakov definovanej kódovej stránky.
+
+  Stav transakcie, ktorá obsahuje neprázdny parameter :ref:`transactionID <bFR_transactionID>` je verifikovateľný príkazom :ref:`getTransactionStatus <getTransactionStatus>`. Transakcia s neprázdnym :ref:`transactionID <bFR_transactionID>` je označená transakcia.
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    bFR                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      =============================================================== =======================================
+      Chyba                                                           Popis
+      =============================================================== =======================================
+      :ref:`EFP_EMPTY_SERIAL_NUM <EFP_EMPTY_SERIAL_NUM>`              Nie je zadané sériové číslo.
+      :ref:`EFP_NO_CERTIFICATE <EFP_NO_CERTIFICATE>`                  Nie je dostupný podpisový certifikát.
+      :ref:`EFP_INVALID_CERTIFICATE <EFP_INVALID_CERTIFICATE>`        Platnosť certifikátu vypršala, alebo certifikát ešte nezačal platiť.
+      :ref:`EFP_MISSING_IDENTITY_DATA <EFP_MISSING_IDENTITY_DATA>`    Chýbajúce identifikačné údaje podnikateľa.
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                                    Parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` nie je z množiny dovolených hodnôt.
+      :ref:`EFP_BAD_DESCRIPTION <EFP_BAD_DESCRIPTION>`                Parameter :ref:`transactionID <bFR_transactionID>` nebol poslaný správne.
+      :ref:`EFP_LOCATION_NOT_SET <EFP_LOCATION_NOT_SET>`              Pre prenosnú pokladnicu nebola na serveri :term:`eKasa` zaregistrovaná poloha predaja.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                        Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`                Operácie vklad/výber nie sú povolené v tréningovom režime, alebo nie je možné začať tlač dokladu z dôvodu požiadavky na servisný zásah, alebo došlo k výmene :term:`ChDÚ`.
+      :ref:`EFP_DAY_END_REQUIRED <EFP_DAY_END_REQUIRED>`              Pred vykonaním príkazu je potrebné vykonať dennú uzávierku.
+      :ref:`EFP_INSPECTION_REQUEST <EFP_INSPECTION_REQUEST>`          Je potrebné potvrdiť aktivovanú požiadavku na servisný zásah, alebo servisný zásah priamo vykonať.
+      :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                          Kryt tlačiarne je otvorený.
+      :ref:`EFP_CUTTER <EFP_CUTTER>`                                  Strihač papiera je v zlom stave.
+      :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                            V tlačiarni chýba papier.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`              Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`              Tlačiareň je odpojená.
+      :ref:`EFP_CLOCK_ERROR <EFP_CLOCK_ERROR>`                        :term:`FP` detegoval chybu obvodu reálneho času.
+      :ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>`          Pri práci s displejom vznikla interná chyba.
+      :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`          Pri práci s tlačiarňou vznikla interná chyba.
+      :ref:`EFP_NOT_FISCAL <EFP_NOT_FISCAL>`                          :term:`FP` nie je uvedený do prevádzky, operáciu nemožno vykonať pred uvedením do prevádzky.
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`                  Nastala chyba komunikácie s :term:`ChDÚ`.
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                              :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`        Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      :ref:`EFP_ICM_JRN_DOC_UNFINISHED <EFP_ICM_JRN_DOC_UNFINISHED>`  Interná chyba :term:`ChDÚ` - dokument žurnálu nie je uzavretý.
+      :ref:`EFP_FW_UPDATE_REQUEST <EFP_FW_UPDATE_REQUEST>`            Je potrebné vykonať aktualizáciu softvéru, alebo ju odložiť.
+      :ref:`EFP_MANDATORY_FW_UPDATE <EFP_MANDATORY_FW_UPDATE>`        Je nutné vykonať aktualizáciu SW
+      :ref:`EFP_ICM_BLOCKED <EFP_ICM_BLOCKED>`                        :term:`ChDÚ` je zablokované, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_PSTORAGE_WRN_LIMIT1 <EFP_PSTORAGE_WRN_LIMIT1>`        :term:`ChDÚ` je zaplnené na viac ako 80%, je potrebné opakovať volanie príkazu.
+                                                                      Aktuálnu hodnotu zaplnenia :term:`ChDÚ` v % je možné zistiť prečítaním vlastnosti
+                                                                      :ref:`ProtectedStorageUsage <ProtectedStorageUsage>` pomocou príkazu :ref:`getProperty <getProperty>`.
+      :ref:`EFP_PSTORAGE_WRN_LIMIT2 <EFP_PSTORAGE_WRN_LIMIT2>`        :term:`ChDÚ` je takmer plné (zaplnené na viac ako 95%). Je potrebné opakovať volanie príkazu.
+                                                                      Aktuálnu hodnotu zaplnenia :term:`ChDÚ` v % je možné zistiť prečítaním vlastnosti
+                                                                      :ref:`ProtectedStorageUsage <ProtectedStorageUsage>` pomocou príkazu :ref:`getProperty <getProperty>`.
+      :ref:`EFP_ICM_CHANGED <EFP_ICM_CHANGED>`                        :term:`ChDÚ` je vymenené.
+      :ref:`EFP_PSTORAGE_FULL <EFP_PSTORAGE_FULL>`                    :term:`ChDÚ` je plné a je nutná jeho výmena, kontaktujte servis.
+      =============================================================== =======================================
+
+  Ak nastane niektorá z vyššie vymenovaných chýb potom transakcia predaja, alebo vrátenia,
+  resp. vkladu/výber hotovosti, vôbec nezačne, :term:`FP` ostáva v stave :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+
+**Popis príkazu**:
+
+  Príkaz začína doklad (nová transakcia).
+
+    * Ak parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SALES <FP_RT_SALES>` sa začne pokladničný doklad predaja.
+    * Ak parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_REFUND <FP_RT_REFUND>` sa začne transakcia vrátení tovarov (pokladničný doklad vrátenia) a po ukončení tejto transakcie budú všetky daňové sumárne hodnoty a počítadlá nákupu pripočítané do denných daňových sumárov a počítadiel inverzným spôsobom v porovnaní s pokladničným dokladom predaja. V tomto prípade bude na pokladničnom doklade vytlačený aj špeciálny nadpis, ktorý jednoznačne identifikuje tento typ dokladu.
+    * Ak parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SIMPLE_INVOICE <FP_RT_SIMPLE_INVOICE>`, začne sa tlač pokladničného dokladu zaznamenávajúcej úhradu faktúry. Pre tento typ transakcie platí niekoľko obmedzení, ktoré budú popísané v príkazoch :ref:`printRecItem <printRecItem>` a :ref:`printRecItemRefund <printRecItemRefund>`.
+    * Ak parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_CASH_IN <FP_RT_CASH_IN>` (vklad hotovosti) alebo :ref:`FP_RT_CASH_OUT <FP_RT_CASH_OUT>` (výber hotovosti) bude mať vytlačený doklad rozdielny charakter od pokladničných dokladov spomínaných vyššie. Nebude sa jednať o pokladničný doklad predaja/vrátenia, ale o doklad, ktorý bude zaznamenávať manipuláciu s hotovosťou v pokladničnom systéme. V prípade tohto typu dokladu je po prechode do stavu :ref:`FISCAL_RECEIPT <FISCAL_RECEIPT>` umožnené vyvolať len príkazy :ref:`printRecMessage <printRecMessage>`, :ref:`printBarCode <printBarCode>`, ktoré nezmenia stav :term:`FP` a príkazy :ref:`printRecCash <printRecCash>` alebo :ref:`printRecVoid <printRecVoid>`, ktoré spôsobia prechod do stavu :ref:`FISCAL_RECEIPT_ENDING <FISCAL_RECEIPT_ENDING>`.
+    * Ak parameter :ref:`fiscalReceiptType <bFR_fiscalReceiptType>` = :ref:`FP_RT_SINGLE_PURPOSE_VOUCHER <FP_RT_SINGLE_PURPOSE_VOUCHER>`, začne sa pokladničný doklad výmeny jednoúčelového poukazu za tovar/službu. Pri tomto type dokladu je možné volať iba príkazy :ref:`printRecItemSinglePurposeVoucher <printRecItemSinglePurposeVoucher>` na registráciu poukazu a :ref:`printRecItem <printRecItem>` na registráciu položky. Po registrácii položiek a poukazu sa volá príkaz :ref:`printRecTotal <printRecTotal>` alebo :ref:`printRecVoid <printRecVoid>` (pre anuláciu dokladu), ktoré spôsobia prechod do stavu :ref:`FISCAL_RECEIPT_ENDING <FISCAL_RECEIPT_ENDING>`.
+
+**Účinky príkazu**:
+
+  * :ref:`Rec…Total… <Sumárne hodnoty>` = ``0``
+  * :ref:`Rec…Count… <Počítadlá>` = ``0``
+  * :ref:`CurrentTotal <CurrentTotal>`  = ``0``
+  * :ref:`AccPaymentTotal <AccPaymentTotal>` = ``0``
+  * :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`fiscalReceiptType <bFR_fiscalReceiptType>`
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_FISCAL_RECEIPT <FP_PS_FISCAL_RECEIPT>`
+  * Vznikne nová registračná transakcia so stavom :ref:`FP_TS_STARTED <FP_TS_STARTED>`
+
+  Ak sa jedná o prvé zavolanie príkazu :ref:`beginFiscalReceipt <beginFiscalReceipt>` po vykonaní dennej Z uzávierky:
+
+    * :ref:`DTStartOfDay <DTStartOfDay>` sa nastaví na aktuálny dátum a čas
+    * :ref:`DayOpened <DayOpened>` = ``TRUE``
+
+.. toctree::
+    :maxdepth: 2

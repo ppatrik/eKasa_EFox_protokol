@@ -1,0 +1,205 @@
+_`printRecTotal` ``[_new_]``
+----------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   pRT                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`total <pRT_total>`                           **CURRENCY**    hodnota účtenky vypočítaná aplikáciou
+      Param2   :ref:`payment <pRT_payment>`                       **CURRENCY**    hodnota platby
+      Param3   :ref:`paymentID <pRT_paymentID>`                   **INT32**       identifikátor typu platby (rozsah <``1``, :ref:`NumPayments <NumPayments>`>)
+      Param4   :ref:`preLine <pRT_preLine>`                       **STRING**      text tlačený pred týmto príkazom
+      Param5   :ref:`postLine <pRT_postLine>`                     **STRING**      text tlačený za týmto príkazom
+      ======== ================================================== =============== ====================
+
+.. _pRT_total:
+
+**Parameter total**:
+
+  Hodnota účtenky vypočítaná aplikáciou.
+
+  .. note::
+     Od 1.7.2022 sa zaokrúhľujú platby v hotovosti na 5 eurocentov, hodnota v tomto poli však nebude ovlpyvnená zaokrúhlením
+     t.j. posiela sa nezaokrúhlená.
+
+  .. note::
+
+    Ak sa zavolá príkaz v prípade dokladu výmeny jednoúčelového poukazu
+    (:ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_SINGLE_PURPOSE_VOUCHER <FP_RT_SINGLE_PURPOSE_VOUCHER>` )
+    tento parameter musí obsahovať hodnotu ``0``.
+
+.. _pRT_payment:
+
+**Parameter payment**:
+
+  Hodnota platby.
+
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný.
+    * Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+  .. note::
+
+    Od 1.7.2022 sa zaokrúhľujú platby v hotovosti na 5 eurocentov. Ak bude posielaná platba v hotovosti,
+    potom hodnota platby poslaná v tomto poli musí byť zaokrúhlená podľa tohto pravidla, inak bude vrátená chyba :ref:`EFP_NOT_PAYABLE_AMOUNT <EFP_NOT_PAYABLE_AMOUNT>`.
+
+.. _pRT_paymentID:
+
+**Parameter paymentID**:
+
+  Identifikátor typu platby.
+
+  * Môže nadobúdať hodnoty v rozsahu <``1``, :ref:`NumPayments <NumPayments>`>.
+  * Jednotlivé typy platieb a k nim priradené indexy, je možné naprogramovať
+    prostredníctvom príkazu :ref:`setPaymentEntry <setPaymentEntry>`.
+
+.. _pRT_preLine:
+
+**Parameter preLine**:
+
+  Text tlačený pred týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`,
+      :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný.
+    * Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+.. _pRT_postLine:
+
+**Parameter postLine**:
+
+  Text tlačený za týmto príkazom.
+
+    * Maximálna dĺžka reťazca je max(:ref:`FontALineLength <FontALineLength>`,
+      :ref:`FontBLineLength <FontBLineLength>`) - ``3`` znakov.
+    * Jedná sa o nepovinný parameter, ktorý musí byť zadaný.
+    * Ak neobsahuje žiadnu hodnotu, je potrebné použiť ``""`` (prázdny reťazec).
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    pRT                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      =================================================================== =======================================
+      Chyba                                                               Popis
+      =================================================================== =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                                        Hodnota účtenky :ref:`total <pRT_total>` vypočítaná aplikáciou sa nezhoduje s hodnotou, ktorú vypočítala :term:`FP` (účtenka je automaticky zrušená a :term:`FP` prejde do stavu :ref:`FISCAL_RECEIPT_ENDING <FISCAL_RECEIPT_ENDING>`).
+      :ref:`EFP_BAD_PAYMENT <EFP_BAD_PAYMENT>`                            Parameter :ref:`paymentID <pRT_paymentID>` nie je z množiny dovolených hodnôt alebo zvolená platba nie je povolená (:ref:`paymentType <sPE_paymentType>` = :ref:`FP_PEPT_UNUSED <FP_PEPT_UNUSED>`).
+      :ref:`EFP_BAD_AMOUNT <EFP_BAD_AMOUNT>`                              Parameter :ref:`payment <pRT_payment>` je < ``0``, alebo nie je násobkom ``0.01``, alebo parameter :ref:`total <pRT_total>` nie je násobkom ``0.01``.
+      :ref:`EFP_BAD_CHANGE_TYPE <EFP_BAD_CHANGE_TYPE>`                    Zvolený typ výdavku :ref:`ChangeType <ChangeType>` nie je povolený.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                            Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`                    :term:`FP` je v procese realizácie účtenky vkladu/výberu hotovosti, alebo doklad neobsahuje žiadnu položku, alebo :ref:`PrinterState <PrinterState>` = :ref:`FISCAL_RECEIPT_TOTAL <FISCAL_RECEIPT_TOTAL>` a súčasne :ref:`RecGrossTotal <RecGrossTotal>` < ``0`` (vtedy iba príkaz :ref:`printRecTotalChange <printRecTotalChange>` môže ukončiť registračnú transakciu, pretože vyrovnávanie registračnej transakcie začalo týmto príkazom a nie je možné ho kombinovať s príkazom :ref:`printRecTotal <printRecTotal>` pre platby).
+      :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                                V tlačiarni chýba papier.
+      :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                              Kryt tlačiarne je otvorený.
+      :ref:`EFP_DUPLICATE_BUFFER_FULL <EFP_DUPLICATE_BUFFER_FULL>`        Nedostatok miesta pre uloženie kópie dokladu.
+      :ref:`EFP_REC_TOTAL_OVERFLOW <EFP_REC_TOTAL_OVERFLOW>`              V prípade dokladu výmeny jednoúčelového poukazu nie je povolená kladná hodnota nákupu.
+      :ref:`EFP_MAX_PAYMENT_CNT_EXCEEDED <EFP_MAX_PAYMENT_CNT_EXCEEDED>`  Bol prekročený maximálny počet platieb alebo výdavkov na doklade. Maximálny počet platieb vrátane výdavkov na jednom doklade je ``256``.
+      :ref:`EFP_NOT_PAYABLE_AMOUNT <EFP_NOT_PAYABLE_AMOUNT>`              Nevyplatiteľná suma platby v hotovosti, hodnota platby v hotovosti nie je zaokrúhlená podľa aktuálnych nastavení.
+      :ref:`E_FAILURE <E_FAILURE>`                                        Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bola transakčná účtenka riadne dokončená. Pre ďalšie zmysluplné pokračovanie v činnosti musí aplikácia zavolať príkaz :ref:`resetPrinter <resetPrinter>` a transakciu môže zopakovať.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`                  Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`                  Tlačiareň je odpojená.
+      :ref:`EFP_CLOCK_ERROR <EFP_CLOCK_ERROR>`                            Na :term:`FP` bola detegovaná chyba obvodu reálneho času.
+      :ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>`              Pri práci s displejom vznikla interná chyba.
+      :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`              Pri práci s tlačiarňou vznikla interná chyba.
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`                      Nastala chyba komunikácie s :term:`ChDÚ`.
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                                  :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`            Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      =================================================================== =======================================
+
+**Popis príkazu**:
+
+  Skontroluje a vytlačí aktuálnu hodnotu účtenky.
+
+    * V prípade nezhody hodnoty účtenky medzi hodnotou poslanou aplikáciou (parameter :ref:`total <pRT_total>`)
+      a hodnotou vypočítanou vo :term:`FP` (hodnota akumulátora :ref:`RecGrossTotal <RecGrossTotal>`)
+      sa registračná transakcia automaticky zruší a stav :term:`FP` sa zmení na :ref:`FISCAL_RECEIPT_ENDING <FISCAL_RECEIPT_ENDING>`
+      (stav registračnej transakcie sa zmení z :ref:`FP_TS_STARTED <FP_TS_STARTED>` na :ref:`FP_TS_ABORTED <FP_TS_ABORTED>`).
+    * Vypočíta sa zaokrúhlenie platby na základe nastavenia zaokrúhľovania hotovosti, pozri vlastnosti :ref:`CashRoundPlace <CashRoundPlace>` a :ref:`CashRoundType <CashRoundType>`.
+      Zaokrúhlenie bude v počítadle :ref:`RecRoundingTotal<RecRoundingTotal>`.
+    * Ak :ref:`payment <pRT_payment>` >= :ref:`RecGrossTotal <RecGrossTotal>` + :ref:`RecRoundingTotal<RecRoundingTotal>` – :ref:`AccPaymentTotal <AccPaymentTotal>`,
+      potom sa vytlačí popis a hodnota platby a stav :term:`FP` sa zmení na :ref:`FISCAL_RECEIPT_ENDING <FISCAL_RECEIPT_ENDING>`.
+      Ak hodnota platby prevyšovala hodnotu na zaplatenie, tak sa navyše ešte vytlačí hodnota výdavku.
+      Ak zaokrúhlenie :ref:`RecRoundingTotal<RecRoundingTotal>` má nenulovú hodnotu, vytlačí sa aj jeho hodnota.
+    * Ak :ref:`payment <pRT_payment>` < :ref:`RecGrossTotal <RecGrossTotal>` + :ref:`RecRoundingTotal<RecRoundingTotal>` – :ref:`AccPaymentTotal <AccPaymentTotal>`,
+      potom sa vytlačí popis s hodnotou platby a keďže ešte nedošlo k vyrovnaniu
+      celej hodnoty registračnej transakcie, stav :term:`FP` bude :ref:`FISCAL_RECEIPT_TOTAL <FISCAL_RECEIPT_TOTAL>`.
+    * Ak :ref:`payment <pRT_payment>` = ``0`` a súčasne :ref:`RecGrossTotal <RecGrossTotal>` > ``0``,
+      potom nedôjde k žiadnej tlači platby, ale príkaz len spôsobí zmenu stavu na :ref:`FISCAL_RECEIPT_TOTAL <FISCAL_RECEIPT_TOTAL>`.
+    * Ak aplikácia pošle parameter :ref:`payment <pRT_payment>` = ``""`` (prázdny), :term:`FP`
+      za tento parameter automaticky doplní hodnotu zbytku nesplatenej hodnoty účtenky
+      (tzn. :ref:`payment <pRT_payment>` = :ref:`RecGrossTotal <RecGrossTotal>` + :ref:`RecRoundingTotal<RecRoundingTotal>` – :ref:`AccPaymentTotal <AccPaymentTotal>`,
+      alebo ak :ref:`RecGrossTotal <RecGrossTotal>` < ``0`` potom :ref:`payment <pRT_payment>` = ``0``),
+      čím dôjde k vyrovnaniu hodnoty registračnej transakcie, stav :term:`FP` sa
+      zmení na :ref:`FISCAL_RECEIPT_ENDING <FISCAL_RECEIPT_ENDING>`.
+    * Ak stav :term:`FP` je :ref:`FISCAL_RECEIPT_TOTAL <FISCAL_RECEIPT_TOTAL>` a
+      súčasne :ref:`RecGrossTotal <RecGrossTotal>` je < ``0``
+      (t.j. bol použitý už aspoň jeden príkaz :ref:`printRecTotalChange <printRecTotalChange>`),
+      vyvolanie príkazu :ref:`printRecTotal <printRecTotal>` nie je viac možné a
+      transakcia sa musí dokončiť príkazom(mi) :ref:`printRecTotalChange <printRecTotalChange>`.
+      Ak už raz začal proces vydávania, tento sa ďalej nesmie kombinovať s operáciami platieb.
+
+**Účinky príkazu**:
+
+  * Ak parameter :ref:`total <pRT_total>` != :ref:`RecGrossTotal <RecGrossTotal>`:
+
+      * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_FISCAL_RECEIPT_ENDING <FP_PS_FISCAL_RECEIPT_ENDING>`
+      * registračná transakcia sa posunie zo stavu :ref:`FP_TS_STARTED <FP_TS_STARTED>` do stavu :ref:`FP_TS_ABORTED <FP_TS_ABORTED>`
+
+  * Ak parameter :ref:`total <pRT_total>` = :ref:`RecGrossTotal <RecGrossTotal>`:
+
+      * registračná transakcia je v stave :ref:`FP_TS_STARTED <FP_TS_STARTED>`
+      * ak parameter :ref:`payment <pRT_payment>` >= :ref:`RecGrossTotal <RecGrossTotal>` + :ref:`RecRoundingTotal<RecRoundingTotal>` – :ref:`AccPaymentTotal <AccPaymentTotal>`,
+        potom :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_FISCAL_RECEIPT_ENDING <FP_PS_FISCAL_RECEIPT_ENDING>`
+      * ak parameter :ref:`payment <pRT_payment>` < :ref:`RecGrossTotal <RecGrossTotal>` + :ref:`RecRoundingTotal<RecRoundingTotal>` – :ref:`AccPaymentTotal <AccPaymentTotal>`,
+        potom :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_FISCAL_RECEIPT_TOTAL <FP_PS_FISCAL_RECEIPT_TOTAL>`
+      * :ref:`AccPaymentTotal <AccPaymentTotal>` = :ref:`AccPaymentTotal <AccPaymentTotal>` + :ref:`payment <pRT_payment>`
+      * ak parameter :ref:`payment <pRT_payment>` != ``0``
+
+          * :ref:`RecPaymentTotal <RecPaymentTotal>`\[:ref:`paymentID <pRT_paymentID>`\] = :ref:`RecPaymentTotal <RecPaymentTotal>`\[:ref:`paymentID <pRT_paymentID>`\] + :ref:`payment <pRT_payment>`
+          * :ref:`TransPaymentCount <TransPaymentCount>`\[:ref:`paymentID <pRT_paymentID>`\] = :ref:`TransPaymentCount <TransPaymentCount>`\[:ref:`paymentID <pRT_paymentID>`\] + 1
+
+          .. note::
+              * :math:`RecPaymentTotal[0] = \displaystyle\sum_{i=1}^{NumPayments} RecPaymentTotal[i]`
+              * :math:`TransPaymentCount[0] = \displaystyle\sum_{i=1}^{NumPayments} TransPaymentCount[i]`
+              * :ref:`RecPaymentCount <RecPaymentCount>` = :ref:`TransPaymentCount <TransPaymentCount>`\[``0``\]
+
+      * ak parameter :ref:`payment <pRT_payment>` > :ref:`RecGrossTotal <RecGrossTotal>` + :ref:`RecRoundingTotal<RecRoundingTotal>` – :ref:`AccPaymentTotal <AccPaymentTotal>`
+
+          * :ref:`RecChangeTotal <RecChangeTotal>`\[:ref:`ChangeType <ChangeType>`\] = :ref:`RecChangeTotal <RecChangeTotal>`\[:ref:`ChangeType <ChangeType>`\] + (:ref:`payment <pRT_payment>` + :ref:`AccPaymentTotal <AccPaymentTotal>` – :ref:`RecGrossTotal <RecGrossTotal>` - :ref:`RecRoundingTotal<RecRoundingTotal>`)
+          * :ref:`TransChangeCount <TransChangeCount>`\[:ref:`ChangeType <ChangeType>`\] = :ref:`TransChangeCount <TransChangeCount>`\[:ref:`ChangeType <ChangeType>`\] + 1
+
+          .. note::
+              * :math:`RecChangeTotal[0] = \displaystyle\sum_{i=1}^{NumPayments} RecChangeTotal[i]`
+              * :math:`TransChangeCount[0] = \displaystyle\sum_{i=1}^{NumPayments} TransChangeCount[i]`
+
+  * Ak :ref:`AutomaticDrawerOpening <AutomaticDrawerOpening>` = ``TRUE`` a súčasne (:ref:`payment <pRT_payment>` > ``0``, alebo :ref:`RecGrossTotal <RecGrossTotal>` < ``0``), potom dôjde k otvoreniu peňažnej zásuvky č. 1.
+
+.. toctree::
+    :maxdepth: 2

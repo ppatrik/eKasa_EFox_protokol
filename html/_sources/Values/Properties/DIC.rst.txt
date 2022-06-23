@@ -1,0 +1,22 @@
+_`DIC`
+^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **DIC**
+    typ                      STRING\[10\]
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje hodnotu DIČ - Daňové identifikačné číslo (obsahuje len číslice).
+
+.. toctree::
+    :maxdepth: 3

@@ -1,0 +1,22 @@
+_`NumHeaderLines`
+^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **NumHeaderLines**
+    typ                      INT32
+    prednastavená hodnota    ``9``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje hodnotu počtu riadkov hlavičky, ktoré sa tlačia na každej fiškálnej účtenke. Hlavička sa nastavuje príkazom :ref:`setHeaderLines <setHeaderLines>`. Riadky hlavičky sa automaticky vytlačia po úspešnom vykonaní príkazu :ref:`beginFiscalReceipt <beginFiscalReceipt>`.
+
+.. toctree::
+    :maxdepth: 3

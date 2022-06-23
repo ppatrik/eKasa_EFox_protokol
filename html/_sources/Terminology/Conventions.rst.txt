@@ -1,0 +1,76 @@
+Konvencie
+=========
+
+.. value of {tableTitleNote} is defined in config.py
+.. tabularcolumns:: {tableTitleNote}
+
+.. table::
+    :class: longtable
+
+    ======================================= ===========================================
+    Spôsob zápisu                           Význam
+    ======================================= ===========================================
+    **DayOpened**                           vlastnosti (property)
+    **printRecItem**                        meno príkazu
+    **pRI**                                 identifikátor príkazu [#]_
+    *unitPrice*                             názov vstupného parametra/výstupnej hodnoty
+    *RecSubtotalDiscountVoidTotal*          názov akumulátorov (súm a počítadiel)
+    :ref:`FP_GD_POSID <FP_GD_POSID>`        meno konštanty
+    **INT32**, **CURRENCY**                 dátový typ
+    FISCAL_RECEIPT                          pomenovanie stavu
+    ``PreFiscal``                           názov režimu
+    ``TRUE``/``"text"``/``1``               logickú/textovú/číselnú hodnotu
+    :math:`VAT\_NET()`                      názov matematických výpočtových funkcií
+    ======================================= ===========================================
+
+.. [#] Identifikátor príkazu zvyčajne pozostáva z prvých písmen názvu príkazu zapísaných v rovnakej podobe
+       ako je zapísaný samotný príkaz. V prípade ak bude mať viac príkazov rovnakú základnú skratku. bude
+       skratke druhého príkazu upravená.
+
+Kvôli skráteniu názvov rôznych mien akumulátorov, konštánt, príkazov atď. sa niektoré ich časti skracujú. Najčastejšie použité skrátenia okrem vyššie popísaných skratiek sú:
+
+.. value of {tableTitleAcronymNote} is defined in config.py
+.. tabularcolumns:: {tableTitleAcronymNote}
+
+.. table::
+    :class: longtable
+
+    =============== =========== =====================================
+    Názov           Skratka     Popis
+    =============== =========== =====================================
+    Receipt         Rec         týka sa pojmov účtenka, doklad
+    Header          Hdr         týka sa pojmu hlavička na účtenke
+    Service         Srvc        týka sa pojmu servisný
+    Message         Msg         týka sa pojmu oznam
+    Disconnection   Disc        týka sa pojmu odpojenie
+    Netto           Net         týka sa pojmu čistý resp. bez DPH
+    Printer         Prn         týka sa pojmu tlačiareň
+    Display         Dsp         týka sa pojmu displej
+    =============== =========== =====================================
+
+V texte tohto dokumentu sa kvôli zjednodušeniam v názvoch príkazov, property, akumulátorov
+a premenných na niektorých miestach vyskytuje troj-bodková "…" skracujúca konvencia.
+V názve abstraktného klasifikátora, v ktorom sa vyskytne, sa namiesto troch bodiek "…"
+môže objaviť nula, jeden alebo niekoľko znakov textu, pričom výsledný názov konkrétneho
+klasifikátora musí existovať (je v tomto dokumente zadefinovaný) a navyše musí spĺňať
+formálne pravidlá pre tento typ klasifikátor, ktoré sú definované v tejto kapitole.
+
+**Príklad č. 1**: v názve príkazu definovanom textovým reťazcom "**xxx…Zzz…**"
+je možné namiesto tohto abstraktného názvu dosadiť ľubovoľný z nasledujúcich názvov
+príkazov ("**xxxZzz**", "**xxxZzzY**", "**xxxZzzYyy**", "**xxxYyyZzz**",
+"**xxxYWZzz**", atď.) za predpokladu, že tieto názvy sú zároveň aj platnými názvami
+príkazov tohto komunikačného protokolu.
+
+Konkrétny prípad, ak sa napríklad v nejakej súvislosti v tomto dokumente vyskytne
+abstraktný názov príkazu **printRec…Adjust…**, potom sa daná súvislosť týka
+všetkých nasledujúcich príkazov: **printRecItemAdjustment** a **printRecPackageAdjustment**.
+
+**Príklad č. 2**: v názve akumulátora definovanom textovým reťazcom "*XY…Zzz…*"
+je možné namiesto tohto textu dosadiť ľubovoľný z nasledujúcich textov "*XYZzz*",
+"*XYWwZzz*", "*XYZzzW*", "*XYZzzWwww*", "*XYWwZzzAa[1]*", "*XYWwZzzAaa[i]*" atď.)
+za predpokladu, že tieto názvy sú zároveň aj platnými názvami akumulátorov tohto
+komunikačného protokolu a zároveň, že tieto akumulátory aj fyzicky existujú v pamäti
+fiškálnej tlačiarne.
+
+.. toctree::
+    :maxdepth: 2

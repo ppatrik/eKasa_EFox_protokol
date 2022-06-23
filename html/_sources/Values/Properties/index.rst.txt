@@ -1,0 +1,65 @@
+Vlastnosti (properties) fiškálnej tlačiarne ``[_new_]``
+-------------------------------------------------------
+
+.. toctree::
+    :maxdepth: 3
+
+    AutomaticDrawerOpening
+    BitmapMemoryFreeSpace
+    BitmapMemorySize
+    BitmapWidth
+    BuildDateTime
+    CashRoundPlace
+    CashRoundType
+    ChangeDue
+    ChangeType
+    CoverOpen
+    CurrSymbol
+    CurrSymbolPosition
+    DayOpened
+    DIC
+    DisplayColumns
+    DisplayRows
+    DrawerOpened
+    ErrorExtension
+    ErrorString
+    FiscalReceiptType
+    FiscalState
+    FontALineLength
+    FontBLineLength
+    FormatProfile
+    FPFirmwareVersion
+    HeaderBitmap
+    ICDPH
+    ICMFirmwareVersion
+    ICMIPv4Address
+    ICO
+    InternetAccess
+    LicenceCount
+    MandatoryFWUpdateDateTime
+    ManufacturerName
+    MediumCoverOpened
+    NumDataMsgItems
+    NumHeaderLines
+    NumPayments
+    NumTrailerLines
+    NumVatRates
+    PaymentsRegistration
+    PortableCashRegister
+    PrinterState
+    PrinterVariant
+    ProductModelDescription
+    ProtectedStorageUsage
+    ProtocolVersion
+    RecEmpty
+    RecNearEnd
+    SerialNumber
+    SignalLevel
+    SSID
+    TrailerBitmap
+    TrainingModeActive
+    TransactionIDPrinting
+    UniqueNum
+    UnsentDataMessagesCount
+    VatIncluded
+    VatSummaryPrinting

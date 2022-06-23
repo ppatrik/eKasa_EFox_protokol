@@ -1,0 +1,115 @@
+_`updateFirmware` ``[_new_]``
+-----------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ======================================================== =============== ====================
+      Pole     Hodnota                                                  Dátový typ      Popis
+      ======== ======================================================== =============== ====================
+      Cmd ID   uF                                                       \-              identifikátor príkazu
+      Req/Rsp  REQ                                                      \-              požiadavka
+      ======== ======================================================== =============== ====================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= ======================================================= ============== ====================
+      Pole      Hodnota                                                 Dátový typ     Popis
+      ========= ======================================================= ============== ====================
+      Cmd ID    uF                                                      \-             identifikátor príkazu
+      Req/Rsp   RSP                                                     \-             odpoveď
+      Exception *exceptionCode*                                         **INT32**      návratový kód
+      ========= ======================================================= ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ============================================================= =======================================
+      Chyba                                                         Popis
+      ============================================================= =======================================
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                      Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu
+      :ref:`E_NOEXIST <E_NOEXIST>`                                  Nie je dostupná aktualizácia firmvéru
+      :ref:`EFP_INVALID_FW_SIGNATURE <EFP_INVALID_FW_SIGNATURE>`    Neplatný podpis firmvéru
+      :ref:`EFP_WRONG_FW <EFP_WRONG_FW>`                            Nesprávna verzia firmvéru, firmvér nie je určený pre tento typ zariadenia
+      :ref:`EFP_DAY_END_REQUIRED <EFP_DAY_END_REQUIRED>`            Pred vykonaním príkazu je potrebné vykonať dennú uzávierku
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`                Nastala chyba komunikácie s :term:`ChDÚ`
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                            :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`      Pri práci s :term:`ChDÚ` vznikla interná chyba
+      :ref:`EFP_NETWORK <EFP_NETWORK>`                              FP nemá prístup na internet alebo server neodpovedá
+      :ref:`EFP_OPERATION_ERROR <EFP_OPERATION_ERROR>`              Interná chyba. Pri vykonávaní príkazu nastala nešpecifikovaná chyba
+      :ref:`EFP_FW_UPDATE_NEED_FISCAL <EFP_FW_UPDATE_NEED_FISCAL>`  Aktualizácia firmvéru z internetu vyžaduje uvedenie do prevádzky
+      ============================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz vykoná aktualizáciu firmvéru (ak je aktualizácia dostupná a sú splnené všetky
+  podmienky pre vykonanie aktualizácie).
+
+  To či je dostupná aktualizácia je možné zistiť príkazom
+  :ref:`getFirmwareUpdateRequest <getFirmwareUpdateRequest>`.
+
+  *Podmienky pre vykonanie aktualizácie*:
+
+    * :term:`FP` musí byť v stave :ref:`MONITOR <MONITOR>`,
+    * :term:`FP` musí byť pripojená k internetu (neplatí pre aktualizáciu lokálne
+      nahranú cez web server),
+    * musí byť dostupná aktualizácia firmvéru,
+    * musí byť platný podpis firmvéru,
+    * aktualizačný súbor musí obsahovať správny firmvér, ktorý je určený pre daný typ zariadenia,
+    * musí byť uzavretý obchodný deň (:ref:`vykonaním dennej uzávierky <printZReport>`).
+
+    Aktualizácia môže byť stiahnutá automaticky z internetu, alebo lokálne nahraná cez web server.
+
+  V prípade splnených podmienok pre aktualizáciu firmvéru, príkaz okamžite vráti odpoveď
+  s návratovou hodnotou *exceptionCode* = ``0``. Následne na to :term:`FP` prestane odpovedať na
+  všetky nasledujúce príkazy až do ukončenia aktualizácie.
+
+  .. note::
+    Priebeh aktualizácie je potrebné sledovať na displeji zákazníka.
+
+    Počas aktualizácie môže byť vyžadované vypnutie a zapnutie zariadenia,
+    na ktoré bude obsluha upozornená správou na displeji zákazníka.
+
+    Po zavolaní tohto príkazu už nie je potrebné použiť príkaz :ref:`disconnect <disconnect>`.
+
+  .. warning::
+    Počas aktualizácie dôjde k vypnutiu virtuálneho sériového portu, resp. RS-232
+    portu, resp. LAN/TCP spojenia. Preto je po zaslaní príkazu potrebné uzavrieť
+    komunikačný port. V opačnom prípade (hlavne pre virtuálny sériový port)
+    môže dôjsť k zablokovaniu komunikačného portu na strane :term:`PC`.
+
+    Po ukončení aktualizácie musí aplikácia vytvoriť nové spojenie príkazom :ref:`connect <connect>`.
+
+**Účinky príkazu**:
+
+  Aktualizácia firmvéru :term:`FP` spôsobí vymazanie všetkých sumárnych hodnôt, počítadiel, nastavení,
+  ako aj naprogramovaných obrázkov (grafické logá).
+
+  Všetky nastavenia :term:`FP` a vlastnosti budú obnovené na štandardné hodnoty.
+
+.. warning::
+  Keďže aktualizácia firmvéru :term:`FP` spôsobí vymazanie sumárnych hodnôt, počítadiel a nastavení :term:`FP`,
+  je nutné, aby aplikácia pred spustením aktualizácie firmvéru najprv prečítala hodnoty
+  sumárnych hodnôt, počítadiel, potom vykonala dennú uzávierku a urobila potrebné zálohy
+  nastavení.
+
+  Po úspešnej aktualizácii firmvéru :term:`FP` je potrebné všetky nastavenia :term:`FP` (vrátane obrázkov) obnoviť.
+
+.. toctree::
+    :maxdepth: 2

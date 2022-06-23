@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="sk" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8.41. printRecAdvancePaymentDeduct [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Hľadať" href="../search.html" />
+    <link rel="next" title="8.42. printRecItemSinglePurposeVoucher [_new_]" href="printRecItemSinglePurposeVoucher.html" />
+    <link rel="prev" title="8.40. printRecItemRefundCorrection [_new_]" href="printRecItemRefundCorrection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">1. Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology/index.html">2. Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">3. Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">4. Vytvorenie spojenia a stavy <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">5. Pravidlá <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">6. Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">7. Konštanty a premenné</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="affirmInspectionRequest.html">8.1. affirmInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginFiscalReceipt.html">8.2. beginFiscalReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginNonFiscal.html">8.3. beginNonFiscal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginTraining.html">8.4. beginTraining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cancelRest.html">8.5. cancelRest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clearDisplay.html">8.6. clearDisplay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cutPaper.html">8.7. cutPaper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deferFirmwareUpdateRequest.html">8.8. deferFirmwareUpdateRequest <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="displayTextAt.html">8.9. displayTextAt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endFiscalReceipt.html">8.10. endFiscalReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="endNonFiscal.html">8.11. endNonFiscal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endTraining.html">8.12. endTraining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getCounter.html">8.13. getCounter <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getData.html">8.14. getData <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getDate.html">8.15. getDate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFirmwareUpdateRequest.html">8.16. getFirmwareUpdateRequest <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFontAttribute.html">8.17. getFontAttribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getHeaderLine.html">8.18. getHeaderLine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getInspectionRequest.html">8.19. getInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getLastRegisteredLocationInfo.html">8.20. getLastRegisteredLocationInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getLastRegisteredReceiptInfo.html">8.21. getLastRegisteredReceiptInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getLicenceData.html">8.22. getLicenceData <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getNextLogRecord.html">8.23. getNextLogRecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getPaymentEntry.html">8.24. getPaymentEntry <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getProperty.html">8.25. getProperty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTotalizer.html">8.26. getTotalizer <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTrailerLine.html">8.27. getTrailerLine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTransactionStatus.html">8.28. getTransactionStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getVatEntry.html">8.29. getVatEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="obtainProgress.html">8.30. obtainProgress <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="openDrawer.html">8.31. openDrawer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printBarCode.html">8.32. printBarCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printDuplicateReceipt.html">8.33. printDuplicateReceipt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printNormal.html">8.34. printNormal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecCash.html">8.35. printRecCash <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItem.html">8.36. printRecItem <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemAdjustment.html">8.37. printRecItemAdjustment <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemCorrection.html">8.38. printRecItemCorrection <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemRefund.html">8.39. printRecItemRefund <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemRefundCorrection.html">8.40. printRecItemRefundCorrection <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.41. printRecAdvancePaymentDeduct <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemSinglePurposeVoucher.html">8.42. printRecItemSinglePurposeVoucher <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecMessage.html">8.43. printRecMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecPackageAdjustment.html">8.44. printRecPackageAdjustment <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecSubtotal.html">8.45. printRecSubtotal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecTotal.html">8.46. printRecTotal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecTotalChange.html">8.47. printRecTotalChange <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecVoid.html">8.48. printRecVoid <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printUnsentDataMsgReport.html">8.49. printUnsentDataMsgReport <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printXReport.html">8.50. printXReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printZReport.html">8.51. printZReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registerLocation.html">8.52. registerLocation <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="registerUnsentDataMessages.html">8.53. registerUnsentDataMessages <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="resetInspectionRequest.html">8.54. resetInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resetPrinter.html">8.55. resetPrinter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setBitmap.html">8.56. setBitmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setCustomer.html">8.57. setCustomer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setDate.html">8.58. setDate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setFiscalMode.html">8.59. setFiscalMode <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setFontAttribute.html">8.60. setFontAttribute <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setHeaderLines.html">8.61. setHeaderLines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setParagon.html">8.62. setParagon <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setPaymentEntry.html">8.63. setPaymentEntry <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setPaymentType.html">8.64. setPaymentType <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setPOSID.html">8.65. setPOSID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setProperty.html">8.66. setProperty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setTrailerLines.html">8.67. setTrailerLines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setVatTable.html">8.68. setVatTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soundImmediate.html">8.69. soundImmediate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storeAllBitmaps.html">8.70. storeAllBitmaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updateFirmware.html">8.71. updateFirmware <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">9. Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">10. Prílohy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">8. </span>Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a> &raquo;</li>
+      <li><span class="section-number">8.41. </span>printRecAdvancePaymentDeduct <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="printrecadvancepaymentdeduct-new">
+<h1><span class="section-number">8.41. </span><span class="target" id="printrecadvancepaymentdeduct">printRecAdvancePaymentDeduct</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#printrecadvancepaymentdeduct-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p><strong>Formát príkazu</strong>:</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 47%" />
+<col style="width: 14%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pole</p></th>
+<th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Dátový typ</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cmd ID</p></td>
+<td><p>pRAPD</p></td>
+<td><p>-</p></td>
+<td><p>identifikátor príkazu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Req/Rsp</p></td>
+<td><p>REQ</p></td>
+<td><p>-</p></td>
+<td><p>požiadavka</p></td>
+</tr>
+<tr class="row-even"><td><p>Param1</p></td>
+<td><p><a class="reference internal" href="#prapd-description"><span class="std std-ref">description</span></a></p></td>
+<td><p><strong>STRING[80]</strong></p></td>
+<td><p>názov odpočítateľnej zálohy</p></td>
+</tr>
+<tr class="row-odd"><td><p>Param2</p></td>
+<td><p><a class="reference internal" href="#prapd-amount"><span class="std std-ref">amount</span></a></p></td>
+<td><p><strong>CURRENCY</strong></p></td>
+<td><p>suma odpočítateľnej zálohy</p></td>
+</tr>
+<tr class="row-even"><td><p>Param3</p></td>
+<td><p><a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a></p></td>
+<td><p><strong>INT32</strong></p></td>
+<td><p>identifikátor daňovej skupiny</p></td>
+</tr>
+<tr class="row-odd"><td><p>Param4</p></td>
+<td><p><a class="reference internal" href="#prapd-specialregulation"><span class="std std-ref">specialRegulation</span></a></p></td>
+<td><p><strong>INT32</strong></p></td>
+<td><p>identifikátor špeciálnej regulácie</p></td>
+</tr>
+<tr class="row-even"><td><p>Param5</p></td>
+<td><p><a class="reference internal" href="#prapd-preline"><span class="std std-ref">preLine</span></a></p></td>
+<td><p><strong>STRING</strong></p></td>
+<td><p>text tlačený pred týmto príkazom</p></td>
+</tr>
+<tr class="row-odd"><td><p>Param6</p></td>
+<td><p><a class="reference internal" href="#prapd-postline"><span class="std std-ref">postLine</span></a></p></td>
+<td><p><strong>STRING</strong></p></td>
+<td><p>text tlačený za týmto príkazom</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p id="prapd-description"><strong>Parameter description</strong>:</p>
+<blockquote>
+<div><p>Názov odpočítateľnej zálohy.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Maximálna dĺžka reťazca je <code class="docutils literal notranslate"><span class="pre">80</span></code> znakov a bude vytlačený vo viacerých riadkoch.</p></li>
+<li><p>Môže obsahovať len vytlačiteľné znaky.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="prapd-amount"><strong>Parameter amount</strong>:</p>
+<blockquote>
+<div><p>Suma odpočítateľnej zálohy.</p>
+</div></blockquote>
+<p id="prapd-vatid"><strong>Parameter vatID</strong>:</p>
+<blockquote>
+<div><p>Identifikátor daňovej skupiny naprogramovanej vo <a class="reference internal" href="../Terminology/Shortcuts.html#term-FP"><span class="xref std std-term">FP</span></a>, ku ktorej je záloha priradená.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Môže nadobúdať hodnoty v rozsahu <a class="reference internal" href="getVatEntry.html#gve-vatid"><span class="std std-ref">vatID</span></a> = <code class="docutils literal notranslate"><span class="pre">1</span></code> až <a class="reference internal" href="../Values/Properties/NumVatRates.html#numvatrates"><span class="std std-ref">NumVatRates</span></a>.</p></li>
+<li><p>Parameter <a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a> tohto príkazu musí korešpondovať s parametrom  <a class="reference internal" href="getVatEntry.html#gve-vatid"><span class="std std-ref">vatID</span></a> príkazu <a class="reference internal" href="getVatEntry.html#getvatentry"><span class="std std-ref">getVatEntry</span></a>, ktorý musí odkazovať na daňovú skupinu, ktorej príznak <a class="reference internal" href="getVatEntry.html#gve-rsp-vatflag"><span class="std std-ref">vatFlag</span></a> je rôzny od <a class="reference internal" href="getVatEntry.html#fp-vf-simpinvoice"><span class="std std-ref">FP_VF_SIMPINVOICE</span></a> a od <a class="reference internal" href="getVatEntry.html#fp-vf-container"><span class="std std-ref">FP_VF_CONTAINER</span></a>.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="prapd-specialregulation"><strong>Parameter specialRegulation</strong></p>
+<blockquote>
+<div><p>Identifikátor špeciálnej regulácie bližšie určuje dôvod priradenia k nezdaniteľnej daňovej hladine (<a class="reference internal" href="getVatEntry.html#fp-vf-nontaxable"><span class="std std-ref">FP_VF_NONTAXABLE</span></a>).</p>
+<p>Môže nadobúdať jednu z nasledujúcich hodnôt:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>bez uvedenia dôvodu</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>prenesenie daňovej povinnosti</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p>oslobodené od dane</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+<td><p>cestovné kancelárie</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+<td><p>použitý tovar</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+<td><p>umelecké diela</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">6</span></code></p></td>
+<td><p>zberateľské predmety a starožitnosti</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Varovanie</p>
+<ul>
+<li><p><a class="reference internal" href="#prapd-specialregulation"><span class="std std-ref">specialRegulation</span></a> = jednej z hodnôt uvedených v tabuľke vyššie</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ak parameter <a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a> odkazuje na nezdaniteľnú daňovú hladinu <a class="reference internal" href="getVatEntry.html#fp-vf-nontaxable"><span class="std std-ref">FP_VF_NONTAXABLE</span></a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><a class="reference internal" href="#prapd-specialregulation"><span class="std std-ref">specialRegulation</span></a> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ak parameter <a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a> odkazuje na inú daňovú hladinu ako nezdaniteľnú <a class="reference internal" href="getVatEntry.html#fp-vf-nontaxable"><span class="std std-ref">FP_VF_NONTAXABLE</span></a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div></blockquote>
+<p id="prapd-preline"><strong>Parameter preLine</strong>:</p>
+<blockquote>
+<div><p>Text tlačený pred týmto príkazom.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Maximálna dĺžka reťazca je max(<a class="reference internal" href="../Values/Properties/FontALineLength.html#fontalinelength"><span class="std std-ref">FontALineLength</span></a>, <a class="reference internal" href="../Values/Properties/FontBLineLength.html#fontblinelength"><span class="std std-ref">FontBLineLength</span></a>) - <code class="docutils literal notranslate"><span class="pre">3</span></code> znakov.</p></li>
+<li><p>Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec).</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="prapd-postline"><strong>Parameter postLine</strong>:</p>
+<blockquote>
+<div><p>Text tlačený za týmto príkazom.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Maximálna dĺžka reťazca je max(<a class="reference internal" href="../Values/Properties/FontALineLength.html#fontalinelength"><span class="std std-ref">FontALineLength</span></a>, <a class="reference internal" href="../Values/Properties/FontBLineLength.html#fontblinelength"><span class="std std-ref">FontBLineLength</span></a>) - <code class="docutils literal notranslate"><span class="pre">3</span></code> znakov.</p></li>
+<li><p>Jedná sa o nepovinný parameter, ktorý musí byť zadaný. Ak neobsahuje žiadnu hodnotu, je potrebné použiť <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (prázdny reťazec).</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Formát odpovede</strong>:</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 30%" />
+<col style="width: 22%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pole</p></th>
+<th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Dátový typ</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cmd ID</p></td>
+<td><p>pRAPD</p></td>
+<td><p>-</p></td>
+<td><p>identifikátor príkazu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Req/Rsp</p></td>
+<td><p>RSP</p></td>
+<td><p>-</p></td>
+<td><p>odpoveď</p></td>
+</tr>
+<tr class="row-even"><td><p>Exception</p></td>
+<td><p><em>exceptionCode</em></p></td>
+<td><p><strong>INT32</strong></p></td>
+<td><p>návratový kód</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Návratové hodnoty</strong>:</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Chyba</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-bad-amount"><span class="std std-ref">EFP_BAD_AMOUNT</span></a></p></td>
+<td><p>Parameter <a class="reference internal" href="#prapd-amount"><span class="std std-ref">amount</span></a> je &lt;= <code class="docutils literal notranslate"><span class="pre">0</span></code>, alebo nie je násobkom <code class="docutils literal notranslate"><span class="pre">0.01</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-bad-vat"><span class="std std-ref">EFP_BAD_VAT</span></a></p></td>
+<td><p>Parameter <a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a> bol poslaný nesprávne.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-bad-spec-reg"><span class="std std-ref">EFP_BAD_SPEC_REG</span></a></p></td>
+<td><p>Parameter <a class="reference internal" href="#prapd-specialregulation"><span class="std std-ref">specialRegulation</span></a> nebol poslaný alebo bol poslaný nesprávne.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-unexpect-spec-reg"><span class="std std-ref">EFP_UNEXPECT_SPEC_REG</span></a></p></td>
+<td><p>Parameter <a class="reference internal" href="#prapd-specialregulation"><span class="std std-ref">specialRegulation</span></a> nie je povolený v tomto stave.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-wrong-state"><span class="std std-ref">EFP_WRONG_STATE</span></a></p></td>
+<td><p>Aktuálny stav FP nedovoľuje vykonanie tohto príkazu.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-illegal-command"><span class="std std-ref">EFP_ILLEGAL_COMMAND</span></a></p></td>
+<td><p>FP je v procese realizácie účtenky vkladu/výberu hotovosti.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-rec-empty"><span class="std std-ref">EFP_REC_EMPTY</span></a></p></td>
+<td><p>V tlačiarni chýba papier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-cover-open"><span class="std std-ref">EFP_COVER_OPEN</span></a></p></td>
+<td><p>Kryt tlačiarne je otvorený.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-max-dtmsg-items-exceeded"><span class="std std-ref">EFP_MAX_DTMSG_ITEMS_EXCEEDED</span></a></p></td>
+<td><p>Bol prekročený maximálny počet položiek v dátovej správe dokladu definovaný hodnotou property <a class="reference internal" href="../Values/Properties/NumDataMsgItems.html#numdatamsgitems"><span class="std std-ref">NumDataMsgItems</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-duplicate-buffer-full"><span class="std std-ref">EFP_DUPLICATE_BUFFER_FULL</span></a></p></td>
+<td><p>Nedostatok miesta pre uloženie kópie dokladu.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#e-failure"><span class="std std-ref">E_FAILURE</span></a></p></td>
+<td><p>Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bola transakčná účtenka riadne dokončená. Pre ďalšie zmysluplné pokračovanie v činnosti musí aplikácia zavolať príkaz <a class="reference internal" href="resetPrinter.html#resetprinter"><span class="std std-ref">resetPrinter</span></a> a transakciu môže zopakovať.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-dsp-disconnected"><span class="std std-ref">EFP_DSP_DISCONNECTED</span></a></p></td>
+<td><p>Displej je odpojený.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-prn-disconnected"><span class="std std-ref">EFP_PRN_DISCONNECTED</span></a></p></td>
+<td><p>Tlačiareň je odpojená.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-dsp-internal-error"><span class="std std-ref">EFP_DSP_INTERNAL_ERROR</span></a></p></td>
+<td><p>Pri práci s displejom vznikla interná chyba.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-prn-internal-error"><span class="std std-ref">EFP_PRN_INTERNAL_ERROR</span></a></p></td>
+<td><p>Pri práci s tlačiarňou vznikla interná chyba.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-icm-comm-error"><span class="std std-ref">EFP_ICM_COMM_ERROR</span></a></p></td>
+<td><p>Nastala chyba komunikácie s <a class="reference internal" href="../Terminology/Shortcuts.html#term-ChDU"><span class="xref std std-term">ChDÚ</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-icm-busy"><span class="std std-ref">EFP_ICM_BUSY</span></a></p></td>
+<td><p><a class="reference internal" href="../Terminology/Shortcuts.html#term-ChDU"><span class="xref std std-term">ChDÚ</span></a> je zaneprázdnené, operáciu teraz nie je možné vykonať.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-icm-operation-error"><span class="std std-ref">EFP_ICM_OPERATION_ERROR</span></a></p></td>
+<td><p>Pri práci s <a class="reference internal" href="../Terminology/Shortcuts.html#term-ChDU"><span class="xref std std-term">ChDÚ</span></a> vznikla nešpecifikovaná interná chyba.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Popis príkazu</strong>:</p>
+<blockquote>
+<div><p>Príkaz zabezpečí registráciu odpočítania zálohy a jej následné vytlačenie na účtenku.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Spolu s položkou bude na účtenke vytlačený aj text označujúci príkaz odpočítania zálohy.</p></li>
+<li><p>Všetky číselné hodnoty sa posielajú ako kladné a o vytlačenie správneho znamienka sa postará <a class="reference internal" href="../Terminology/Shortcuts.html#term-FP"><span class="xref std std-term">FP</span></a>.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p id="prapd-example"><strong>Príklad</strong>:</p>
+<blockquote>
+<div><p>Bol predaný tovar určitej hodnoty, v minulosti však už bola na tento tovar uhradená záloha, ktorej hodnota je <code class="docutils literal notranslate"><span class="pre">50,00</span> <span class="pre">Eur</span></code>.</p>
+<blockquote>
+<div><ul>
+<li><p>Transakciu začneme príkazom <a class="reference internal" href="beginFiscalReceipt.html#beginfiscalreceipt"><span class="std std-ref">beginFiscalReceipt</span></a> s parametrom <a class="reference internal" href="beginFiscalReceipt.html#bfr-fiscalreceipttype"><span class="std std-ref">fiscalReceiptType</span></a> = <a class="reference internal" href="beginFiscalReceipt.html#fp-rt-sales"><span class="std std-ref">FP_RT_SALES</span></a>.</p></li>
+<li><p>Pridáme položku, s parametrami na požadovaný tovar príkazom <a class="reference internal" href="printRecItem.html#printrecitem"><span class="std std-ref">printRecItem</span></a></p></li>
+<li><p>Urobíme odpočítanie zálohy príkazom <a class="reference internal" href="#printrecadvancepaymentdeduct"><span class="std std-ref">printRecAdvancepaymentDeduct</span></a> s nasledujúcimi parametrami:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#prapd-description"><span class="std std-ref">description</span></a> = <code class="docutils literal notranslate"><span class="pre">&quot;Záloha</span> <span class="pre">za</span> <span class="pre">tovar&quot;</span></code></p></li>
+<li><p><a class="reference internal" href="#prapd-amount"><span class="std std-ref">amount</span></a> = <code class="docutils literal notranslate"><span class="pre">50.00</span></code></p></li>
+<li><p><a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a> = <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><a class="reference internal" href="#prapd-specialregulation"><span class="std std-ref">specialRegulation</span></a> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></li>
+<li><p><a class="reference internal" href="#prapd-preline"><span class="std std-ref">preLine</span></a> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></li>
+<li><p><a class="reference internal" href="#prapd-postline"><span class="std std-ref">postLine</span></a> = <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Účinky príkazu</strong>:</p>
+<blockquote>
+<div><ul>
+<li><p>Ak <a class="reference internal" href="../Values/Properties/FiscalReceiptType.html#fiscalreceipttype"><span class="std std-ref">FiscalReceiptType</span></a> = <a class="reference internal" href="beginFiscalReceipt.html#fp-rt-sales"><span class="std std-ref">FP_RT_SALES</span></a> a <a class="reference internal" href="../Values/Properties/VatIncluded.html#vatincluded"><span class="std std-ref">VatIncluded</span></a> = <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> (účtenka predaja v cenách s DPH)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../Values/Accumulators/Totals.html#recadvancepaymentdeducttotal"><span class="std std-ref">RecAdvancePaymentDeductTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] = <a class="reference internal" href="../Values/Accumulators/Totals.html#recadvancepaymentdeducttotal"><span class="std std-ref">RecAdvancePaymentDeductTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] + <a class="reference internal" href="#prapd-amount"><span class="std std-ref">amount</span></a></p></li>
+<li><p><a class="reference internal" href="../Values/Accumulators/Counters.html#recadvancepaymentdeductcount"><span class="std std-ref">RecAdvancePaymentDeductCount</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] = <a class="reference internal" href="../Values/Accumulators/Counters.html#recadvancepaymentdeductcount"><span class="std std-ref">RecAdvancePaymentDeductCount</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] + <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><a class="reference internal" href="../Values/Accumulators/Totals.html#currenttotal"><span class="std std-ref">CurrentTotal</span></a> = <a class="reference internal" href="../Values/Accumulators/Totals.html#currenttotal"><span class="std std-ref">CurrentTotal</span></a> - <a class="reference internal" href="#prapd-amount"><span class="std std-ref">amount</span></a></p></li>
+<li><p><a class="reference internal" href="../Values/Accumulators/Totals.html#recgrosstotal"><span class="std std-ref">RecGrossTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] = <a class="reference internal" href="../Values/Accumulators/Totals.html#recgrosstotal"><span class="std std-ref">RecGrossTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] - <a class="reference internal" href="#prapd-amount"><span class="std std-ref">amount</span></a></p></li>
+<li><p><a class="reference internal" href="../Values/Accumulators/Totals.html#recvattotal"><span class="std std-ref">RecVatTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] = <a class="reference internal" href="../Rules/VAT.html#vat-gross"><span class="std std-ref">VAT_GROSS</span></a>(<a class="reference internal" href="../Values/Accumulators/Totals.html#recgrosstotal"><span class="std std-ref">RecGrossTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>], <a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>)</p></li>
+<li><p><a class="reference internal" href="../Values/Accumulators/Totals.html#recnettotal"><span class="std std-ref">RecNetTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] = <a class="reference internal" href="../Values/Accumulators/Totals.html#recgrosstotal"><span class="std std-ref">RecGrossTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] - <a class="reference internal" href="../Values/Accumulators/Totals.html#recvattotal"><span class="std std-ref">RecVatTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>]</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Ak <a class="reference internal" href="../Values/Properties/FiscalReceiptType.html#fiscalreceipttype"><span class="std std-ref">FiscalReceiptType</span></a> = <a class="reference internal" href="beginFiscalReceipt.html#fp-rt-sales"><span class="std std-ref">FP_RT_SALES</span></a> a <a class="reference internal" href="../Values/Properties/VatIncluded.html#vatincluded"><span class="std std-ref">VatIncluded</span></a> = <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> (účtenka predaja v cenách bez DPH)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../Values/Accumulators/Totals.html#recadvancepaymentdeducttotal"><span class="std std-ref">RecAdvancePaymentDeductTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] = <a class="reference internal" href="../Values/Accumulators/Totals.html#recadvancepaymentdeducttotal"><span class="std std-ref">RecAdvancePaymentDeductTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] + <a class="reference internal" href="#prapd-amount"><span class="std std-ref">price</span></a></p></li>
+<li><p><a class="reference internal" href="../Values/Accumulators/Counters.html#recadvancepaymentdeductcount"><span class="std std-ref">RecAdvancePaymentDeductCount</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] = <a class="reference internal" href="../Values/Accumulators/Counters.html#recadvancepaymentdeductcount"><span class="std std-ref">RecAdvancePaymentDeductCount</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] + <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><a class="reference internal" href="../Values/Accumulators/Totals.html#currenttotal"><span class="std std-ref">CurrentTotal</span></a> = <a class="reference internal" href="../Values/Accumulators/Totals.html#currenttotal"><span class="std std-ref">CurrentTotal</span></a> - <a class="reference internal" href="#prapd-amount"><span class="std std-ref">amount</span></a></p></li>
+<li><p><a class="reference internal" href="../Values/Accumulators/Totals.html#recnettotal"><span class="std std-ref">RecNetTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] = <a class="reference internal" href="../Values/Accumulators/Totals.html#recnettotal"><span class="std std-ref">RecNetTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] - <a class="reference internal" href="#prapd-amount"><span class="std std-ref">amount</span></a></p></li>
+<li><p><a class="reference internal" href="../Values/Accumulators/Totals.html#recvattotal"><span class="std std-ref">RecVatTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] = <a class="reference internal" href="../Rules/VAT.html#vat-net"><span class="std std-ref">VAT_NET</span></a>(<a class="reference internal" href="../Values/Accumulators/Totals.html#recnettotal"><span class="std std-ref">RecNetTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>], <a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>)</p></li>
+<li><p><a class="reference internal" href="../Values/Accumulators/Totals.html#recgrosstotal"><span class="std std-ref">RecGrossTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] = <a class="reference internal" href="../Values/Accumulators/Totals.html#recnettotal"><span class="std std-ref">RecNetTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>] + <a class="reference internal" href="../Values/Accumulators/Totals.html#recvattotal"><span class="std std-ref">RecVatTotal</span></a>[<a class="reference internal" href="#prapd-vatid"><span class="std std-ref">vatID</span></a>]</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="printRecItemRefundCorrection.html" class="btn btn-neutral float-left" title="8.40. printRecItemRefundCorrection [_new_]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="printRecItemSinglePurposeVoucher.html" class="btn btn-neutral float-right" title="8.42. printRecItemSinglePurposeVoucher [_new_]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

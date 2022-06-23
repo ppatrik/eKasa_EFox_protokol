@@ -1,0 +1,29 @@
+_`NumPayments` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **NumPayments**
+    typ                      INT32
+    prednastavená hodnota    ``20``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje maximálny počet typov platieb, ktoré je možné:
+
+    * naprogramovať príkazom :ref:`setPaymentEntry <setPaymentEntry>`
+    * použiť v príkazoch:
+
+        * :ref:`printRecCash <printRecCash>`
+        * :ref:`printRecTotal <printRecTotal>`
+        * :ref:`printRecTotalChange <printRecTotalChange>`
+
+.. toctree::
+    :maxdepth: 3

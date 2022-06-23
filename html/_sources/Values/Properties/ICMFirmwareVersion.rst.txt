@@ -1,0 +1,22 @@
+_`ICMFirmwareVersion`
+^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ICMFirmwareVersion**
+    typ                      STRING
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje verziu firmvéru :term:`ChDÚ`.
+
+.. toctree::
+    :maxdepth: 3

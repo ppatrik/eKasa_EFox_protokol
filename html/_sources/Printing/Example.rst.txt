@@ -1,0 +1,222 @@
+Príklady fiškálnych dokladov ``[_new_]``
+========================================
+
+**Príklad predaja tovaru**:
+
+    Za príkladom vytlačeného dokladu (textová podoba) nasleduje popis a priradenie vytlačených
+    riadkov k príkazom, ktoré vyvolali tlač daných riadkov.
+
+    Šírka riadku je pre daný prípad 42 znakov a použitý bol optimalizovaný tlačový profil.
+    Pre inú dĺžku riadku a/alebo iný tlačový profil by doklad vyzeral mierne odlišne.
+
+    .. code-block:: text
+        :linenos:
+
+                    ******************
+                    * V I T A J T E  *
+                    ******************
+                  Finančná správa i.n.t.
+                Horná 560/7 98045 Štrkovec
+                   Slovenská republika
+             Predajné miesto: ELCOMsroPRESOV
+                Horná 560/7 98045 Štrkovec
+           DIČ: 1234567890 IČDPH: SK1234567890
+           IČO: 76543210 KP: 88812345678900001
+
+        #Názov    množstvo  jed.cena    celk.cena#
+        ------------------------------------------
+        Chlieb čierny
+                 2 ks        * 0,80        =1,60 A
+        Sezónna ponuka
+        Paradajky
+              1,25 kg        * 1,35        =1,69 A
+        Zapaľovač
+                 1 ks        * 0,50        =0,50 A
+        Matematika pre základné školy, učebnica
+                 3 ks        * 4,00       =12,00 B
+        Zľava (2kusy + 1 zdarma)           -4,00 B
+        Vrátenie obalu
+        Fľaša Pilsner
+                 3 ks        * 0,15       =-0,45 D
+        Medzisúčet                         11,34
+        Zošit A4 1 ks        * 0,50        =0,50 A
+        ******************************************
+        Celkom                           11,84 EUR
+        HOTOVOSŤ                          4.00 EUR
+        MASTERCARD                        4.00 EUR
+        Č.karty 4*** **** **** 5465; 09/11
+        ACCORD ŠEK                        4.00 EUR
+        Vydať                             0,16 EUR
+        ******************************************
+        Sadzba       Bez DPH        DPH      s DPH
+        A 20,00%        3,57       0,72       4,29
+        B 10,00%        7,27       0,73       8,00
+        D 0,00%        -0,45       0,00      -0,45
+        Celkom         10,39       1,45      11,84
+        ******************************************
+        Pokl. doklad č.:                        10
+                       ONLINE DOKLAD
+        UID: O-57B64BDA58FB4B84B64BDA58FB5-TEST
+        OKP: 2c815dcd-c3e7934b-c3bab80a-b202e2db-
+             0b13749b
+        02-10-2019                        14:59:21
+
+                      +-------------+
+                      |             |
+                      |             |
+                      |  < QR kód > |
+                      |             |
+                      |             |
+                      +-------------+
+
+               OVERTE DOKLAD POMOCOU QR KÓDU
+                  ************************
+                  *    Otvorené denne    *
+                  *   Od 8:00 do 18:00   *
+                  * Ďakujeme za návštevu *
+                  * a prajeme pekný deň. *
+                  ************************
+
+    *Popis jednotlivých riadkov*:
+
+    .. value of {tableValueNote} is defined in config.py
+    .. tabularcolumns:: {tableValueNote}
+
+    .. table::
+        :class: longtable
+
+        ============= =======================================================
+        Číslo riadku  Popis
+        ============= =======================================================
+        1. \- 10.     | začatie pokladničného dokladu (:ref:`beginFiscalReceipt <beginFiscalReceipt>`)
+                      | **príkaz:** ``bFR\tREQ\t1\t1\t``
+                      | vytlačí:
+                      |   - naprogramované riadky horného textového loga (1. \- 3.) príkazom :ref:`setHeaderLines <setHeaderLines>`
+                      |   - hlavička dokladu (4. \- 10.)
+        12.           | nefiškálny textový riadok (:ref:`printRecMessage <printRecMessage>`)
+                      | **príkaz:** ``pRM\tREQ\t1\tNázov    množstvo  jed.cena    celk.cena``
+        13.           | nefiškálny textový riadok (:ref:`printRecMessage <printRecMessage>`)
+                      | **príkaz:** ``pRM\tREQ\t4\t``
+        14. \- 15.    | predaj 1. položky (:ref:`printRecItem <printRecItem>`)
+                      | **príkaz:** ``pRI\tREQ\tChlieb čierny\t1.60\t2\t1\t\t0.80\tks\t\t\t``
+        16. \- 18.    | predaj 2. položky (:ref:`printRecItem <printRecItem>`) s textom pred položkou
+                      | **príkaz:** ``pRI\tREQ\tParadajky\t1.69\t1.25\t1\t\t1.35\tkg\t\tSezónna ponuka\t``
+        19. \- 20.    | predaj 3. položky (:ref:`printRecItem <printRecItem>`)
+                      | **príkaz:** ``pRI\tREQ\tZapaľovač\t0.50\t1\t1\t\t0.50\tks\t\t\t``
+        21. \- 22.    | predaj 4. položky (:ref:`printRecItem <printRecItem>`)
+                      | **príkaz:** ``pRI\tREQ\tMatematika pre základné školy, učebnica\t12.00\t3\t2\t\t4.00\tks\t\t\t``
+        23.           | zľava na položku (príkaz :ref:`printRecItemAdjustment <printRecItemAdjustment>`)
+                      | **príkaz:** ``pRIA\tREQ\t1\t(2kusy + 1 zdarma)\t4,00\t2\t\t\t``
+        24. \- 26.    | vrátenie položky (:ref:`printRecItemRefund <printRecItemRefund>`)
+                      | **príkaz:** ``pRIR\tREQ\tFľaša Pilsner\t0.45\t3\t4\t\t0.15\tks\t\t\t``
+        27.           | vytlačenie medzisúčtu (:ref:`printRecSubtotal <printRecSubtotal>`)
+                      | **príkaz:** ``pRS\tREQ\t11.34\t``
+        28.           | predaj 5. položky (:ref:`printRecItem <printRecItem>`)
+                      | **príkaz:** ``pRI\tREQ\tZošit A4\t0.50\t1\t1\t\t0.50\tks\t\t\t``
+        29. \- 31.    | prvá platba (:ref:`printRecTotal <printRecTotal>`), hotovosťou
+                      | **príkaz:** ``pRT\tREQ\t11.84\t4.00\tHOTOVOSŤ\t\t``
+        32. \- 33.    | druhá platba (:ref:`printRecTotal <printRecTotal>`), kartou s textom za platbou
+                      | **príkaz:** ``pRT\tREQ\t11.84\t4.00\tMASTERCARD\t\tČ.karty 4*** **** **** 5465; 09/19``
+        34.           | tretia platba (:ref:`printRecTotal <printRecTotal>`)
+                      | **príkaz:** ``pRT\tREQ\t11.84\t4.00\tACCORD ŠEK\t\t``
+        35. \- 36.    | vytlačenie výdavku, ak posledná platba prevyšuje celkovú cenu nákupu
+        37. \- 42.    | daňový sumár
+        43. \- 64.    | ukončenie dokladu (:ref:`endFiscalReceipt <endFiscalReceipt>`) s odstrihnutím
+                      | **príkaz:** ``eFR\tREQ\t1``
+                      | vytlačí:
+                      |   - číslo dokladu (43.)
+                      |   - informácia o tom, že doklad bol zaregistrovaný na server finančnej správy (44.)
+                      |   - identifikačné údaje o doklade (45. \- 47.)
+                      |   - dátum a čas vytvorenia dokladu (48.)
+                      |   - QR kód dokladu (49. \- 57.)
+                      |   - informácia o tom, že pomocou QR kódu je možné overiť doklad (58.)
+                      |   - naprogramované riadky dolného textového loga (59. \- 64.) príkazom :ref:`setTrailerLines <setTrailerLines>`
+        ============= =======================================================
+
+**Príklad úhrady faktúry**:
+
+    .. code-block:: text
+        :linenos:
+
+                    ******************
+                    * V I T A J T E  *
+                    ******************
+                  Finančná správa i.n.t.
+                Horná 560/7 98045 Štrkovec
+                   Slovenská republika
+             Predajné miesto: ELCOMsroPRESOV
+                Horná 560/7 98045 Štrkovec
+           DIČ: 1234567890 IČDPH: SK1234567890
+           IČO: 76543210 KP: 88812345678900001
+
+                      ÚHRADA FAKTÚRY
+
+        Úhrada faktúry č.123456789         =3,20
+        Medzisúčet                          3,20
+        ******************************************
+        Celkom                            3,20 EUR
+        HOTOVOSŤ                          2.00 EUR
+        MASTERCARD                        2.00 EUR
+        Č.karty 4*** **** **** 5465; 09/11
+        Vydať                             0,80 EUR
+        ******************************************
+        Pokl. doklad č.:                        12
+                       ONLINE DOKLAD
+        UID: O-2AA0206BC4964187A0206BC4961-TEST
+        OKP: 765eb427-ff407446-d4b620fe-d008a5fa-
+             b683fc62
+        02-10-2019                        17:44:38
+
+                      +-------------+
+                      |             |
+                      |             |
+                      |  < QR kód > |
+                      |             |
+                      |             |
+                      +-------------+
+
+               OVERTE DOKLAD POMOCOU QR KÓDU
+                  ************************
+                  *    Otvorené denne    *
+                  *   Od 8:00 do 18:00   *
+                  * Ďakujeme za návštevu *
+                  * a prajeme pekný deň. *
+                  ************************
+
+    *Popis jednotlivých riadkov*:
+
+    .. value of {tableValueNote} is defined in config.py
+    .. tabularcolumns:: {tableValueNote}
+
+    .. table::
+        :class: longtable
+
+        ============= =======================================================
+        Číslo riadku  Popis
+        ============= =======================================================
+        1. \- 10.     | začatie pokladničného dokladu (:ref:`beginFiscalReceipt <beginFiscalReceipt>`)
+                      | **príkaz:** ``bFR\tREQ\t5\t1\t\t``
+                      | vytlačí:
+                      |   - naprogramované riadky horného textového loga (1. \- 3.) príkazom :ref:`setHeaderLines <setHeaderLines>`
+                      |   - hlavička dokladu (4. \- 10.)
+        12.           | informačný text pre režim úhrady faktúry
+        14.           | predaj položky faktúra (:ref:`printRecItem <printRecItem>`)
+                      | **príkaz:** ``pRI\tREQ\tÚhrada faktúry č. 123456789\t3.20\t1\t5\t\t1\t\t\t\t``
+        15.           | vytlačenie medzisúčtu (:ref:`printRecSubtotal <printRecSubtotal>`)
+                      | **príkaz:** ``pRS\tREQ\t3.20\t``
+        16. \- 18.    | prvá platba (:ref:`printRecTotal <printRecTotal>`), hotovosťou
+                      | **príkaz:** ``pRT\tREQ\t3.20\t2\tHOTOVOSŤ\t\t``
+        19. \- 20.    | druhá platba (:ref:`printRecTotal <printRecTotal>`), kartou s textom za platbou
+                      | **príkaz:** ``pRT\tREQ\t3.20\t2\tMASTERCARD\t\tČ.karty 4*** **** **** 5465; 09/19``
+        21. \- 22.    | vytlačenie výdavku, ak posledná platba prevyšuje celkovú cenu nákupu
+        23. \- 44.    | ukončenie dokladu (:ref:`endFiscalReceipt <endFiscalReceipt>`) s odstrihnutím
+                      | **príkaz:** ``eFR\tREQ\t1``
+                      | vytlačí:
+                      |   - číslo dokladu (23.)
+                      |   - informácia o tom, že doklad bol zaregistrovaný na server finančnej správy (24.)
+                      |   - identifikačné údaje o doklade (25. \- 27.)
+                      |   - dátum a čas vytvorenia dokladu (28.)
+                      |   - QR kód dokladu (29. \- 37.)
+                      |   - informácia o tom, že pomocou QR kódu je možné overiť doklad (38.)
+                      |   - naprogramované riadky dolného textového loga (39. \- 44.) príkazom :ref:`setTrailerLines <setTrailerLines>`
+        ============= =======================================================

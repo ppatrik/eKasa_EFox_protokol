@@ -1,0 +1,22 @@
+_`DisplayColumns`
+^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **DisplayColumns**
+    typ                      INT32
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje počet stĺpcov displeja fiškálnej tlačiarne.
+
+.. toctree::
+    :maxdepth: 3

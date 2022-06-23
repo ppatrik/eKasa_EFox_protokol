@@ -1,0 +1,77 @@
+_`deferFirmwareUpdateRequest` ``[_new_]``
+-----------------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ======================================================== =============== ====================
+      Pole     Hodnota                                                  Dátový typ      Popis
+      ======== ======================================================== =============== ====================
+      Cmd ID   dFUR                                                     \-              identifikátor príkazu
+      Req/Rsp  REQ                                                      \-              požiadavka
+      Param1    :ref:`deferTime <dFUR_deferTime>`                       **INT32**       čas odloženia aktualizácie
+      ======== ======================================================== =============== ====================
+
+.. _dFUR_deferTime:
+
+**Parameter deferTime**:
+
+  Hodnota môže byť z intervalu <``1``, ``24``> a určuje čas odloženia aktualizácie v hodinách.
+
+  Teda po zadaní hodnoty ``12``, nebude pokladnica najbližších 12 hodín blokovať činnosť :term:`FP`.
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    dFUR                \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ========================================================= =======================================
+      Chyba                                             Popis
+      ========================================================= =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                              Parameter :ref:`deferTime <dFUR_deferTime>` nie je z množiny dovolených hodnôt.
+      :ref:`EFP_ILLEGAL_COMMAND <EFP_ILLEGAL_COMMAND>`          Nie je aktívna požiadavka na aktualizáciu softvéru
+      :ref:`EFP_OPERATION_ERROR <EFP_OPERATION_ERROR>`          Interná chyba. Pri vykonávaní príkazu nastala nešpecifikovaná chyba
+      :ref:`EFP_MANDATORY_FW_UPDATE <EFP_MANDATORY_FW_UPDATE>`  Je nutné vykonať aktualizáciu SW
+      ========================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkazu zabezpečí odblokovanie obmedzeného stavu a nastaví nový čas, kedy bude
+  aplikácia zvonu informovaná o dostupnosti aktualizácie softvéru.
+
+  * Ak je príkaz vykonaný bez chyby, aplikácia môže začať tlačiť doklady.
+  * Po uplynutí času definovanom v parametri :ref:`deferTime <dFUR_deferTime>`
+    (samozrejme ak medzi tým nedôjde k vykonaniu aktualizácie softvéru),
+    sa požiadavka na aktualizáciu znovu zaktivuje a tlač dokumentov bude blokovaná.
+  * Príkaz je možné použiť aj opakovane až do vykonania aktualizácie.
+
+  .. warning::
+      Aktualizačný balíček manuálne nahratý cez vstavaný web server nie je možné odložiť
+      príkazom :ref:`deferFirmwareUpdateRequest <deferFirmwareUpdateRequest>`.
+
+.. toctree::
+    :maxdepth: 2

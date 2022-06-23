@@ -1,0 +1,217 @@
+_`printBarCode`
+---------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   pBC                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`data <pBC_data>`                             **STRING[32]**  reťazec znakov pre zakódovanie
+      Param2   :ref:`symbology <pBC_symbology>`                   **INT32**       typ čiarového kódu
+      Param3   :ref:`height <pBC_height>`                         **INT32**       výška čiarového kódu v bodoch (rozsah ``1`` až ``255`` bodov)
+      Param4   :ref:`width <pBC_width>`                           **INT32**       šírka najmenšieho elementu
+      Param5   :ref:`alignment <pBC_alignment>`                   **INT32**       zarovnanie bloku čiarového kódu
+      Param6   :ref:`textPosition <pBC_textPosition>`             **INT32**       umiestnenie textu čiarového kódu
+      ======== ================================================== =============== ====================
+
+.. _pBC_data:
+
+**Parameter data**:
+
+  Reťazec znakov, ktoré budú zakódované do čiarového kódu.
+
+    * Maximálna dĺžka reťazca je ``32`` znakov.
+
+    * Dĺžka reťazca je závislá od použitého kódu (parameter :ref:`symbology <pBC_symbology>`) a od šírky najmenšieho elementu (parameter :ref:`width <pBC_width>`).
+
+.. _pBC_symbology:
+
+**Parameter symbology**:
+
+  Typ čiarového kódu.
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ============================= ===============================================
+      Hodnota   Alias                         Popis
+      ========= ============================= ===============================================
+      ``1``     _`FP_BCS_EAN8`                EAN8 (vytlačí korektne pre všetky hodnoty parametra :ref:`width <pBC_width>`)
+      ``2``     _`FP_BCS_EAN13`               EAN13 (vytlačí korektne pre parameter :ref:`width <pBC_width>` do hodnoty FP_BC_706)
+      ``3``     _`FP_BCS_Code39`              Code 39 (korektná tlač je popísaná v tabuľke pre parameter :ref:`width <pBC_width>`)
+      ``4``     _`FP_BCS_Code128C`            Code 128C (korektná tlač je popísaná v tabuľke pre parameter :ref:`width <pBC_width>`)
+      ``5``     _`FP_BCS_Code128B`            Code 128B (korektná tlač je popísaná v tabuľke pre parameter :ref:`width <pBC_width>`)
+      ========= ============================= ===============================================
+
+.. _pBC_height:
+
+**Parameter height**:
+
+  Výška čiarového kódu v bodoch.
+
+  Môže nadobúdať hodnoty v rozsahu <``1``, ``255``>.
+
+.. _pBC_width:
+
+**Parameter width**:
+
+  Šírka najmenšieho elementu.
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ============================= ===============================================
+      Hodnota   Alias                         Popis
+      ========= ============================= ===============================================
+      | ``1``   | _`FP_BC_282`                | šírka najmenšieho elementu je 0,282 mm
+                                              |   - parameter :ref:`data <pBC_data>` = max 15 znakov pre :ref:`FP_BCS_Code39 <FP_BCS_Code39>`
+                                              |   - parameter :ref:`data <pBC_data>` = max 32 znakov pre :ref:`FP_BCS_Code128C <FP_BCS_Code128C>`
+                                              |   - parameter :ref:`data <pBC_data>` = max 20 znakov pre :ref:`FP_BCS_Code128B <FP_BCS_Code128B>`
+      | ``2``   | _`FP_BC_423`                | šírka najmenšieho elementu je 0,423 mm
+                                              |   - parameter :ref:`data <pBC_data>` = max 9 znakov pre :ref:`FP_BCS_Code39 <FP_BCS_Code39>`
+                                              |   - parameter :ref:`data <pBC_data>` = max 22 znakov pre :ref:`FP_BCS_Code128C <FP_BCS_Code128C>`
+                                              |   - parameter :ref:`data <pBC_data>` = max 12 znakov pre :ref:`FP_BCS_Code128B <FP_BCS_Code128B>`
+      | ``3``   | _`FP_BC_564`                | šírka najmenšieho elementu je 0,564 mm
+                                              |   - parameter :ref:`data <pBC_data>` = max 6 znakov pre :ref:`FP_BCS_Code39 <FP_BCS_Code39>`
+                                              |   - parameter :ref:`data <pBC_data>` = max 16 znakov pre :ref:`FP_BCS_Code128C <FP_BCS_Code128C>`
+                                              |   - parameter :ref:`data <pBC_data>` = max 8 znakov pre :ref:`FP_BCS_Code128B <FP_BCS_Code128B>`
+      | ``4``   | _`FP_BC_706`                | šírka najmenšieho elementu je 0,706 mm
+                                              |   - parameter :ref:`data <pBC_data>` = max 4 znakov pre :ref:`FP_BCS_Code39 <FP_BCS_Code39>`
+                                              |   - parameter :ref:`data <pBC_data>` = max 12 znakov pre :ref:`FP_BCS_Code128C <FP_BCS_Code128C>`
+                                              |   - parameter :ref:`data <pBC_data>` = max 6 znakov pre :ref:`FP_BCS_Code128B <FP_BCS_Code128B>`
+      | ``5``   | _`FP_BC_847`                | šírka najmenšieho elementu je 0,847 mm
+                                              |   - parameter :ref:`data <pBC_data>` = max 3 znakov pre :ref:`FP_BCS_Code39 <FP_BCS_Code39>`
+                                              |   - parameter :ref:`data <pBC_data>` = max 8 znakov pre :ref:`FP_BCS_Code128C <FP_BCS_Code128C>`
+                                              |   - parameter :ref:`data <pBC_data>` = max 4 znakov pre :ref:`FP_BCS_Code128B <FP_BCS_Code128B>`
+      ========= ============================= ===============================================
+
+.. _pBC_alignment:
+
+**Parameter alignment**:
+
+  Zarovnanie bloku čiarového kódu.
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ============================= ===============================================
+      Hodnota   Alias                         Popis
+      ========= ============================= ===============================================
+      ``1``     _`FP_BC_LEFT`                 zarovnanie vľavo
+      ``2``     _`FP_BC_CENTER`               zarovnanie na stred
+      ``3``     _`FP_BC_RIGHT`                zarovnanie vpravo
+      ========= ============================= ===============================================
+
+.. _pBC_textPosition:
+
+**Parameter textPosition**:
+
+  Umiestnenie textu čiarového kódu
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ============================= ===============================================
+      Hodnota   Alias                         Popis
+      ========= ============================= ===============================================
+      ``1``     _`FP_BC_NONE`                 text nie je tlačený
+      ``2``     _`FP_BC_ABOVE`                text sa vytlačí nad čiarový kód
+      ``3``     _`FP_BC_BELOW`                text sa vytlačí pod čiarový kód
+      ========= ============================= ===============================================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    gD                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ============================================================= =======================================
+      Chyba                                                         Popis
+      ============================================================= =======================================
+      | :ref:`E_ILLEGAL <E_ILLEGAL>`                                | Jeden z parametrov
+                                                                    |   - :ref:`symbology <pBC_symbology>`
+                                                                    |   - :ref:`height <pBC_height>`
+                                                                    |   - :ref:`width <pBC_width>`
+                                                                    |   - :ref:`alignment <pBC_alignment>`
+                                                                    |   - :ref:`textPosition <pBC_textPosition>`
+                                                                    | nie je z množiny dovolených hodnôt, alebo nie všetky znaky parametra :ref:`data <pBC_data>` sú podporované čiarovým kódom daným parametrom :ref:`symbology <pBC_symbology>`.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                      Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`E_FAILURE <E_FAILURE>`                                  Nastala chyba vnútorného zariadenia, ktorá neumožňuje, aby bol tlačený doklad riadne dokončený. Pre ďalšie zmysluplné pokračovanie v činnosti musí aplikácia zavolať príkaz :ref:`resetPrinter <resetPrinter>` a potom môže tlač prerušeného dokladu zopakovať.
+      :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                          V tlačiarni chýba papier.
+      :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                        Kryt tlačiarne je otvorený.
+      :ref:`EFP_DUPLICATE_BUFFER_FULL <EFP_DUPLICATE_BUFFER_FULL>`  Nedostatok miesta pre uloženie kópie dokladu.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`            Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`            Tlačiareň je odpojená.
+      :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`        V tlačiarni chýba papier.
+      ============================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz vytlačí čiarový kód špecifikovaný vstupnými parametrami.
+
+  Je na aplikácii, aby zohľadnila aj fyzickú šírku čiarového kódu a podľa toho zvolila parameter :ref:`width <pBC_width>`.
+
+  * V prípade zlej voľby vstupného parametra :ref:`width <pBC_width>` môže dôjsť k situácii, že čiarový kód sa nezmestí na šírku pásky a čiarový kód nebude vytlačený vôbec.
+
+  * Čiarové kódy netlačia všetky podporované tlačiarne. Aj v prípade že tlačiareň netlačí požadovaný čiarový kód, príkaz vráti OK, ale k samotnej tlači nedôjde.
+
+  * V prípade tlače čiarových kódov typu :ref:`FP_BCS_EAN8 <FP_BCS_EAN8>` a :ref:`FP_BCS_EAN13 <FP_BCS_EAN13>`:
+
+      * je možné poslať ``7`` resp. ``8`` číslic pre kód :ref:`FP_BCS_EAN8 <FP_BCS_EAN8>`
+      * je možné poslať ``12`` resp. ``13`` číslic pre kód :ref:`FP_BCS_EAN13 <FP_BCS_EAN13>`
+      * ak aplikácia pošle o jednu číslicu menej (t.j. ``7`` resp. ``12`` číslic) poslednú kontrolnú číslicu vypočíta tlačiareň
+      * ak aplikácia pošle presný počet číslic (t.j. ``8`` resp. ``13`` číslic) posledná kontrolná číslica sa nekontroluje
+      * ak je kontrolná číslica nesprávna, potom čiarový kód, ktorý sa vytlačí, nebude možné korektne nasnímať čítačkou čiarových kódov
+
+  * V prípade čiarového kódu typu :ref:`FP_BCS_Code128C <FP_BCS_Code128C>` je možné zakódovať len číslice (0 – 9) a reťazec musí mať párny počet znakov.
+
+  Pre ďalšie info pozri prílohu: :ref:`Zoznam použitých tlačiarní <Zoznam použitých tlačiarní>`.
+
+.. toctree::
+    :maxdepth: 2

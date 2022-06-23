@@ -1,0 +1,56 @@
+_`cancelRest`
+-------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   cR                                                 \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      ======== ================================================== =============== ====================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    cR                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ========================================================= =======================================
+      Chyba                                                     Popis
+      ========================================================= =======================================
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                  Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu,
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`        Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`        Tlačiareň je odpojená.
+      ========================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz slúži na ukončenie vykonávanej asynchrónnej operácie (operácie vykonávanej na pozadí) a :term:`FP` nastaví do stavu :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+
+.. toctree::
+    :maxdepth: 2

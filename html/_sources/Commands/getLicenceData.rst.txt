@@ -1,0 +1,130 @@
+_`getLicenceData` ``[_new_]``
+-----------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   gLD                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`licenceID <gLD_licenceID>`                   **INT32**       identifikátor licencie
+      ======== ================================================== =============== ====================
+
+.. _gLD_licenceID:
+
+**Parameter licenceID**:
+
+  Identifikátor požadovanej licencie.
+
+  Môže nadobúdať hodnoty z rozsahu <``1``, :ref:`LicenceCount <LicenceCount>`>.
+
+.. _gLD_RSPformat:
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================================================== =============== ====================
+      Pole      Hodnota                                             Dátový typ      Popis
+      ========= =================================================== =============== ====================
+      Cmd ID    gLD                                                 \-              identifikátor príkazu
+      Req/Rsp   RSP                                                 \-              odpoveď
+      Exception *exceptionCode*                                     **INT32**       návratový kód
+      Param1    :ref:`licenceID <gLD_RSP_licenceID>`                **INT32**       identifikátor licencie
+      Param2    :ref:`licenceName <gLD_RSP_licenceName>`            **STRING[30]**  názov licencie
+      Param3    :ref:`startDate <gLD_RSP_startDate>`                **DATETIME**    dátum začiatku platnosti licencie
+      Param4    :ref:`endDate <gLD_RSP_endDate>`                    **DATETIME**    dátum ukončenia platnosti licencie
+      Param5    :ref:`stateOnCloud <gLD_RSP_stateOnCloud>`          **INT32**       stav licencie na cloudovom účte
+      Param6    :ref:`isActive <gLD_RSP_isActive>`                  **BOOLEAN**     aktívnosť licencie v zariadení
+      ========= =================================================== =============== ====================
+
+.. _gLD_RSP_licenceID:
+
+**Výstupný parameter licenceID**:
+
+  Identifikátor požadovanej licencie je zhodný so vstupným parametrom :ref:`licenceID <gLD_licenceID>`.
+
+.. _gLD_RSP_licenceName:
+
+**Výstupný parameter licenceName**:
+
+  Názov požadovanej licencie.
+
+.. _gLD_RSP_startDate:
+
+**Výstupný parameter startDate**:
+
+  Dátum začiatku platnosti licencie.
+
+  * Dátum je vrátený vo formáte :ref:`DDMMYYYYhhmmss <DateTimeFormat>`.
+  * Tento parameter môže byť prázdny, napríklad ak nie je známy stav licencie, alebo licencia nebola ešte zakúpená.
+
+.. _gLD_RSP_endDate:
+
+**Výstupný parameter endDate**:
+
+  Dátum ukončenia platnosti licencie.
+
+  * Dátum je vrátený vo formáte :ref:`DDMMYYYYhhmmss <DateTimeFormat>`.
+  * Tento parameter môže byť prázdny, napríklad ak nie je známy stav licencie, alebo licencia nebola ešte zakúpená.
+
+.. _gLD_RSP_stateOnCloud:
+
+**Výstupný parameter stateOnCloud**:
+
+  Stav licencie v cloudovom účte pre dané zariadenie.
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========== ========================== ===========================================
+      Hodnota    Alias                      Popis
+      ========== ========================== ===========================================
+      ``0``      _`FP_FLCCS_UNKNOWN`        nie je známy stav licencie v cloud účte
+      ``1``      _`FP_FLCCS_ACTIVE`         licencia je v cloud účte aktívna
+      ``2``      _`FP_FLCCS_INACTIVE`       licencia je v cloud účte neaktívna
+      ``3``      _`FP_FLCCS_AVAILABLE`      licencia je v cloud účte dostupná, ale nebola zakúpená
+      ========== ========================== ===========================================
+
+.. _gLD_RSP_isActive:
+
+**Výstupný parameter isActive**:
+
+  Príznak, ktorý hovorí o tom, či licencia je vo :term:`FP` aktívna, alebo nie je.
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ================================= =======================================
+      Chyba                             Popis
+      ================================= =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`      Parameter :ref:`licenceID <gLD_licenceID>` nie je z množiny dovolených hodnôt.
+      ================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz zabezpečí vrátenie údajov ku požadovanej licencii.
+
+.. toctree::
+    :maxdepth: 2

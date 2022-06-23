@@ -1,0 +1,17 @@
+Úvod
+====
+
+Fiškálna tlačiareň poskytuje a zjednodušuje prístup k fyzickým zariadeniam,
+ktorých súčinnosť je nevyhnutná pri registrovaní obratov maloobchodného predaja.
+Použitie fiškálnej tlačiarne prináša podstatné zjednodušenie a uľahčenie vývoja,
+používania a údržby pokladničných systémov. Pre registračný program bežiaci na
+osobnom počítači sa fiškálna tlačiareň javí ako skupina špecializovaných
+vstupno-výstupných zariadení. Väzba na tieto zariadenia býva voľnejšia,
+spravidla cez sériový komunikačný kanál.
+
+Registračný program, alebo jeho podporné časti, spolupracujú s fiškálnou
+tlačiarňou a pristupujú k nej prostredníctvom výmen komunikačných správ
+stanovenými postupmi a spôsobmi, podľa dohodnutých pravidiel.
+
+.. toctree::
+    :maxdepth: 2

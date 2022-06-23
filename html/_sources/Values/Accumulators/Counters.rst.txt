@@ -1,0 +1,162 @@
+_`Počítadlá` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Počítadlá operácií v nákupe**:
+
+    V nasledujúcej tabuľke sú uvedené všetky počítadlá fiškálnej tlačiarne
+    pre fiškálnu účtenku a pre obchodný deň spolu s ich vysvetlením.
+
+    .. value of {tableTitleNote} is defined in config.py
+    .. tabularcolumns:: {tableTitleNote}
+
+    .. table::
+        :class: longtable
+
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | Názov                                 | Popis                                                                                               |
+        +=======================================+=====================================================================================================+
+        | | _`RecDiscountCount`,                | | počet zliav uplatnených na individuálne položky príkazom |printRecItemAdjustment|                 |
+        | | _`DayDiscountCount`                 |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecItemCount`\[*i*\],             | | počet predaných položiek príkazom |printRecItem|                                                  |
+        | | _`DayItemCount`\[*i*\]              |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecRefundCount`\[*i*\],           | | počet refundovaných položiek príkazom |printRecItemRefund|                                        |
+        | | _`DayRefundCount`\[*i*\]            |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecSubtotalDiscountCount`,        | | počet zliav uplatnených na skupinu položiek príkazom |printRecPackageAdjustment|                  |
+        | | _`DaySubtotalDiscountCount`         |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecSubtotalSurchargeCount`,       | | počet prirážok uplatnených na skupinu položiek príkazom |printRecPackageAdjustment|               |
+        | | _`DaySubtotalSurchargeCount`        |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecSurchargeCount`,               | | počet prirážok uplatnených na individuálne položky príkazom |printRecItemAdjustment|              |
+        | | _`DaySurchargeCount`                |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecCommentCount`,                 | | počet popisných textov v nákupe poslaných príkazom |printRecMessage|                              |
+        | | _`DayCommentCount`                  |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecSubtotalCount`,                | | počet vytlačení hodnoty medzisúčet príkazom |printRecSubtotal|                                    |
+        | | _`DaySubtotalCount`                 |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecPaymentCount`,                 | | počet platieb vykonaných príkazom |printRecTotal|                                                 |
+        | | _`DayPaymentCount`                  |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecInvoiceCount`,                 | | počet uhradených faktúr príkazom |printRecItem|                                                   |
+        | | _`DayInvoiceCount`                  |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecInvoiceRefundCount`,           | | počet refundovaných resp. vrátených uhradených faktúr príkazom |printRecItemRefund|               |
+        | | _`DayInvoiceRefundCount`            |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecItemCorrectionCount`,          | | počet opráv kladných položiek príkazom |printRecItemCorrection|                                   |
+        | | _`DayItemCorrectionCount`           |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecRefundCorrectionCount`,        | | počet opráv záporných položiek príkazom |printRecItemRefundCorrection|                            |
+        | | _`DayRefundCorrectionCount`         |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecSinglePurposeVoucherCount`,    | | počet výmien jednoúčelových poukazov príkazom |printRecItemSinglePurposeVoucher|                  |
+        | | _`DaySinglePurposeVoucherCount`     |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecAdvancePaymentDeductCount`,    | | počet odpočítaní záloh príkazom |printRecAdvancePaymentDeduct|                                    |
+        | | _`DayAdvancePaymentDeductCount`     |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+        | | _`RecRoundingCount`,                | | počet zaokrúhlení                                                                                 |
+        | | _`DayRoundingCount`                 |                                                                                                     |
+        +---------------------------------------+-----------------------------------------------------------------------------------------------------+
+
+    .. note::
+        * Počítadlá, ktoré evidujú sumy v jednotlivých daňových skupinách sú uvedené
+          s indexovým zápisom poľa ("\[*i*\]").
+        * Suma pre jednotlivé daňové skupiny samostatne: \[*i*\] = <``1``, :ref:`NumVatRates <NumVatRates>`>).
+        * Celková suma pre všetky daňové skupiny je:
+
+            :math:`counter[0] = \displaystyle\sum_{i = 1}^{NumVatRates} counter[i]`
+
+        * V texte tohto dokumentu sa rozumie, že counter = counter[0].
+
+    Všetky hore vymenované počítadlá a ich súvis s daňovými skupinami je viac zrejmý z popisu
+    príkazu :ref:`getCounter <getCounter>`, ktorým je zároveň možné požiadať fiškálnu tlačiareň
+    o vrátenie jedného z vyššie vymenovaných počítadiel.
+
+**Ostatné počítadlá**:
+
+
+    .. value of {tableTitleNote} is defined in config.py
+    .. tabularcolumns:: {tableTitleNote}
+
+    .. table::
+        :class: longtable
+
+        ======================== =========================================================
+        Názov                    Popis
+        ======================== =========================================================
+        _`CashInCount`           počet vkladov v aktuálnom dni
+        _`CashOutCount`          počet výberov v aktuálnom dni
+        _`NonfiscalRecCount`     počet nefiškálnych účteniek v aktuálnom dni
+        _`FiscalRecCount`        počet fiškálnych účteniek v aktuálnom dni
+        _`FiscalRecVoidCount`    počet stornovaných fiškálnych účteniek v aktuálnom dni
+        _`TrainingCount`         počet tréningových účteniek v aktuálnom dni
+        _`TrainingVoidCount`     počet stornovaných tréningových účteniek v aktuálnom dni
+        _`SimpInvoiceCount`      počet účteniek úhrad alebo vrátení faktúr v aktuálnom dni
+        _`TransPaymentCount`     počet platieb v aktuálnej transakcii
+        _`PaymentCount`          počet platieb v aktuálnom dni
+        _`TransChangeCount`      počet výdavkov v aktuálnej transakcii
+        _`ChangeCount`           počet výdavkov v aktuálnom dni
+        _`ZReportCount`          počet Z uzávierok
+        ======================== =========================================================
+
+    Vyššie zmienené počítadlá je prečítať pomocou príkazu :ref:`getData <getData>`.
+
+**Počítadlá týkajúce sa platieb**:
+
+    .. value of {tableTitleNote} is defined in config.py
+    .. tabularcolumns:: {tableTitleNote}
+
+    .. table::
+        :class: longtable
+
+        ======================== =========================================================
+        Názov                    Popis
+        ======================== =========================================================
+        CashInCount\[*i*\]       počet vkladov v aktuálnom dni
+        CashOutCount\[*i*\]      počet výberov v aktuálnom dni
+        TransPaymentCount\[*i*\] počet platieb v transakcii
+        PaymentCount\[*i*\]      počet platieb v aktuálnom dni
+        TransChangeCount\[*i*\]  počet výdavkov v transakcii
+        ChangeCount\[*i*\]       počet výdavkov v aktuálnom dni
+        ======================== =========================================================
+
+    .. note::
+      * Počítadlá evidujú sumy v jednotlivých typoch platieb sú uvedené
+        s indexovým zápisom poľa ("\[*i*\]").
+      * Suma pre jednotlivé typy platieb samostatne: \[*i*\] = <``1``, :ref:`NumPayments <NumPayments>`>).
+      * Celková hodsuma pre všetky typy platieb je:
+
+          :math:`counter[0] = \displaystyle\sum_{i = 1}^{NumPayments} counter[i]`
+
+      * V texte tohto dokumentu sa rozumie, že counter = counter[0].
+
+.. |printRecItemAdjustment| replace:: :ref:`printRecItemAdjustment <printRecItemAdjustment>`
+
+.. |printRecItem| replace:: :ref:`printRecItem <printRecItem>`
+
+.. |printRecItemRefund| replace:: :ref:`printRecItemRefund <printRecItemRefund>`
+
+.. |printRecPackageAdjustment| replace:: :ref:`printRecPackageAdjustment <printRecPackageAdjustment>`
+
+.. |printRecMessage| replace:: :ref:`printRecMessage <printRecMessage>`
+
+.. |printRecTotal| replace:: :ref:`printRecTotal <printRecTotal>`
+
+.. |printRecSubtotal| replace:: :ref:`printRecSubtotal <printRecSubtotal>`
+
+.. |printRecItemCorrection| replace:: :ref:`printRecItemCorrection <printRecItemCorrection>`
+
+.. |printRecItemRefundCorrection| replace:: :ref:`printRecItemRefundCorrection <printRecItemRefundCorrection>`
+
+.. |printRecItemSinglePurposeVoucher| replace:: :ref:`printRecItemSinglePurposeVoucher <printRecItemSinglePurposeVoucher>`
+
+.. |printRecAdvancePaymentDeduct| replace:: :ref:`printRecAdvancePaymentDeduct <printRecAdvancePaymentDeduct>`
+
+.. toctree::
+    :maxdepth: 3

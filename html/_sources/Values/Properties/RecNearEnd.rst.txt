@@ -1,0 +1,27 @@
+_`RecNearEnd`
+^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **RecNearEnd**
+    typ                      BOOLEAN
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  * Ak tlačiareň disponuje senzorom pre rozoznávanie prítomnosti blízkeho konca papierovej pásky potom:
+
+      * Ak ``TRUE``, :term:`FP` signalizuje, že tlačiareň účteniek sa blíži do stavu, keď nebude obsahovať žiaden papier.
+      * Ak ``FALSE`` :term:`FP` signalizuje, že v tlačiarni účteniek ešte nie je dôvod na výmenu papierovej pásky.
+
+  * Ak tlačiareň účteniek nedisponuje senzorom pre rozoznávanie prítomnosti blízkeho konca papierovej pásky, potom property obsahuje stále hodnotu ``FALSE``.
+
+.. toctree::
+    :maxdepth: 3

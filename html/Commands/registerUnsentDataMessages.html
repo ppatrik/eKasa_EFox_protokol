@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="sk" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8.53. registerUnsentDataMessages [_new_] &mdash; Dokumentácia Protokol eKasa fiškálnej tlačiarne EFox </title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/elcom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Hľadať" href="../search.html" />
+    <link rel="next" title="8.54. resetInspectionRequest" href="resetInspectionRequest.html" />
+    <link rel="prev" title="8.52. registerLocation [_new_]" href="registerLocation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Protokol eKasa fiškálnej tlačiarne EFox
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">1. Úvod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology/index.html">2. Terminológia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BasicDescription/index.html">3. Popis protokolu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConnectingAndStates/index.html">4. Vytvorenie spojenia a stavy <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Rules/index.html">5. Pravidlá <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Printing/index.html">6. Tlač vo fiškálnej tlačiarni</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Values/index.html">7. Konštanty a premenné</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="affirmInspectionRequest.html">8.1. affirmInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginFiscalReceipt.html">8.2. beginFiscalReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginNonFiscal.html">8.3. beginNonFiscal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginTraining.html">8.4. beginTraining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cancelRest.html">8.5. cancelRest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clearDisplay.html">8.6. clearDisplay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cutPaper.html">8.7. cutPaper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deferFirmwareUpdateRequest.html">8.8. deferFirmwareUpdateRequest <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="displayTextAt.html">8.9. displayTextAt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endFiscalReceipt.html">8.10. endFiscalReceipt <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="endNonFiscal.html">8.11. endNonFiscal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endTraining.html">8.12. endTraining</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getCounter.html">8.13. getCounter <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getData.html">8.14. getData <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getDate.html">8.15. getDate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFirmwareUpdateRequest.html">8.16. getFirmwareUpdateRequest <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getFontAttribute.html">8.17. getFontAttribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getHeaderLine.html">8.18. getHeaderLine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getInspectionRequest.html">8.19. getInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getLastRegisteredLocationInfo.html">8.20. getLastRegisteredLocationInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getLastRegisteredReceiptInfo.html">8.21. getLastRegisteredReceiptInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getLicenceData.html">8.22. getLicenceData <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getNextLogRecord.html">8.23. getNextLogRecord</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getPaymentEntry.html">8.24. getPaymentEntry <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getProperty.html">8.25. getProperty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTotalizer.html">8.26. getTotalizer <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTrailerLine.html">8.27. getTrailerLine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getTransactionStatus.html">8.28. getTransactionStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getVatEntry.html">8.29. getVatEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="obtainProgress.html">8.30. obtainProgress <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="openDrawer.html">8.31. openDrawer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printBarCode.html">8.32. printBarCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printDuplicateReceipt.html">8.33. printDuplicateReceipt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printNormal.html">8.34. printNormal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecCash.html">8.35. printRecCash <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItem.html">8.36. printRecItem <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemAdjustment.html">8.37. printRecItemAdjustment <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemCorrection.html">8.38. printRecItemCorrection <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemRefund.html">8.39. printRecItemRefund <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemRefundCorrection.html">8.40. printRecItemRefundCorrection <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecAdvancePaymentDeduct.html">8.41. printRecAdvancePaymentDeduct <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecItemSinglePurposeVoucher.html">8.42. printRecItemSinglePurposeVoucher <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecMessage.html">8.43. printRecMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecPackageAdjustment.html">8.44. printRecPackageAdjustment <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecSubtotal.html">8.45. printRecSubtotal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecTotal.html">8.46. printRecTotal <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecTotalChange.html">8.47. printRecTotalChange <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printRecVoid.html">8.48. printRecVoid <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printUnsentDataMsgReport.html">8.49. printUnsentDataMsgReport <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="printXReport.html">8.50. printXReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="printZReport.html">8.51. printZReport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registerLocation.html">8.52. registerLocation <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.53. registerUnsentDataMessages <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="resetInspectionRequest.html">8.54. resetInspectionRequest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resetPrinter.html">8.55. resetPrinter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setBitmap.html">8.56. setBitmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setCustomer.html">8.57. setCustomer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setDate.html">8.58. setDate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setFiscalMode.html">8.59. setFiscalMode <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setFontAttribute.html">8.60. setFontAttribute <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setHeaderLines.html">8.61. setHeaderLines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setParagon.html">8.62. setParagon <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setPaymentEntry.html">8.63. setPaymentEntry <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setPaymentType.html">8.64. setPaymentType <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setPOSID.html">8.65. setPOSID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setProperty.html">8.66. setProperty <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="setTrailerLines.html">8.67. setTrailerLines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setVatTable.html">8.68. setVatTable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soundImmediate.html">8.69. soundImmediate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storeAllBitmaps.html">8.70. storeAllBitmaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updateFirmware.html">8.71. updateFirmware <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ProblemSolving/index.html">9. Riešenie chybových stavov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/index.html">10. Prílohy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Protokol eKasa fiškálnej tlačiarne EFox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">8. </span>Príkazy fiškálnej tlačiarne <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></a> &raquo;</li>
+      <li><span class="section-number">8.53. </span>registerUnsentDataMessages <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="registerunsentdatamessages-new">
+<h1><span class="section-number">8.53. </span><span class="target" id="registerunsentdatamessages">registerUnsentDataMessages</span> <code class="docutils literal notranslate"><span class="pre">[_new_]</span></code><a class="headerlink" href="#registerunsentdatamessages-new" title="Trvalý odkaz na tento nadpis">¶</a></h1>
+<p><strong>Formát príkazu</strong>:</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pole</p></th>
+<th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Dátový typ</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cmd ID</p></td>
+<td><p>rUDM</p></td>
+<td><p>-</p></td>
+<td><p>identifikátor príkazu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Req/Rsp</p></td>
+<td><p>REQ</p></td>
+<td><p>-</p></td>
+<td><p>požiadavka</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Formát odpovede</strong>:</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 30%" />
+<col style="width: 22%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pole</p></th>
+<th class="head"><p>Hodnota</p></th>
+<th class="head"><p>Dátový typ</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cmd ID</p></td>
+<td><p>rUDM</p></td>
+<td><p>-</p></td>
+<td><p>identifikátor príkazu</p></td>
+</tr>
+<tr class="row-odd"><td><p>Req/Rsp</p></td>
+<td><p>RSP</p></td>
+<td><p>-</p></td>
+<td><p>odpoveď</p></td>
+</tr>
+<tr class="row-even"><td><p>Exception</p></td>
+<td><p><em>exceptionCode</em></p></td>
+<td><p><strong>INT32</strong></p></td>
+<td><p>návratový kód</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Návratové hodnoty</strong>:</p>
+<blockquote>
+<div><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Chyba</p></th>
+<th class="head"><p>Popis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../Values/Exceptions/ExceptionValues.html#efp-wrong-state"><span class="std std-ref">EFP_WRONG_STATE</span></a></p></td>
+<td><p>Aktuálny stav <a class="reference internal" href="../Terminology/Shortcuts.html#term-FP"><span class="xref std std-term">FP</span></a> nedovoľuje vykonanie tohto príkazu, alebo je <a class="reference internal" href="../Terminology/Shortcuts.html#term-FP"><span class="xref std std-term">FP</span></a> v tréningovom režime.</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Popis príkazu</strong>:</p>
+<blockquote>
+<div><p>Príkaz slúži na spustenie kontrolovaného odosielania dátových správ (požiadavok
+o registráciu dokladov a polôh), ktoré ešte neboli odoslané na server finančnej správy.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Vykonanie príkazu znamená, že process kontrolovaného odosielania bol úspešne
+začatý a vykonáva sa na pozadí (<a class="reference internal" href="../Terminology/Shortcuts.html#term-FP"><span class="xref std std-term">FP</span></a> prejde zo stavu <a class="reference internal" href="../Values/Properties/PrinterState.html#fp-ps-monitor"><span class="std std-ref">FP_PS_MONITOR</span></a>
+do stavu <a class="reference internal" href="../Values/Properties/PrinterState.html#fp-ps-report"><span class="std std-ref">FP_PS_REPORT</span></a>).</p></li>
+<li><p>Priebeh vykonávania príkazu môže aplikácia zisťovať príkazom <a class="reference internal" href="obtainProgress.html#obtainprogress"><span class="std std-ref">obtainProgress</span></a>,
+ktorého odpoveďou je v prípade bezchybného priebehu aj informácia o tom,
+koľko percent z operácie je už realizované.</p></li>
+<li><p>Po ukončení príkazu prejde <a class="reference internal" href="../Terminology/Shortcuts.html#term-FP"><span class="xref std std-term">FP</span></a> automaticky zo stavu <a class="reference internal" href="../Values/Properties/PrinterState.html#fp-ps-report"><span class="std std-ref">FP_PS_REPORT</span></a>
+do stavu <a class="reference internal" href="../Values/Properties/PrinterState.html#fp-ps-monitor"><span class="std std-ref">FP_PS_MONITOR</span></a>.</p></li>
+<li><p>Process kontrolovaného odosielania je možné zrušiť príkazom <a class="reference internal" href="cancelRest.html#cancelrest"><span class="std std-ref">cancelRest</span></a>,
+čím <a class="reference internal" href="../Terminology/Shortcuts.html#term-FP"><span class="xref std std-term">FP</span></a> prejde zo stavu <a class="reference internal" href="../Values/Properties/PrinterState.html#fp-ps-report"><span class="std std-ref">FP_PS_REPORT</span></a> do stavu
+<a class="reference internal" href="../Values/Properties/PrinterState.html#fp-ps-monitor"><span class="std std-ref">FP_PS_MONITOR</span></a>. Samotný proces odosielania
+neodoslaných správ sa týmto ale nezruší, nebude len možný zisťovať priebeh odosielania.
+Po vykonaní príkazu <a class="reference internal" href="obtainProgress.html#obtainprogress"><span class="std std-ref">obtainProgress</span></a> v tomto stave bude
+vrátená hodnota <code class="docutils literal notranslate"><span class="pre">100%</span></code> aj napriek tomu, že došlo k zrušeniu pred ukončením procesu.</p></li>
+<li><p>odosielanie dátových správ na pozadí sa deje aj bez spustenia tohoto príkazu,
+príkaz len umožňuje aplikácii zisťovať percentuálny priebeh odosielania neodoslaných
+dátových správ</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Účinky príkazu</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../Values/Properties/PrinterState.html#printerstate"><span class="std std-ref">PrinterState</span></a> = <a class="reference internal" href="../Values/Properties/PrinterState.html#fp-ps-report"><span class="std std-ref">FP_PS_REPORT</span></a> počas
+kontrolovaného odosielania dátových správ</p></li>
+<li><p><a class="reference internal" href="../Values/Properties/PrinterState.html#printerstate"><span class="std std-ref">PrinterState</span></a> = <a class="reference internal" href="../Values/Properties/PrinterState.html#fp-ps-monitor"><span class="std std-ref">FP_PS_MONITOR</span></a> po
+ukončení kontrolovaného odosielania dátových správ</p></li>
+</ul>
+</div></blockquote>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="registerLocation.html" class="btn btn-neutral float-left" title="8.52. registerLocation [_new_]" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="resetInspectionRequest.html" class="btn btn-neutral float-right" title="8.54. resetInspectionRequest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019, ELCOM, spol. s ručením obmedzeným, Prešov.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

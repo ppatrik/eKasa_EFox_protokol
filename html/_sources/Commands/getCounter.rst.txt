@@ -1,0 +1,195 @@
+_`getCounter` ``[_new_]``
+-------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   gC                                                 \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`counterType <gC_counterType>`                **INT32**       typ počítadla
+      Param2   :ref:`subsetID <gC_subsetID>`                      **INT32**       identifikátor podskupiny počítadla
+      Param3   :ref:`counterID <gC_counterID>`                    **INT32**       špecifikuje požadované počítadlo
+      ======== ================================================== =============== ====================
+
+.. _gC_counterType:
+
+**Parameter counterType**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ======== ======================= ===============================================
+      Hodnota  Alias                   Popis
+      ======== ======================= ===============================================
+      ``1``    _`FP_CT_DAY`            počet kumulovaný za deň
+      ``2``    _`FP_CT_RECEIPT`        počet kumulovaný v rámci účtenky
+      ======== ======================= ===============================================
+
+.. _gC_subsetID:
+
+**Parameter subsetID**:
+
+  Ak parameter :ref:`counterID <gC_counterID>` nadobúda hodnoty:
+
+    * :ref:`FP_GC_DISCOUNT <FP_GC_DISCOUNT>`
+    * :ref:`FP_GC_ITEM <FP_GC_ITEM>`
+    * :ref:`FP_GC_REFUND <FP_GC_REFUND>`
+    * :ref:`FP_GC_SUBTOTAL_DISCOUNT <FP_GC_SUBTOTAL_DISCOUNT>`
+    * :ref:`FP_GC_SUBTOTAL_SURCHARGES <FP_GC_SUBTOTAL_SURCHARGES>`
+    * :ref:`FP_GC_SURCHARGE <FP_GC_SURCHARGE>`
+    * :ref:`FP_GC_INVOICE <FP_GC_INVOICE>`
+    * :ref:`FP_GC_INVOICE_REFUND <FP_GC_INVOICE_REFUND>`
+    * :ref:`FP_GC_ITEM_CORRECTION <FP_GC_ITEM_CORRECTION>`
+    * :ref:`FP_GC_REFUND_CORRECTION <FP_GC_REFUND_CORRECTION>`
+    * :ref:`FP_GC_SINGLE_PURPOSE_VOUCHER <FP_GC_SINGLE_PURPOSE_VOUCHER>`
+    * :ref:`FP_GC_ADVANCE_PAYMENT_DEDUCT <FP_GC_ADVANCE_PAYMENT_DEDUCT>`
+
+    potom parameter :ref:`subsetID <gC_subsetID>` predstavuje daňovú skupinu
+    a môže nadobúdať jednu z nasledujúcich hodnôt:
+
+    * ak :ref:`subsetID <gC_subsetID>` = ``0``, alebo je prázdny reťazec, potom príkaz vráti sumárnu
+      hodnotu počítadla vo všetkých daňových skupinách,
+
+    * ak :ref:`subsetID <gC_subsetID>` = ``1`` až :ref:`NumVatRates <NumVatRates>`, potom príkaz vráti
+      hodnotu počítadla pre konkrétnu daňovú skupinu.
+
+  Ak parameter :ref:`counterID <gC_counterID>` nadobúda hodnotu:
+
+    * :ref:`FP_GC_PAYMENT <FP_GC_PAYMENT>`
+
+    potom parameter :ref:`subsetID <gC_subsetID>` predstavuje identifikátor typu platby
+    a môže nadobúdať jednu z nasledujúcich hodnôt:
+
+    * ak :ref:`subsetID <gC_subsetID>` = ``0``, alebo je prázdny reťazec, potom
+      príkaz vráti sumárnu hodnotu počítadla za všetky typy platieb,
+
+    * ak :ref:`subsetID <gC_subsetID>` = <``1``, :ref:`NumPayments <NumPayments>`>, potom
+      príkaz vráti hodnotu počítadla pre konkrétny typ platby.
+
+  Pre ostatné hodnoty parametra :ref:`counterID <gC_counterID>` sa hodnota parametra
+  :ref:`subsetID <gC_subsetID>` ignoruje.
+
+.. _gC_counterID:
+
+**Parameter counterID**:
+
+  * Ku každej hodnote :ref:`counterID <gC_counterID>` je priradená dvojica počítadiel
+    (počet kumulovaný v rámci účtenky a počet kumulovaný za deň).
+
+  * Parametrom :ref:`counterType <gC_counterType>` sa určuje, o ktoré počítadlo,
+    z príslušnej dvojice, sa bude jednať.
+
+  Parameter môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ==================================== ===============================================
+      Hodnota   Alias                                Počítadlá v odpovedi príkazu
+      ========= ==================================== ===============================================
+      | ``1``   | _`FP_GC_DISCOUNT`                  | :ref:`RecDiscountCount <RecDiscountCount>`,
+                                                     | :ref:`DayDiscountCount <DayDiscountCount>`
+      | ``3``   | _`FP_GC_ITEM`                      | :ref:`RecItemCount <RecItemCount>`,
+                                                     | :ref:`DayItemCount <DayItemCount>`
+      | ``5``   | _`FP_GC_REFUND`                    | :ref:`RecRefundCount <RecRefundCount>`,
+                                                     | :ref:`DayRefundCount <DayRefundCount>`
+      | ``7``   | _`FP_GC_SUBTOTAL_DISCOUNT`         | :ref:`RecSubtotalDiscountCount <RecSubtotalDiscountCount>`,
+                                                     | :ref:`DaySubtotalDiscountCount <DaySubtotalDiscountCount>`
+      | ``9``   | _`FP_GC_SUBTOTAL_SURCHARGES`       | :ref:`RecSubtotalSurchargeCount <RecSubtotalSurchargeCount>`,
+                                                     | :ref:`DaySubtotalSurchargeCount <DaySubtotalSurchargeCount>`
+      | ``11``  | _`FP_GC_SURCHARGE`                 | :ref:`RecSurchargeCount <RecSurchargeCount>`,
+                                                     | :ref:`DaySurchargeCount <DaySurchargeCount>`
+      | ``13``  | _`FP_GC_COMMENT`                   | :ref:`RecCommentCount <RecCommentCount>`,
+                                                     | :ref:`DayCommentCount <DayCommentCount>`
+      | ``14``  | _`FP_GC_SUBTOTAL`                  | :ref:`RecSubtotalCount <RecSubtotalCount>`,
+                                                     | :ref:`DaySubtotalCount <DaySubtotalCount>`
+      | ``15``  | _`FP_GC_PAYMENT`                   | :ref:`RecPaymentCount <RecPaymentCount>`,
+                                                     | :ref:`DayPaymentCount <DayPaymentCount>`
+      | ``16``  | _`FP_GC_INVOICE`                   | :ref:`RecInvoiceCount <RecInvoiceCount>`,
+                                                     | :ref:`DayInvoiceCount <DayInvoiceCount>`
+      | ``18``  | _`FP_GC_INVOICE_REFUND`            | :ref:`RecInvoiceRefundCount <RecInvoiceRefundCount>`,
+                                                     | :ref:`DayInvoiceRefundCount <DayInvoiceRefundCount>`
+      | ``20``  | _`FP_GC_ITEM_CORRECTION`           | :ref:`RecItemCorrectionCount <RecItemCorrectionCount>`,
+                                                     | :ref:`DayItemCorrectionCount <DayItemCorrectionCount>`
+      | ``21``  | _`FP_GC_REFUND_CORRECTION`         | :ref:`RecRefundCorrectionCount <RecRefundCorrectionCount>`,
+                                                     | :ref:`DayRefundCorrectionCount <DayRefundCorrectionCount>`
+      | ``22``  | _`FP_GC_SINGLE_PURPOSE_VOUCHER`    | :ref:`RecSinglePurposeVoucherCount <RecSinglePurposeVoucherCount>`,
+                                                     | :ref:`DaySinglePurposeVoucherCount <DaySinglePurposeVoucherCount>`
+      | ``23``  | _`FP_GC_ADVANCE_PAYMENT_DEDUCT`    | :ref:`RecAdvancePaymentDeductCount <RecAdvancePaymentDeductCount>`,
+                                                     | :ref:`DayAdvancePaymentDeductCount <DayAdvancePaymentDeductCount>`
+      | ``24``  | _`FP_GC_ROUNDING`                  | :ref:`RecRoundingCount <RecRoundingCount>`,
+                                                     | :ref:`DayRoundingCount <DayRoundingCount>`
+      ========= ==================================== ===============================================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    gC                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      Param1    *data*              **INT32**      požadovaná hodnota
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ================================= =======================================
+      Chyba                             Popis
+      ================================= =======================================
+      :ref:`EFP_BAD_VAT <EFP_BAD_VAT>`  Parameter :ref:`subsetID <gC_subsetID>` bol poslaný nesprávne.
+      | :ref:`E_ILLEGAL <E_ILLEGAL>`    | Jeden z parametrov
+                                        |   - :ref:`counterType <gC_counterType>`
+                                        |   - :ref:`counterID <gC_counterID>`
+                                        | nie je z množiny dovolených hodnôt.
+      ================================= =======================================
+
+**Popis príkazu**:
+
+  Vráti požadované počítadlo, ktoré bolo špecifikované vstupnými parametrami.
+
+  Jednotlivé počítadlá sú podrobne popísané v kapitole :ref:`Počítadlá <Počítadlá>`
+
+**Príklad**:
+
+  * Ak :ref:`counterID <gC_counterID>` = `FP_GC_REFUND`_ a :ref:`counterType <gC_counterType>` = `FP_CT_RECEIPT`_,
+    potom pre :ref:`subsetID <gC_subsetID>` = ``3`` vráti počet refundovaných položiek aktuálneho fiškálneho dokladu
+    patriacich do 3. daňovej skupiny (:ref:`RecRefundCount <RecRefundCount>`\[``3``\]).
+
+  * Ak :ref:`counterID <gC_counterID>` = `FP_GC_REFUND`_ a :ref:`counterType <gC_counterType>` = `FP_CT_DAY`_,
+    potom pre :ref:`subsetID <gC_subsetID>` = ``0``, alebo pre prázdny parameter :ref:`subsetID <gC_subsetID>`, príkaz vráti
+    sumárny počet refundovaných položiek v aktuálnom dni (teda súčet počítadiel
+    :ref:`DayRefundCount <DayRefundCount>`\[``1``\] až
+    :ref:`DayRefundCount <DayRefundCount>`\[:ref:`NumVatRates <NumVatRates>`\], teda
+    hodnotu :ref:`DayRefundCount <DayRefundCount>`).
+
+.. toctree::
+    :maxdepth: 2

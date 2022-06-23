@@ -1,0 +1,40 @@
+_`CashRoundPlace` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **CashRoundPlace**
+    typ                      INT32
+    prednastavená hodnota    ``2``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  * Obsahuje počet desatinných miest pre zaokrúhlenie platby, alebo výdavku v hotovosti.
+
+  Možné hodnoty tejto property sú:
+
+  .. value of {tableValueNote} is defined in config.py
+  .. tabularcolumns:: {tableValueNote}
+
+  .. table::
+      :class: longtable
+
+      ============== ========================
+      Hodnota        Popis
+      ============== ========================
+      ``0`` - ``2``  počet desatinných miest
+      ============== ========================
+
+  .. note::
+
+    * V prípade zaokrúhľovania hotovosti (na 5 eurocentov) platného od 1.7.2022 má byť táto vlastnosť nastavená na hodnotu ``1``.
+
+.. toctree::
+    :maxdepth: 3

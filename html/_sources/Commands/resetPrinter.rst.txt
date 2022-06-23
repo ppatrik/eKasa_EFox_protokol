@@ -1,0 +1,96 @@
+_`resetPrinter`
+---------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   rP                                                 \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      ======== ================================================== =============== ====================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    rP                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      =================================================================== =============================================================
+      Chyba                                                               Popis
+      =================================================================== =============================================================
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                            Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_TAX_AUTH_REG_IN_PROGRESS <EFP_TAX_AUTH_REG_IN_PROGRESS>`  Začala registrácia dokladu na serveri :term:`eKasa` alebo
+                                                                          tlač údajov z tejto registrácie, požadovaný príkaz sa teraz
+                                                                          nedá vykonať. Je potrebné opäť zavolať príkaz
+                                                                          :ref:`endFiscalReceipt <endFiscalReceipt>`.
+      =================================================================== =============================================================
+
+**Popis príkazu**:
+
+  Príkaz si vynúti návrat :term:`FP` do stavu :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`. Týmto príkazom sa zabezpečí, že akákoľvek prerušená operácia bude zrušená a ukončená (s výnimkou Z uzávierky popísaného v poznámke nižšie).
+
+  .. note::
+      Spustením neprerušiteľného príkazu :ref:`printZReport <printZReport>` sa počas tlače Z uzávierky :term:`FP` nachádza v stave :ref:`FP_PS_REPORT <FP_PS_REPORT>` a tento príkaz musí byť ukončený. Až ukončenie tlače Z uzávierky spôsobí prechod :term:`FP` do stavu :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+
+  * Tento príkaz musí byť vyvolaný vždy po zavolaní príkazu :ref:`connect <connect>`, ak :term:`FP` nie je práve v stave :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`. To sa typicky udeje, ak nastane výpadok napájania (resp. preruší sa spojenie s aplikáciou) v priebehu rozúčtovania nákupu, prípadne po inej začatej operácii.
+  * Tento príkaz je tiež nutné zavolať po :ref:`niektorých chybách príkazov <Riešenie chybových stavov>`, kedy už nie je možné pokračovať v začatej rozpracovanej činnosti.
+  * Volanie tohto príkazu nespôsobí koniec obchodného dňa.
+
+**Účinky príkazu**:
+
+  .. note::
+      * Ak bol :term:`FP` v niektorom zo stavov:
+
+          * :ref:`FP_PS_FISCAL_RECEIPT <FP_PS_FISCAL_RECEIPT>`
+          * :ref:`FP_PS_FISCAL_RECEIPT_TOTAL <FP_PS_FISCAL_RECEIPT_TOTAL>`
+          * :ref:`FP_PS_FISCAL_RECEIPT_ENDING <FP_PS_FISCAL_RECEIPT_ENDING>`
+
+        nákup sa ukončí bez toho, aby došlo k aktualizácii akumulátorov dennej Z uzávierky.
+
+      * Ak bol :term:`FP` v stave :ref:`FP_PS_NONFISCAL <FP_PS_NONFISCAL>`, :term:`FP` opustí tento stav.
+      * Ak bol :term:`FP` v stave :ref:`FP_PS_REPORT <FP_PS_REPORT>`:
+
+          * ak bola prerušená denná Z uzávierka, :term:`FP` ostane aj po vykonaní príkazu :ref:`resetPrinter <resetPrinter>` v stave :ref:`FP_PS_REPORT <FP_PS_REPORT>` (aplikácia následne musí zavolať príkaz :ref:`printZReport <printZReport>`, aby :term:`FP` mohol opustiť tento stav po riadnom dokončení dennej Z uzávierky)
+          * ak bola prerušená iná uzávierka ako denná Z uzávierka, :term:`FP` opustí tento stav
+
+      * Ak bol :term:`FP` v tréningovom režime, :term:`FP` opustí tento režim.
+
+  * :ref:`Rec…Total… <Sumárne hodnoty>` = ``0``
+  * :ref:`Rec…Count… <Počítadlá>` = ``0``
+  * :ref:`CurrentTotal <CurrentTotal>`  = ``0``
+  * :ref:`AccPaymentTotal <AccPaymentTotal>` = ``0``
+  * :ref:`FiscalReceiptType <FiscalReceiptType>` = :ref:`FP_RT_SALES <FP_RT_SALES>`
+  * :ref:`TrainingModeActive <TrainingModeActive>` = ``FALSE``
+  * :ref:`VatIncluded <VatIncluded>` = ``TRUE``
+  * :ref:`FormatProfile <FormatProfile>` = :ref:`FP_FP_EXPANDED <FP_FP_EXPANDED>`
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_REPORT <FP_PS_REPORT>`, ak :term:`FP` bola v stave :ref:`FP_PS_REPORT <FP_PS_REPORT>` následkom zavolania príkazu :ref:`printZReport <printZReport>`.
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`, ak :term:`FP` nebola v stave :ref:`FP_PS_REPORT <FP_PS_REPORT>` následkom zavolania príkazu :ref:`printZReport <printZReport>`.
+  * Atribúty fontu pre všetky skupiny riadkov :ref:`FP_FAG_… <sFA_group>` v príkaze :ref:`setFontAttribute <setFontAttribute>` nastavia parameter :ref:`fontAttribute <sFA_fontAttribute>` východziu hodnotu :ref:`FP_FA_DEFAULT <FP_FA_DEFAULT>`.
+
+.. toctree::
+    :maxdepth: 2

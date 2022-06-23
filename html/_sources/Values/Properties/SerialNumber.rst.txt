@@ -1,0 +1,22 @@
+_`SerialNumber`
+^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **SerialNumber**
+    typ                      STRING
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje výrobné (sériové) číslo fiškálnej tlačiarne.
+
+.. toctree::
+    :maxdepth: 3

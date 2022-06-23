@@ -1,0 +1,85 @@
+_`obtainProgress` ``[_new_]``
+-----------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   oP                                                 \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      ======== ================================================== =============== ====================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= ===================================================== ============== ====================
+      Pole      Hodnota                                               Dátový typ     Popis
+      ========= ===================================================== ============== ====================
+      Cmd ID    oP                                                    \-             identifikátor príkazu
+      Req/Rsp   RSP                                                   \-             odpoveď
+      Exception *exceptionCode*                                       **INT32**      návratový kód
+      Param1    :ref:`progress <oP_progress>`                         **INT32**      stav aktuálne prebiehajúcej operácie
+      ========= ===================================================== ============== ====================
+
+.. _oP_progress:
+
+**Parameter progress**
+
+  Parameter udáva koľko percent už bolo vykonané z aktuálne prebiehajúcej operácie.
+  Môže nadobúdať celočíselnú hodnotu v rozsahu \<``0``, ``100``>
+
+  .. note::
+    Hodnota ``100%`` znamená, že operácia bola:
+
+      * vykonaná v plnom rozsahu
+      * prerušená príkazom :ref:`cancelRest <cancelRest>`
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ========================================================= =======================================
+      Chyba                                                     Popis
+      ========================================================= =======================================
+      :ref:`EFP_REC_EMPTY <EFP_REC_EMPTY>`                      V tlačiarni chýba papier.
+      :ref:`EFP_COVER_OPEN <EFP_COVER_OPEN>`                    Kryt tlačiarne je otvorený.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`        Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`        Tlačiareň je odpojená.
+      :ref:`EFP_PRN_INTERNAL_ERROR <EFP_PRN_INTERNAL_ERROR>`    Pri práci s tlačiarňou vznikla interná chyba.
+      :ref:`EFP_CUTTER <EFP_CUTTER>`                            Strihač papiera je v zlom stave.
+      :ref:`EFP_CUTTER_WARNING <EFP_CUTTER_WARNING>`            Strihač papiera je v zlom stave, ale doklad bol kompletne vytlačený.
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`            Nastala chyba komunikácie s :term:`ChDÚ`.
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                        :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`  Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      :ref:`EFP_NETWORK <EFP_NETWORK>`                          FP nemá prístup na internet alebo server neodpovedá
+      ========================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz slúži na zistenie stavu vykonávanej asynchrónnej operácie (operácie vykonávanej na pozadí).
+
+    * Ak *exceptionCode* = ``0``, znamená to, že asynchrónna operácia prebieha korektne.
+    * Ak *exceptionCode* != ``0``, znamená to, že počas vykonávania asynchrónnej operácie vznikla chyba.
+      :term:`FP` sa nachádza v stave :ref:`FP_PS_REPORT <FP_PS_REPORT>` a pre ďalšie pokračovanie je potrebné
+      vykonať príkaz :ref:`resetPrinter <resetPrinter>`.
+    * Asynchrónne vykonávanú operáciu je možné zrušiť príkazom :ref:`cancelRest <cancelRest>`.
+    * Zrušená, alebo ukončená asynchrónna operácia znamená, že výstupný parameter :ref:`progress <oP_progress>` = ``100`` a :term:`FP` sa nachádza v stave :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+
+.. toctree::
+    :maxdepth: 2

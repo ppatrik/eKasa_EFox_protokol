@@ -1,0 +1,14 @@
+Vykonávanie servisných prehliadok
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Vykonávanie servisných prehliadok je v zodpovednosti servisných organizácii.
+Niektoré servisné zásahy môže vykonať len servisná organizácia (napríklad
+výmena záložnej batérie).
+
+Servisný zásah bude vykonávať servisný technik, ktorý bude mať k dispozícii servisnú
+aplikáciu ako aj presný návod (servisný manuál) ako riešiť servisný zásah.
+Účtovné aplikácie preto nepotrebujú implementovať postupy na riešenie servisných zásahov.
+Z rovnakého dôvodu nie je súčasťou tohto protokolu popis, ako sa riešia servisné zásahy.
+
+.. toctree::
+    :maxdepth: 3

@@ -1,0 +1,22 @@
+_`ManufacturerName`
+^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ManufacturerName**
+    typ                      STRING\[5\]
+    prednastavená hodnota    ``"ELCOM"``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje meno výrobcu fiškálnej tlačiarne.
+
+.. toctree::
+    :maxdepth: 3

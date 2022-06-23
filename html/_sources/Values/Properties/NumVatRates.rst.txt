@@ -1,0 +1,22 @@
+_`NumVatRates`
+^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **NumVatRates**
+    typ                      INT32
+    prednastavená hodnota    ``7``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje hodnotu počtu daňových sadzieb, ktoré je možné naprogramovať v rámci tabuľky daňových sadzieb.
+
+.. toctree::
+    :maxdepth: 3

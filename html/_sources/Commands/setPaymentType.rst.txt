@@ -1,0 +1,10 @@
+_`setPaymentType` ``[_new_]``
+-----------------------------
+
+.. note::
+    Tento komunikačný príkaz bude v nasledujúcich verziách odstránený.
+
+    Miesto tohto príkazu bude používaný príkaz :ref:`setPaymentEntry <setPaymentEntry>`.
+
+.. toctree::
+    :maxdepth: 2

@@ -1,0 +1,28 @@
+_`VatSummaryPrinting`
+^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **VatSummaryPrinting**
+    typ                      BOOLEAN
+    prednastavená hodnota    ``TRUE``
+    prístup                  read-write
+    ======================== =======================================
+
+**Popis**:
+
+  Toto nastavenie signalizuje zapnutie, alebo vypnutie tlače daňového sumáru
+  na fiškálnych dokumentoch a doklade dennej uzávierky.
+
+  Vypnutie sa primárne používa pre subjekty, ktoré nie sú platcami DPH.
+
+  .. warning::
+      Nastavenie príznaku sa uplatní len v prípade, ak sú do :term:`ChDÚ` uložené identifikačné údaje platcu DPH.
+
+.. toctree::
+    :maxdepth: 3

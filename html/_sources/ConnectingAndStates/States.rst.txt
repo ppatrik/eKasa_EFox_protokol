@@ -1,0 +1,34 @@
+Stavy komunikácie
+=================
+
+Obsahom komunikácie medzi aplikáciou a zariadením sú príkazy a výsledky
+ich vykonania. Medzi jednotlivými príkazmi, ako sa objavujú v čase,
+existuje vnútorná logická súvislosť a prenášané údaje sú spravidla údaje
+podliehajúce transakčnému riadeniu. Ich správny prenos je preto nevyhnutný
+a Protokol fiškálnej tlačiarne predpokladá použitie zabezpečených transportných služieb.
+
+Akékoľvek ovládanie zariadenia je neprípustné, pokiaľ sa medzi aplikáciou a zariadením nezriadilo
+spoľahlivé spojenie. Spojené (Connected) zariadenie znamená, že séria príkazov a odpovedí je správne
+doručovaná. Prerušenie kanála medzi aplikáciou a zariadením v sekvencii príkazov musí byť preto
+zistené a sekvencia príkazov musí byť zastavená. Aby bolo možné pokračovať, je potrebné obnoviť
+spojenie so zariadením. Pričom prerušené procesy v aplikácii a zariadení musia byť zotavené
+a navzájom zosúladené.
+
+.. figure:: ../Images/ApplicationStateMachine.png
+    :figclass: align-center
+
+    Stavy ovládania zariadenia zo strany aplikácie
+
+.. figure:: ../Images/DeviceCommunicationStates.png
+    :figclass: align-center
+
+    Stavy zariadenia pri poskytovaní služieb
+
+.. pre spravne zobrazenie v PDF je potrebne prejst na novu stanu
+
+.. raw:: latex
+
+    \newpage
+
+.. toctree::
+    :maxdepth: 3

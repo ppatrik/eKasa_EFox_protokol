@@ -1,0 +1,77 @@
+_`PrinterState`
+^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **PrinterState**
+    typ                      INT32
+    prednastavená hodnota    ``1`` (:ref:`FP_PS_MONITOR <FP_PS_MONITOR>`)
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje aktuálnu hodnotu operačného stavu FP. Na základe tejto property je určované, ktoré príkazy je možné v aktuálnom stave :term:`FP` vykonať.
+
+:ref:`PrinterState <PrinterState>` môže nadobúdať nasledovné hodnoty:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      +---------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+      | Hodnota | Alias                             | Popis                                                                                                                                                  |
+      +=========+===================================+========================================================================================================================================================+
+      | | ``1`` | | _`FP_PS_MONITOR`                | | :term:`FP` sa nachádza v základnom stave.                                                                                                            |
+      |         |                                   | | V tomto stave :term:`FP` prijíma všetky jednoduché príkazy (viď. :ref:`Stavy fiškálnej tlačiarne <Stavy fiškálnej tlačiarne>`) a príkazy **begin…**. |
+      |         |                                   | | Ak :ref:`TrainingModeActive <TrainingModeActive>` = ``TRUE``, potom sa :term:`FP`  používa len na tréningové účely a prípustné sú len príkazy        |
+      |         |                                   | |   - :ref:`beginFiscalReceipt <beginFiscalReceipt>`                                                                                                   |
+      |         |                                   | |   - :ref:`endTraining <endTraining>`.                                                                                                                |
+      +---------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+      | | ``2`` | | _`FP_PS_FISCAL_RECEIPT`         | | :term:`FP` práve spracováva fiškálnu účtenku (položky účtenky).                                                                                      |
+      |         |                                   | | V tomto stave :term:`FP` akceptuje niektorý z príkazov **printRec…**.                                                                                |
+      |         |                                   | | Ak navyše :ref:`TrainingModeActive <TrainingModeActive>` = ``TRUE``, potom sa :term:`FP` používa len na tréningové účely.                            |
+      +---------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+      | | ``3`` | | _`FP_PS_FISCAL_RECEIPT_TOTAL`   | | :term:`FP` už akceptoval najmenej jednu platbu, ale celá hodnota nákupu ešte nebola úplne uhradená.                                                  |
+      |         |                                   | | V tomto stave :term:`FP` akceptuje len príkazy:                                                                                                      |
+      |         |                                   | |   - :ref:`printRecMessage <printRecMessage>`                                                                                                         |
+      |         |                                   | |   - :ref:`printRecVoid <printRecVoid>`                                                                                                               |
+      |         |                                   | |   - :ref:`printRecTotal <printRecTotal>`                                                                                                             |
+      |         |                                   | |   - :ref:`printRecTotalChange <printRecTotalChange>`                                                                                                 |
+      |         |                                   | | Ak navyše :ref:`TrainingModeActive <TrainingModeActive>` = ``TRUE``, potom sa :term:`FP` používa len na tréningové účely.                            |
+      +---------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+      | | ``4`` | | _`FP_PS_FISCAL_RECEIPT_ENDING`  | | :term:`FP` už skompletizoval fiškálnu účtenku (či už úspešne alebo neúspešne) a akceptuje už len príkazy:                                            |
+      |         |                                   | |   - :ref:`printRecMessage <printRecMessage>`                                                                                                         |
+      |         |                                   | |   - :ref:`endFiscalReceipt <endFiscalReceipt>`                                                                                                       |
+      |         |                                   | | Ak navyše :ref:`TrainingModeActive <TrainingModeActive>` = ``TRUE``, potom sa :term:`FP` používa len na tréningové účely.                            |
+      +---------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+      | | ``5`` | | _`FP_PS_NONFISCAL`              | | :term:`FP` práve spracováva nefiškálnu účtenku.                                                                                                      |
+      |         |                                   | | V tomto stave akceptuje príkazy:                                                                                                                     |
+      |         |                                   | |   - :ref:`printNormal <printNormal>`                                                                                                                 |
+      |         |                                   | |   - :ref:`endNonFiscal <endNonFiscal>`                                                                                                               |
+      +---------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+      | | ``6`` | | _`FP_PS_REPORT`                 | | :term:`FP` práve spracováva jednu z možných uzávierok.                                                                                               |
+      |         |                                   | | Ak bola prerušená tlač uzávierky, potom je povolený len príkaz :ref:`resetPrinter <resetPrinter>`.                                                   |
+      +---------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+      | | ``7`` | | _`FP_PS_LOCKED`                 | | :term:`FP` narazil na nenávratný HW problém a pre opustenie tohto stavu musí byť kontaktovaný autorizovaný servisný technik.                         |
+      |         |                                   | | :term:`FP` akceptuje všetky príkazy **get…**.                                                                                                        |
+      +---------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+      | | ``8`` | | _`FP_PS_PROGRESS`               | | Bol odštartovaný nejaký asynchrónny proces, ktorý je vykonávaný na pozadí.                                                                           |
+      |         |                                   | | V tomto stave sú prípustné len príkazy:                                                                                                              |
+      |         |                                   | |   - :ref:`obtainProgress <obtainProgress>`                                                                                                           |
+      |         |                                   | |   - :ref:`cancelRest <cancelRest>`                                                                                                                   |
+      |         |                                   | |   - :ref:`resetPrinter <resetPrinter>` (v prípade vzniku chyby)                                                                                      |
+      +---------+-----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+  .. note::
+    Niektoré príkazy sú akceptované v každom stave (s výnimkou stavu :ref:`FP_PS_LOCKED <FP_PS_LOCKED>`). Sú to všetky príkazy **get…** , :ref:`resetPrinter <resetPrinter>`, niektoré z príkazov **set…** (tie, ktoré nie, budú označené v popise konkrétneho príkazu).
+
+.. toctree::
+    :maxdepth: 3

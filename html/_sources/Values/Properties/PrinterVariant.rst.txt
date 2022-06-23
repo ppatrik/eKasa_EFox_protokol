@@ -1,0 +1,36 @@
+_`PrinterVariant`
+^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **FormatProfile**
+    typ                      INT
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje variant tlačového mechanizmu tlačiarne.
+
+  Možné hodnoty tejto property sú:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ====================== ===================
+      Hodnota   Alias                  Popis
+      ========= ====================== ===================
+      ``1``     _`FP_PV_THERMAL`       termo (tepelná) tlačiareň
+      ========= ====================== ===================
+
+.. toctree::
+    :maxdepth: 3

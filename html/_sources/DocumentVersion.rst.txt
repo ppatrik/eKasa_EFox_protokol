@@ -1,0 +1,9 @@
+Verzia dokumentu: 3.00.02 ``[_new_]``
+
+..
+    Internal notes that will not be included in final document
+    ==========================================================
+      - Format of document version is X_YY_ZZ where:
+          X   = major version of communication protocol
+          YY  = minor version of communication protocol
+          ZZ  = number of document version for communication protocol

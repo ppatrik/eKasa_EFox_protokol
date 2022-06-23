@@ -1,0 +1,87 @@
+_`displayTextAt`
+----------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ==================================================== =========================== ====================
+      Pole     Hodnota                                              Dátový typ                  Popis
+      ======== ==================================================== =========================== ====================
+      Cmd ID   dTA                                                  \-                          identifikátor príkazu
+      Req/Rsp  REQ                                                  \-                          požiadavka
+      Param1   :ref:`row <dTA_row>`                                 **INT32**                   riadok pre zobrazenie textu (rozsah ``1`` až :ref:`DisplayRows <DisplayRows>`)
+      Param2   :ref:`column <dTA_column>`                           **INT32**                   pozícia stĺpca, od ktorého sa zobrazí text (rozsah ``1`` až :ref:`DisplayColumns <DisplayColumns>`)
+      Param3   :ref:`data <dTA_data>`                               **STRING**                  text pre zobrazenie s maximálnou dĺžkou reťazca :ref:`DisplayColumns <DisplayColumns>`
+      ======== ==================================================== =========================== ====================
+
+.. _dTA_row:
+
+**Parameter row**:
+
+  Riadok pre zobrazenie textu (rozsah ``1`` až :ref:`DisplayRows <DisplayRows>`).
+
+.. _dTA_column:
+
+**Parameter column**:
+
+  Pozícia stĺpca, od ktorého sa zobrazí text (rozsah ``1`` až :ref:`DisplayColumns <DisplayColumns>`).
+
+.. _dTA_data:
+
+**Parameter data**:
+
+  Text pre zobrazenie s maximálnou dĺžkou reťazca :ref:`DisplayColumns <DisplayColumns>`.
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    dTA                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ====================================================== =======================================
+      Chyba                                                  Popis
+      ====================================================== =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                           Parametre :ref:`row <dTA_row>` alebo :ref:`column <dTA_column>` nie je z množiny dovolených hodnôt.
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`               Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`     Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`     Tlačiareň je odpojená.
+      :ref:`EFP_DSP_INTERNAL_ERROR <EFP_DSP_INTERNAL_ERROR>` Pri práci s displejom vznikla interná chyba.
+      ====================================================== =======================================
+
+**Popis príkazu**:
+
+  * Zobrazí text v parametri :ref:`data <dTA_data>` do riadku daného parametrom :ref:`row <dTA_row>` od pozície danej parametrom :ref:`column <dTA_column>`.
+  * V prípade poslania dlhšieho textu sa znaky, ktoré sa nezmestia na zobrazovanú plochu displeja vynechajú.
+
+  .. note::
+    Pre zobrazovanie aktuálneho dátumu a času na displeji je potrebné poslať príkaz :ref:`displayTextAt <displayTextAt>` s parametrami:
+
+      * :ref:`row <dTA_row>` = ``0``
+      * :ref:`column <dTA_column>` = ``0``
+      * :ref:`data <dTA_data>` = ``""`` (parameter :ref:`data <dTA_data>` je poslaný ako prázdny)
+
+.. toctree::
+    :maxdepth: 2

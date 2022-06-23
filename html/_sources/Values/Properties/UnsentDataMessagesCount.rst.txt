@@ -1,0 +1,28 @@
+_`UnsentDataMessagesCount` ``[_new_]``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **UnsentDataMessagesCount**
+    typ                      INT32
+    prednastavená hodnota    ``0``
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje počet dátových správ (požiadavok o registráciu dokladov a polôh), ktoré
+  doteraz neboli zaregistrované na serveri :term:`eKasa` a sú odložené pre ich
+  zaregistrovanie v najbližšom možnom čase.
+
+  .. note::
+    Hodnota sa včase mení pretože :term:`FP` sa na pozadí znova pokúša tieto dátové
+    správy poslať na server :term:`eKasa`.
+
+.. toctree::
+    :maxdepth: 3

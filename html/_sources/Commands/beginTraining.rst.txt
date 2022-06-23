@@ -1,0 +1,67 @@
+_`beginTraining`
+----------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ==================== =============== ====================
+      Pole     Hodnota              Dátový typ      Popis
+      ======== ==================== =============== ====================
+      Cmd ID   bT                   \-              identifikátor príkazu
+      Req/Rsp  REQ                  \-              požiadavka
+      ======== ==================== =============== ====================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    bT                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ====================================================== =======================================
+      Chyba                                                  Popis
+      ====================================================== =======================================
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`               Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu.
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`     Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`     Tlačiareň je odpojená.
+      ====================================================== =======================================
+
+**Popis príkazu**:
+
+  * Príkaz nastaví na :term:`FP` tréningový režim, čím spôsobí zmenu režimu :term:`FP`.
+  * Všetky príkazy predaja ostávajú dostupné a nezmenené, akurát nespôsobia zmenu registrov a počítadiel tlačených v dennej uzávierke.
+  * Tento príkaz je možné vykonať len ak stavová premenná :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+  * Poslanie tohto príkazu spôsobí zmenu stavovej premennej :ref:`TrainingModeActive <TrainingModeActive>` na ``TRUE``.
+  * Platnosť tréningového režimu trvá do jeho ukončenia vykonaním jedného z príkazov:
+
+      * :ref:`endTraining <endTraining>`
+      * :ref:`resetPrinter <resetPrinter>`
+
+**Účinky príkazu**:
+
+  * :ref:`TrainingModeActive <TrainingModeActive>` = ``TRUE``
+
+.. toctree::
+    :maxdepth: 2

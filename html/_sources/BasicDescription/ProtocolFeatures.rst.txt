@@ -1,0 +1,26 @@
+Črty protokolu
+==============
+
+Fiškálna tlačiareň spolupracuje s aplikáciou pri vykonávaní maloobchodných operácií
+a  aplikačný protokol poskytuje podporu aplikácii pri riadení registračných transakcií
+spojených s:
+
+* uvedením :term:`POS` do prevádzky,
+* nastavením základných charakteristík pre registrovanie predaja,
+* registrovaním priebehu maloobchodných operácií pri predaji/vrátení,
+* vykazovaním obratov pre fiškálne účely.
+
+Protokol umožní aplikácii ovládať:
+
+* fiškálnu jednotku pri predaji/vrátení a pri uzávierke,
+* tlač fiškálnych účteniek a výkazov,
+* zákaznícky displej,
+* peňažnú zásuvku,
+* tónový indikátor.
+
+Protokol používa USB/LAN spojenie. Umožňuje spoľahlivé a jednoznačné ovládanie
+maloobchodných transakcií a to aj po prerušení spojenia s fiškálnou tlačiarňou
+spôsobeného napríklad výpadkom napájania.
+
+.. toctree::
+    :maxdepth: 2

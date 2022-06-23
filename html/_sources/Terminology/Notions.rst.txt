@@ -1,0 +1,94 @@
+Pojmy ``[_new_]``
+=================
+
+.. glossary::
+
+    Aplikácia
+    Application : APP
+        Program na strane počítača, alebo iného zariadenia (napríklad mobil, alebo tablet),
+        ktorý komunikuje s fiškálnou tlačiarňou.
+
+        Rola komponentu registračného programu, ktorý zodpovedá za používanie zariadení potrebných
+        pri registrácii maloobchodných obratov.
+
+    Fiškálny
+        Slovo fiškálny je v slovníku cudzích slov definované ako "zameraný na záujmy štátu, štátnej pokladnice".
+
+        V kontexte tohto dokumentu sa toto slovo (vo všetkých pádoch) a modifikáciách bude
+        používať na označenie štátom požadovaných funkcionalít na pokladnice
+        a :ref:`fiškálne tlačiarne <FP_term>`.
+
+.. _FiscalDocument:
+
+.. glossary::
+
+    Fiškálny doklad
+        Doklad (finančného typu), ktorého evidencia je vyžadovaná zákonom o registračných pokladniciach.
+
+        Fiškálne doklady reprezentujú hlavne, no nie výlučne, potvrdenia o kúpe tovaru, vklady, výbery,
+        doklady o úhrade faktúry.
+
+        Jeho opakom je *nefiškálny doklad*, ktorý môže byť reprezentovaný napríklad uzávierkou predaja
+        pre jednotlivých pokladníkov, inventúra skladu, alebo iné takzvané užívateľské uzávierky.
+
+    Fiškálna jednotka
+    Fiscal Unit
+        Časť fiškálnej tlačiarne evidujúca operácie spojené s predajom vybavená registračnými pravidlami.
+
+.. _FP_term:
+
+.. glossary::
+
+    Fiškálna tlačiareň
+    Fiscal Printer : :term:`FP`
+        Zariadenie definované zákonom o elektronických registračných pokladniciach, ktoré umožňuje
+        tlač dokladov a zabezpečuje aj ich evidenciu a spracovanie podľa požiadaviek zákona.
+
+        Toto zariadenie zariadenie podlieha certifikácii podľa zákona.
+
+    Chránené dátové úložisko
+        Povinná súčasť pokladníc a fiškálnych tlačiarni, do ktorej sa ukladajú dáta dokladov a tlačových výstupov.
+
+    Oprava
+    Correction
+        Zaevidovanie opravy položky po jej vytlačení na pokladničnom doklade, pričom pôvodný pokladničný doklad
+        bol uzavretý. Slúži najmä na opravu chyby pri predaji. Teda napríklad keď zákazník ešte neprevzal tovar
+        a všimol si chybu na doklade, ako napríklad nesprávnu cenu, alebo množstvo, prípadne tovar, ktorý vôbec nekupoval.
+
+    Prehľadová uzávierka
+        Predbežná (denná) uzávierka predaja. Môže byť použitá na kontrolu aktuálneho stavu predaja.
+
+        Tento typ uzávierky nemaže dáta (počítadlá) a je ju možné vykonať opakovane bez následkov.
+
+    Riadková položka
+    Line Item
+        Jedna zložka z postupnosti viacerých obchodných činností tvoriacich spolu finančnú a tovarovú výmenu pri predaji.
+
+    Registračná transakcia
+    Registration Transaction
+        Transakcia vykonaná na fiškálnej tlačiarni, ktorá má za následok zmenu hodnôt dennej uzávierky.
+
+    Storno dokladu
+    Receipt void
+        Zrušenie aktuálneho pokladničného dokladu, pričom **doklad ešte nebol uzavretý**.
+
+        .. note::
+          Aj keď pojem *storno* je definovaný zákonom, v praxi sa tento pojem používa často namiesto pojmu *vrátenie tovaru*,
+          pričom ale *vrátenie tovaru* je úplne iná operácia a nie je vhodné si tieto operácie zamieňať.
+
+    Tlačiareň
+        Jeden z komponentov fiškálnej tlačiarne, úlohou ktorého je tlač naformátovaných textov
+        z iného komponentu fiškálnej tlačiarne.
+
+    Vrátenie
+    Refund
+    Return
+        Zaevidovanie vrátenia položky po jej vytlačení na pokladničnom doklade, pričom pôvodný pokladničný doklad
+        bol uzavretý. Slúži najmä na vrátenie tovaru, napríklad pri reklamácii, alebo z iných dôvodov.
+
+    Zariadenie
+    Device
+        pozri: :ref:`Fiškálna Tlačiareň <FP_term>`, je to skrátené pomenovanie/označenie
+
+.. toctree::
+    :maxdepth: 2

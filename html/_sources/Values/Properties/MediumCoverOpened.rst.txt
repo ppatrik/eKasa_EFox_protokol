@@ -1,0 +1,22 @@
+_`MediumCoverOpened`
+^^^^^^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **MediumCoverOpened**
+    typ                      BOOLEAN
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Ak je nastavené na ``TRUE``, potom signalizuje, že je otvorený kryt záložného média žurnálov (JBM).
+
+.. toctree::
+    :maxdepth: 3

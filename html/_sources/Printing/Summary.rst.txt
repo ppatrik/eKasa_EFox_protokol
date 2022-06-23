@@ -1,0 +1,19 @@
+Zhrnutie formátovania tlače
+===========================
+
+K informáciám, ktoré boli spomínané v predchádzajúcich kapitolách je potrebné dodať,
+že font s jeho atribútmi a formátovacie profily je možné navzájom kombinovať a ľubovoľne
+meniť v rámci jednej účtenky, alebo v rámci ľubovoľnej skupiny riadkov.
+
+Neexistuje žiadne obmedzenie v rámci ponúkaných možností. Jeden riadok môže byť vytlačený
+s parametrom :ref:`fontAttribute <sFA_fontAttribute>` X a property :ref:`FormatProfile <FormatProfile>` Y
+a druhý riadok, ktorého informačný obsah je totožný s obsahom predchádzajúceho riadku môže byť vytlačený
+s parametrom :ref:`fontAttribute <sFA_fontAttribute>` Z a property :ref:`FormatProfile <FormatProfile>` W.
+
+Po každej strate spojenia medzi fiškálnou tlačiarňou a aplikáciou, ako aj po príkaze
+:ref:`resetPrinter <resetPrinter>` sa property :ref:`FormatProfile <FormatProfile>` a nastavenia
+atribútov fontu pre všetky skupiny riadkov (pozri príkaz :ref:`setFontAttribute <setFontAttribute>`)
+nastavia na svoje preddefinované (default) hodnoty, keďže tieto nastavenia nie sú ukladané.
+
+.. toctree::
+    :maxdepth: 2

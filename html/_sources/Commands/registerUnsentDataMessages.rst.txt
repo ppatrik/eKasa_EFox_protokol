@@ -1,0 +1,80 @@
+_`registerUnsentDataMessages` ``[_new_]``
+-----------------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== =============== =============== ====================
+      Pole     Hodnota         Dátový typ      Popis
+      ======== =============== =============== ====================
+      Cmd ID   rUDM            \-              identifikátor príkazu
+      Req/Rsp  REQ             \-              požiadavka
+      ======== =============== =============== ====================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    rUDM                \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ========================================================= =======================================
+      Chyba                                                     Popis
+      ========================================================= =======================================
+      :ref:`EFP_WRONG_STATE <EFP_WRONG_STATE>`                  Aktuálny stav :term:`FP` nedovoľuje vykonanie tohto príkazu, alebo je :term:`FP` v tréningovom režime.
+      ========================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz slúži na spustenie kontrolovaného odosielania dátových správ (požiadavok
+  o registráciu dokladov a polôh), ktoré ešte neboli odoslané na server finančnej správy.
+
+    * Vykonanie príkazu znamená, že process kontrolovaného odosielania bol úspešne
+      začatý a vykonáva sa na pozadí (:term:`FP` prejde zo stavu :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`
+      do stavu :ref:`FP_PS_REPORT <FP_PS_REPORT>`).
+    * Priebeh vykonávania príkazu môže aplikácia zisťovať príkazom :ref:`obtainProgress <obtainProgress>`,
+      ktorého odpoveďou je v prípade bezchybného priebehu aj informácia o tom,
+      koľko percent z operácie je už realizované.
+    * Po ukončení príkazu prejde :term:`FP` automaticky zo stavu :ref:`FP_PS_REPORT <FP_PS_REPORT>`
+      do stavu :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`.
+    * Process kontrolovaného odosielania je možné zrušiť príkazom :ref:`cancelRest <cancelRest>`,
+      čím :term:`FP` prejde zo stavu :ref:`FP_PS_REPORT <FP_PS_REPORT>` do stavu
+      :ref:`FP_PS_MONITOR <FP_PS_MONITOR>`. Samotný proces odosielania
+      neodoslaných správ sa týmto ale nezruší, nebude len možný zisťovať priebeh odosielania.
+      Po vykonaní príkazu :ref:`obtainProgress <obtainProgress>` v tomto stave bude
+      vrátená hodnota ``100%`` aj napriek tomu, že došlo k zrušeniu pred ukončením procesu.
+    * odosielanie dátových správ na pozadí sa deje aj bez spustenia tohoto príkazu,
+      príkaz len umožňuje aplikácii zisťovať percentuálny priebeh odosielania neodoslaných
+      dátových správ
+
+**Účinky príkazu**:
+
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_REPORT <FP_PS_REPORT>` počas
+    kontrolovaného odosielania dátových správ
+  * :ref:`PrinterState <PrinterState>` = :ref:`FP_PS_MONITOR <FP_PS_MONITOR>` po
+    ukončení kontrolovaného odosielania dátových správ
+
+.. toctree::
+    :maxdepth: 2

@@ -1,0 +1,23 @@
+_`DrawerOpened`
+^^^^^^^^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **DrawerOpened**
+    typ                      BOOLEAN
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  * Ak je nastavené na ``TRUE``, potom :term:`FP` signalizuje, že je otvorená aspoň jedna zo zásuviek pripojených k :term:`FP`.
+  * Ak je nastavené na ``FALSE``, potom všetky pripojené zásuvky k :term:`FP` sú zatvorené.
+
+.. toctree::
+    :maxdepth: 3

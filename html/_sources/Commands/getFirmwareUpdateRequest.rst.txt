@@ -1,0 +1,144 @@
+_`getFirmwareUpdateRequest` ``[_new_]``
+---------------------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ======================================================== =============== ====================
+      Pole     Hodnota                                                  Dátový typ      Popis
+      ======== ======================================================== =============== ====================
+      Cmd ID   gFUR                                                     \-              identifikátor príkazu
+      Req/Rsp  REQ                                                      \-              požiadavka
+      ======== ======================================================== =============== ====================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= ======================================================= ============== ====================
+      Pole      Hodnota                                                 Dátový typ     Popis
+      ========= ======================================================= ============== ====================
+      Cmd ID    gFUR                                                    \-             identifikátor príkazu
+      Req/Rsp   RSP                                                     \-             odpoveď
+      Exception *exceptionCode*                                         **INT32**      návratový kód
+      Param1    :ref:`isUpdateAvailable <gFUR_isUpdateAvailable>`       **BOOLEAN**    signalizuje dostupnosť aktualizácie
+      Param2    :ref:`FPVersion <gFUR_FPVersion>`                       **STRING**     verzia firmvéru pre :term:`FP`
+      Param3    :ref:`ICMVersion <gFUR_ICMVersion>`                     **STRING**     verzia firmvéru pre :term:`ChDÚ`
+      Param4    :ref:`isFired <gFUR_isFired>`                           **BOOLEAN**    signalizuje aktívnosť oboznámenia
+      ========= ======================================================= ============== ====================
+
+.. _gFUR_isUpdateAvailable:
+
+**Výstupný parameter isUpdateAvailable**:
+
+  Signalizuje dostupnosť aktualizácie. Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueNote} is defined in config.py
+  .. tabularcolumns:: {tableValueNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ===============================================
+      Hodnota   Popis
+      ========= ===============================================
+      ``TRUE``  aktualizácia je dostupná
+      ``FALSE`` aktualizácia nie je dostupná
+      ========= ===============================================
+
+.. _gFUR_FPVersion:
+
+**Výstupný parameter FPVersion**:
+
+  Textová reprezentácia verzie firmvéru pre :term:`FP`.
+
+  * Ak :ref:`FPVersion <gFUR_FPVersion>` = ``""``, potom aktualizácia pre :term:`FP` nie je dostupná.
+  * Ak :ref:`FPVersion <gFUR_FPVersion>` <> ``""``, potom udáva aká verzia je pre :term:`FP` dostupná.
+
+.. _gFUR_ICMVersion:
+
+**Výstupný parameter ICMVersion**:
+
+  Textová reprezentácia verzie firmvéru pre :term:`ChDÚ`.
+
+  * Ak :ref:`ICMVersion <gFUR_ICMVersion>` = ``""``, potom aktualizácia pre :term:`ChDÚ` nie je dostupná.
+  * Ak :ref:`ICMVersion <gFUR_ICMVersion>` <> ``""``, potom udáva aká verzia je pre :term:`ChDÚ` dostupná.
+
+.. _gFUR_isFired:
+
+**Výstupný parameter isFired**:
+
+  Parameter hovorí o tom, či je požiadavka na aktualizáciu firmvéru aktivovaná.
+
+  * Ak je požiadavka aktivovaná, tak dochádza k blokovaniu tlače nových dokumentov. Teda príkazy **begin…** skončia na chybu :ref:`EFP_FW_UPDATE_REQUEST <EFP_FW_UPDATE_REQUEST>`.
+  * Pre odblokovanie je nutné vykonať jeden z príkazov:
+
+    * :ref:`updateFirmware <updateFirmware>` pre vykonanie aktualizácie firmvéru
+    * :ref:`deferFirmwareUpdateRequest <deferFirmwareUpdateRequest>` pre odloženie aktualizácie firmvéru
+
+  .. note::
+      Pre manuálne nahranú aktualizáciu cez vstavaný web server je tento parameter
+      trvalo nastavený.
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ============================================================= =======================================
+      Chyba                                                         Popis
+      ============================================================= =======================================
+      :ref:`EFP_OPERATION_ERROR <EFP_OPERATION_ERROR>`              Interná chyba. Pri vykonávaní príkazu nastala nešpecifikovaná chyba
+      :ref:`EFP_NETWORK <EFP_NETWORK>`                              FP nemá prístup na internet alebo server neodpovedá
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`                Nastala chyba komunikácie s :term:`ChDÚ`.
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                            :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`      Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      :ref:`EFP_ICM_BLOCKED <EFP_ICM_BLOCKED>`                      :term:`ChDÚ` je zablokované, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_FW_UPDATE_NEED_FISCAL <EFP_FW_UPDATE_NEED_FISCAL>`  Aktualizácia firmvéru z internetu vyžaduje uvedenie do prevádzky
+      ============================================================= =======================================
+
+**Popis príkazu**:
+
+  Príkaz vráti informácie o požiadavke na aktualizáciu firmvéru a informuje tiež o dostupnosti aktualizácie firmvéru.
+
+  V parametroch odpovede príkazu sú poskytnuté informácie o dostupných verziách
+  firmvéru :term:`FP` a :term:`ChDÚ`. Tieto informácie môže aplikácia poskytnúť obsluhe pokladničného
+  systému spolu s otázkou či sa má aktualizácia firmvéru vykonať teraz, alebo sa má odložiť.
+
+  Ak je niektorá z verzií neuvedená (teda ak parameter :ref:`FPVersion <gFUR_FPVersion>`,
+  alebo :ref:`ICMVersion <gFUR_ICMVersion>` obsahuje prázdny reťazec),
+  potom aktualizácia firmvéru pre tento typ zariadenia (:term:`FP`, alebo :term:`ChDÚ`) nie je dostupná.
+
+**Príklad**:
+
+  Ak aplikácia prečíta tieto hodnoty:
+
+    * :ref:`isUpdateAvailable <gFUR_isUpdateAvailable>` = ``TRUE``
+    * :ref:`FPVersion <gFUR_FPVersion>` = ``"1.005.01"``
+    * :ref:`ICMVersion <gFUR_ICMVersion>` = ``""``
+    * :ref:`isFired <gFUR_isFired>` = ``TRUE``
+
+  Znamená to, že:
+
+    * je dostupná aktualizácia softvéru pre :term:`FP` a číslo verzie je "1.005.01",
+    * nie je dostupná aktualizácia pre :term:`ChDÚ`,
+    * je aktivovaná požiadavka na aktualizáciu softvéru, teda je blokovaná tlač dokladov.
+
+  .. note::
+      Hodnoty :ref:`FPVersion <gFUR_FPVersion>` a :ref:`ICMVersion <gFUR_ICMVersion>`
+      sú pre tento príklad vymyslené.
+
+.. toctree::
+    :maxdepth: 2

@@ -1,0 +1,26 @@
+_`Odosielanie neodoslaných dátových správ` ``[_new_]``
+======================================================
+
+Za štandartných okolností sa dátové správy (požiadavky o registráciu dokladov a polôh)
+odosielajú priamo počas ich registrácie v :term:`FP` vrámci príkazov
+:ref:`endFiscalReceipt <endFiscalReceipt>` a :ref:`registerLocation <registerLocation>`.
+Ak však :term:`FP` pracoval nejaký čas v offline režime, teda bez prístupu na internet,
+alebo server finančnej správy nebol dosiahnuteľný, potom správy neboli odoslané,
+ale len uložené v :term:`ChDÚ` pre ich neskoršie odoslanie.
+
+Pre tieto neodoslané dátové správy uložené v :term:`ChDÚ` platí:
+
+* :term:`FP` ich automaticky pošle akonáhle bude mať prístup na internet a server
+  finančnej správy bude dosiahnuteľný
+* nie sú odosielané v čase keď sú do :term:`FP` posielané príkazy pre registráciu dokladov
+  a tiež príkaz pre registráciu polohy :ref:`registerLocation <registerLocation>`
+* ich počet je možné zistiť prečítaním vlastnosti :ref:`UnsentDataMessagesCount <UnsentDataMessagesCount>`
+* ich kontrolované posielanie je možné sledovať použitím príkazu :ref:`registerUnsentDataMessages <registerUnsentDataMessages>`
+
+.. note::
+    Aplikácia môže obsahovať funkcionalitu vrámci ktorej niekoľkokrát denne (2-3 krát)
+    si prečíta počet neodoslaných správ a v prípade ich existencie (>0) si vyžiada
+    od obsluhy potvrdenie a po súhlase spustí ich kontrolované odosielenie zavolaním
+    príkazu :ref:`registerUnsentDataMessages <registerUnsentDataMessages>`
+
+

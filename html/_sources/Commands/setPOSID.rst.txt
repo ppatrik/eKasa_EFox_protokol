@@ -1,0 +1,75 @@
+_`setPOSID`
+-----------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== ================= ====================
+      Pole     Hodnota                                            Dátový typ        Popis
+      ======== ================================================== ================= ====================
+      Cmd ID   sPI                                                \-                identifikátor príkazu
+      Req/Rsp  REQ                                                \-                požiadavka
+      Param1   :ref:`POSID <sPI_POSID>`                           **STRING\[10\]**  identifikátor pre :term:`POS` systém
+      Param2   :ref:`cashierID <sPI_cashierID>`                   **STRING\[20\]**  meno pokladníka (obsluhy :term:`POS` systému)
+      ======== ================================================== ================= ====================
+
+.. _sPI_POSID:
+
+**Parameter POSID**:
+
+  Identifikačný reťazec pre :term:`POS` systém, ktorý riadi fiškálnu tlačiareň.
+
+.. _sPI_cashierID:
+
+**Parameter cashierID**:
+
+  Identifikačný reťazec, resp. meno, pokladníka (operátora), ktorý pracuje na :term:`POS` systéme.
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    sPI                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ===================================================== =======================================
+      Chyba                                                 Popis
+      ===================================================== =======================================
+      :ref:`EFP_DSP_DISCONNECTED <EFP_DSP_DISCONNECTED>`    Displej je odpojený.
+      :ref:`EFP_PRN_DISCONNECTED <EFP_PRN_DISCONNECTED>`    Tlačiareň je odpojená.
+      ===================================================== =======================================
+
+**Popis príkazu**:
+
+  Nastaví identifikátory pre nadradený :term:`POS` systém a pokladníka, ktoré budú tlačené na
+  dokladoch.
+
+  .. note::
+    Po každej strate spojenia medzi fiškálnou tlačiarňou a aplikáciou sú tieto identifikátory
+    zmazané a v prípade ich aktívneho využívania je ich potrebné znovu nastaviť.
+
+.. toctree::
+    :maxdepth: 2
+

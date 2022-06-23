@@ -1,0 +1,22 @@
+_`ICO`
+^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ICO**
+    typ                      STRING\[8\]
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje hodnotu IČO - Identifikačné číslo organizácie (obsahuje len číslice).
+
+.. toctree::
+    :maxdepth: 3

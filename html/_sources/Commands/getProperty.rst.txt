@@ -1,0 +1,139 @@
+_`getProperty` ``[_new_]``
+--------------------------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   gP                                                 \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`propertyID <gP_propertyID>`                  **INT32**       ID property, ktorú chceme získať z :term:`FP`
+      ======== ================================================== =============== ====================
+
+..
+  TODO: pridať dátové typy pre jednotlivé property
+
+.. _gP_propertyID:
+
+**Parameter propertyID**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueNote} is defined in config.py
+  .. tabularcolumns:: {tableValueNote}
+
+  .. table::
+      :class: longtable
+
+      ======= ========================================================================
+      Hodnota Názov property
+      ======= ========================================================================
+      ``1``   :ref:`PrinterState <PrinterState>`
+      ``2``   :ref:`FiscalState <FiscalState>`
+      ``3``   :ref:`DayOpened <DayOpened>`
+      ``4``   :ref:`TrainingModeActive <TrainingModeActive>`
+      ``5``   :ref:`FiscalReceiptType <FiscalReceiptType>`
+      ``6``   :ref:`VatIncluded <VatIncluded>`
+      ``7``   :ref:`ManufacturerName <ManufacturerName>`
+      ``8``   :ref:`ProtocolVersion <ProtocolVersion>`
+      ``9``   :ref:`FPFirmwareVersion <FPFirmwareVersion>`
+      ``10``  :ref:`ProductModelDescription <ProductModelDescription>`
+      ``11``  :ref:`SerialNumber <SerialNumber>`
+      ``12``  :ref:`CoverOpen <CoverOpen>`
+      ``13``  :ref:`RecEmpty <RecEmpty>`
+      ``14``  :ref:`RecNearEnd <RecNearEnd>`
+      ``15``  :ref:`FontALineLength <FontALineLength>`
+      ``16``  :ref:`FontBLineLength <FontBLineLength>`
+      ``17``  :ref:`ErrorString <ErrorString>`
+      ``18``  :ref:`NumHeaderLines <NumHeaderLines>`
+      ``19``  :ref:`NumTrailerLines <NumTrailerLines>`
+      ``20``  :ref:`NumVatRates <NumVatRates>`
+      ``21``  :ref:`ChangeDue <ChangeDue>`
+      ``22``  :ref:`FormatProfile <FormatProfile>`
+      ``23``  :ref:`CurrSymbol <CurrSymbol>`
+      ``24``  :ref:`CurrSymbolPosition <CurrSymbolPosition>`
+      ``27``  :ref:`ErrorExtension <ErrorExtension>`
+      ``28``  :ref:`HeaderBitmap <HeaderBitmap>`
+      ``29``  :ref:`TrailerBitmap <TrailerBitmap>`
+      ``30``  :ref:`BitmapMemoryFreeSpace <BitmapMemoryFreeSpace>`
+      ``31``  :ref:`BitmapMemorySize <BitmapMemorySize>`
+      ``32``  :ref:`BitmapWidth <BitmapWidth>`
+      ``33``  :ref:`PrinterVariant <PrinterVariant>`
+      ``34``  :ref:`VatSummaryPrinting <VatSummaryPrinting>`
+      ``35``  :ref:`PaymentsRegistration <PaymentsRegistration>`
+      ``36``  :ref:`NumPayments <NumPayments>`
+      ``37``  :ref:`ChangeType <ChangeType>`
+      ``38``  :ref:`TransactionIDPrinting <TransactionIDPrinting>`
+      ``40``  :ref:`BuildDateTime <BuildDateTime>`
+      ``50``  :ref:`MediumCoverOpened <MediumCoverOpened>`
+      ``61``  :ref:`DisplayColumns <DisplayColumns>`
+      ``62``  :ref:`DisplayRows <DisplayRows>`
+      ``71``  :ref:`AutomaticDrawerOpening <AutomaticDrawerOpening>`
+      ``72``  :ref:`DrawerOpened <DrawerOpened>`
+      ``73``  :ref:`SSID <SSID>`
+      ``74``  :ref:`SignalLevel <SignalLevel>`
+      ``75``  :ref:`ICO <ICO>`
+      ``76``  :ref:`DIC <DIC>`
+      ``77``  :ref:`ICDPH <ICDPH>`
+      ``78``  :ref:`UniqueNum <UniqueNum>`
+      ``79``  :ref:`ICMFirmwareVersion <ICMFirmwareVersion>`
+      ``80``  :ref:`NumDataMsgItems <NumDataMsgItems>`
+      ``81``  :ref:`ICMIPv4Address <ICMIPv4Address>`
+      ``82``  :ref:`PortableCashRegister <PortableCashRegister>`
+      ``83``  :ref:`ProtectedStorageUsage <ProtectedStorageUsage>`
+      ``84``  :ref:`MandatoryFirmwareUpdateDateTime <MandatoryFirmwareUpdateDateTime>`
+      ``85``  :ref:`CashRoundPlace <CashRoundPlace>`
+      ``86``  :ref:`CashRoundType <CashRoundType>`
+      ``87``  :ref:`InternetAccess <InternetAccess>`
+      ``88``  :ref:`UnsentDataMessagesCount <UnsentDataMessagesCount>`
+      ``89``  :ref:`LicenceCount <LicenceCount>`
+      ======= ========================================================================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    gP                  \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      Param1    *propertyID*        **INT32**      identifikátor požadovanej property (skopírovaný vstupný parameter :ref:`propertyID <gP_propertyID>`)
+      Param2    *data*              **VARIANT**    dáta požadovaného property
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ========================================================= =======================================
+      Chyba                                                     Popis
+      ========================================================= =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`                              Parameter :ref:`propertyID <gP_propertyID>` nie je z množiny dovolených hodnôt.
+      :ref:`EFP_ICM_COMM_ERROR <EFP_ICM_COMM_ERROR>`            Nastala chyba komunikácie s :term:`ChDÚ`.
+      :ref:`EFP_ICM_BUSY <EFP_ICM_BUSY>`                        :term:`ChDÚ` je zaneprázdnené, operáciu teraz nie je možné vykonať.
+      :ref:`EFP_ICM_OPERATION_ERROR <EFP_ICM_OPERATION_ERROR>`  Pri práci s :term:`ChDÚ` vznikla nešpecifikovaná interná chyba.
+      ========================================================= =======================================
+
+**Popis príkazu**:
+
+  Vráti hodnotu požadovanej property špecifikovanú vstupným parametrom :ref:`propertyID <gP_propertyID>`.
+
+.. toctree::
+    :maxdepth: 2

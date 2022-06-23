@@ -1,0 +1,22 @@
+_`ICDPH`
+^^^^^^^^
+
+.. value of {tablePropertydefinition} is defined in config.py
+.. tabularcolumns:: {tablePropertydefinition}
+
+.. table::
+    :class: longtable
+
+    ======================== =======================================
+    názov vlastnosti         **ICDPH**
+    typ                      STRING\[12\]
+    prednastavená hodnota    \-
+    prístup                  read-only
+    ======================== =======================================
+
+**Popis**:
+
+  Obsahuje hodnotu IČ DPH - Identifikačné číslo platcu DPH (vo formáte ``"SK"`` + 10 číslic).
+
+.. toctree::
+    :maxdepth: 3

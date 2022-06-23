@@ -1,0 +1,85 @@
+_`getDate`
+----------
+
+**Formát príkazu**:
+
+  .. value of {tableCmdReqFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdReqFormat}
+
+  .. table::
+      :class: longtable
+
+      ======== ================================================== =============== ====================
+      Pole     Hodnota                                            Dátový typ      Popis
+      ======== ================================================== =============== ====================
+      Cmd ID   gDT                                                \-              identifikátor príkazu
+      Req/Rsp  REQ                                                \-              požiadavka
+      Param1   :ref:`dateType <gDT_dateType>`                     **INT32**       typ požadovaného dátumu
+      ======== ================================================== =============== ====================
+
+.. _gDT_dateType:
+
+**Parameter dateType**:
+
+  Môže nadobúdať jednu z nasledujúcich hodnôt:
+
+  .. value of {tableValueAliasNote} is defined in config.py
+  .. tabularcolumns:: {tableValueAliasNote}
+
+  .. table::
+      :class: longtable
+
+      ========= ============================= ===============================================
+      Hodnota   Alias                         Popis
+      ========= ============================= ===============================================
+      ``1``     _`FP_DT_CONF`                 dátum a čas inicializácie :term:`FP`
+      ``2``     _`FP_DT_EOD`                  dátum a čas poslednej Z uzávierky
+      ``3``     _`FP_DT_RESET`                dátum a čas posledného master resetu
+      ``4``     _`FP_DT_RTC`                  aktuálny dátum a čas
+      ``6``     _`FP_DT_START`                dátum a čas začiatku aktuálneho obchodného dňa :ref:`DTStartOfDay <DTStartOfDay>`
+      ``7``     _`FP_DT_RECEIPT`              dátum a čas posledného ukončeného dokladu :term:`RT` alebo dokladu dennej Z uzávierky v aktuálnom obchodnom dni
+      ``10``    _`FP_DT_SETTING_LIMIT`        spodná hranica pre nastavenie dátumu a času :ref:`DTSettingLimit <DTSettingLimit>`
+      ========= ============================= ===============================================
+
+**Formát odpovede**:
+
+  .. value of {tableCmdRespFormat} is defined in config.py
+  .. tabularcolumns:: {tableCmdRespFormat}
+
+  .. table::
+      :class: longtable
+
+      ========= =================== ============== ====================
+      Pole      Hodnota             Dátový typ     Popis
+      ========= =================== ============== ====================
+      Cmd ID    gDT                 \-             identifikátor príkazu
+      Req/Rsp   RSP                 \-             odpoveď
+      Exception *exceptionCode*     **INT32**      návratový kód
+      Param1    *dateType*          **INT32**      typ požadovaného dátumu, kopíruje vstupný parameter
+      Param2    *date*              **DATETIME**   požadovaný dátum a čas
+      ========= =================== ============== ====================
+
+**Návratové hodnoty**:
+
+  .. value of {tableErrorcodeNote} is defined in config.py
+  .. tabularcolumns:: {tableErrorcodeNote}
+
+  .. table::
+      :class: longtable
+
+      ================================= =======================================
+      Chyba                             Popis
+      ================================= =======================================
+      :ref:`E_ILLEGAL <E_ILLEGAL>`      Parameter :ref:`dateType <gDT_dateType>` nie je z množiny dovolených hodnôt.
+      ================================= =======================================
+
+**Popis príkazu**:
+
+  Vráti čas a dátum špecifikovaný vstupným parametrom. Dátum a čas je vrátený vo formáte :ref:`DDMMYYYYhhmmss <DateTimeFormat>`.
+
+  * V prípade, že premenná dátumu a času neobsahuje informáciu o sekundách, vo výstupnej hodnote budú na mieste sekúnd v takomto prípade dve nuly ``"00"``.
+
+  * V prípade, že niektorý z vyššie spomínaných typov dátumu a času má nedefinovanú hodnotu, potom :term:`FP` vráti do aplikácie výstupný parameter *date* s hodnotou ``"00000000000000"``.
+
+.. toctree::
+    :maxdepth: 2
